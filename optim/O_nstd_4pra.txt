@@ -1,0 +1,7 @@
+[16, 36],19/72
+32749
+[u, v, w]
+u
+wdeg([5, 4, 3],[u, v, w])
+[u^4, v*u^3, u^2*v^2, u^3*w, u^2*v*w, w^2*v, u^3, u^2*v, v^2*u, u^2*w, w*v*u, u^2, v*u, v^2, w*u, v*w, u, v, w, 1]
+[Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(20, [u^3,u^2*v,u^2*w,u^2,v^2*u,w*v*u,v*u,w^2*u,w*u,u,v^3,v^2*w,v^2,w^2*v,v*w,v,w^3,w^2,w,1])]

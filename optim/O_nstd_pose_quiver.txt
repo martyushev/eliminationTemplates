@@ -1,0 +1,7 @@
+[66, 86]
+32749
+[w, x, y, z]
+z
+tdeg(w,x,y,z)
+[y^2*x, y^3, y^2*z, z^2*w, x*z^2, y*z^2, z^3, x*w, y*w, x*y, y^2, z*w, x*z, y*z, z^2, w, x, y, z, 1]
+[Vector(14, [z*x*w,x*w,z*y*w,y*w,z^2*w,z*w,w,x,y^2,y*z,y,z^2,z,1]), Vector(17, [y*x*w,z*x*w,x*w,y^2*w,z*y*w,y*w,z^2*w,z*w,w,x*z,x,y^2,y*z,y,z^2,z,1]), Vector(17, [y*x*w,z*x*w,x*w,y^2*w,z*y*w,y*w,z^2*w,z*w,w,x*z,x,y^2,y*z,y,z^2,z,1]), Vector(18, [w^2*x*z,x*w^2,w^2*z*y,y*w^2,w^2*z^2,w^2,x*w,y^2*w,z*y*w,y*w,z^2*w,z*w,w,y*z,y,z^2,z,1])]

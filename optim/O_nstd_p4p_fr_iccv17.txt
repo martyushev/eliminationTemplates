@@ -1,0 +1,7 @@
+[28, 40],4/7
+32749
+[w, x, y, z]
+w
+wdeg([9, 8, 7, 6],[w, x, y, z])
+[x^3, y^2*x, z*y*x, z^2*y, x^2, y^2, x*z, z^2, x, y, z, 1]
+[Vector(4, [x,y,z,1]), Vector(4, [x,y,z,1]), Vector(8, [w*x,y*w,w*z,w,x,y,z,1]), Vector(8, [w*x,y*w,w*z,w,x,y,z,1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]

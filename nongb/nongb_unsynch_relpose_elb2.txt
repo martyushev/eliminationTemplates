@@ -1,0 +1,4 @@
+[v, w, v^2, v^3, w^2, w^3, u*v^2, w*v, v*w^2, x*v, v^2*x, v^2*z, w*v^2, u*v*w, v*w*x, v*w*y]
+[v, w, v^2, v^3, w^2, w^3, w*v, v*w^2, y*v, v^2*x, v^2*y, v^2*z, w*v^2, u*v*w, v*w*x, v*w*z]
+[v, y, v^2, v^3, y^2, v*u, x*v, v*x^2, y*v, v*y^2, v*z, v^2*x, v^2*y, y^2*x, v*w*x, v*x*y]
+[x, y, y^2, y^3, v*y^2, y*x, y^2*x, z*x, z^2*x, y*x^2, y*z, z^2*y, z*y^2, u*y*z, z*y*x, z*y*w]

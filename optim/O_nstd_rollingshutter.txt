@@ -1,0 +1,7 @@
+[47, 55],1603/2585
+32749
+[x1, x2, x3, x4, x5]
+x2
+wdeg([4, 4, 4, 3, 2],[x1, x2, x3, x4, x5])
+[x1^2, x4*x1, x1, x2, x3, x4, x5, 1]
+[Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5]), Vector(5, [1,x2,x3,x4,x5])]
