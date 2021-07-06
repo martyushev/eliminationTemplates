@@ -108,7 +108,7 @@ getTord := proc(gb, lm)
     gbdegs := map(z-&gt;map(x-&gt;[seq(degree(x, y), y in vars)], convert(z, list)), gb):
     lmdegs := map(x-&gt;[seq(degree(x, y), y in vars)], lm):
     ineqs := map(k-&gt;op(map(x-&gt;add(zip((y, z)-&gt;y*z, x, degs)) &gt;= 1, subs(sbt, [seq(lmdegs[k] - g, g in gbdegs[k])]))), {$ 1..nops(gb)}):
-    sol := Optimization[Minimize](add(degs), ineqs, <Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">depthlimit=35</Font>, assume=nonnegint)[2]:
+    sol := Optimization[Minimize](add(degs), ineqs, <Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">depthlimit=40</Font>, assume=nonnegint)[2]:
     fdegs := subs(sol, degs):
     fdegs, <Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">wdeg(</Font>fdegs<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">, vars):</Font>
 end proc:</Text-field>
@@ -407,12 +407,12 @@ end proc:</Text-field>
 adjustParamsS2 := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
     local nF := nops(F), H1 := H, nG := op([1, 1], H), Lm, L, mon, cols, m, pars, L1, tL1, basis, T, T1, cf, tord := tdeg(op(vars)), b, prm, i, sol:
 
-    Lm := seq(poly2matrix(H[.., j], nG, vars), j=1..nF):
+    Lm := seq(poly2matrix(H1[.., j], nG, vars), j=1..nF):
     L, mon := Matrix([seq(Lm[2*j-1], j=1..nF)]), Vector([seq(Lm[2*j], j=1..nF)]):
     cols := remove(j-&gt;membertype(posint, convert(L[.., j], list)), [$ 1..op([1, 2], L)]):
-    L, mon := L[remove(i-&gt;ArrayTools[IsZero](L[i, cols]), [$ 1..nG]), cols], mon[cols]:
+    L, mon := L[remove(j-&gt;ArrayTools[IsZero](L[j, cols]), [$ 1..nG]), cols], mon[cols]:
     m, pars := op([1, 2], L), indets(L):
-    cf := map(j-&gt;nops(select(x-&gt;is(x=0), convert(L[.., j], list))), [$ 1..m]):
+    cf := map(j-&gt;ListTools[Occurrences](0, convert(L[.., j], list)), [$ 1..m]):
     prm := sort([$ 1..m], (x, y) -&gt; (cf[x] &gt; cf[y]) or (cf[x] = cf[y] and Groebner[TestOrder](mon[y], mon[x], tord)), 'output=permutation'):
     L := L[.., prm]:
     L1 := &lt;seq(poly2matrix(convert(L[j, ..], list), m, pars)[1]^%T, j=1..op([1, 1], L))&gt;:
@@ -441,14 +441,49 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
+<Group view="code" labelreference="L4927" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters (strategy S3)
+adjustParamsS3 := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
+    local nF := nops(F), H1 := H, nG := op([1, 1], H), Lm, cols, L, mon, sm, m, V0, E, e, leqs, sol:
+
+    Lm := seq(poly2matrix(H1[.., j], nG, vars), j=1..nF):
+    cols := [seq(remove(k-&gt;membertype(posint, convert(Lm[2*j-1][.., k], list)), [$ 1..op([1, 2], Lm[2*j-1])]), j=1..nF)]:
+    L, mon := Matrix([seq(Lm[2*j-1][.., cols[j]], j=1..nF)]), [seq(Lm[2*j][cols[j]], j=1..nF)]:
+    L := L[remove(j-&gt;ArrayTools[IsZero](L[j, ..]), [$ 1..nG]), ..]:
+    sm := Vector([seq(map(t-&gt;getMons(expand(F[j]*t), vars), mon[j]), j=1..nF)]):
+    m := op(1, sm):
+    V0 := `union`(seq(sm)): # set of all monomials in the expanded system
+    E := convert(V0 minus convert(RB, set), list): # list of excessive monomials
+    E := srt(E, tdeg(op(vars))): # sorted list of excessive monomials
+
+    ### start adjusting parameters
+    for e in E do
+        if nops(indets(L)) = 0 then break: end if: # nothing to adjust
+        leqs := convert(L[.., select(j-&gt;member(e, sm[j]), [$ 1..m])], set):
+        if membertype(posint, leqs) then next: end if: # system is inconsistent
+        sol := msolve(leqs, pp):
+        if nops({sol}) = 0 then next: end if:
+        H1 := map(expand@eval, H1, sol) mod pp:
+        L := map(expand@eval, L, sol) mod pp:
+    end do:
+
+    constructTemplate(H1, F, vars, RB):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4928" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
 <Group view="code" hide-output="false" labelreference="L4922" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">adjustParamsS41 := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters (strategy S4)
+adjustParamsS4 := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
     local nF := nops(F), nG := op([1, 1], H), H1 := H, Lm, cols, L, mon, sm, m, V0, E, e, rm, ss, prm, leqs, sol:
 
-    Lm := seq(poly2matrix(H[.., j], nG, vars), j=1..nF):
+    Lm := seq(poly2matrix(H1[.., j], nG, vars), j=1..nF):
     cols := [seq(remove(x-&gt;membertype(posint, convert(Lm[2*j-1][.., x], list)), [$ 1..op([1, 2], Lm[2*j-1])]), j=1..nF)]:
     L, mon := Matrix([seq(Lm[2*j-1][.., cols[j]], j=1..nF)]), [seq(Lm[2*j][cols[j]], j=1..nF)]:
-    L := L[remove(i-&gt;ArrayTools[IsZero](L[i, ..]), [$ 1..nG]), ..]:
+    L := L[remove(j-&gt;ArrayTools[IsZero](L[j, ..]), [$ 1..nG]), ..]:
     sm := Vector([seq(map(t-&gt;getMons(expand(F[j]*t), vars), mon[j]), j=1..nF)]):
     m := op(1, sm):
     V0 := `union`(seq(sm)): # set of all monomials in the expanded system
@@ -483,7 +518,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4926" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group hide-output="false" labelreference="L4433" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -679,7 +714,8 @@ corTemplate,
 constructTemplate,
 adjustParams,
 adjustParamsS2,
-adjustParamsS41,
+adjustParamsS3,
+adjustParamsS4,
 isActionMatrixFound,
 reduceKnownPivots,
 reduceLinDep,
