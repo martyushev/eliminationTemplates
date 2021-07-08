@@ -1422,7 +1422,7 @@ function [v,w,x,y,z] = std_relpose_7p_fr(C)
         y = zeros(1,0);
         z = zeros(1,0);
     else
-        I = find(not(imag( sol(1,:) )));
+        I = find(not(imag( sol(1,:) )) & sol(1,:) > 0);
         v = sol(1,I);
         w = sol(2,I);
         x = sol(3,I);
