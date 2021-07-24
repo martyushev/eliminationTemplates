@@ -1,6 +1,7 @@
 % generate ground truth projective matrices Pgt and essential matrices Egt
 function [Pgt,Egt] = synth_cameras(nv,Kgt)
 
+    base = 0.5; % baselength
     axs = 2*rand(3,nv)-ones(3,nv); % rotation axes
     ang = (30-10)*rand(nv,1)+10; % uniformly distributed rotation angles (in degrees)
 
@@ -15,10 +16,10 @@ function [Pgt,Egt] = synth_cameras(nv,Kgt)
             R{i} = eye(3);
         else
             cntr = 2*rand(3,1)-ones(3,1); % camera center
-            cntr = cntr/norm(cntr,'fro');
+            cntr = base*cntr/norm(cntr,'fro');
             R{i} = rotRodrigues(ang(i),axs(:,i));
         end
-        t{i} = -R{i}*cntr;
+        t{i} = -R{i}*cntr; % translations
         Pgt{i} = Kgt{i}*[R{i} t{i}];
     end
 

@@ -115,9 +115,9 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4831" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">readCM := proc(prob::string, px::string, opt:=false, std:=true)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">readCM := proc(prob::string, px::string, std:=true)
     local st := 1, cmfile, pp, vars, m := 0, n := 0:
-    cmfile := ifelse(std, ifelse(opt, cat(px, &quot;optim/cm/cm_&quot;, prob, &quot;.txt&quot;), cat(px, &quot;cm/cm_&quot;, prob, &quot;.txt&quot;)), cat(px, &quot;cm/nstd/cm_&quot;, prob, &quot;.txt&quot;)):
+    cmfile := ifelse(std, cat(px, &quot;cm/cm_&quot;, prob, &quot;.txt&quot;), cat(px, &quot;cm/nstd/cm_&quot;, prob, &quot;.txt&quot;)):
     pp := parse(readline(cmfile)): # read prime number
     vars := parse(readline(cmfile)): # read variables
     while st &lt;&gt; 0 do
@@ -193,7 +193,7 @@ end proc:</Text-field>
 <Group hide-output="false" labelreference="L4449" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of polynomials into coefficient matrix and monomial vector
 poly2matrix := proc(F, nF, vars)
-    local cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
+    local mons, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
     Matrix(nF, nops(cffs), (i, j)-&gt;coeff(cffs[j], q_q||i)), Vector([mons]):
 end proc:</Text-field>
 </Input>
@@ -280,12 +280,13 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L4536" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### iteratively construct matrix H of size nG x nF
 getMatrixH := proc(F::list, G::list, vars::set, pp::nonnegint, dom::nonnegint:=0)
-    local pv := add(vars), nF := nops(F), nG := nops(G), uH, sol, i, dF := map(degree, F, vars), dG, d, d_min, h:
+    local pv := add(vars), nF := nops(F), nG := nops(G), uH, leqs, sol, i, dF := map(degree, F, vars), dG, d, d_min, h:
     for i from 1 to nG do
         d_min, dG := 0, map(x-&gt;max(0, x), [degree(G[i], vars) $ nF] - dF):
         for d from 0 while d - d_min &lt;= dom do
             uH := [seq(undetPoly(vars, pv, dG[j] + d, j), j=1..nF)]:
-            sol := msolve({coeffs(expand(-G[i] + add(uH[j]*F[j], j=1..nF)), vars)}, pp):
+            leqs := {coeffs(expand(-G[i] + add(uH[j]*F[j], j=1..nF)), vars)}:
+            sol := msolve(leqs, pp):
             if nops({sol}) = 0 then d_min := d + 1: end if:
         end do:
         h[i] := map(expand@eval, uH, sol) mod pp:
@@ -306,17 +307,18 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use known change matrix to non-iteratively construct matrix H of size nG x nF
 getMatrixHni := proc(F::list, G::list, C::Matrix, CM::Matrix, vars::set, pp::nonnegint)
-    local nF := nops(F), nG := nops(G), H0, uH, sol, pars:
+    local nF := nops(F), nG := nops(G), H0, uH, leqs, sol, pars:
     H0 := map(expand, C.CM) mod pp:
     uH := Matrix(nG, nF, (i, j)-&gt;undetPolyni(H0[i, j], vars, i, j)):
     pars := {seq(_u[i], i=1..nops(indets(uH) minus vars))}:
-    sol := msolve(map(coeffs, {seq(expand(-G[i] + add(uH[i, j]*F[j], j=1..nF)) mod pp, i=1..nG)}, vars), pars, pp):
+    leqs := map(coeffs, {seq(expand(-G[i] + add(uH[i, j]*F[j], j=1..nF)) mod pp, i=1..nG)}, vars):
+    sol := msolve(leqs, pars, pp):
     map(expand@eval, uH, sol) mod pp:
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4811" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find set of monomials of polynomial h
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find the set of monomials for polynomial h
 getMons := proc(h, vars) coeffs(h, vars, 'mons'): {mons}: end proc:</Text-field>
 </Input>
 </Group>
@@ -336,6 +338,7 @@ corTemplate := proc(admons, F, vars, mon, RB)
     expF := [seq(seq(F[j]*mn, mn in mon1[j]), j=1..nF)]:
     M, V0 := poly2matrix(expF, nops(expF), vars):
     E := convert(V0, set) minus convert(RB, set):
+    E := srt([op(E)], tdeg(op(vars))):
     V := &lt;op(E), op(RB)&gt;:
     print(`Template corrected`):
     return mon1, M, V0, V:
@@ -350,12 +353,13 @@ constructTemplate := proc(H, F, vars, RB)
     expF := [seq(seq(F[j]*mn, mn in mon[j]), j=1..nF)]: # expanded polynomial system
     M, V0 := poly2matrix(expF, nops(expF), vars): # matrix form of expF, M.V0 = vec(expF)
     E := convert(V0, set) minus convert(RB, set): # set of excessive monomials
+    E := srt([op(E)], tdeg(op(vars))):
     V := &lt;op(E), op(RB)&gt;: # vector of all monomials
     if op(1, V) &lt;&gt; op(1, V0) then # template is incomplete
         print(`Template is incomplete`):
         mon, M, V0, V := corTemplate(convert(V, set) minus convert(V0, set), F, vars, mon, RB):
     end if:
-    mon, permuteColumns(M, V0, V): # reorder columns of M w.r.t. permutation from V0 to V
+    mon, permuteColumns(M, V0, V), V: # reorder columns of M w.r.t. permutation from V0 to V
 end proc:</Text-field>
 </Input>
 </Group>
@@ -374,10 +378,8 @@ adjustParams := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
     rm := map(e-&gt;select(i-&gt;member(e, sm[i]), {$ 1..op(1, sm)}), E):
     np := [seq(`+`(seq(nops(select(has, rm, rm[j][i])), i=1..nops(rm[j]))), j=1..nops(rm))]:
     ss := (i, j, rm, np)-&gt;(nops(rm[i]) &gt; nops(rm[j])) or (nops(rm[i]) = nops(rm[j]) and np[i] &gt; np[j]):
-    #ss := (i, j, rm, E)-&gt;(nops(rm[i]) &gt; nops(rm[j])) or (nops(rm[i]) = nops(rm[j]) and degree(E[i]) &gt; degree(E[j])):
 
     ### reorder excessive monomials so that first are monomials requiring setup of smaller number of parameters
-    #rm := map(e-&gt;map(x-&gt;{ListTools[SearchAll](1, map(y-&gt;nops(y intersect {e}), x))}, sm), E):
     prm := sort([$ 1..nops(E)], (i, j)-&gt;ss(i, j, rm, np)):
     E := E[prm]: # sorted list of excessive monomials
 
@@ -399,6 +401,36 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4919" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4931" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters (strategy S1)
+adjustParamsS1 := proc(F::list, H::Matrix, RB::list, vars::set, pp::nonnegint)
+    local nF := nops(F), H1 := H, nG := op([1, 1], H), Lm, L, mon, cols, m, prm, i, sol:
+
+    Lm := seq(poly2matrix(H1[.., j], nG, vars), j=1..nF):
+    L, mon := Matrix([seq(Lm[2*j-1], j=1..nF)]), Vector([seq(Lm[2*j], j=1..nF)]):
+    prm := sort(mon, (x, y)-&gt;Groebner[TestOrder](y, x, tdeg(op(vars))), 'output=permutation'):
+    L := L[.., prm]:
+    cols := remove(j-&gt;membertype(posint, convert(L[.., j], list)), [$ 1..op([1, 2], L)]):
+    L := L[remove(j-&gt;ArrayTools[IsZero](L[j, cols]), [$ 1..nG]), cols]:
+    m := op([1, 2], L):
+
+    ### start adjusting parameters
+    for i from 1 to m do
+        if nops(indets(L)) = 0 then break: end if: # nothing to adjust
+        sol := lsolve(convert(L[.., i], list), pp, _t||i):
+        if nops(sol) = 0 then next: end if:
+        H1 := map(expand@eval, H1, sol) mod pp:
+        L := map(expand@eval, L, sol) mod pp:
+    end do:
+
+    constructTemplate(H1, F, vars, RB):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4932" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -517,10 +549,6 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L4926" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
 <Group hide-output="false" labelreference="L4433" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if the action matrix is found
 isActionMatrixFound := proc(T::Matrix, M::Matrix, aB::list, B::list, nG::posint, pp::nonnegint)
@@ -567,6 +595,18 @@ reduceLinDep := proc(M::Matrix, pp::nonnegint)
     basis := map(i-&gt;ListTools[Search](1, convert(tM1[i], list)), {$ 1..r}):
     c2del := convert({$ 1..max(basis)} minus basis, list):
     M1[.., remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M1)])], r2del, c2del:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4933" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### remove ONLY linearly dependent rows from the template
+reduceLinDepRows := proc(M::Matrix, pp::nonnegint)
+    local r, tM, basis, r2del:
+    ### remove linearly dependent rows
+    tM := Gaussjord(M^%T, 'r') mod pp:
+    basis := map(i-&gt;ListTools[Search](1, convert(tM[i], list)), {$ 1..r}):
+    r2del := convert({$ 1..op([1, 2], tM)} minus basis, list):
+    M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), ..], r2del:
 end proc:</Text-field>
 </Input>
 </Group>
@@ -617,7 +657,7 @@ iniProb := proc(prob::string, px::string, qb, ff)
     elif qb = 2 then # use non-standard bases for the quotient ring
         QBs := readNonGB(prob, px):
         nQBs := nops(QBs):
-        pp, Ts, CMs := readCM(prob, px, false, false):
+        pp, Ts, CMs := readCM(prob, px, false):
         print(cat(nQBs, ` quotient space bases loaded`)):
         tord, CM := Ts[1], CMs[1]:
         Gr := map(expand, convert(CM.vF, list)) mod pp:
@@ -642,7 +682,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L4461" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### automatic template generator for a given minimal problem
 genTemplate := proc(prob::string, params::list)
-    local F, pp, qb, dom, av, ff, px, ps, vars, avars, GBs, Ts, QBs, CMs, Gr, tord, i, j, k, H, mon, M, aB, B, RB, T, G, C, fl, m, n, mo := 10^6, no, sp, spo := -1, N, nv, nG, deg, db, q, irng, nk, QB, tord1:
+    local F, pp, qb, dom, av, ff, px, ps, vars, avars, GBs, Ts, QBs, CMs, Gr, tord, i, j, k, H, mon, M, V, aB, B, RB, T, G, C, fl, m, n, mo := 10^6, no, sp, spo := -1, N, nv, nG, deg, db, q, irng, nk, QB, tord1:
     qb, dom, av, ff, px, ps, db := op(params):
     pp, F, vars, GBs, Ts, QBs, CMs := iniProb(prob, px, qb, ff):
     avars := ifelse(nops(av)=0, vars, map(a-&gt;vars[a], av)):
@@ -658,7 +698,7 @@ genTemplate := proc(prob::string, params::list)
             aB, B, RB, T, G, C := getPartition(avars[j], Gr, tord, pp, QB):
             nG := nops(G):
             H := ifelse(qb = 2, getMatrixH(F, G, vars, pp), getMatrixHni(F, G, C, CMs[i], vars, pp)):
-            mon, M := adjustParams(F, H, RB, vars, pp): # adjust parameters and return template M
+            mon, M, V := adjustParams(F, H, RB, vars, pp): # adjust parameters and return template M and monomial vector V
             if ps &lt;&gt; [] then M := reduceKnownPivots(mon, M, op([1, 2], M)-deg-nG, ps, pp): end if:
             M := reduceLinDep(M, pp)[1]: # remove linearly dependent rows and columns from M
             fl := isActionMatrixFound(T, M, aB, B, nG, pp): # test if M is a template (optional)
@@ -713,12 +753,14 @@ getMons,
 corTemplate,
 constructTemplate,
 adjustParams,
+adjustParamsS1,
 adjustParamsS2,
 adjustParamsS3,
 adjustParamsS4,
 isActionMatrixFound,
 reduceKnownPivots,
 reduceLinDep,
+reduceLinDepRows,
 rectTord,
 QBfilter,
 iniProb,
@@ -742,7 +784,7 @@ genTemplate,
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4838" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4838" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
