@@ -10,22 +10,6 @@ f1 = V1(:,3)/norm(V1(:,3),'fro');
 f2 = V1(:,2)/norm(V1(:,2),'fro');
 f3 = V1(:,1)/norm(V1(:,1),'fro');
 ns = [f1 f2 f3];
- 
-% 3 null vectors
-%[~,~,V] = svd(M,0);
-%f1 = V(:,7);
-%f2 = V(:,8);
-%f3 = V(:,9);
-%ns = [f1 f2 f3]';
-%ns = ns(:,[7:9,1:6]);
-%ns = rref(ns);
-%ns = ns([3,2,1],[4:9,1:3])';
-%f1 = ns(:,1);
-%f2 = ns(:,2);
-%f3 = ns(:,3);
-
-%disp(M*ns);
-%disp(ns);
 
 C = zeros(10,26);
 

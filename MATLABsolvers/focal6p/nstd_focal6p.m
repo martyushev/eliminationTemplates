@@ -218,39 +218,19 @@ function [g, u, v] = nstd_focal6p(C)
     M([241, 275]) = C(250);
     M([252, 286]) = C(260);
 
-    %M = rref(M);
-    Me = M(:,1:3);
-    %disp(Me);
-    [L,~,P] = lu(Me);
-    e1 = eye(11);
-    L = [L e1(:,4:end)];
+    nE = 3;
+    nR = 8;
+    [L,~,P] = lu(M(:,1:nE));
+    ze = eye(nE+nR);
+    L = [L ze(:,nE+1:end)];
     M1 = (P'*L)\M;
-    %disp(M1);
-    M2 = M1(:,4:end);
-    %disp(M2);
-    M3 = M2(end-7:end,1:8);
-    M4 = M2(end-7:end,9:end);
-    A1 = -M3\M4;
-    %disp(A1);
+    M3 = M1(end-nR+1:end,nE+1:nE+nR);
+    M4 = M1(end-nR+1:end,nE+nR+1:end);
+    %disp(cond(M3));
 
     A = zeros(15);
-    A(1:8,:) = A1;
-    %amcols = 12:26;
-    %A(1,:) = -M(4,amcols);
-    %A(2,:) = -M(5,amcols);
-    %A(3,:) = -M(6,amcols);
-    %A(4,:) = -M(7,amcols);
-    %A(5,:) = -M(8,amcols);
-    %A(6,:) = -M(9,amcols);
-    %A(7,:) = -M(10,amcols);
-    %A(8,:) = -M(11,amcols);
-    A(9,1) = 1;
-    A(10,2) = 1;
-    A(11,4) = 1;
-    A(12,10) = 1;
-    A(13,6) = 1;
-    A(14,7) = 1;
-    A(15,13) = 1;
+    A(1:nR,:) = -M3\M4;
+    A([9,25,56,88,104,147,195]) = 1;
 
     [V,~] = eig(A);
 

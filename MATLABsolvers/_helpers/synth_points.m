@@ -21,10 +21,8 @@ function [q,Q] = synth_points(P,np,noise,la)
     end
     
     % add radial distortion
-    if la ~= 0
-        for k = 1:nv
-            q{k} = rad_dist(q{k},np,la);
-        end
+    for k = 1:nv
+        if la(k) ~= 0; q{k} = rad_dist(q{k},np,la(k)); end
     end
 
 end
