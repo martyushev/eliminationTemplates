@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x52
 
-% Monomial vector: [z^2*w^2*x, y*z^2*w^2, y*x*z^2*w, y^2*z^2*w, x*y^2*z^2, y^3*z^2, z*w^2*x, z*w*x^2, y*z*w^2, z*w*x*y, x^2*z*y, z*w*y^2, x*z*y^2, y^3*z, z^2*w^2, x*z^2*w, z^2*w*y, y*x*z^2, y^2*z^2, w^2*x, w*x^2, x^3, y*w^2, w*y*x, y*x^2, y^2*w, x*y^2, y^3, w^2*z, x*z*w, z*x^2, w*y*z, z*x*y, y^2*z, z^2*w, x*z^2, y*z^2, w^2, w*x, x^2, y*w, x*y, y^2, z*w, x*z, y*z, z^2, w, x, y, z, 1]
+% Monomial vector: [x*w^2*z^2, y*w^2*z^2, w*x*y*z^2, w*y^2*z^2, y^2*z^2*x, z^2*y^3, z*w^2*x, x^2*z*w, z*w^2*y, w*x*y*z, y*x^2*z, w*y^2*z, z*y^2*x, z*y^3, z^2*w^2, z^2*x*w, z^2*y*w, z^2*y*x, z^2*y^2, w^2*x, w*x^2, x^3, w^2*y, w*y*x, x^2*y, y^2*w, y^2*x, y^3, w^2*z, z*x*w, z*x^2, w*y*z, z*y*x, y^2*z, z^2*w, z^2*x, z^2*y, w^2, w*x, x^2, w*y, y*x, y^2, z*w, x*z, y*z, z^2, w, x, y, z, 1]
 
 function [w, x, y, z] = std_rdist9p(C)
 
@@ -91,23 +91,18 @@ function [w, x, y, z] = std_rdist9p(C)
     M([5698, 6687, 7144]) = C(204);
     M([7294, 7523, 7600]) = C(208);
 
-    nE = 55;
-    nR = 21;
-    [L,~,P] = lu(M(:,1:nE));
-    ze = eye(nE+nR);
-    L = [L ze(:,nE+1:end)];
+    [L,~,P] = lu(M(:,1:55));
+    L = [L [zeros(55,21); eye(21)]];
     M1 = (P'*L)\M;
-    M3 = M1(end-nR+1:end,nE+1:nE+nR);
-    M4 = M1(end-nR+1:end,nE+nR+1:end);
-    %disp(cond(M3));
+    M2 = M1(end-20:end,56:76);
+    M3 = M1(end-20:end,77:end);
 
     A = zeros(24);
-    A(1:nR,:) = -M3\M4;
-    A([214,287,432]) = 1;
+    A(1:21,:) = -M2\M3;
+    A([214, 287, 432]) = 1;
 
     [V,~] = eig(A);
-
-    sol =  V([23, 21, 22, 18],:)./(ones(4,1)*V(24,:));
+    sol = V([23, 21, 22, 18],:)./(ones(4,1)*V(24,:));
 
     if(find(isnan( sol(:) )) > 0)
         w = zeros(1,0);
@@ -115,11 +110,11 @@ function [w, x, y, z] = std_rdist9p(C)
         y = zeros(1,0);
         z = zeros(1,0);
     else
-        I = find(not(imag( sol(1,:) )));
-        w = sol(1,I);
-        x = sol(2,I);
-        y = sol(3,I);
-        z = sol(4,I);
+        %I = find(not(imag( sol(1,:) )));
+        w = sol(1,:);
+        x = sol(2,:);
+        y = sol(3,:);
+        z = sol(4,:);
     end
 
 end

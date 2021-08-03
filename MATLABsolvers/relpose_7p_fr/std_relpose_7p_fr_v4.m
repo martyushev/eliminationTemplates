@@ -1,8 +1,8 @@
 % Input: coefficient matrix C of size 12x178
 
-% Monomial vector: [v*w^3*z^3, v*w^2*x*z^3, v*w*x^2*z^3, v*x^3*z^3, v*w^2*y*z^3, v*w*x*y*z^3, v*x^2*y*z^3, v*w*y^2*z^3, v*x*y^2*z^3, v*y^3*z^3, v*w^3*z^2, v*w^2*x*z^2, v*w*x^2*z^2, v*x^3*z^2, v*w^2*y*z^2, v*w*x*y*z^2, v*x^2*y*z^2, v*w*y^2*z^2, v*x*y^2*z^2, v*y^3*z^2, v*w^2*z^3, w^3*z^3, v*w*x*z^3, w^2*x*z^3, v*x^2*z^3, w*x^2*z^3, x^3*z^3, v*w*y*z^3, w^2*y*z^3, v*x*y*z^3, w*x*y*z^3, x^2*y*z^3, v*y^2*z^3, w*y^2*z^3, x*y^2*z^3, y^3*z^3, z*w^3*v, v^2*w*x*z, v*w^2*x*z, v^2*x^2*z, v*w*x^2*z, v*x^3*z, v^2*w*y*z, v*w^2*y*z, v^2*x*y*z, v*w*x*y*z, v*x^2*y*z, z*y^2*v^2, v*w*y^2*z, v*x*y^2*z, z*y^3*v, z^2*w^2*v, z^2*w^3, v*w*x*z^2, w^2*x*z^2, v*x^2*z^2, w*x^2*z^2, x^3*z^2, v*w*y*z^2, w^2*y*z^2, v*x*y*z^2, w*x*y*z^2, x^2*y*z^2, z^2*y^2*v, w*y^2*z^2, x*y^2*z^2, z^2*y^3, z^3*w*v, z^3*w^2, v*x*z^3, w*x*z^3, x^2*z^3, z^3*y*v, w*y*z^3, x*y*z^3, z^3*y^2, v*w^3, w*x*v^2, x*w^2*v, x^2*v^2, w*x^2*v, x^3*v, w*y*v^2, y*w^2*v, x*y*v^2, w*x*y*v, x^2*y*v, y^2*v^2, w*y^2*v, x*y^2*v, v*y^3, z*w*v^2, v*w^2*z, w^3*z, z*x*v^2, z*w*x*v, z*w^2*x, v*x^2*z, w*x^2*z, x^3*z, v^2*y*z, v*w*y*z, w^2*y*z, z*y*x*v, w*x*y*z, x^2*y*z, v*y^2*z, w*y^2*z, z*y^2*x, y^3*z, v*w*z^2, w^2*z^2, v*x*z^2, w*x*z^2, x^2*z^2, v*y*z^2, w*y*z^2, x*y*z^2, y^2*z^2, v*z^3, w*z^3, x*z^3, y*z^3, v^2*w, v*w^2, w^3, v^2*x, v*w*x, w^2*x, v*x^2, w*x^2, x^3, v^2*y, v*w*y, w^2*y, v*x*y, w*x*y, x^2*y, v*y^2, w*y^2, x*y^2, y^3, v^2*z, v*w*z, w^2*z, v*x*z, w*x*z, z*x^2, v*y*z, w*y*z, x*y*z, y^2*z, v*z^2, w*z^2, z^2*x, y*z^2, z^3, v^2, v*w, w^2, v*x, w*x, x^2, v*y, w*y, x*y, y^2, v*z, z*w, x*z, z*y, z^2, v, w, x, y, z, 1]
+% Monomial vector: [v*w^3*z^3, v*w^2*z^3*x, v*w*z^3*x^2, v*x^3*z^3, v*w^2*z^3*y, v*x*z^3*y*w, v*x^2*z^3*y, v*w*z^3*y^2, v*x*z^3*y^2, v*y^3*z^3, v*w^3*z^2, v*x*w^2*z^2, v*w*z^2*x^2, v*x^3*z^2, v*y*w^2*z^2, v*y*w*z^2*x, v*y*x^2*z^2, v*w*z^2*y^2, v*x*z^2*y^2, v*y^3*z^2, v*w^2*z^3, w^3*z^3, v*w*z^3*x, w^2*z^3*x, v*x^2*z^3, w*z^3*x^2, x^3*z^3, v*w*z^3*y, w^2*z^3*y, v*x*z^3*y, x*z^3*y*w, x^2*z^3*y, v*y^2*z^3, w*z^3*y^2, x*z^3*y^2, y^3*z^3, z*w^3*v, x*v^2*w*z, v*w^2*x*z, x^2*v^2*z, x^2*v*w*z, x^3*v*z, v^2*y*w*z, v*y*w^2*z, x*v^2*y*z, x*v*y*w*z, x^2*v*y*z, z*y^2*v^2, v*y^2*w*z, x*v*y^2*z, z*y^3*v, z^2*w^2*v, z^2*w^3, v*w*z^2*x, x*w^2*z^2, v*x^2*z^2, w*z^2*x^2, x^3*z^2, v*w*z^2*y, y*w^2*z^2, v*x*z^2*y, y*w*z^2*x, y*x^2*z^2, z^2*y^2*v, w*z^2*y^2, x*z^2*y^2, z^2*y^3, z^3*w*v, z^3*w^2, v*z^3*x, w*z^3*x, x^2*z^3, z^3*y*v, w*z^3*y, x*z^3*y, z^3*y^2, v*w^3, w*x*v^2, x*w^2*v, x^2*v^2, w*x^2*v, x^3*v, w*y*v^2, y*w^2*v, x*y*v^2, w*x*y*v, x^2*y*v, y^2*v^2, w*y^2*v, x*y^2*v, v*y^3, z*w*v^2, v*w^2*z, w^3*z, z*x*v^2, z*w*x*v, z*w^2*x, x^2*v*z, w*x^2*z, x^3*z, z*v^2*y, v*y*w*z, y*w^2*z, z*y*x*v, y*w*x*z, y*x^2*z, v*y^2*z, y^2*w*z, z*y^2*x, y^3*z, v*w*z^2, w^2*z^2, v*x*z^2, w*z^2*x, x^2*z^2, v*y*z^2, w*z^2*y, x*z^2*y, y^2*z^2, v*z^3, z^3*w, z^3*x, z^3*y, v^2*w, v*w^2, w^3, v^2*x, x*v*w, w^2*x, x^2*v, w*x^2, x^3, v^2*y, v*y*w, y*w^2, x*v*y, y*w*x, y*x^2, y^2*v, y^2*w, x*y^2, y^3, z*v^2, v*w*z, w^2*z, x*v*z, w*x*z, z*x^2, v*y*z, y*w*z, x*y*z, y^2*z, v*z^2, w*z^2, z^2*x, y*z^2, z^3, v^2, v*w, w^2, x*v, w*x, x^2, y*v, y*w, x*y, y^2, v*z, z*w, x*z, z*y, z^2, v, w, x, y, z, 1]
 
-function [v, w, x, y, z] = std_relpose_7p_fr_alt_v4(C)
+function [v, w, x, y, z] = std_relpose_7p_fr_v4(C)
 
     M = zeros(209,277);
 
@@ -1319,26 +1319,18 @@ function [v, w, x, y, z] = std_relpose_7p_fr_alt_v4(C)
     M([33646, 33857, 34274, 43468, 52868, 53708, 55379, 55803, 56632, 56840, 57674]) = C(2124);
     M([34275, 43469, 43679, 52873, 55380, 56633, 56848, 57257, 57468, 57676, 57883]) = C(2136);
 
-    nE = 164;
-    nR = 45;
-    [L,~,P] = lu(M(:,1:nE));
-    ze = eye(nE+nR);
-    L = [L ze(:,nE+1:end)];
+    [L,~,P] = lu(M(:,1:164));
+    L = [L [zeros(164,45); eye(45)]];
     M1 = (P'*L)\M;
-    M3 = M1(end-nR+1:end,nE+1:nE+nR);
-    M4 = M1(end-nR+1:end,nE+nR+1:end);
-    %disp(cond(M3));
+    M2 = M1(end-44:end,165:209);
+    M3 = M1(end-44:end,210:end);
 
     A = zeros(68);
-    A(1:nR,:) = -M3\M4;
-    A([250,795,932,1001,1410,1479,1548,1889,2026,2095,3252,3321,3390,3459,2576,3733,3802,3939,4008,2989,4214,4283,4556]) = 1;
+    A(1:45,:) = -M2\M3;
+    A([250, 795, 932, 1001, 1410, 1479, 1548, 1889, 2026, 2095, 3252, 3321, 3390, 3459, 2576, 3733, 3802, 3939, 4008, 2989, 4214, 4283, 4556]) = 1;
 
     [V,~] = eig(A);
-    %D = diag(D);
-    %I = find(not(imag( D )));
-    %disp(D(I));
-
-    sol =  V([64, 66, 65, 45, 67],:)./(ones(5,1)*V(68,:));
+    sol = V([64, 66, 65, 45, 67],:)./(ones(5,1)*V(68,:));
 
     if(find(isnan( sol(:) )) > 0)
         v = zeros(1,0);
@@ -1347,12 +1339,12 @@ function [v, w, x, y, z] = std_relpose_7p_fr_alt_v4(C)
         y = zeros(1,0);
         z = zeros(1,0);
     else
-        I = find(not(imag( sol(1,:) )) & sol(1,:) > 0);
-        v = sol(1,I);
-        w = sol(2,I);
-        x = sol(3,I);
-        y = sol(4,I);
-        z = sol(5,I);
+        %I = find(not(imag( sol(1,:) )) & sol(1,:) > 0);
+        v = sol(1,:);
+        w = sol(2,:);
+        x = sol(3,:);
+        y = sol(4,:);
+        z = sol(5,:);
     end
 
 end
