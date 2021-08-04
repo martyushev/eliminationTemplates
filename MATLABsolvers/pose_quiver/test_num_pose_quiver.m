@@ -45,6 +45,6 @@ Tm_pose_quiver = Tm;
 save(strcat(folder, '\_results\Err_pose_quiver.mat'),'Err_pose_quiver');
 save(strcat(folder, '\_results\Tm_pose_quiver.mat'),'Tm_pose_quiver');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #16, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

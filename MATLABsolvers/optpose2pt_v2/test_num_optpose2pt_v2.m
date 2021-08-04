@@ -47,6 +47,6 @@ Tm_optpose2pt_v2 = Tm;
 save(strcat(folder, '\_results\Err_optpose2pt_v2.mat'),'Err_optpose2pt_v2');
 save(strcat(folder, '\_results\Tm_optpose2pt_v2.mat'),'Tm_optpose2pt_v2');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #20, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

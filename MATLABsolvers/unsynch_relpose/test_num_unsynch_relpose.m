@@ -45,6 +45,6 @@ Tm_unsynch_relpose = Tm;
 save(strcat(folder, '\_results\Err_unsynch_relpose.mat'),'Err_unsynch_relpose');
 save(strcat(folder, '\_results\Tm_unsynch_relpose.mat'),'Tm_unsynch_relpose');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #17, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

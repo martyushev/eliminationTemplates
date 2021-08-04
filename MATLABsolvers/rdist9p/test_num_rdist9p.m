@@ -46,6 +46,6 @@ Tm_rdist9p = Tm;
 save(strcat(folder, '\_results\Err_rdist9p.mat'),'Err_rdist9p');
 save(strcat(folder, '\_results\Tm_rdist9p.mat'),'Tm_rdist9p');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #9, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

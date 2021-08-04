@@ -47,6 +47,6 @@ Tm_refract5p = Tm;
 save(strcat(folder, '\_results\Err_refract5p.mat'),'Err_refract5p');
 save(strcat(folder, '\_results\Tm_refract5p.mat'),'Tm_refract5p');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #15, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

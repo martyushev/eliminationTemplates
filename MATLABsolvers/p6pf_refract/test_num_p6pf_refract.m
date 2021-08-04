@@ -46,6 +46,6 @@ Tm_p6pf_refract = Tm;
 save(strcat(folder, '\_results\Err_p6pf_refract.mat'),'Err_p6pf_refract');
 save(strcat(folder, '\_results\Tm_p6pf_refract.mat'),'Tm_p6pf_refract');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #32, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

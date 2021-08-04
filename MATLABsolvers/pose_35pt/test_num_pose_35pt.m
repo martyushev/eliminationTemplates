@@ -45,6 +45,6 @@ Tm_pose_35pt = Tm;
 save(strcat(folder, '\_results\Err_pose_35pt.mat'),'Err_pose_35pt');
 save(strcat(folder, '\_results\Tm_pose_35pt.mat'),'Tm_pose_35pt');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #23, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

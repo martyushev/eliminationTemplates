@@ -49,6 +49,6 @@ Tm_r6p = Tm;
 save(strcat(folder, '\_results\Err_r6p.mat'),'Err_r6p');
 save(strcat(folder, '\_results\Tm_r6p.mat'),'Tm_r6p');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #28, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');

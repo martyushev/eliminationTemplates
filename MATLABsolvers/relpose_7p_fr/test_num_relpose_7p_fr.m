@@ -47,6 +47,6 @@ Tm_relpose_7p_fr = Tm;
 save(strcat(folder, '\_results\Err_relpose_7p_fr.mat'),'Err_relpose_7p_fr');
 save(strcat(folder, '\_results\Tm_relpose_7p_fr.mat'),'Tm_relpose_7p_fr');
 
-sprintf('%0.1f, %0.2e', 10^3*median(Tm), 10^median(Err))
+sprintf('Prob. #33, Runtime: %0.1f ms, Error: %0.2e', 10^3*mean(Tm), 10^median(Err))
 
 warning ('on', 'all');
