@@ -2,12 +2,9 @@ clear
 clc
 %rng(23);
 
-q = rand(2,3);
-X = rand(3,3);
-A = rand(6,16);
-
-C = coefs_r6p(q,X,A); % coefficients of polynomial system
-[uu,vv,ww,xx,yy,zz] = std_r6p(C);
+data = inidata_r6p(); % generate initial data of the problem
+C = coefs_r6p(data); % compute coefficients of polynomial system
+[uu,vv,ww,xx,yy,zz] = std_r6p_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(uu)
@@ -21,5 +18,4 @@ for j=1:length(uu)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));

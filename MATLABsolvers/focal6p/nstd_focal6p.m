@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 10x26
 
-% Monomial vector: [g^2*u^2, u^3*g, g^2*u*v, u^2*v*g, g^2*v^2, v^2*u*g, v^3*g, u*g^2, u^2*g, u^3, v*g^2, g*u*v, v*u^2, v^2*g, v^2*u, v^3, g^2, g*u, u^2, g*v, v*u, v^2, g, u, v, 1]
+% Monomial vector: [g^2*u^2, g*u^3, g^2*u*v, g*u^2*v, g^2*v^2, v^2*u*g, v^3*g, u*g^2, u^2*g, u^3, v*g^2, g*u*v, v*u^2, g*v^2, v^2*u, v^3, g^2, g*u, u^2, g*v, v*u, v^2, g, u, v, 1]
 
 function [g, u, v] = nstd_focal6p(C)
 
@@ -218,14 +218,13 @@ function [g, u, v] = nstd_focal6p(C)
     M([241, 275]) = C(250);
     M([252, 286]) = C(260);
 
-    [L,~,P] = lu(M(:,1:3));
-    L = [L [zeros(3,8); eye(8)]];
-    M1 = (P'*L)\M;
-    M2 = M1(end-7:end,4:11);
-    M3 = M1(end-7:end,12:end);
+    [L,~,Pi] = lu(M(:,1:3));
+    Pi = Pi';
+    M = [Pi*L Pi(:,4:end)]\M(:,4:end);
+    M = M(end-7:end,:);
 
     A = zeros(15);
-    A(1:8,:) = -M2\M3;
+    A(1:8,:) = -M(:,1:8)\M(:,9:end);
     A([9, 25, 56, 147, 88, 104, 195]) = 1;
 
     [V,~] = eig(A);
@@ -236,7 +235,7 @@ function [g, u, v] = nstd_focal6p(C)
         u = zeros(1,0);
         v = zeros(1,0);
     else
-        %I = find(not(imag( sol(1,:) )) & sol(1,:) > 0);
+        %I = find(not(imag( sol(1,:) )));
         g = sol(1,:);
         u = sol(2,:);
         v = sol(3,:);

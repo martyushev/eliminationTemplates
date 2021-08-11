@@ -2,12 +2,9 @@ clear
 clc
 %rng(23);
 
-E12 = rand(3,3);
-E23 = rand(3,3);
-u = rand(2,3);
-
-C = coefs_l2_3view_triang(E12,E23,u); % coefficients of polynomial system
-[xx1,xx2,xx3,xx4,xx5,xx6,xx7,xx8] = std_l2_3view_triang(C);
+data = inidata_l2_3view_triang(); % generate initial data of the problem
+C = coefs_l2_3view_triang(data); % compute coefficients of polynomial system
+[xx1,xx2,xx3,xx4,xx5,xx6,xx7,xx8] = std_l2_3view_triang(C); % solve polynomial system
 
 M = [];
 for j=1:length(xx1)
@@ -23,5 +20,4 @@ for j=1:length(xx1)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));

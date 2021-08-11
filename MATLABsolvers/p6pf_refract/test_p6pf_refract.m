@@ -2,23 +2,9 @@ clear
 clc
 %rng(23);
 
-%FPXL = 1.6; % focal length
-%Kgt = cell([1,2]);
-%Kgt{1} = [FPXL 0 0; 0 FPXL 0; 0 0 1]; % ground truth calibration matrix
-%Kgt{2} = Kgt{1};
-%Zgt = [0, 0]; % radial distortion coefficients
-
-%NP = 6; % number of point correspondences
-%NOISE = 0; % image noise level
-
-%[Pgt,~] = synth_cameras(2,Kgt); % ground truth camera matrices
-%[q,Q] = synth_points(Pgt,NP,NOISE,Zgt); % synthetic image points
-
-q{2} = rand(3,6);
-Q = rand(3,6);
-
-C = coefs_p6pf_refract(q{2},Q); % coefficients of polynomial system
-[ww,xx,yy,zz] = std_p6pf_refract(C);
+data = inidata_p6pf_refract(); % generate initial data of the problem
+C = coefs_p6pf_refract(data); % compute coefficients of polynomial system
+[ww,xx,yy,zz] = std_p6pf_refract_colpiv(C); % solve polynomial system
 
 M = [];
 for i=1:length(ww)
@@ -30,8 +16,7 @@ for i=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
 
 %[err_f,~] = rel_error(ww,FPXL);
 

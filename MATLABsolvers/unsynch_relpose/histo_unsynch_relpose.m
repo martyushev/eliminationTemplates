@@ -2,7 +2,7 @@ load(strcat(folder, '\_results\Err_unsynch_relpose.mat'));
 
 %bwd = 3e-1;
 %nbins = 60;
-err = Err_unsynch_relpose;
+err = log10(Err_unsynch_relpose);
 hr1 = histogram(err,nbins,'BinWidth',bwd);%,'DisplayStyle','stairs','LineWidth',1
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

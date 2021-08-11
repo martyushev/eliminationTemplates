@@ -26,7 +26,7 @@ for i = 1:N
 C = coefs_relpose_7p_fr(q{1},q{2}); % coefficients of polynomial system
 
 try
-    [vv,ww,xx,yy,zz] = std_relpose_7p_fr_alt_v4(C);
+    [vv,ww,xx,yy,zz] = std_relpose_7p_fr(C);
     ff = vv.^(-0.5);
 catch ME
     continue;

@@ -2,12 +2,10 @@ clear
 clc
 %rng(23);
 
-q{1} = rand(4,1);
-q{2} = rand(3,1);
-Q = rand(3,4);
 
-C = coefs_pose_35pt(q{1},q{2},Q); % coefficients of polynomial system
-[xx,yy] = std_pose_35pt(C);
+data = inidata_pose_35pt(); % generate initial data of the problem
+C = coefs_pose_35pt(data); % compute coefficients of polynomial system
+[xx,yy] = std_pose_35pt(C); % solve polynomial system
 
 M = [];
 for j=1:length(xx)
@@ -17,5 +15,4 @@ for j=1:length(xx)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));

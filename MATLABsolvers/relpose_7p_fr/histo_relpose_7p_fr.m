@@ -2,7 +2,7 @@ load(strcat(folder, '\_results\Err_relpose_7p_fr.mat'));
 
 %bwd = 3e-1;
 %nbins = 60;
-err = Err_relpose_7p_fr;
+err = log10(Err_relpose_7p_fr);
 hr1 = histogram(err,nbins,'BinWidth',bwd);%,'DisplayStyle','stairs','LineWidth',1
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

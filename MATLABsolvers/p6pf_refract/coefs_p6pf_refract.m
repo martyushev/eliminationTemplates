@@ -1,4 +1,7 @@
-function C = coefs_p6pf_refract(x,X)
+function C = coefs_p6pf_refract(data)
+
+x = data{1};
+X = data{2};
 
 M = [2*x(3,:); -x(2,:); 2*x(1,:); 2*X(2,:).*x(3,:); -2*X(1,:).*x(3,:);...
     X(1,:).*x(2,:)+X(2,:).*x(1,:); -2*x(3,:); x(2,:); -x(2,:); 2*x(1,:);...
@@ -41,5 +44,7 @@ C(92) = M(138);
 C(100) = -M(156);
 C(104) = M(150);
 C(108) = M(156);
+
+C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
 
 end

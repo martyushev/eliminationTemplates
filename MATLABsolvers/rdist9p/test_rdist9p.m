@@ -2,22 +2,9 @@ clear
 clc
 %rng(23);
 
-%Kgt = cell([1,2]);
-%Kgt{1} = [rand rand rand; 0 rand rand; 0 0 1];
-%Kgt{2} = [rand rand rand; 0 rand rand; 0 0 1];
-%Zgt = [-0.02, -0.05]; % radial distortion coefficients
-
-%NP = 9; % number of point correspondences
-%NOISE = 0; % image noise level
-
-%[Pgt,~] = synth_cameras(2,Kgt); % ground truth camera matrices
-%[q,~] = synth_points(Pgt,NP,NOISE,Zgt); % synthetic image points
-
-q{1} = rand(2,9);
-q{2} = rand(2,9);
-
-C = coefs_rdist9p(q{1},q{2}); % coefficients of polynomial system
-[ww,xx,yy,zz] = std_rdist9p(C);
+data = inidata_rdist9p(); % generate initial data of the problem
+C = coefs_rdist9p(data); % compute coefficients of polynomial system
+[ww,xx,yy,zz] = std_rdist9p(C); % solve polynomial system
 
 M = [];
 for i=1:length(ww)
@@ -29,8 +16,7 @@ for i=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
 
 %[err_z1,~] = rel_error(zz,Zgt(1));
 %[err_z2,~] = rel_error(ww,Zgt(2));

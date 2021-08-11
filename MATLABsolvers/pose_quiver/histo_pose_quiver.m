@@ -2,7 +2,7 @@ load(strcat(folder, '\_results\Err_pose_quiver.mat'));
 
 %bwd = 3e-1;
 %nbins = 60;
-err = Err_pose_quiver;
+err = log10(Err_pose_quiver);
 hr1 = histogram(err,nbins,'BinWidth',bwd);%,'DisplayStyle','stairs','LineWidth',1
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

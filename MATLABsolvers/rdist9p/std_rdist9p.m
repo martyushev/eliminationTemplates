@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x52
 
-% Monomial vector: [x*w^2*z^2, y*w^2*z^2, w*x*y*z^2, w*y^2*z^2, y^2*z^2*x, z^2*y^3, z*w^2*x, x^2*z*w, z*w^2*y, w*x*y*z, y*x^2*z, w*y^2*z, z*y^2*x, z*y^3, z^2*w^2, z^2*x*w, z^2*y*w, z^2*y*x, z^2*y^2, w^2*x, w*x^2, x^3, w^2*y, w*y*x, x^2*y, y^2*w, y^2*x, y^3, w^2*z, z*x*w, z*x^2, w*y*z, z*y*x, y^2*z, z^2*w, z^2*x, z^2*y, w^2, w*x, x^2, w*y, y*x, y^2, z*w, x*z, y*z, z^2, w, x, y, z, 1]
+% Monomial vector: [z^2*w^2*x, y*z^2*w^2, y*x*z^2*w, y^2*z^2*w, x*y^2*z^2, y^3*z^2, z*w^2*x, z*w*x^2, y*z*w^2, z*w*x*y, z*x^2*y, z*w*y^2, z*y^2*x, z*y^3, z^2*w^2, x*z^2*w, z^2*y*w, z^2*y*x, y^2*z^2, x*w^2, w*x^2, x^3, y*w^2, w*y*x, x^2*y, y^2*w, x*y^2, y^3, w^2*z, z*x*w, z*x^2, w*y*z, z*x*y, y^2*z, z^2*w, x*z^2, z^2*y, w^2, x*w, x^2, y*w, y*x, y^2, w*z, x*z, y*z, z^2, w, x, y, z, 1]
 
 function [w, x, y, z] = std_rdist9p(C)
 
@@ -91,14 +91,13 @@ function [w, x, y, z] = std_rdist9p(C)
     M([5698, 6687, 7144]) = C(204);
     M([7294, 7523, 7600]) = C(208);
 
-    [L,~,P] = lu(M(:,1:55));
-    L = [L [zeros(55,21); eye(21)]];
-    M1 = (P'*L)\M;
-    M2 = M1(end-20:end,56:76);
-    M3 = M1(end-20:end,77:end);
+    [L,~,Pi] = lu(M(:,1:55));
+    Pi = Pi';
+    M = [Pi*L Pi(:,56:end)]\M(:,56:end);
+    M = M(end-20:end,:);
 
     A = zeros(24);
-    A(1:21,:) = -M2\M3;
+    A(1:21,:) = -M(:,1:21)\M(:,22:end);
     A([214, 287, 432]) = 1;
 
     [V,~] = eig(A);

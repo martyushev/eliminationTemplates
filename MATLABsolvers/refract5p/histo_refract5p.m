@@ -2,7 +2,7 @@ load(strcat(folder, '\_results\Err_refract5p.mat'));
 
 %bwd = 3e-1;
 %nbins = 60;
-err = Err_refract5p;
+err = log10(Err_refract5p);
 hr1 = histogram(err,nbins,'BinWidth',bwd);%,'DisplayStyle','stairs','LineWidth',1
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

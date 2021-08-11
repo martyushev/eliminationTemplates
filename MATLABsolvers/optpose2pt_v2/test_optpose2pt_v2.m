@@ -2,11 +2,9 @@ clear
 clc
 %rng(23);
 
-U = rand(3,2);
-u = rand(14,1);
-
-C = coefs_optpose2pt_v2(u,U); % coefficients of polynomial system
-[vv,ww,xx,yy,zz] = nstd_optpose2pt_v2(C);
+data = inidata_optpose2pt_v2(); % generate initial data of the problem
+C = coefs_optpose2pt_v2(data); % compute coefficients of polynomial system
+[vv,ww,xx,yy,zz] = nstd_optpose2pt_v2_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(vv)
@@ -19,5 +17,4 @@ for j=1:length(vv)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-disp("log10 of normalized residual:");
-disp(log10(norm(C*M','fro')));
+fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));

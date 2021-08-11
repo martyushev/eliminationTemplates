@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x25
 
-% Monomial vector: [x^6, x^4*y^2, x^2*y^4, y^6, x^5, y*x^4, y^2*x^3, y^3*x^2, y^4*x, y^5, x^4, y*x^3, y^2*x^2, y^3*x, y^4, x^3, y*x^2, y^2*x, y^3, x^2, y*x, y^2, x, y, 1]
+% Monomial vector: [x^6, y^2*x^4, x^2*y^4, y^6, x^5, x^4*y, x^3*y^2, x^2*y^3, x*y^4, y^5, x^4, y*x^3, y^2*x^2, y^3*x, y^4, x^3, y*x^2, y^2*x, y^3, x^2, y*x, y^2, x, y, 1]
 
 function [x, y] = std_pose_35pt(C)
 
@@ -91,14 +91,13 @@ function [x, y] = std_pose_35pt(C)
     M([356, 394, 429, 449, 486]) = C(96);
     M([410, 448, 465, 485, 504]) = C(100);
 
-    [L,~,P] = lu(M(:,1:14));
-    L = [L [zeros(14,4); eye(4)]];
-    M1 = (P'*L)\M;
-    M2 = M1(end-3:end,15:18);
-    M3 = M1(end-3:end,19:end);
+    [L,~,Pi] = lu(M(:,1:14));
+    Pi = Pi';
+    M = [Pi*L Pi(:,15:end)]\M(:,15:end);
+    M = M(end-3:end,:);
 
     A = zeros(10);
-    A(1:4,:) = -M2\M3;
+    A(1:4,:) = -M(:,1:4)\M(:,5:end);
     A([5, 16, 27, 48, 59, 80]) = 1;
 
     [V,~] = eig(A);

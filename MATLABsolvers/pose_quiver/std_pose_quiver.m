@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x18
 
-% Monomial vector: [x^2*w, w*y^2, z*x*w, z*y*w, z^2*w, w*x, x^2, y*w, y*x, y^2, z*x, z*y, z^2, w, x, y, z, 1]
+% Monomial vector: [x^2*w, y^2*w, z*x*w, z*y*w, z^2*w, x*w, x^2, y*w, y*x, y^2, x*z, y*z, z^2, w, x, y, z, 1]
 
 function [w, x, y, z] = std_pose_quiver(C)
 
@@ -49,14 +49,13 @@ function [w, x, y, z] = std_pose_quiver(C)
     M([1740, 2457, 2653, 2849, 2981, 3048, 3305, 3374, 3827, 4675, 4806, 4873, 5262, 5329, 5460]) = C(68);
     M([2780, 3237, 3304, 3373, 3693, 3826, 4282, 4540, 4674, 5130, 5261, 5328, 5392, 5459, 5525]) = C(72);
 
-    [L,~,P] = lu(M(:,1:52));
-    L = [L [zeros(52,13); eye(13)]];
-    M1 = (P'*L)\M;
-    M2 = M1(end-12:end,53:65);
-    M3 = M1(end-12:end,66:end);
+    [L,~,Pi] = lu(M(:,1:52));
+    Pi = Pi';
+    M = [Pi*L Pi(:,53:end)]\M(:,53:end);
+    M = M(end-12:end,:);
 
     A = zeros(20);
-    A(1:13,:) = -M2\M3;
+    A(1:13,:) = -M(:,1:13)\M(:,14:end);
     A([14, 35, 56, 77, 218, 239, 260]) = 1;
 
     [V,~] = eig(A);

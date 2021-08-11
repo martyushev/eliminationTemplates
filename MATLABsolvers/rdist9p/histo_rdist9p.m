@@ -2,7 +2,7 @@ load(strcat(folder, '\_results\Err_rdist9p.mat'));
 
 %bwd = 3e-1;
 %nbins = 60;
-err = Err_rdist9p;
+err = log10(Err_rdist9p);
 hr1 = histogram(err,nbins,'BinWidth',bwd);%,'DisplayStyle','stairs','LineWidth',1
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

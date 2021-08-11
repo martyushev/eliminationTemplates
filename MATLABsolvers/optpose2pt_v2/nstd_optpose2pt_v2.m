@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 6x21
 
-% Monomial vector: [v^2, w*v, w^2, x*v, x*w, x^2, v*y, w*y, x*y, y^2, v*z, w*z, x*z, y*z, z^2, v, w, x, y, z, 1]
+% Monomial vector: [v^2, w*v, w^2, x*v, x*w, x^2, y*v, y*w, y*x, y^2, v*z, w*z, x*z, y*z, z^2, v, w, x, y, z, 1]
 
 function [v, w, x, y, z] = nstd_optpose2pt_v2(C)
 
@@ -111,14 +111,13 @@ function [v, w, x, y, z] = nstd_optpose2pt_v2(C)
     M([22260, 22616, 24606, 27323, 27874, 28229, 28596, 29310, 29492, 32036, 32576, 32748, 33117, 34928, 36005]) = C(120);
     M([26598, 28226, 29141, 29315, 32210, 33841, 34387, 35290, 35464, 35836, 36008, 36199, 36377, 36730, 37091]) = C(126);
 
-    [L,~,P] = lu(M(:,1:163));
-    L = [L [zeros(163,18); eye(18)]];
-    M1 = (P'*L)\M;
-    M2 = M1(end-17:end,164:181);
-    M3 = M1(end-17:end,182:end);
+    [L,~,Pi] = lu(M(:,1:163));
+    Pi = Pi';
+    M = [Pi*L Pi(:,164:end)]\M(:,164:end);
+    M = M(end-17:end,:);
 
     A = zeros(24);
-    A(1:18,:) = -M2\M3;
+    A(1:18,:) = -M(:,1:18)\M(:,19:end);
     A([115, 212, 453, 310, 479, 528]) = 1;
 
     [V,~] = eig(A);
