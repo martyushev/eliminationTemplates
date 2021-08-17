@@ -96,11 +96,11 @@ function [x, y] = std_pose_35pt(C)
     M = [Pi*L Pi(:,15:end)]\M(:,15:end);
     M = M(end-3:end,:);
 
-    A = zeros(10);
-    A(1:4,:) = -M(:,1:4)\M(:,5:end);
-    A([5, 16, 27, 48, 59, 80]) = 1;
+    T = zeros(10);
+    T(1:4,:) = -M(:,1:4)\M(:,5:end);
+    T([5, 16, 27, 48, 59, 80]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([8, 9],:)./(ones(2,1)*V(10,:));
 
     if(find(isnan( sol(:) )) > 0)

@@ -1,5 +1,5 @@
 function data = inidata_rdist9p()
-    data = cell([1,2]);
+    
     %Kgt = cell([1,2]);
     %Kgt{1} = [rand rand rand; 0 rand rand; 0 0 1];
     %Kgt{2} = [rand rand rand; 0 rand rand; 0 0 1];
@@ -9,8 +9,9 @@ function data = inidata_rdist9p()
     %NOISE = 0; % image noise level
 
     %[Pgt,~] = synth_cameras(2,Kgt); % ground truth camera matrices
-    %[q,~] = synth_points(Pgt,NP,NOISE,Zgt); % synthetic image points
+    %[data,~] = synth_points(Pgt,NP,NOISE,Zgt); % synthetic image points
 
+    data = cell([1,2]);
     data{1} = rand(2,9);
     data{2} = rand(2,9);
 end

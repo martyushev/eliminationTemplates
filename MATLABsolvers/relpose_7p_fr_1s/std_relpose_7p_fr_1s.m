@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 11x56
 
-% Monomial vector: [x^3*z^3, x^2*z^3*y, y^2*z^3*x, z^3*y^3, w*x^3*z, y*z*x^2*w, y^2*z*w*x, w*y^3*z, x^3*z^2, y*x^2*z^2, x*y^2*z^2, y^3*z^2, x^2*z^3, z^3*y*x, z^3*y^2, w*x^3, x^2*w*y, w*x*y^2, y^3*w, z*w*x^2, z*w*x*y, z*x^2*y, z*w*y^2, z*y^2*x, z*y^3, z^2*x^2, z^2*y*x, y^2*z^2, z^3*x, z^3*y, w*x^2, w*y*x, y^2*w, x*y^2, y^3, z*x*w, z*x^2, w*y*z, z*x*y, y^2*z, x*z^2, z^2*y, z^3, x*w, y*w, y*x, y^2, w*z, x*z, y*z, z^2, w, x, y, z, 1]
+% Monomial vector: [z^3*x^3, z^3*x^2*y, z^3*x*y^2, z^3*y^3, w*x^3*z, w*x^2*z*y, w*x*y^2*z, w*y^3*z, z^2*x^3, z^2*x^2*y, x*y^2*z^2, y^3*z^2, z^3*x^2, z^3*y*x, z^3*y^2, w*x^3, w*x^2*y, w*x*y^2, y^3*w, z*w*x^2, z*w*x*y, z*x^2*y, z*w*y^2, z*y^2*x, z*y^3, z^2*x^2, z^2*y*x, z^2*y^2, z^3*x, z^3*y, w*x^2, w*y*x, y^2*w, x*y^2, y^3, z*x*w, z*x^2, w*y*z, z*x*y, y^2*z, x*z^2, z^2*y, z^3, x*w, y*w, y*x, y^2, z*w, x*z, y*z, z^2, w, x, y, z, 1]
 
 function [w, x, y, z] = std_relpose_7p_fr_1s(C)
 
@@ -381,11 +381,11 @@ function [w, x, y, z] = std_relpose_7p_fr_1s(C)
     M = [Pi*L Pi(:,41:end)]\M(:,41:end);
     M = M(end-14:end,:);
 
-    A = zeros(19);
-    A(1:15,:) = -M(:,1:15)\M(:,16:end);
-    A([111, 131, 227, 323]) = 1;
+    T = zeros(19);
+    T(1:15,:) = -M(:,1:15)\M(:,16:end);
+    T([111, 131, 227, 323]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([0, 18, 15, 17],:)./(ones(4,1)*V(19,:));
 
     if(find(isnan( sol(:) )) > 0)

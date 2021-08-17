@@ -4,7 +4,7 @@ clc
 
 data = inidata_p6pf_refract(); % generate initial data of the problem
 C = coefs_p6pf_refract(data); % compute coefficients of polynomial system
-[ww,xx,yy,zz] = std_p6pf_refract_colpiv(C); % solve polynomial system
+[ww,xx,yy,zz,ur] = std_p6pf_refract_colpiv(C); % solve polynomial system
 
 M = [];
 for i=1:length(ww)

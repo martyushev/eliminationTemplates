@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_l2_3view_triang = [];
+Tm_l2_3view_triang = [];
 
 for i = 1:N
 
@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_l2_3view_triang(data); % compute coefficients of polynomial system
-        [x1x1, x2x2, x3x3, x4x4, x5x5, x6x6, x7x7, x8x8] = std_l2_3view_triang(C); % solve polynomial system
+        [x1x1, x2x2, x3x3, x4x4, x5x5, x6x6, x7x7, x8x8] = std_l2_3view_triang_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(x1x1); continue; end
     catch ME
@@ -39,18 +39,15 @@ for i = 1:N
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_l2_3view_triang = [Err_l2_3view_triang err];
+    Tm_l2_3view_triang = [Tm_l2_3view_triang tm];
 
 end
-
-Err_l2_3view_triang = Err;
-Tm_l2_3view_triang = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_l2_3view_triang.mat'),'Err_l2_3view_triang');
 save(strcat(folder,'\_results\Tm_l2_3view_triang.mat'),'Tm_l2_3view_triang');
 
-fprintf('Problem: l2_3view_triang. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #31. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_l2_3view_triang),median(Err_l2_3view_triang));
 
 warning ('on','all');

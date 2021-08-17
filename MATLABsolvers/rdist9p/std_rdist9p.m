@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x52
 
-% Monomial vector: [z^2*w^2*x, y*z^2*w^2, y*x*z^2*w, y^2*z^2*w, x*y^2*z^2, y^3*z^2, z*w^2*x, z*w*x^2, y*z*w^2, z*w*x*y, z*x^2*y, z*w*y^2, z*y^2*x, z*y^3, z^2*w^2, x*z^2*w, z^2*y*w, z^2*y*x, y^2*z^2, x*w^2, w*x^2, x^3, y*w^2, w*y*x, x^2*y, y^2*w, x*y^2, y^3, w^2*z, z*x*w, z*x^2, w*y*z, z*x*y, y^2*z, z^2*w, x*z^2, z^2*y, w^2, x*w, x^2, y*w, y*x, y^2, w*z, x*z, y*z, z^2, w, x, y, z, 1]
+% Monomial vector: [z^2*w^2*x, y*z^2*w^2, y*x*z^2*w, y^2*z^2*w, x*y^2*z^2, y^3*z^2, z*w^2*x, z*w*x^2, y*z*w^2, z*w*x*y, z*x^2*y, z*w*y^2, z*y^2*x, z*y^3, z^2*w^2, x*z^2*w, z^2*y*w, z^2*y*x, z^2*y^2, x*w^2, w*x^2, x^3, y*w^2, w*y*x, x^2*y, y^2*w, x*y^2, y^3, w^2*z, z*x*w, z*x^2, w*y*z, z*x*y, y^2*z, z^2*w, z^2*x, z^2*y, w^2, x*w, x^2, y*w, y*x, y^2, z*w, x*z, z*y, z^2, w, x, y, z, 1]
 
 function [w, x, y, z] = std_rdist9p(C)
 
@@ -96,11 +96,11 @@ function [w, x, y, z] = std_rdist9p(C)
     M = [Pi*L Pi(:,56:end)]\M(:,56:end);
     M = M(end-20:end,:);
 
-    A = zeros(24);
-    A(1:21,:) = -M(:,1:21)\M(:,22:end);
-    A([214, 287, 432]) = 1;
+    T = zeros(24);
+    T(1:21,:) = -M(:,1:21)\M(:,22:end);
+    T([214, 287, 432]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([23, 21, 22, 18],:)./(ones(4,1)*V(24,:));
 
     if(find(isnan( sol(:) )) > 0)

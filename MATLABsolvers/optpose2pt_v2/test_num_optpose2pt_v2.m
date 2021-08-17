@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_optpose2pt_v2 = [];
+Tm_optpose2pt_v2 = [];
 
 for i = 1:N
 
@@ -30,24 +30,21 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [v^2, w*v, w^2, x*v, x*w, x^2, y*v, y*w, y*x, y^2, v*z, w*z, x*z, y*z, z^2, v, w, x, y, z, 1];
+        m = [v^2, w*v, w^2, x*v, x*w, x^2, y*v, y*w, y*x, y^2, v*z, z*w, x*z, y*z, z^2, v, w, x, y, z, 1];
         m = m/norm(m,'fro');
         M = [M; m];
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_optpose2pt_v2 = [Err_optpose2pt_v2 err];
+    Tm_optpose2pt_v2 = [Tm_optpose2pt_v2 tm];
 
 end
-
-Err_optpose2pt_v2 = Err;
-Tm_optpose2pt_v2 = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_optpose2pt_v2.mat'),'Err_optpose2pt_v2');
 save(strcat(folder,'\_results\Tm_optpose2pt_v2.mat'),'Tm_optpose2pt_v2');
 
-fprintf('Problem: optpose2pt_v2. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #20. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_optpose2pt_v2),median(Err_optpose2pt_v2));
 
 warning ('on','all');

@@ -66,11 +66,11 @@ function [x1, x2, x3, x4, x5, x6, x7, x8] = std_l2_3view_triang(C)
     M = [Pi*L Pi(:,188:end)]\M(:,188:end);
     M = M(end-29:end,:);
 
-    A = zeros(31);
-    A(1:30,:) = -M(:,1:30)\M(:,31:end);
-    A(744) = 1;
+    T = zeros(31);
+    T(1:30,:) = -M(:,1:30)\M(:,31:end);
+    T(744) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([21, 19, 30, 28, 25, 29, 26, 24],:)./(ones(8,1)*V(31,:));
 
     if(find(isnan( sol(:) )) > 0)

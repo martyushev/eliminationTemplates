@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_pose_quiver = [];
+Tm_pose_quiver = [];
 
 for i = 1:N
 
@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_pose_quiver(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = std_pose_quiver(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_pose_quiver_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
@@ -35,18 +35,15 @@ for i = 1:N
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_pose_quiver = [Err_pose_quiver err];
+    Tm_pose_quiver = [Tm_pose_quiver tm];
 
 end
-
-Err_pose_quiver = Err;
-Tm_pose_quiver = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_pose_quiver.mat'),'Err_pose_quiver');
 save(strcat(folder,'\_results\Tm_pose_quiver.mat'),'Tm_pose_quiver');
 
-fprintf('Problem: pose_quiver. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #16. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_pose_quiver),median(Err_pose_quiver));
 
 warning ('on','all');

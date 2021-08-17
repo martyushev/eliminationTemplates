@@ -2,9 +2,11 @@ clear
 clc
 %rng(23);
 
-data = inidata_relpose_7p_fr(); % generate initial data of the problem
-C = coefs_relpose_7p_fr(data); % compute coefficients of polynomial system
-[vv,ww,xx,yy,zz] = std_relpose_7p_fr(C); % solve polynomial system
+[data,Zgt,fgt,Egt] = inidata_fz_relpose_7p_fr(0); % generate initial data of the problem
+[C,M] = coefs_relpose_7p_fr(data); % compute coefficients of polynomial system
+[vv,ww,xx,yy,zz] = std_relpose_7p_fr_colpiv(C); % solve polynomial system
+ff = 1./sqrt(vv);
+E = esse_relpose_7p_fr(ff,ww,xx,yy,zz,M);
 
 M = [];
 for j=1:length(vv)
@@ -19,10 +21,9 @@ for j=1:length(vv)
 end
 fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
 
-%ff = vv.^(-0.5);
+[err_f,~] = rel_error(ff,fgt);
+[err_z,~] = rel_error(zz,Zgt(1));
+[err_E,~] = mat_rel_error(E,Egt{1,2});
 
-%[err_f,c] = rel_error(ff,FPXL);
-%[err_z,c] = rel_error(zz,Zgt(1));
-
-%disp("Numerical errors in f and z:");
-%disp([err_f err_z]);
+disp("Numerical errors in f, z and E:");
+disp([err_f, err_z, err_E]);

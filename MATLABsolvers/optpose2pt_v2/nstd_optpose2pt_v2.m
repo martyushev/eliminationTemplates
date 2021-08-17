@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 6x21
 
-% Monomial vector: [v^2, w*v, w^2, x*v, x*w, x^2, y*v, y*w, y*x, y^2, v*z, w*z, x*z, y*z, z^2, v, w, x, y, z, 1]
+% Monomial vector: [v^2, w*v, w^2, x*v, x*w, x^2, y*v, y*w, y*x, y^2, v*z, z*w, x*z, y*z, z^2, v, w, x, y, z, 1]
 
 function [v, w, x, y, z] = nstd_optpose2pt_v2(C)
 
@@ -116,11 +116,11 @@ function [v, w, x, y, z] = nstd_optpose2pt_v2(C)
     M = [Pi*L Pi(:,164:end)]\M(:,164:end);
     M = M(end-17:end,:);
 
-    A = zeros(24);
-    A(1:18,:) = -M(:,1:18)\M(:,19:end);
-    A([115, 212, 453, 310, 479, 528]) = 1;
+    T = zeros(24);
+    T(1:18,:) = -M(:,1:18)\M(:,19:end);
+    T([115, 212, 453, 310, 479, 528]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([15, 21, 22, 23, 18],:)./(ones(5,1)*V(24,:));
 
     if(find(isnan( sol(:) )) > 0)

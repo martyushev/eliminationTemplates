@@ -1,5 +1,5 @@
 % map scene points onto image planes
-function [q,Q] = synth_points(P,np,noise,la)
+function [q,Q] = synth_points(P,np,noise,z)
 
     w = 1; % scene width
     h = 1; % scene height
@@ -14,25 +14,25 @@ function [q,Q] = synth_points(P,np,noise,la)
         q{k} = P{k}*Q;
         q{k} = q{k}./(ones(3,1)*q{k}(3,:));
     end
+    
+    % add radial distortion
+    for k = 1:nv
+        if z(k) ~= 0; q{k} = rad_dist(q{k},np,z(k)); end
+    end
 
     % add image noise
     for k = 2:nv
         q{k} = q{k} + [normrnd(zeros(2,np),noise*ones(2,np)); zeros(1,np)];
     end
     
-    % add radial distortion
-    for k = 1:nv
-        if la(k) ~= 0; q{k} = rad_dist(q{k},np,la(k)); end
-    end
-
 end
 
-function xr = rad_dist(xu,np,la)
+function xr = rad_dist(xu,np,z)
     xr = ones(3,np);
     for i = 1:np
-        r = la*(xu(1,i)^2+xu(2,i)^2);
+        r = z*(xu(1,i)^2+xu(2,i)^2);
         t = (1-sqrt(1-4*r))/(2*r);
         xr(1:2,i) = xu(1:2,i)*t;
-        %disp(xr(1:2,i)./(1+la*(xr(1,i)^2+xr(2,i)^2)) - xu(1:2,i));
+        %disp(xr(1:2,i)./(1+z*(xr(1,i)^2+xr(2,i)^2)) - xu(1:2,i));
     end
 end

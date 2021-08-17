@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_pose_35pt = [];
+Tm_pose_35pt = [];
 
 for i = 1:N
 
@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_pose_35pt(data); % compute coefficients of polynomial system
-        [xx, yy] = std_pose_35pt(C); % solve polynomial system
+        [xx, yy] = std_pose_35pt_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME
@@ -33,18 +33,15 @@ for i = 1:N
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_pose_35pt = [Err_pose_35pt err];
+    Tm_pose_35pt = [Tm_pose_35pt tm];
 
 end
-
-Err_pose_35pt = Err;
-Tm_pose_35pt = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_pose_35pt.mat'),'Err_pose_35pt');
 save(strcat(folder,'\_results\Tm_pose_35pt.mat'),'Tm_pose_35pt');
 
-fprintf('Problem: pose_35pt. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #23. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_pose_35pt),median(Err_pose_35pt));
 
 warning ('on','all');

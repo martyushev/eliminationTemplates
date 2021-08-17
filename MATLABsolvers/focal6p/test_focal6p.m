@@ -4,7 +4,7 @@ clc
 
 data = inidata_focal6p(); % generate initial data of the problem
 [C,ns] = coefs_focal6p(data); % compute coefficients of polynomial system
-[gg,uu,vv] = nstd_focal6p_colpiv(C); % solve polynomial system
+[gg,uu,vv] = nstd_focal6p(C); % solve polynomial system
 
 M = [];
 for j=1:length(gg)

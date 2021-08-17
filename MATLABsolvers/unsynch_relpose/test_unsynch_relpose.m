@@ -4,7 +4,7 @@ clc
 
 data = inidata_unsynch_relpose(); % generate initial data of the problem
 C = coefs_unsynch_relpose(data); % compute coefficients of polynomial system
-[ww,xx,yy,zz] = nstd_unsynch_relpose(C); % solve polynomial system
+[ww,xx,yy,zz,ur] = nstd_unsynch_relpose_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(ww)

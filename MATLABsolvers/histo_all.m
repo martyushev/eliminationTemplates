@@ -4,12 +4,6 @@ clc
 folder = fileparts(which('histo_all.m'));
 addpath(genpath(folder));
 
-bwd = 3e-1;
-nbins = 60;
-clr = [70 100 160]/255;
-axs = [-17 1 0 1150];
-fs = 54;
-
 histo_focal6p;
 histo_rdist9p;
 histo_relpose_7p_fr_1s;

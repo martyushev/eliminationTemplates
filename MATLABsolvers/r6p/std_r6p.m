@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 6x16
 
-% Monomial vector: [x*u, x*v, x*w, y*u, y*v, y*w, z*u, v*z, w*z, u, v, w, x, y, z, 1]
+% Monomial vector: [x*u, x*v, x*w, y*u, y*v, y*w, z*u, v*z, z*w, u, v, w, x, y, z, 1]
 
 function [u, v, w, x, y, z] = std_r6p(C)
 
@@ -108,11 +108,11 @@ function [u, v, w, x, y, z] = std_r6p(C)
     M = [Pi*L Pi(:,108:end)]\M(:,108:end);
     M = M(end-12:end,:);
 
-    A = zeros(20);
-    A(1:13,:) = -M(:,1:13)\M(:,14:end);
-    A([14, 55, 116, 137, 218, 279, 360]) = 1;
+    T = zeros(20);
+    T(1:13,:) = -M(:,1:13)\M(:,14:end);
+    T([14, 55, 116, 137, 218, 279, 360]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([10, 13, 15, 18, 17, 19],:)./(ones(6,1)*V(20,:));
 
     if(find(isnan( sol(:) )) > 0)

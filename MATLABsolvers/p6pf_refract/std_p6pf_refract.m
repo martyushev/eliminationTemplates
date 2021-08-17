@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 4x27
 
-% Monomial vector: [y*z*x^2*w, y^2*z*w*x, x*w*z^3, y*w*z^3, x^2*w*y, y*x^3, w*x*y^2, y^3*x, x*z^2*w, z^2*x^2, z^2*y*w, z^2*y*x, y^2*z^2, z^4, z*x*w, z*x^2, z*y*w, z*y^2, z^3, x*w, x^2, y*w, y*x, y^2, z^2, z, 1]
+% Monomial vector: [w*x^2*z*y, w*x*y^2*z, z^3*x*w, w*y*z^3, w*x^2*y, y*x^3, w*x*y^2, y^3*x, x*z^2*w, z^2*x^2, z^2*y*w, z^2*y*x, z^2*y^2, z^4, z*x*w, z*x^2, z*y*w, z*y^2, z^3, x*w, x^2, y*w, y*x, y^2, z^2, z, 1]
 
 function [w, x, y, z] = std_p6pf_refract(C)
 
@@ -56,11 +56,11 @@ function [w, x, y, z] = std_p6pf_refract(C)
     M = [Pi*L Pi(:,101:end)]\M(:,101:end);
     M = M(end-25:end,:);
 
-    A = zeros(36);
-    A(1:26,:) = -M(:,1:26)\M(:,27:end);
-    A([243, 316, 497, 606, 679, 752, 825, 862, 899, 936]) = 1;
+    T = zeros(36);
+    T(1:26,:) = -M(:,1:26)\M(:,27:end);
+    T([243, 316, 497, 606, 679, 752, 825, 862, 899, 936]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([28, 26, 34, 35],:)./(ones(4,1)*V(36,:));
 
     if(find(isnan( sol(:) )) > 0)

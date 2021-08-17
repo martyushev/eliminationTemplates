@@ -1,4 +1,4 @@
-function C = coefs_relpose_7p_fr(data)
+function [C,M] = coefs_relpose_7p_fr(data)
 
 x1 = data{1};
 x2 = data{2};

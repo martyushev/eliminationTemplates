@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 3x29
 
-% Monomial vector: [x^3*z, z*x^2*y, z*y^2*x, z*y^3, z^2*x^2, z^2*y*x, y^2*z^2, z^3*x, z^3*y, z^4, x^3, x^2*y, x*y^2, y^3, z*x^2, y^2*z, z^2*x, z^2*y, z^3, x^2, y*x, y^2, x*z, y*z, z^2, x, y, z, 1]
+% Monomial vector: [x^3*z, z*x^2*y, z*y^2*x, z*y^3, z^2*x^2, z^2*y*x, z^2*y^2, z^3*x, z^3*y, z^4, x^3, x^2*y, x*y^2, y^3, z*x^2, y^2*z, z^2*x, z^2*y, z^3, x^2, y*x, y^2, x*z, y*z, z^2, x, y, z, 1]
 
 function [x, y, z] = std_refract5p(C)
 
@@ -57,11 +57,11 @@ function [x, y, z] = std_refract5p(C)
     M = [Pi*L Pi(:,53:end)]\M(:,53:end);
     M = M(end-4:end,:);
 
-    A = zeros(16);
-    A(1:5,:) = -M(:,1:5)\M(:,6:end);
-    A([6, 23, 56, 73, 90, 107, 124, 173, 190, 207, 240]) = 1;
+    T = zeros(16);
+    T(1:5,:) = -M(:,1:5)\M(:,6:end);
+    T([6, 23, 56, 73, 90, 107, 124, 173, 190, 207, 240]) = 1;
 
-    [V,~] = eig(A);
+    [V,~] = eig(T);
     sol = V([9, 14, 15],:)./(ones(3,1)*V(16,:));
 
     if(find(isnan( sol(:) )) > 0)

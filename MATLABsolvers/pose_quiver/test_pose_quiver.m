@@ -5,7 +5,7 @@ clc
 
 data = inidata_pose_quiver(); % generate initial data of the problem
 C = coefs_pose_quiver(data); % compute coefficients of polynomial system
-[ww,xx,yy,zz] = std_pose_quiver(C); % solve polynomial system
+[ww,xx,yy,zz] = std_pose_quiver_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(ww)
@@ -17,4 +17,7 @@ for j=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+D = C*M';
+D = sort(sqrt(sum(D.*conj(D),1)));
+D = D(1:20);
+fprintf("Normalized residual: %0.2e\n", norm(D,'fro'));

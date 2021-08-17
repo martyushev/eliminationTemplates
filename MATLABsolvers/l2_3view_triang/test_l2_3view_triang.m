@@ -4,7 +4,7 @@ clc
 
 data = inidata_l2_3view_triang(); % generate initial data of the problem
 C = coefs_l2_3view_triang(data); % compute coefficients of polynomial system
-[xx1,xx2,xx3,xx4,xx5,xx6,xx7,xx8] = std_l2_3view_triang(C); % solve polynomial system
+[xx1,xx2,xx3,xx4,xx5,xx6,xx7,xx8] = std_l2_3view_triang_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(xx1)

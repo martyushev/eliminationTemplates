@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_r6p = [];
+Tm_r6p = [];
 
 for i = 1:N
 
@@ -31,24 +31,21 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [x*u, x*v, x*w, y*u, y*v, y*w, z*u, v*z, w*z, u, v, w, x, y, z, 1];
+        m = [x*u, x*v, x*w, y*u, y*v, y*w, z*u, v*z, z*w, u, v, w, x, y, z, 1];
         m = m/norm(m,'fro');
         M = [M; m];
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_r6p = [Err_r6p err];
+    Tm_r6p = [Tm_r6p tm];
 
 end
-
-Err_r6p = Err;
-Tm_r6p = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_r6p.mat'),'Err_r6p');
 save(strcat(folder,'\_results\Tm_r6p.mat'),'Tm_r6p');
 
-fprintf('Problem: r6p. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #28. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_r6p),median(Err_r6p));
 
 warning ('on','all');

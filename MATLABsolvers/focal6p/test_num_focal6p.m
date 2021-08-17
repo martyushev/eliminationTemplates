@@ -6,8 +6,8 @@ rng(23);
 
 N = 10000;
 
-Err = [];
-Tm = [];
+Err_focal6p = [];
+Tm_focal6p = [];
 
 for i = 1:N
 
@@ -34,18 +34,15 @@ for i = 1:N
     end
     err = norm(C*M','fro');
 
-    Err = [Err err];
-    Tm = [Tm tm];
+    Err_focal6p = [Err_focal6p err];
+    Tm_focal6p = [Tm_focal6p tm];
 
 end
-
-Err_focal6p = Err;
-Tm_focal6p = Tm;
 
 folder = fileparts(which('test_num_all.m'));
 save(strcat(folder,'\_results\Err_focal6p.mat'),'Err_focal6p');
 save(strcat(folder,'\_results\Tm_focal6p.mat'),'Tm_focal6p');
 
-fprintf('Problem: focal6p. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm),median(Err));
+fprintf('Problem #3. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_focal6p),median(Err_focal6p));
 
 warning ('on','all');
