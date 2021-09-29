@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_pose_quiver(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = std_pose_quiver_colpiv(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_pose_quiver_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
@@ -29,11 +29,11 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [x^2*w, y^2*w, z*x*w, z*y*w, z^2*w, x*w, x^2, y*w, y*x, y^2, x*z, y*z, z^2, w, x, y, z, 1];
+        m = [x^2*w, y^2*w, z*x*w, z*y*w, z^2*w, x*w, x^2, y*w, x*y, y^2, x*z, y*z, z^2, w, x, y, z, 1];
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_pose_quiver = [Err_pose_quiver err];
     Tm_pose_quiver = [Tm_pose_quiver tm];

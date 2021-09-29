@@ -1340,7 +1340,7 @@ function [v, w, x, y, z] = std_relpose_7p_fr_colpiv(C)
     T = getT(M,[118:176 P1(1:end-68)],P1(end-67:end),xP);
 
     [V,~] = eig(T);
-    sol = V([63, 64, 65, 66, 67],:)./(ones(5,1)*V(68,:));
+    sol = V(63:67,:)./(ones(5,1)*V(68,:));
 
     if(find(isnan( sol(:) )) > 0)
         v = zeros(1,0);
@@ -1349,12 +1349,12 @@ function [v, w, x, y, z] = std_relpose_7p_fr_colpiv(C)
         y = zeros(1,0);
         z = zeros(1,0);
     else
-        I = find(not(imag( sol(1,:) )) & sol(1,:) > 0);
-        v = sol(1,I);
-        w = sol(2,I);
-        x = sol(3,I);
-        y = sol(4,I);
-        z = sol(5,I);
+        %I = find(not(imag( sol(1,:) )) & sol(1,:) > 0 & sol(5,:) >= -1 & sol(5,:) <= 1);
+        v = sol(1,:);
+        w = sol(2,:);
+        x = sol(3,:);
+        y = sol(4,:);
+        z = sol(5,:);
     end
 
 end

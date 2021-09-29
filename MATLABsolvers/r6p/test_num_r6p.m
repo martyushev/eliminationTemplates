@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_r6p(data); % compute coefficients of polynomial system
-        [uu, vv, ww, xx, yy, zz] = std_r6p_colpiv(C); % solve polynomial system
+        [uu, vv, ww, xx, yy, zz] = std_r6p_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(uu); continue; end
     catch ME
@@ -35,7 +35,7 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_r6p = [Err_r6p err];
     Tm_r6p = [Tm_r6p tm];

@@ -32,7 +32,7 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_refract5p = [Err_refract5p err];
     Tm_refract5p = [Tm_refract5p tm];

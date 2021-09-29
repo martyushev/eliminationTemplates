@@ -18,4 +18,4 @@ for j=1:length(uu)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));

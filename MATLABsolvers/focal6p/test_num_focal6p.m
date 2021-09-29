@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_focal6p(data); % compute coefficients of polynomial system
-        [gg, uu, vv] = nstd_focal6p_colpiv(C); % solve polynomial system
+        [gg, uu, vv] = nstd_focal6p_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(gg); continue; end
     catch ME

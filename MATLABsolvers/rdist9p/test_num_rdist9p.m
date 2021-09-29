@@ -8,7 +8,6 @@ N = 10000;
 
 Err_rdist9p = [];
 Tm_rdist9p = [];
-%UR = [];
 
 for i = 1:N
 
@@ -17,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_rdist9p(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = std_rdist9p(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_rdist9p_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
@@ -34,11 +33,10 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_rdist9p = [Err_rdist9p err];
     Tm_rdist9p = [Tm_rdist9p tm];
-    %UR = [UR ur];
 
 end
 
@@ -47,9 +45,5 @@ save(strcat(folder,'\_results\Err_rdist9p.mat'),'Err_rdist9p');
 save(strcat(folder,'\_results\Tm_rdist9p.mat'),'Tm_rdist9p');
 
 fprintf('Problem #9. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_rdist9p),median(Err_rdist9p));
-
-%for i=1:size(UR,1)
-%    disp(median(UR(i,:)));
-%end
 
 warning ('on','all');

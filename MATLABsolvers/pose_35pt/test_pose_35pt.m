@@ -5,7 +5,7 @@ clc
 
 data = inidata_pose_35pt(); % generate initial data of the problem
 C = coefs_pose_35pt(data); % compute coefficients of polynomial system
-[xx,yy] = std_pose_35pt(C); % solve polynomial system
+[xx,yy] = std_pose_35pt_sprs(C); % solve polynomial system
 
 M = [];
 for j=1:length(xx)
@@ -15,4 +15,4 @@ for j=1:length(xx)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));

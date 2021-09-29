@@ -8,7 +8,6 @@ N = 10000;
 
 Err_p6pf_refract = [];
 Tm_p6pf_refract = [];
-UR = [];
 
 for i = 1:N
 
@@ -17,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_p6pf_refract(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz, ur] = std_p6pf_refract_colpiv(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_p6pf_refract_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
@@ -34,11 +33,10 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_p6pf_refract = [Err_p6pf_refract err];
     Tm_p6pf_refract = [Tm_p6pf_refract tm];
-    UR = [UR ur];
 
 end
 
@@ -47,9 +45,5 @@ save(strcat(folder,'\_results\Err_p6pf_refract.mat'),'Err_p6pf_refract');
 save(strcat(folder,'\_results\Tm_p6pf_refract.mat'),'Tm_p6pf_refract');
 
 fprintf('Problem #32. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_p6pf_refract),median(Err_p6pf_refract));
-
-for i=1:size(UR,1)
-    disp(median(UR(i,:)));
-end
 
 warning ('on','all');

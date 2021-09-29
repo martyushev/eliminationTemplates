@@ -16,7 +16,7 @@ for i=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));
 
 %[err_z1,~] = rel_error(zz,Zgt(1));
 %[err_z2,~] = rel_error(ww,Zgt(2));

@@ -1,17 +1,5 @@
 function data = inidata_rdist9p()
-    
-    %Kgt = cell([1,2]);
-    %Kgt{1} = [rand rand rand; 0 rand rand; 0 0 1];
-    %Kgt{2} = [rand rand rand; 0 rand rand; 0 0 1];
-    %Zgt = [-0.02, -0.05]; % radial distortion coefficients
-
-    %NP = 9; % number of point correspondences
-    %NOISE = 0; % image noise level
-
-    %[Pgt,~] = synth_cameras(2,Kgt); % ground truth camera matrices
-    %[data,~] = synth_points(Pgt,NP,NOISE,Zgt); % synthetic image points
-
     data = cell([1,2]);
-    data{1} = rand(2,9);
-    data{2} = rand(2,9);
+    data{1} = randn(2,9);
+    data{2} = randn(2,9);
 end

@@ -4,7 +4,7 @@ clc
 
 data = inidata_p6pf_refract(); % generate initial data of the problem
 C = coefs_p6pf_refract(data); % compute coefficients of polynomial system
-[ww,xx,yy,zz,ur] = std_p6pf_refract_colpiv(C); % solve polynomial system
+[ww,xx,yy,zz] = std_p6pf_refract_colpiv(C); % solve polynomial system
 
 M = [];
 for i=1:length(ww)
@@ -16,9 +16,4 @@ for i=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
-
-%[err_f,~] = rel_error(ww,FPXL);
-
-%disp("Numerical error in f:");
-%disp(err_f);
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));

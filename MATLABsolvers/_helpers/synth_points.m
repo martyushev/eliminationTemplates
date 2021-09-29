@@ -17,7 +17,7 @@ function [q,Q] = synth_points(P,np,noise,z)
     
     % add radial distortion
     for k = 1:nv
-        if z(k) ~= 0; q{k} = rad_dist(q{k},np,z(k)); end
+        if z(k) ~= 0; q{k} = rad_dist(q{k},z(k)); end
     end
 
     % add image noise
@@ -25,14 +25,4 @@ function [q,Q] = synth_points(P,np,noise,z)
         q{k} = q{k} + [normrnd(zeros(2,np),noise*ones(2,np)); zeros(1,np)];
     end
     
-end
-
-function xr = rad_dist(xu,np,z)
-    xr = ones(3,np);
-    for i = 1:np
-        r = z*(xu(1,i)^2+xu(2,i)^2);
-        t = (1-sqrt(1-4*r))/(2*r);
-        xr(1:2,i) = xu(1:2,i)*t;
-        %disp(xr(1:2,i)./(1+z*(xr(1,i)^2+xr(2,i)^2)) - xu(1:2,i));
-    end
 end

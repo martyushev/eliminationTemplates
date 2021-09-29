@@ -8,7 +8,6 @@ N = 10000;
 
 Err_relpose_7p_fr = [];
 Tm_relpose_7p_fr = [];
-%UR = [];
 
 for i = 1:N
 
@@ -17,7 +16,7 @@ for i = 1:N
     try
         tic;
         [C,~] = coefs_relpose_7p_fr(data); % compute coefficients of polynomial system
-        [vv, ww, xx, yy, zz] = std_relpose_7p_fr_colpiv(C); % solve polynomial system
+        [vv, ww, xx, yy, zz] = std_relpose_7p_fr_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(vv); continue; end
     catch ME
@@ -35,11 +34,10 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_relpose_7p_fr = [Err_relpose_7p_fr err];
     Tm_relpose_7p_fr = [Tm_relpose_7p_fr tm];
-    %UR = [UR ur];
 
 end
 
@@ -48,9 +46,5 @@ save(strcat(folder,'\_results\Err_relpose_7p_fr.mat'),'Err_relpose_7p_fr');
 save(strcat(folder,'\_results\Tm_relpose_7p_fr.mat'),'Tm_relpose_7p_fr');
 
 fprintf('Problem #33. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_relpose_7p_fr),median(Err_relpose_7p_fr));
-
-%for i=1:size(UR,1)
-%    disp(median(UR(i,:)));
-%end
 
 warning ('on','all');

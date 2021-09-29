@@ -13,11 +13,11 @@ for j=1:length(ww)
     x = xx(j);
     y = yy(j);
     z = zz(j);
-    m = [x^2*w, w*y^2, z*x*w, z*y*w, z^2*w, w*x, x^2, y*w, y*x, y^2, z*x, z*y, z^2, w, x, y, z, 1];
+    m = [x^2*w, y^2*w, z*x*w, z*y*w, z^2*w, x*w, x^2, y*w, x*y, y^2, x*z, y*z, z^2, w, x, y, z, 1];
     m = m/norm(m,'fro');
     M = [M; m];
 end
-D = C*M';
+D = C*M.';
 D = sort(sqrt(sum(D.*conj(D),1)));
 D = D(1:20);
 fprintf("Normalized residual: %0.2e\n", norm(D,'fro'));

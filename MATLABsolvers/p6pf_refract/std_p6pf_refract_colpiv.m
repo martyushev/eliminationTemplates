@@ -2,7 +2,7 @@
 
 % Monomial vector: [w*x^2*z*y, w*x*y^2*z, z^3*x*w, w*y*z^3, w*x^2*y, x^3*y, w*x*y^2, y^3*x, x*z^2*w, z^2*x^2, z^2*y*w, z^2*y*x, z^2*y^2, z^4, z*x*w, z*x^2, z*y*w, z*y^2, z^3, x*w, x^2, w*y, x*y, y^2, z^2, z, 1]
 
-function [w, x, y, z, ur] = std_p6pf_refract_colpiv(C)
+function [w, x, y, z] = std_p6pf_refract_colpiv(C)
 
     M = zeros(126,162);
 
@@ -61,8 +61,6 @@ function [w, x, y, z, ur] = std_p6pf_refract_colpiv(C)
     M = [Pi*L Pi(:,41:end)]\M(:,41:end);
     MP = M(1:40,:);
     NP = M(41:end,:);
-
-    ur = diag(UR);
 
     [Q,U,Pi] = qr(NP(:,1:end-5));
     A = UR\[MP(:,1:end-5)*Pi MP(:,end-4:end)];

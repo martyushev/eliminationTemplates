@@ -4,7 +4,7 @@ clc
 
 data = inidata_unsynch_relpose(); % generate initial data of the problem
 C = coefs_unsynch_relpose(data); % compute coefficients of polynomial system
-[ww,xx,yy,zz,ur] = nstd_unsynch_relpose_colpiv(C); % solve polynomial system
+[ww,xx,yy,zz] = nstd_unsynch_relpose_colpiv(C); % solve polynomial system
 
 M = [];
 for j=1:length(ww)
@@ -16,4 +16,4 @@ for j=1:length(ww)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));

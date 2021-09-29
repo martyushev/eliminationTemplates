@@ -1,3 +1,4 @@
+folder = fileparts(which('test_num_all.m'));
 load(strcat(folder, '\_results\Err_relpose_7p_fr.mat'));
 
 bwd = 3e-1;

@@ -16,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_optpose2pt_v2_red(data); % compute coefficients of polynomial system
-        [vv, ww, xx, yy, zz] = nstd_optpose2pt_v2_red_colpiv(C); % solve polynomial system
+        [vv, ww, xx, yy, zz] = nstd_optpose2pt_v2_red_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(vv); continue; end
     catch ME
@@ -34,7 +34,7 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_optpose2pt_v2_red = [Err_optpose2pt_v2_red err];
     Tm_optpose2pt_v2_red = [Tm_optpose2pt_v2_red tm];

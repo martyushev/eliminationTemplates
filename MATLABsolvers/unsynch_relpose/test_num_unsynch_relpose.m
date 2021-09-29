@@ -8,7 +8,6 @@ N = 10000;
 
 Err_unsynch_relpose = [];
 Tm_unsynch_relpose = [];
-%UR = [];
 
 for i = 1:N
 
@@ -17,7 +16,7 @@ for i = 1:N
     try
         tic;
         C = coefs_unsynch_relpose(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_unsynch_relpose_colpiv(C); % solve polynomial system
+        [ww, xx, yy, zz] = nstd_unsynch_relpose_colpiv_sprs(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
@@ -34,11 +33,10 @@ for i = 1:N
         m = m/norm(m,'fro');
         M = [M; m];
     end
-    err = norm(C*M','fro');
+    err = norm(C*M.','fro');
 
     Err_unsynch_relpose = [Err_unsynch_relpose err];
     Tm_unsynch_relpose = [Tm_unsynch_relpose tm];
-    %UR = [UR ur];
 
 end
 
@@ -47,9 +45,5 @@ save(strcat(folder,'\_results\Err_unsynch_relpose.mat'),'Err_unsynch_relpose');
 save(strcat(folder,'\_results\Tm_unsynch_relpose.mat'),'Tm_unsynch_relpose');
 
 fprintf('Problem #17. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_unsynch_relpose),median(Err_unsynch_relpose));
-
-%for i=1:size(UR,1)
-%    disp(median(UR(i,:)));
-%end
 
 warning ('on','all');

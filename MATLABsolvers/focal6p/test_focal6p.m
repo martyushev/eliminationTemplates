@@ -4,7 +4,7 @@ clc
 
 data = inidata_focal6p(); % generate initial data of the problem
 [C,ns] = coefs_focal6p(data); % compute coefficients of polynomial system
-[gg,uu,vv] = nstd_focal6p(C); % solve polynomial system
+[gg,uu,vv] = nstd_focal6p_sprs(C); % solve polynomial system
 
 M = [];
 for j=1:length(gg)
@@ -15,7 +15,7 @@ for j=1:length(gg)
     m = m/norm(m,'fro');
     M = [M; m];
 end
-fprintf("Normalized residual: %0.2e\n", norm(C*M','fro'));
+fprintf("Normalized residual: %0.2e\n", norm(C*M.','fro'));
 
 %ff = gg.^(-0.5);
 %[ff,~] = peig6pt(q{1},q{2});
