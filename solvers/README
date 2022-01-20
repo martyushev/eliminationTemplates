@@ -64,5 +64,5 @@ Each problem folder contains at least 5 m-files:
 Some problem folders contain 2 additional m-files:
 
 6) inidata_feas_prob: generates initial data from a random synthetic scene
-7) test_feas_prob: evaluates relative errors in feasible quantities, like focal lengths and/or radial distortion coefficients
+7) test_feas_prob: evaluates relative errors in feasible quantities such as focal lengths and/or radial distortion coefficients
 
