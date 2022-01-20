@@ -1,6 +1,6 @@
 Collection of 33 state-of-the-art solvers for minimal problems in geometric computer vision.
 
-If you use these solvers in your research, please cite by adding the following bibtex entry:
+If you use these solvers in your research, please cite the following work:
 
 @inproceedings{martyushev2022optimizing,
   title={Optimizing Elimination Templates by Greedy Parameter Search},
@@ -14,40 +14,40 @@ E-mail: martiushevev@susu.ru
 Project page: github.com/martyushev/EliminationTemplates
 
 
-Folders (problems):
+Folders (minimal problems):
 
 1) 8ptF_radial_1s: uncalibrated 8-point relative pose estimation with one unknown radial distortion
 2) focal6p_1s: 6-point relative pose estimation with one unknown focal length
 3) focal6p: 6-point relative pose estimation with unknown but common focal length
 4) relpose_6p_rad_1s: calibrated 6-point relative pose estimation with one unknown radial distortion
-5) stitching: 
-6) p4p_fr: 
-7) p4p_fr_iccv17: 
+5) stitching: 3-point panorama stitching problem
+6) p4p_fr: 4-point absolute pose estimation with unknown focal length and radial distortion
+7) p4p_fr_iccv17: 4-point absolute pose estimation with unknown focal length and radial distortion (another formulation, cf.6)
 8) relpose_6p_rad: calibrated 6-point relative pose estimation with unknown but common radial distortion
-9) rdist9p: 
-10) relpose_7p_fr_1s: 
-11) relpose_7p_fr_1s_elr: 
-12) relpose_7p_fr_1s_el: 
-13) rollingshutter: 
-14) satellite_triang: 
-15) refract5p: 
-16) pose_quiver: 
-17) unsynch_relpose: 
-18) opt_pnp_hesch: 
-19) opt_pnp_nakanoC: 
-20) optpose2pt_v2: 
-21) relpose_4pt: 
-22) 8ptF_radial: 
-23) pose_35pt: 
-24) gp4p_scale: 
-25) 4pra: 
-26) gen5pra: 
+9) rdist9p: uncalibrated 9-point relative pose estimation with two unknown radial distortions
+10) relpose_7p_fr_1s: 7-point relative pose estimation with one unknown focal length and radial distortion
+11) relpose_7p_fr_1s_elr: 7-point relative pose estimation with one unknown focal length and radial distortion (another formulation, cf.10)
+12) relpose_7p_fr_1s_el: 7-point relative pose estimation with one unknown focal length and radial distortion (another formulation, cf.10)
+13) rollingshutter: 5-point rolling shutter absolute pose estimation
+14) satellite_triang: 3D-point triangulation from satellite imagery
+15) refract5p: 5-point absolute pose estimation for a calibrated camera observing a scene through a known refractive plane
+16) pose_quiver: absolute pose estimation with unknown focal length using quivers
+17) unsynch_relpose: uncalibrated 8-point relative pose estimation with unknown time shift
+18) opt_pnp_hesch: direct least-squares method for PnP problem
+19) opt_pnp_nakanoC: direct least-squares method for PnP problem with Cayley parameterization
+20) optpose2pt_v2: 2-point optimal pose estimation with known gravitational vector
+21) relpose_4pt: calibrated 4-point relative pose estimation with known relative rotation angle
+22) 8ptF_radial: uncalibrated 8-point relative pose estimation with unknown but common radial distortion
+23) pose_35pt: 3.5-point absolute pose estimation with unknown focal length
+24) gp4p_scale: generalized 4-point pose and scale estimation
+25) 4pra: calibrated 4-point relative pose estimation with known relative rotation angle (another formulation, cf.21)
+26) gen5pra: generalized 5-point relative pose estimation with known relative rotation angle
 27) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle
-28) r6p: rolling shutter R6P
-29) optpose4pt_v2: 
-30) optpose3pt_v2: 
+28) r6p: 6-point rolling shutter absolute pose estimation
+29) optpose4pt_v2: 4-point optimal pose estimation with known gravitational vector
+30) optpose3pt_v2: 3-point optimal pose estimation with known gravitational vector
 31) l2_3view_triang: relaxed L2 3-view triangulation problem
-32) p6pf_refract: 
+32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
 33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
 _helpers: auxiliary functions that are common for several problems
 _results: output data (mat-files and figures)
