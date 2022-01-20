@@ -1,7 +1,0 @@
-[37, 81],1084/2997
-32749
-[u, v, w]
-w
-wdeg([9, 8, 6],[u, v, w])
-[v*u^5, u^4*v^2, w^5*v*u, u^4*v, u^3*v^2, u*v^2*w^3, u^3*v*w, u^2*v^2*w, v^2*w^4, u*w^5, u^2*v*w^2, v*w^5, w^6, u*v*w^3, u*v^2*w^2, v*u^3, u^2*v^2, v^2*w^3, u*w^4, u^2*v*w, v*w^4, u*v^2*w, w^5, w^2*u*v, v^2*w^2, u*w^3, u^2*v, v*w^3, u*v^2, w^4, v*w*u, v^2*w, u*w^2, v*w^2, w^3, v*u, v^2, w*u, v*w, w^2, u, v, w, 1]
-[Vector(8, [1,v,u,w,v*u,v*w,v^2,w^2]), Vector(8, [1,v,u,w,v*u,v*w,v^2,w^2]), Vector(8, [1,v,u,w,v*u,v*w,v^2,w^2]), Vector(8, [1,v,u,w,v*u,v*w,v^2,w^2]), Vector(8, [1,v,u,w,v*u,v*w,v^2,w^2]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(82, [v*u^5,u^5,u^4*v^2,u^4*v*w,u^4*v,u^4*w^2,u^4*w,u^4,v^3*u^3,u^3*v^2*w,u^3*v^2,w^2*u^3*v,u^3*v*w,v*u^3,u^3*w^3,u^3*w^2,u^3*w,u^3,u^2*v^4,u^2*v^3*w,u^2*v^3,u^2*v^2*w^2,u^2*v^2*w,u^2*v^2,u^2*v*w^3,u^2*v*w^2,u^2*v*w,u^2*v,u^2*w^4,u^2*w^3,u^2*w^2,u^2*w,u^2,v^5*u,w*v^4*u,u*v^4,w^2*v^3*u,u*v^3*w,v^3*u,u*v^2*w^3,u*v^2*w^2,u*v^2*w,u*v^2,w^4*u*v,u*v*w^3,w^2*u*v,v*w*u,v*u,u*w^5,u*w^4,u*w^3,u*w^2,w*u,u,v^6,w*v^5,v^5,w^2*v^4,v^4*w,v^4,v^3*w^3,v^3*w^2,v^3*w,v^3,v^2*w^4,v^2*w^3,v^2*w^2,v^2*w,v^2,v*w^5,v*w^4,v*w^3,v*w^2,v*w,v,w^6,w^5,w^4,w^3,w^2,w,1])]

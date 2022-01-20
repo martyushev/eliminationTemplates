@@ -1,0 +1,68 @@
+Collection of 33 state-of-the-art solvers for minimal problems in geometric computer vision.
+
+If you use these solvers in your research, please cite by adding the following bibtex entry:
+
+@inproceedings{martyushev2022optimizing,
+  title={Optimizing Elimination Templates by Greedy Parameter Search},
+  author={Martyushev, Evgeniy and Vrablikova, Jana and Pajdla, Tomas},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={--},
+  year={2022}
+}
+
+E-mail: martiushevev@susu.ru
+Project page: github.com/martyushev/EliminationTemplates
+
+
+Folders (problems):
+
+1) 8ptF_radial_1s: uncalibrated 8-point relative pose estimation with one unknown radial distortion
+2) focal6p_1s: 6-point relative pose estimation with one unknown focal length
+3) focal6p: 6-point relative pose estimation with unknown but common focal length
+4) relpose_6p_rad_1s: calibrated 6-point relative pose estimation with one unknown radial distortion
+5) stitching: 
+6) p4p_fr: 
+7) p4p_fr_iccv17: 
+8) relpose_6p_rad: calibrated 6-point relative pose estimation with unknown but common radial distortion
+9) rdist9p: 
+10) relpose_7p_fr_1s: 
+11) relpose_7p_fr_1s_elr: 
+12) relpose_7p_fr_1s_el: 
+13) rollingshutter: 
+14) satellite_triang: 
+15) refract5p: 
+16) pose_quiver: 
+17) unsynch_relpose: 
+18) opt_pnp_hesch: 
+19) opt_pnp_nakanoC: 
+20) optpose2pt_v2: 
+21) relpose_4pt: 
+22) 8ptF_radial: 
+23) pose_35pt: 
+24) gp4p_scale: 
+25) 4pra: 
+26) gen5pra: 
+27) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle
+28) r6p: rolling shutter R6P
+29) optpose4pt_v2: 
+30) optpose3pt_v2: 
+31) l2_3view_triang: relaxed L2 3-view triangulation problem
+32) p6pf_refract: 
+33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
+_helpers: auxiliary functions that are common for several problems
+_results: output data (mat-files and figures)
+
+
+Each problem folder contains at least 5 m-files:
+
+1) inidata_prob: generates random initial data
+2) coefs_prob: computes initial Macaulay (coefficient) matrix
+3) (n)std_prob(_colpiv)_sprs: the solver (std/nstd - standard/non-standard quotient space basis, colpiv - column-pivoting strategy)
+4) test_num_prob: evaluates speed and numerical accuracy of the solver
+5) histo_num_prob: plots numerical error histogram
+
+Some problem folders contain 2 additional m-files:
+
+6) inidata_feas_prob: generates initial data from a random synthetic scene
+7) test_feas_prob: evaluates relative errors in feasible quantities, like focal lengths and/or radial distortion coefficients
+

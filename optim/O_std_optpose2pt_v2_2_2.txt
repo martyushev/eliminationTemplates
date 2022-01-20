@@ -1,7 +1,0 @@
-[146, 170]
-32749
-[v, w, x, y, z]
-y
-wdeg([3, 10, 4, 5, 10],[v, w, x, y, z])
-[w*v, v^3*x, y*x^2, y^2*v, v*z, v^4, x^3, v*x*y, v*x^2, v^2*y, w, v^2*x, y^2, z, v^3, y*x, x^2, y*v, x*v, v^2, y, x, v, 1]
-[Vector(32, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,y^2,w*v,v^2*x,v^2*w,x*v,v^2*y,y*x^2,y^2*v,x^2*z]), Vector(32, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,y^2,w*v,v^2*x,v^2*w,x*v,v^2*y,y*x^2,y^2*v,x^2*z]), Vector(37, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x^3,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,x^2,y^2,w*v,v^2*x,v*x^2,v^2*w,x*v,v^2*y,y*x^2,v*x*w,y^2*v,x^2*z,x^2*w]), Vector(32, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,y^2,w*v,v^2*x,v^2*w,x*v,v^2*y,y*x^2,y^2*v,x^2*z]), Vector(32, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,y^2,w*v,v^2*x,v^2*w,x*v,v^2*y,y*x^2,y^2*v,x^2*z]), Vector(32, [1,x,z,y,v,y*z*x,y*x*w,v*x*z,v*y*w,z*y*v,w,v^2*z,x*y^2,y*v,v*z,x*w,y*w,y*x,x*z,y*z,v*x*y,v^2,v^3,y^2,w*v,v^2*x,v^2*w,x*v,v^2*y,y*x^2,y^2*v,x^2*z])]

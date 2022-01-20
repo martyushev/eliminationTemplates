@@ -1,7 +1,0 @@
-[16, 36],17/72
-32749
-[u, v, w]
-u
-wdeg([3, 5, 4],[u, v, w])
-[u^3*v, w^2*u^2, w*u^3, w^2*v, u^4, w*u*v, w^3, u^2*v, w^2*u, w*u^2, u^3, w*v, u*v, w^2, w*u, u^2, v, w, u, 1]
-[Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(20, [u^3,u^2*v,w*u^2,u^2,v^2*u,w*u*v,u*v,w^2*u,w*u,u,v^3,w*v^2,v^2,w^2*v,w*v,v,w^3,w^2,w,1])]

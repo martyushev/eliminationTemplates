@@ -1,2 +1,0 @@
-Mon1 := Vector(26, [y*x,x^2,z^2,v*z^2,v*x*y,w*x^2,x*z,w*x*y,v*x,y,v*y*z,w*z^2,
-x,w*y,v*y^2,y*z,w*y^2,z,1,v*x^2,w*z,w,w*x*z,y^2,v,v*z]);

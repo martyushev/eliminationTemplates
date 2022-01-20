@@ -1,7 +1,0 @@
-[42, 48],1397/2016
-32749
-[a, b, p]
-a
-wdeg([4, 3, 2],[a, b, p])
-[a^4, a^2*p, a^3, a^2, p*a, a]
-[Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(7, [a^3,a^2,b*a,a,b^2,b,1]), Vector(7, [a^3,a^2,b*a,a,b^2,b,1]), Vector(13, [a^3,b*a^2,a^2,a*b^2,b*a,p*a,a,b^3,b^2,b*p,b,p,1]), Vector(7, [a^3,a^2,b*a,a,b^2,b,1])]
