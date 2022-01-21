@@ -1,0 +1,8 @@
+[80, 96]
+.85938
+32749
+[w, x, y, z]
+w
+wdeg([5, 5, 4, 2],[w, x, y, z])
+[y*x, z^2*w, z^2*x, y^2, y*z^2, z^4, z*w, z*x, z*y, z^3, w, x, y, z^2, z, 1]
+[Vector(28, [1,x,y,z,w,y*w,z^2*x,z^2*w,z*y^2,y^2*x,z^3*x,z*w,y*z^2,y^2,z^2,w*z*x,z*y*x,w*x*y,z^3,z*y,y^2*x*z,y*w*x*z,z^2*x*w,z^2*y*x,x*w,y*x,w*y*z,z*x]), Vector(14, [1,y,z,w,y*w,z^2*w,z*y^2,z*w,y*z^2,y^2,z^2,z^3,z*y,w*y*z]), Vector(14, [1,y,z,w,y*w,z^2*w,z*y^2,z*w,y*z^2,y^2,z^2,z^3,z*y,w*y*z]), Vector(28, [1,x,y,z,w,y*w,z^2*x,z^2*w,z*y^2,y^2*x,z^3*x,z*w,y*z^2,y^2,z^2,w*z*x,z*y*x,w*x*y,z^3,z*y,y^2*x*z,y*w*x*z,z^2*x*w,z^2*y*x,x*w,y*x,w*y*z,z*x])]

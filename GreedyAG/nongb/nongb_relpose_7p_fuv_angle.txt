@@ -1,0 +1,5 @@
+[p, p^2, a^2*p, b*p, b^2*p, p*a]
+[p, p^2, b*p, b^2*p, p*a, a*b*p]
+[p, p^2, a^2*p, b*p, p*a, a*b*p]
+[p, a^2*p, b*p, b^2*p, p*a, a*b*p]
+[p, p^2, a^2*p, b^2*p, p*a, a*b*p]

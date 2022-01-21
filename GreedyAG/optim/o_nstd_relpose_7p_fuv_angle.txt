@@ -1,0 +1,8 @@
+[40, 46]
+.67391
+32749
+[a, b, p]
+a
+tdeg(a,b,p)
+[a^2*p, b^2*p, b*p, p^2, p*a, p]
+[Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(6, [a^2,b*a,a,b^2,b,1]), Vector(6, [1,a,b,b*a,a^2,b^2]), Vector(6, [1,a,b,b*a,a^2,b^2]), Vector(13, [1,a,b,p,a*b^2,b*a,p*a,b*p,b*a^2,a^3,b^3,a^2,b^2]), Vector(6, [1,a,b,b*a,a^2,b^2])]

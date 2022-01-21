@@ -1,0 +1,8 @@
+[46, 52]
+.75167
+32749
+[a, b, p]
+a
+wdeg([3, 4, 2],[a, b, p])
+[p*a, b, p^2, a, p, 1]
+[Vector(5, [a^2,a*b,a,b,1]), Vector(1, [1]), Vector(1, [1]), Vector(12, [a^3,b*a^2,a^2*p,a^2,b^2*a,a*b*p,a*b,a,b^3,b^2,b,1]), Vector(12, [a^3,b*a^2,a^2*p,a^2,b^2*a,a*b*p,a*b,a,b^3,b^2,b,1]), Vector(16, [a^3,b*a^2,a^2*p,a^2,b^2*a,a*b*p,a*b,p*a,a,b^3,b^2*p,b^2,p*b,b,p,1]), Vector(1, [1])]

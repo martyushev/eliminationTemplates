@@ -1,7 +1,8 @@
-[11, 26],5/22
+[11, 26]
+.22727
 32749
 [g, u, v]
 g
-wdeg([6, 5, 4],[g, u, v])
-[u^2*g, u^3, v*g*u, u^2*v, g*v^2, u*v^2, g*u, v*g, g, u^2, v*u, v^2, u, v, 1]
+tdeg(g,u,v)
+[u^2*g, u^3, g*u*v, v*u^2, g*v^2, v^2*u, g*u, g*v, g, u^2, v*u, v^2, u, v, 1]
 [Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(2, [g,1])]

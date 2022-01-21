@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Worksheet>
+<Version major="2016" minor="0"/>
+<Label-Scheme value="2" prefix=""/>
+<View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false">
+</View-Properties>
+<MapleNet-Properties prettyprint="3" warnlevel="3" preplot="" helpbrowser="standard" contextmenusize="automatic" displayprecision="-1" echo="1" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="10" useclientjvm="true" labelwidth="20" postplot="" typesetting="standard" ansi="false" elisiondigitsthreshold="10000" showassumed="1" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
+<Styles>
+<Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 4" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Line Printed Output" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 2" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="16" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Inert Output" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[144,144,144]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 3" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="14" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Diagnostic" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[40,120,40]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 1" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input" background="[255,255,255]" bold="true" executable="true" family="Courier New" foreground="[120,0,14]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text Output" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 2" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 3" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 4" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 5" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Header and Footer" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkError" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Atomic Variable" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[175,0,175]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkWarning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Dictionary Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[147,0,15]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="2D Math" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Bullet Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Plot" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="List Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Dash Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Input" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Error" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Normal" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Caption Reference" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Code" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input Placeholder" background="[255,255,255]" bold="true" executable="true" family="Courier New" foreground="[200,0,200]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="true"/>
+<Font name="Equation Label" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Author" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,128,128]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Caption Text" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Layout name="Heading 1" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="4" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Warning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 4" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Line Printed Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="any" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 2" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="2" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Output" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.3" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 3" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Diagnostic" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="any" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 1" alignment="left" bullet="numeric" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Text Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="newline" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 2" alignment="left" bullet="alphabetic" firstindent="0" leftmargin="36" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 3" alignment="left" bullet="roman" firstindent="0" leftmargin="72" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 4" alignment="left" bullet="ALPHABETIC" firstindent="0" leftmargin="108" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 5" alignment="left" bullet="ROMAN" firstindent="0" leftmargin="144" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Annotation Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkError" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkWarning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Bullet Item" alignment="left" bullet="dot" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Plot" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="List Item" alignment="left" bullet="indent" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Dash Item" alignment="left" bullet="dash" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Error" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Normal" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Author" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="8" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Pencil-style name="Pencil 1" pen-color="[0,0,0]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 2" pen-color="[0,0,255]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 3" pen-color="[0,0,0]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 4" pen-color="[0,0,255]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 5" pen-color="[255,0,0]" pen-height="5.0" pen-width="5.0" pen-opacity="1.0"/>
+<Highlighter-style name="Highlighter 5" pen-color="[255,255,0]" pen-height="48.0" pen-width="48.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 3" pen-color="[51,255,0]" pen-height="24.0" pen-width="24.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 4" pen-color="[0,255,255]" pen-height="32.0" pen-width="32.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 1" pen-color="[255,153,255]" pen-height="12.0" pen-width="8.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 2" pen-color="[255,204,0]" pen-height="14.0" pen-width="14.0" pen-opacity="0.8"/>
+</Styles>
+<Startup-Code startupcode=""/>
+<Task-table>
+    <Task-category name="&lt;default&gt;"/>
+</Task-table>
+<Task/><Presentation-Block>
+<Group hide-output="false" labelreference="L4443" drawlabel="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for automatic template generator</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4464" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4466" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4978" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4981" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if monomials from M are linearly independent
+isLinIndep := proc(M::list, G::list, tord::ShortMonomialOrder, pp::posint)
+    local vars := indets(G), S:
+    if nops(M) = 1 then return true: end if:
+    S := poly2matrix(map(m-&gt;Groebner[NormalForm](m, G, tord, characteristic=pp), M), nops(M), vars)[1]:
+    is(LinearAlgebra[Modular][Rank](pp, S) &lt;&gt; LinearAlgebra[Modular][Rank](pp, S[1..-2, ..])):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4980" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if M contains a basis
+testBasis := proc(M::set, deg::posint, G::list, tord::ShortMonomialOrder, pp::posint)
+    local vars := indets(G), S:
+    if nops(M) &lt; deg then return false, &lt;&lt;0&gt;&gt;: end if:
+    S := poly2matrix(map(m-&gt;Groebner[NormalForm](m, G, tord, characteristic=pp), M), nops(M), vars)[1]:
+    `if`(pp &lt;&gt; 0, is(LinearAlgebra[Modular][Rank](pp, S) = deg), is(LinearAlgebra[Rank](S) = deg)), S:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4983" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate initial set of monomials
+iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint, dom::nonnegint:=0)
+    local E, M, vr, d, deg := nops(B0), flag, S, d_min := 0:
+    E := convert(map(op, Groebner[Support](F)), set): ### set of monomials occuring in the original equations
+    M := E:
+    for d from 0 while d - d_min &lt;= dom do
+        vr := select(x-&gt;degree(x, vars) &lt;= d, M):
+        M := map(t-&gt;op(map(k-&gt;t*k, vr)), M):
+        flag, S := testBasis(M, deg, G, tord, pp):
+        if not flag then d_min := d + 1: end if:
+    end do:
+    return E, M:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4986" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### neighboring monomials
+neighborMons := proc(B::set, MB::set, vars::list)
+    local nB:
+    if nops(B) = 0 then return MB: end if:
+    nB := select(type, map(op, {seq(seq({b*v, b/v}, v in vars), b in B)}), monomial):
+    nB := (nB minus B) intersect MB:
+    `if`(nops(nB) = 0, MB, nB):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4985" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use random sampling for basis construction
+genBasis := proc(E::set, M::set, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint)
+    local rnd := rand(0..1000)/1000, B := {}, EB, MB := M, nB, nB1, bv, k, a, nv := nops(vars), wt, m, i, deg := nops(B0):
+    bv := [seq(round(rnd()), i=1..nv)]: ### random binary list
+    k := max[index](map(x-&gt;x+rnd()/100., bv)):
+    a := vars[k]: ### select action variable for guiding the sampling
+    while nops(B) &lt; deg do
+        MB := MB minus B: ### linearly independent from B monomials in M
+        nB := neighborMons(B, MB, vars): ### list of neighboring monomials of B in MB
+        EB := E union B:
+        wt := x-&gt;`if`(x in E,1,0)+`if`(a*x in EB,1,0)+add(bv[i]*degree(x,vars[i]),i=1..nv)+rnd()/100.:
+        nB1 := sort([op(nB)], (x,y)-&gt;wt(x)&gt;=wt(y)): ### sort nB w.r.t. weights
+        m, i := nB1[1], 1:
+        while not isLinIndep([op(B), m], G, tord, pp) and i &lt; nops(nB1) do
+            i := i + 1:
+            m := nB1[i]:
+        end do:
+        B := {op(B), m}: ### update B
+    end do:
+    B:
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4992" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save non-standard bases
+saveBases := proc(prob::string, QBs::{list,set})
+    local fd := fopen(cat(&quot;nongb/nongb_&quot;, prob, &quot;.txt&quot;), WRITE):
+    map(x-&gt;<Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, x)</Font>, QBs):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4993" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read non-standard bases
+readBases := proc(prob::string)
+    local st := 1, QBs := [], nongbfile := cat(&quot;nongb/nongb_&quot;, prob, &quot;.txt&quot;):
+    while st &lt;&gt; 0 do
+        st := readline(nongbfile):
+        if st &lt;&gt; 0 then QBs := [op(QBs), parse(st)]: end if:
+    end do:
+    QBs:
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4990" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save N non-standard monomial bases of the quotient ring
+BasisFinder := proc(prob::string, N::posint:=100, pp::posint:=32749)
+    local F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn, fd:
+    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
+    F := eval(cat(F_, prob)):
+    vars := [op(indets(F))]:
+    tord := tdeg(op(vars)):
+    G := Groebner[Basis](F, tord, characteristic=pp):
+    B0 := Groebner[NormalSet](G, tord)[1]:
+    for d from 0 while nops(M) &lt;= nops(B0) do
+        E, M := iniMonSet(F, B0, vars, G, tord, pp, d):
+    end do:
+    fn := cat(&quot;nongb/nongb_&quot;, prob, &quot;.txt&quot;):
+    fd := fopen(fn, WRITE):fclose(fd):fd := fopen(fn, APPEND):
+    while nops(BB) &lt; N do
+        B := genBasis(E, M, B0, vars, G, tord, pp):
+        if not member(B, BB) then
+            BB := [op(BB), B]:
+            <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, </Font>convert(B, list)):
+            print(sprintf(&quot;%d%s&quot;, round(nops(BB)/N*100), &quot;% completed&quot;)):
+        end if:
+    end do:
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4984" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4971" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for Grobner fan computation in Gfan
+writeGfan := proc(F::{list,set}, vars::{list,set}, pp::posint)
+    local fd := fopen(&quot;gfan/igfan.txt&quot;, WRITE):
+    <Font encoding="UTF-8">fprintf(fd, &quot;Z/%aZ%a\134n%a&quot;, pp</Font>, convert(vars, list), map(expand, convert(F, set)) mod pp):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4973" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data from a file generated by Gfan
+readGfan := proc(prob::string)
+    local flag := false, st := 1, n := 0, gfanfile := cat(&quot;gfan/gfan_&quot;, prob, &quot;.txt&quot;), pp:
+    st := readline(gfanfile):
+    pp := parse(substring(st, 3..StringTools[FirstFromLeft](&quot;[&quot;, st)-2)): # read prime number
+    while st &lt;&gt; 0 do
+        st := readline(gfanfile):
+        if st = &quot;{{&quot; or st = &quot;{&quot; then
+            flag := true:
+            n := n + 1:
+            GB||n := []:
+        elif flag and substring(st, -1) &lt;&gt; &quot;}&quot; then
+            GB||n := [op(GB||n), substring(st, 1..-2)]:
+        elif flag and substring(st, -1) = &quot;}&quot; then
+            GB||n := [op(GB||n), substring(st, 1..-2)]:
+            flag := false:
+        end if:
+    end do:
+    return pp, [seq(map(parse, GB||i), i=1..n)], [seq(map(x-&gt;parse(substring(x, 1..StringTools[FirstFromLeft](&quot;+&quot;, x)-1)), GB||i), i=1..n)]:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4994" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find monomial ordering which is compatible with a given Grobner basis and leading monomial
+### in case of error, try to increase depthlimit option
+getTord := proc(gb, lm)
+    local vars := [op(indets(gb))], nv := nops(vars), sbt := [0 $ nv]=NULL, degs := [seq(d||i, i=1..nv)], gbdegs, lmdegs, ineqs, sol, fdegs:
+    gbdegs := map(z-&gt;map(x-&gt;[seq(degree(x, y), y in vars)], convert(z, list)), gb):
+    lmdegs := map(x-&gt;[seq(degree(x, y), y in vars)], lm):
+    ineqs := map(k-&gt;op(map(x-&gt;add(zip((y, z)-&gt;y*z, x, degs)) &gt;= 1, subs(sbt, [seq(lmdegs[k] - g, g in gbdegs[k])]))), {$ 1..nops(gb)}):
+    sol := Optimization[Minimize](add(degs), ineqs, <Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">depthlimit=40</Font>, assume=nonnegint)[2]:
+    fdegs := subs(sol, degs):
+    fdegs, <Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">wdeg(</Font>fdegs<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">, vars):</Font>
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4972" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for change matrix computation in Macaulay2
+writeCM := proc(prob::string, Ws0::list, k::posint, pp::posint)
+    local fd := fopen(cat(&quot;cm/icm&quot;, k, &quot;.txt&quot;), WRITE), F, vars, Ws:
+    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
+    F := eval(cat(F_, prob)):
+    vars := convert([op(indets(F))], string):
+    Ws := StringTools[SubstituteAll](StringTools[SubstituteAll](convert(Ws0, string), &quot;[&quot;, &quot;(&quot;), &quot;]&quot;, &quot;)&quot;):
+    F := convert(map(expand, F) mod pp, string):
+    <Font encoding="UTF-8">fprintf(fd, &quot;Ws = %s;\134npp = %a;\134nvr = %s;\134n</Font>&quot;, Ws, pp, vars):
+    fprintf(fd, &quot;f<Font encoding="UTF-8"> = openOut &quot;&quot;cm_%s_%a.txt&quot;&quot;;\134n&quot;, prob, k):</Font>
+    fprintf(fd, &quot;f<Font encoding="UTF-8"> &lt;&lt; toString(pp) &lt;&lt; endl;\134n</Font>&quot;):
+    fprintf(fd, &quot;f<Font encoding="UTF-8"> &lt;&lt; toString(vr) &lt;&lt; endl;\134n</Font>&quot;):
+    fprintf(fd, &quot;<Font encoding="UTF-8">for i from 0 to %a do (\134n&quot;, </Font>nops(Ws0)-1):
+    fprintf(fd, &quot;f<Font encoding="UTF-8"> &lt;&lt; toString(Ws#i) &lt;&lt; endl;\134n</Font>&quot;):
+    fprintf(fd, &quot;R = ZZ/%a%s, &quot;, pp, substring(vars, 1..-2)):
+    fprintf(fd, &quot;<Font encoding="UTF-8">MonomialOrder =&gt; Weights =&gt; Ws#i];\134n</Font>&quot;):
+<Font encoding="UTF-8">    fprintf(fd, &quot;I = ideal(%s);\134n&quot;, </Font>substring(F, 2..-2)):
+    fprintf(fd, &quot;<Font encoding="UTF-8">G = gb(I,ChangeMatrix=&gt;true);\134nM = getChangeMatrix G;\134n</Font>&quot;):
+    fprintf(fd, &quot;f<Font encoding="UTF-8"> &lt;&lt; toString(M) &lt;&lt; endl;\134n);\134n</Font>&quot;):
+    fprintf(fd, &quot;f &lt;&lt; close;&quot;):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4974" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read precomputed change matrices
+readCM := proc(prob::string)
+    local st := 1, cmfile, pp, vars, m := 0, n := 0:
+    cmfile := cat(&quot;cm/cm_&quot;, prob, &quot;.txt&quot;):
+    pp := parse(readline(cmfile)): # read prime number
+    vars := parse(readline(cmfile)): # read variables
+    while st &lt;&gt; 0 do
+        st := readline(cmfile):
+        if st &lt;&gt; 0 and substring(st, 1) = &quot;(&quot; then
+            m := m + 1:
+            T||m := substring(st, 2..-2):
+        elif st &lt;&gt; 0 and substring(st, 1..6) = &quot;matrix&quot; then
+            n := n + 1:
+            CM||n := StringTools[SubstituteAll](StringTools[SubstituteAll](substring(st, 9..-2), &quot;{&quot;, &quot;[&quot;), &quot;}&quot;, &quot;]&quot;):
+        end if:
+    end do:
+    return pp, [seq(wdeg([parse(T||i)], vars), i=1..m)], [seq(Matrix([map(parse, CM||i)])^%T, i=1..n)]:
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4829" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save data needed to construct template
+saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::nonnegint, vars::{list,set}, av::monomial, tord::ShortMonomialOrder, QB::list, shifts::list, std::boolean)
+    local fn := `if`(std, cat(&quot;optim/o_std_&quot;, prob, &quot;.txt&quot;), cat(&quot;optim/o_nstd_&quot;, prob, &quot;.txt&quot;)), fd, mn0, sp0, flag := false:
+    if FileTools[Exists](fn) then
+        fd := fopen(fn, READ):
+        mn0 := parse(readline(fn)):
+        sp0 := parse(readline(fn)):
+        if mn[1] &lt; mn0[1] or (mn[1] = mn0[1] and sp &gt; sp0) then flag := true: end if: # smaller or sparser template found
+        fclose(fd):
+    else
+        flag := true:
+    end if:
+    if flag then
+        fd := fopen(fn, WRITE):
+        <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n%a\134n%a\134n%a\134n%a\134n%a\134n%a\134n%a&quot;, mn, sp, pp</Font>, convert(vars, list), av, tord, QB, shifts):
+        fclose(fd):
+    end if:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4830" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data needed to construct template
+readData := proc(prob::string, std::boolean)
+    local fn := `if`(std, cat(&quot;optim/o_std_&quot;, prob, &quot;.txt&quot;), cat(&quot;optim/o_nstd_&quot;, prob, &quot;.txt&quot;)), fd, mn, sp, pp, vars, av, tord, QB, shifts:
+    fd := fopen(fn, READ):
+    mn := parse(readline(fn)):
+    sp := parse(readline(fn)):
+    pp := parse(readline(fn)):
+    vars := parse(readline(fn)):
+    av := parse(readline(fn)):
+    tord := parse(readline(fn)):
+    QB := parse(readline(fn)):
+    shifts := parse(readline(fn)):
+    fclose(fd):
+    mn, sp, pp, vars, av, tord, QB, map(eval, shifts):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4809" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4968" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### solve polynomial system F = 0 by the action matrix method
+eigSolver := proc(F::{list,set,Vector}, {digits::posint:=15, actvar::integer:=1})
+    local fB2C, vars := [op(indets(F))], a := vars[actvar], tord := tdeg(op(vars)), B, deg, G, T, V, S:
+    fB2C := proc(f, B) local t := table(zip((a, b)-&gt;b=a, [coeffs(f, B, 'm')], [m])): map(b-&gt;`if`(assigned(t[b]), t[b], 0), B) end proc:
+    Digits := digits:
+    G := Groebner[Basis](F, tord):
+    B := Groebner[NormalSet](G, tord)[1]:
+    deg := nops(B):
+    print(cat(`The system is expected to have `, deg, ` roots`)):
+    T := Groebner[MultiplicationMatrix](a, B, table(Equate(B, [$ 1..deg])), G, tord):
+    V := LinearAlgebra[Eigenvectors](evalf(T))[2]:
+    V := V/~(Vector(deg, fill=1).V[1]):
+    S := Matrix(map(v-&gt;fB2C(Groebner[NormalForm](v, G, tord), B), vars)).V:
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-output="false" labelreference="L4438" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v::{list,set,Vector}, tord::ShortMonomialOrder)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4449" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of polynomials into coefficient (Macaulay) matrix and monomial vector
+poly2matrix := proc(F::{list,set,Vector}, nF::posint, vars::{list,set})
+    local mons, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
+    Matrix(nF, nops(cffs), (i, j)-&gt;coeff(cffs[j], q_q||i)), Vector([mons]):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4432" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### permute columns of matrix M
+permuteColumns := proc(M::Matrix, V1::Vector, V2::Vector)
+    local n := op(1, V1):
+    M.Matrix(n, {seq((i, ListTools[Search](V1[i], V2)) = 1, i=1..n)}):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4843" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute sparsity of matrix M
+sparsity := proc(M::Matrix)
+    local numzr := nops(select(x-&gt;is(x=0), convert(M, list))):
+    numzr/mul(op(1, M)):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4548" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute change-of-basis matrix S
+matrixS := proc(B::list, B0::list, G::list, tord::ShortMonomialOrder, pp::nonnegint)
+    local S, V0, deg := nops(B):
+    if nops(B0) &lt;&gt; deg then error(`Lists B0 and B must have the same length`): end if:
+    S, V0 := poly2matrix(map(b-&gt;Groebner[NormalForm](b, G, tord, characteristic=pp), B), deg, indets(G)):
+    if op(1, V0) = deg then
+        return permuteColumns(S, V0, Vector(B0)):
+    else # should never get here
+        error(`Failed to construct matrix S`):
+    end if:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4834" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quotients := proc(g::polynom, G::list, tord::ShortMonomialOrder, pp::nonnegint)
+    Groebner[NormalForm](g, G, tord, 'Q', characteristic=pp):
+    Q:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4446" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">monPartition := proc(av::monomial, Gr::list, tord::ShortMonomialOrder, pp::nonnegint, QB::list:=[])
+    local B0, B, aB, R, B2, RB, G, nG, T, S, i:
+    B0 := Groebner[NormalSet](Gr, tord)[1]:
+    B := convert(`if`(QB = [], B0, QB), set):
+    aB := map(x-&gt;x*av, B):
+    R := srt(convert(aB minus B, list), tord):
+    nG := nops(R):
+    B2 := map(x-&gt;x/av, aB intersect B):
+    B := [op(srt(convert(B minus B2, list), tord)), op(srt(convert(B2, list), tord))]:
+    RB, aB := [op(R), op(B)], map(x-&gt;x*av, B):
+    if QB = [] then
+        T := Groebner[MultiplicationMatrix](av, B, table(Equate(B, [$ 1..nops(B)])), Gr, tord, characteristic=pp):
+    else
+        T := Groebner[MultiplicationMatrix](av, B0, table(Equate(B0, [$ 1..nops(B0)])), Gr, tord, characteristic=pp):
+        S := matrixS(B, B0, Gr, tord, pp):
+        T := `if`(pp &lt;&gt; 0, S.T.LinearAlgebra[Modular][Inverse](pp, S) mod pp, S.T.LinearAlgebra[MatrixInverse](S)): # new action matrix
+    end if:
+    G := convert(Vector(R) - T[1..nG, ..].Vector(B), list):
+    return aB, B, RB, T, G, Matrix([seq(quotients(G[i], Gr, tord, pp), i=1..nG)]):
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4536" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### iteratively construct matrix H of size nG x nF
+matrixH := proc(F::{list,set,Vector}, G::list, vars::{list,set}, pp::nonnegint, dom::nonnegint)
+    local undetPoly, pv := add(vars), nF := nops(F), nG := nops(G), uH, leqs, sol, i, dF := map(degree, F, vars), dG, d, d_min, h:
+    undetPoly := proc(vars::{list,set}, pv, d, j)
+        local mons:
+        coeffs(expand(1 + add(pv^p, p=1..d)), vars, 'mons'):
+        mons := [mons]:
+        add(mons[k]*_v[j, k], k=1..nops(mons)):
+    end proc:
+    for i from 1 to nG do
+        d_min, dG := 0, map(x-&gt;max(0, x), [degree(G[i], vars) $ nF] - dF):
+        for d from 0 while d - d_min &lt;= dom do
+            uH := [seq(undetPoly(vars, pv, dG[j] + d, j), j=1..nF)]:
+            leqs := {coeffs(expand(-G[i] + add(uH[j]*F[j], j=1..nF)), vars)}:
+            sol := msolve(leqs, pp):
+            if nops({sol}) = 0 then d_min := d + 1: end if:
+        end do:
+        h[i] := map(expand@eval, uH, sol) mod pp:
+    end do:
+    return &lt;seq(Vector[row](h[i]), i=1..nG)&gt;:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use known change matrix to non-iteratively construct matrix H of size nG x nF
+matrixHni := proc(F::{list,set,Vector}, G::list, C::Matrix, CM::Matrix, vars::{list,set}, pp::nonnegint)
+    local undetPolyni, nF := nops(F), nG := nops(G), H0, uH, leqs, sol, pars:
+    undetPolyni := proc(h::polynom, vars::{list,set}, i::posint, j::posint)
+        local mons:
+        coeffs(h, vars, 'mons'):
+        mons := [mons]:
+        add(mons[k]*_v[i, j, k], k=1..nops(mons)):
+    end proc:
+    H0 := map(expand, C.CM) mod pp:
+    uH := Matrix(nG, nF, (i, j)-&gt;undetPolyni(H0[i, j], vars, i, j)):
+    pars := {seq(_u[i], i=1..nops(indets(uH) minus vars))}:
+    leqs := map(coeffs, {seq(expand(-G[i] + add(uH[i, j]*F[j], j=1..nF)) mod pp, i=1..nG)}, vars):
+    sol := msolve(leqs, pars, pp):
+    return map(expand@eval, uH, sol) mod pp:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4941" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate syzygy module
+syzModule := proc(F::{list,set,Vector}, G::list, A::Matrix, tord::ShortMonomialOrder, pp::nonnegint)
+    local nF := nops(F), nG := nops(G), e, L, Lt, M, S, B:
+    e := seq(Vector(nG, {i=1}), i=1..nG): # standard basis in R^n
+    L := [seq([Groebner[LeadingTerm](G[i], tord)], i=1..nG)]: # leading coefficients and monomials
+    Lt := map(x-&gt;x[1]*x[2], L): # leading terms
+    M := Matrix(nG, (i, j)-&gt;lcm(L[i][2], L[j][2])/Lt[i]):
+    S := [seq(seq(M[i, j]*e[i] - M[j, i]*e[j] - &lt;quotients(M[i, j]*G[i] - M[j, i]*G[j], G, tord, pp)&gt;, j=i+1..nG), i=1..nG)]:
+    S := Matrix(S)^%T:
+    B := Matrix([seq(quotients(F[i], G, tord, pp), i=1..nF)]):
+    S := map(expand, &lt;S.A, LinearAlgebra[IdentityMatrix](nF) - B.A&gt;):
+    if pp &lt;&gt; 0 then S := S mod pp: end if:
+    return S[remove(i-&gt;ArrayTools[IsZero](S[i, ..]), [$ 1..op([1,1], S)]), ..]:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4942" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### syzygy-based construction of matrix H of size nG x nF
+matrixHsyz := proc(F::{list,set,Vector}, G::list, C::Matrix, A::Matrix, tord::ShortMonomialOrder, pp::nonnegint)
+    local S, Theta:
+    S := syzModule(F, G, A, tord, pp):
+    Theta := Matrix(op([1,1], C),op([1,1],S), (i,j)-&gt;t[i,j]):
+    return map(expand, C.A + Theta.S) mod pp:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4811" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of polynomial f
+support := proc(f::polynom, vars::{list,set}) coeffs(f, vars, 'm'): {m}: end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4812" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### fix incomplete template by adding more rows and columns
+fixTemplate := proc(admons, F::{list,set,Vector}, vars::{list,set}, mon::list, RB::list)
+    local nF := nops(F), monF := map(f-&gt;support(f, vars), F), admon := [{} $ nF], i, j, Q, flag, xF, M, V0, E, V, mon1:
+    for i from 1 to nops(admons) do
+        flag := false:
+        for j from 1 to nF do
+            Q := map(mf-&gt;`if`(divide(admons[i], mf, 'q'), q, NULL), monF[j]):
+            if Q &lt;&gt; {} then admon[j] := {op(admon[j]), Q[1]}: flag := true: break: end if:
+        end do:
+        if not flag then error(`Failed to correct template`): end if: # never get here
+    end do:
+    mon1 := [seq(convert(convert(mon[j], set) union admon[j], Vector), j=1..nF)]:
+    xF := [seq(seq(F[j]*mn, mn in mon1[j]), j=1..nF)]:
+    M, V0 := poly2matrix(xF, nops(xF), vars):
+    E := convert(V0, set) minus convert(RB, set):
+    E := srt([op(E)], tdeg(op(vars))):
+    V := &lt;op(E), op(RB)&gt;:
+    print(`Template fixed`):
+    return mon1, M, V0, V:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4827" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### construct elimination template from either matrix H or a list of expansion monomials
+constructTemplate := proc(H::{Matrix,list}, F::{list,set,Vector}, vars::{list,set}, RB::list)
+    local nF := nops(F), mon, xF, M, V0, E, V:
+    mon := `if`(type(H, Matrix), [seq(poly2matrix(H[.., j], op([1,1], H), vars)[2], j=1..nF)], H):
+    xF := [seq(seq(F[j]*mn, mn in mon[j]), j=1..nF)]: # expanded polynomial system
+    M, V0 := poly2matrix(xF, nops(xF), vars): # matrix form of xF, M.V0 = v(xF)
+    E := convert(V0, set) minus convert(RB, set): # set of excessive monomials
+    E := srt([op(E)], tdeg(op(vars))):
+    V := &lt;op(E), op(RB)&gt;: # monomial vector
+    if op(1, V) &lt;&gt; op(1, V0) then # template is incomplete, try to fix
+        print(`Template is incomplete`):
+        mon, M, V0, V := fixTemplate(convert(V, set) minus convert(V0, set), F, vars, mon, RB):
+    end if:
+    mon, permuteColumns(M, V0, V), V: # reorder columns of M w.r.t. permutation from V0 to V
+end proc:</Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4444" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters
+adjustParams := proc(F::{list,set,Vector}, H::Matrix, RB::list, vars::set, pp::nonnegint)
+    local nF := nops(F), nG := op([1,1], H), H1 := H, Lm, cols, L, mon, V0, E, e, sm, rm, np, ss, prm, leqs, sol:
+
+    Lm := seq(poly2matrix(H[.., j], nG, vars), j=1..nF):
+    cols := [seq(remove(x-&gt;membertype(posint, convert(Lm[2*j-1][.., x], list)), [$ 1..op([1,2], Lm[2*j-1])]), j=1..nF)]:
+    L, mon := [seq(Lm[2*j-1][.., cols[j]], j=1..nF)], [seq(Lm[2*j][cols[j]], j=1..nF)]:
+    sm := [seq(map(t-&gt;support(expand(F[j]*t), vars), mon[j]), j=1..nF)]:
+    V0 := convert(map(op, map(op@convert, sm, set)), set): # set of all monomials in the expanded system
+    E := convert(V0 minus convert(RB, set), list): # list of excessive monomials
+    sm := Vector(sm):
+    rm := map(e-&gt;select(i-&gt;member(e, sm[i]), {$ 1..op(1, sm)}), E):
+    np := [seq(`+`(seq(nops(select(has, rm, rm[j][i])), i=1..nops(rm[j]))), j=1..nops(rm))]:
+    ss := (i, j, rm, np)-&gt;(nops(rm[i]) &gt; nops(rm[j])) or (nops(rm[i]) = nops(rm[j]) and np[i] &gt; np[j]):
+
+    ### reorder excessive monomials so that first are monomials requiring setup of smaller number of parameters
+    prm := sort([$ 1..nops(E)], (i, j)-&gt;ss(i, j, rm, np)):
+    E := E[prm]: # sorted list of excessive monomials
+
+    ### start adjusting parameters
+    for e in E do
+        Lm := seq(poly2matrix(H1[.., j], nG, vars), j=1..nF):
+        L, mon := [seq(Lm[2*j-1], j=1..nF)], [seq(Lm[2*j], j=1..nF)]:
+        if nops(indets(L)) = 0 then break: end if: # nothing to adjust
+        sm := [seq(map(t-&gt;support(expand(F[j]*t), vars), mon[j]), j=1..nF)]:
+        rm := map(x-&gt;{ListTools[SearchAll](1, map(y-&gt;nops(y intersect {e}), x))}, sm):
+        leqs := {seq(op(map(k-&gt;op(convert(L[j][.., k], set)), rm[j])), j=1..nF)}:
+        sol := msolve(leqs, pp):
+        if nops({sol}) = 0 then next: end if:
+        H1 := map(expand@eval, H1, sol) mod pp:
+    end do:
+
+    constructTemplate(H1, F, vars, RB):
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-output="false" labelreference="L4433" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if the action matrix found
+isActionMatrixFound := proc(T::Matrix, M::Matrix, aB::list, B::list, nG::posint, pp::nonnegint)
+    local tM, T1, deg := nops(B), m := deg - nG, r:
+    tM := Gaussjord(M, 'r') mod pp: # r is for rank
+    T1 := &lt;-tM[r-nG+1..r, -deg..-1], Matrix(m, deg, {seq((m-k+1, ListTools[Search](aB[-k], B)) = 1, k=1..m)})&gt; mod pp:
+    LinearAlgebra[Equal](T, T1):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4935" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Schur complement reduction of the template
+SchurReduction := proc(M::Matrix, mon, nE::nonnegint, pp::nonnegint, pols::list)
+    local rg, crg, m, M1, bs, M2, tM2, M3, tM3, M4, basis, lindep, B1, B2, B3, B4, iB1:
+    if pols = [] then return M: end if:
+    rg := [seq(op([$ add(op(1, mon[i]), i=1..p-1)+1..add(op(1, mon[i]), i=1..p)]), p in pols)]:
+    m := nops(rg):
+    crg := [op({$ 1..op([1, 1], M)} minus {op(rg)})]:
+    M1 := &lt;M[rg, ..], M[crg, ..]&gt;:
+    M2 := M1[1..m, 1..nE]:
+    tM2 := Gaussjord(M2^%T, 'r') mod pp:
+    basis := map(i-&gt;ListTools[Search](1, convert(tM2[i], list)), {$ 1..r}):
+    lindep := convert({$ 1..op([1, 2], tM2)} minus basis, list):
+    M3 := &lt;M1[[op(basis)], ..], M1[[op(lindep)], ..], M1[m+1..-1, ..]&gt;:
+    tM3 := Gaussjord(M3[1..m, 1..nE], 'r') mod pp:
+    basis := map(i-&gt;ListTools[Search](1, convert(tM3[i], list)), {$ 1..r}):
+    lindep := convert({$ 1..op([1, 2], tM3)} minus basis, list):
+    M4 := &lt;M3[.., [op(basis)]]|M3[.., [op(lindep)]]|M3[.., nE+1..-1]&gt;:
+    B1, B2, B3, B4 := M4[1..r, 1..r], M4[1..r, r+1..-1], M4[r+1..-1, 1..r], M4[r+1..-1, r+1..-1]:
+    iB1 := LinearAlgebra[Modular][Inverse](pp, B1):
+    B4 - B3.iB1.B2 mod pp:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4450" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### remove dependent rows and columns from the template
+LinDepReduction := proc(M::Matrix, pp::nonnegint)
+    local r, tM, M1, tM1, basis, r2del, c2del:
+    ### remove linearly dependent rows
+    tM := Gaussjord(M^%T, 'r') mod pp:
+    basis := map(i-&gt;ListTools[Search](1, convert(tM[i], list)), {$ 1..r}):
+    r2del := convert({$ 1..op([1,2], tM)} minus basis, list):
+    M1 := M[remove(i-&gt;is(i in r2del), [$ 1..op([1,1], M)]), ..]:
+    ### remove linearly dependent columns
+    tM1 := Gaussjord(M1, 'r') mod pp:
+    basis := map(i-&gt;ListTools[Search](1, convert(tM1[i], list)), {$ 1..r}):
+    c2del := convert({$ 1..max(basis)} minus basis, list):
+    M1[.., remove(i-&gt;is(i in c2del), [$ 1..op([1,2], M1)])], r2del, c2del:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4821" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### rectify monomial ordering by heuristics
+rectTord := proc(F::{list,set,Vector}, vars::list, Ts::list, pp::nonnegint)
+    local nF := nops(F), dg, wt, nn, GBs, Ws:
+    dg := [seq(add(map(degree, F, vr))/nF, vr in vars)]:
+    wt := map(d-&gt;1/d, dg):
+    nn := lcm(op(map(denom, wt))):
+    wt := nn*wt:
+    GBs := map(x-&gt;Groebner[Basis](F, x, characteristic=pp), Ts):
+    Ws := [op({seq(getTord(GBs[i], Groebner[LeadingMonomial](GBs[i], Ts[i]))[1], i=1..nops(GBs))})]:
+    Ws := map(z-&gt;zip((x, y)-&gt;x*y, z, wt), Ws):
+    map(x-&gt;wdeg(x, vars), Ws):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4546" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### filter out some quotient space bases
+filterBases := proc(F::{list,set,Vector}, QBs::list, nQBs::posint, ff::numeric)
+    local mF, Bs, prm, n := round(ff*nQBs):
+    mF := convert(poly2matrix(F, nops(F), indets(F))[2], set): # set of all monomials in F
+    Bs := map(x-&gt;nops(convert(x, set) intersect mF), QBs):
+    prm := sort(Bs, `&gt;`, output=permutation):
+    print(cat(n, ` quotient space bases removed`)):
+    [op(1..nQBs-n, prm)]:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4537" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### initialize minimal problem
+iniProb := proc(prob::string, qb::nonnegint, ff::numeric, pn::posint)
+    local F, vF, pp, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs:
+    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
+    F, pp := eval(cat(F_, prob)), pn:
+    vF := Vector(F):
+    if Groebner[HilbertDimension](F, characteristic=pp) &lt;&gt; 0 then error(&quot;The problem is expected to have infinitely many solutions&quot;): end if:
+    vars := indets(F):
+    if qb = 1 then # use Grobner fan or a part of it
+        pp, Ts, CMs := readCM(prob): # read change matrices and monomial orderings
+        nQBs := nops(CMs):
+        print(cat(nQBs, ` change matrices loaded`)):
+        GBs := [seq(map(expand, convert(CMs[i].vF, list)) mod pp, i=1..nQBs)]:
+        QBs := [seq(Groebner[NormalSet](GBs[i], Ts[i])[1], i=1..nQBs)]: # compute quotient space bases
+        q := filterBases(F, QBs, nQBs, ff):
+        CMs, GBs, Ts, QBs := [seq(CMs[i], i in q)], [seq(GBs[i], i in q)], [seq(Ts[i], i in q)], [seq(QBs[i], i in q)]:
+    elif qb = 2 then # use non-standard bases
+        QBs := readBases(prob):
+        nQBs := nops(QBs):
+        print(cat(nQBs, ` quotient space bases loaded`)):
+        tord := tdeg(op(vars)):
+        GC := Groebner[Basis](F, tord, characteristic=pp, output=extended): # compute Grobner bases and change matrices
+        G, CM := GC[1], Matrix(GC[2]):
+        q := filterBases(F, QBs, nQBs, ff):
+        CMs, GBs, Ts, QBs := [seq(CM, i in q)], [seq(G, i in q)], [seq(tord, i in q)], [seq(QBs[i], i in q)]:
+    else # qb = 0
+        Ts := map(x-&gt;tdeg(op(x)), combinat[permute](vars)):
+        Ts := rectTord(F, [op(vars)], Ts, pp):
+        GC := map(x-&gt;[Groebner[Basis](F, x, characteristic=pp, output=extended)], Ts): # compute Grobner bases and change matrices
+        GBs, CMs := map(x-&gt;x[1], GC), map(x-&gt;Matrix(x[2]), GC):
+        nQBs := nops(GBs):
+        QBs := [seq(Groebner[NormalSet](GBs[i], Ts[i])[1], i=1..nQBs)]: # compute quotient space bases
+        q := {seq(ListTools[Search](QBs[i], QBs), i=1..nQBs)}: # remove repeated bases
+        CMs, GBs, Ts, QBs := [seq(CMs[i], i in q)], [seq(GBs[i], i in q)], [seq(Ts[i], i in q)], [seq(QBs[i], i in q)]:
+        print(cat(nops(QBs), ` quotient space bases computed (`, nQBs, `)`)):
+    end if:
+    print(cat(`The problem is expected to have `, nops(QBs[1]), ` solutions`)):
+    return pp, F, vars, GBs, Ts, QBs, CMs:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4461" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### main function, find templates for a given minimal problem
+TemplateFinder := proc(prob::string, {quo_bases::nonnegint:=0, action_vars::list({posint,negint}):=[], parts::[posint,posint]:=[1,1], schur_pols::list({posint,negint}):=[], filter_frac::numeric:=0, deg_over_min::nonnegint:=0, prime_number:=32749})
+    local F, pp, vars, avars, av, GBs, Ts, QBs, CMs, Gr, tord, i, j, k, H, mon, M, V, aB, B, RB, T, G, C, fl, m, n, mo := 10^6, no, sp, spo := -1, N, nv, nG, deg, q, irng, nk, QB, CM, tord1:
+    pp, F, vars, GBs, Ts, QBs, CMs := iniProb(prob, quo_bases, filter_frac, prime_number):
+    avars := `if`(nops(action_vars)=0, vars, map(a-&gt;vars[a], action_vars)):
+    q := iquo(nops(QBs), parts[1]):
+    irng := [$ 1+(parts[2]-1)*q..`if`(parts[2]=parts[1], nops(QBs), parts[2]*q)]:
+    nv, deg, nk := nops(avars), nops(QBs[1]), nops(irng):
+    N := 100/(nk*nv):
+    for k from 1 to nk do
+        i := irng[k]:
+        Gr, tord, QB, CM := GBs[i], Ts[i], QBs[i], CMs[i]:
+        tord1 := op(1, tord):
+        for j from 1 to nv do
+            av := avars[j]:
+            aB, B, RB, T, G, C := monPartition(av, Gr, tord, pp, QB):
+            nG := nops(G):
+            H := `if`(quo_bases = 2, matrixH(F, G, vars, pp, deg_over_min), matrixHni(F, G, C, CM, vars, pp)): # construct matrix H
+            mon, M, V := adjustParams(F, H, RB, vars, pp): # adjust parameters and return template M and monomial vector V
+            M := SchurReduction(M, mon, op([1,2], M)-deg-nG, pp, schur_pols): # reduce template by the Schur complement reduction
+            M := LinDepReduction(M, pp)[1]: # remove linearly dependent rows and columns from M
+            fl := isActionMatrixFound(T, M, aB, B, nG, pp): # check if M is a template (optional)
+            m, n := op(1, M): # template dimension
+            sp := sparsity(M): # template sparsity
+            if fl and (m &lt; mo or (m = mo and sp &gt; spo)) then
+                mo, no, spo := m, n, sp:
+                print(sprintf(&quot;Smaller or sparser template found: [%d,%d],%a,%a,%a&quot;, m, n, evalf(sp,3), av, `if`(quo_bases=2, i, tord1))):
+                saveData(prob, [m, n], evalf(sp,5), pp, vars, av, tord, B, mon, is(quo_bases&lt;&gt;2)):
+            elif not fl then # should never get here
+                error(&quot;Invalid action matrix, %1,%2,%3&quot;, i, av, tord):
+            end if:
+            print(sprintf(&quot;%d%s,[%d,%d],%a,%a,%a&quot;, round(((k - 1)*nv + j)*N), &quot;%&quot;, m, n, evalf(sp,3), av, `if`(quo_bases=2, i, tord1))):
+        end do:
+    end do:
+    print(sprintf(&quot;Best template: [%d,%d],%a&quot;, mo, no, evalf(spo,3))):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L4833" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4456" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4439" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save
+eigSolver,
+isLinIndep,
+testBasis,
+iniMonSet,
+neighborMons,
+genBasis,
+saveBases,
+readBases,
+BasisFinder,
+writeGfan,
+readGfan,
+writeCM,
+readCM,
+getTord,
+saveData,
+readData,
+srt,
+poly2matrix,
+permuteColumns,
+sparsity,
+matrixS,
+quotients,
+monPartition,
+matrixH,
+matrixHni,
+syzModule,
+matrixHsyz,
+support,
+fixTemplate,
+constructTemplate,
+adjustParams,
+isActionMatrixFound,
+SchurReduction,
+LinDepReduction,
+rectTord,
+filterBases,
+iniProb,
+TemplateFinder,
+&quot;EliminationTemplates.m&quot;:</Text-field>
+</Input>
+</Group>
+<Group hide-output="false" labelreference="L4441" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4440" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4836" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4837" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4838" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4936" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4937" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4938" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4939" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4940" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block>
+</Worksheet>
