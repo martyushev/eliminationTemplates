@@ -10,7 +10,7 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_7p_fr_1s(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = std_relpose_7p_fr_1s_colpiv_sprs(C); % solve polynomial system
+        [xx, yy, zz] = std_relpose_7p_fr_1s_colpiv(C); % solve polynomial system
         if isempty(xx); continue; end
         ww = arrayfun(@(j) get_w(C,xx(j),yy(j),zz(j)), 1:length(xx));
         I = find(ww > 0);

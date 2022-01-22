@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_stitching(data); % compute coefficients of polynomial system
-        [xx, yy] = nstd_stitching_colpiv_sprs(C); % solve polynomial system
+        [xx, yy] = nstd_stitching_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME

@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_pose_quiver(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = std_pose_quiver_colpiv_sprs(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_pose_quiver_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME

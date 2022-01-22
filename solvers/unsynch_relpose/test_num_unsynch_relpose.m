@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_unsynch_relpose(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_unsynch_relpose_colpiv_sprs(C); % solve polynomial system
+        [ww, xx, yy, zz] = nstd_unsynch_relpose_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME

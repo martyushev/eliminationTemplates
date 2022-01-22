@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_gp4p_scale(data); % compute coefficients of polynomial system
-        [x1x1, x2x2, x3x3, x4x4, x5x5] = std_gp4p_scale_colpiv_sprs(C); % solve polynomial system
+        [x1x1, x2x2, x3x3, x4x4, x5x5] = std_gp4p_scale_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(x1x1); continue; end
     catch ME

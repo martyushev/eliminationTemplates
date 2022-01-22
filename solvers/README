@@ -1,4 +1,4 @@
-Collection of 33 state-of-the-art solvers for minimal problems in geometric computer vision.
+Collection of state-of-the-art solvers for minimal problems in geometric computer vision.
 
 If you use these solvers in your research, please cite the following work:
 
@@ -49,6 +49,7 @@ Folders (minimal problems):
 31) l2_3view_triang: relaxed L2 3-view triangulation problem
 32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
 33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
+34) relpose_7p_r1r2: 7-point relative pose estimation with two unknown radial distortions
 _helpers: auxiliary functions that are common for several problems
 _results: output data (mat-files and figures)
 
@@ -57,7 +58,7 @@ Each problem folder contains at least 5 m-files:
 
 1) inidata_prob: generates random initial data
 2) coefs_prob: computes initial Macaulay (coefficient) matrix
-3) (n)std_prob(_colpiv)_sprs: the solver (std/nstd - standard/non-standard quotient space basis, colpiv - column-pivoting strategy)
+3) (n)std_prob(_colpiv): the solver (std/nstd - standard/non-standard quotient space basis, colpiv - column-pivoting strategy)
 4) test_num_prob: evaluates speed and numerical accuracy of the solver
 5) histo_num_prob: plots numerical error histogram
 

@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_pose_35pt(data); % compute coefficients of polynomial system
-        [xx, yy] = std_pose_35pt_sprs(C); % solve polynomial system
+        [xx, yy] = std_pose_35pt(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME

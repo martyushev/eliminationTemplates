@@ -12,7 +12,7 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_7p_fr(data); % compute coefficients of polynomial system
-        [vv, ww, xx, yy, zz] = std_relpose_7p_fr_colpiv_sprs(C); % solve polynomial system I = find(not(imag( sol(1,:) )) & sol(1,:) > 0 & sol(5,:) >= -1 & sol(5,:) <= 1);
+        [vv, ww, xx, yy, zz] = std_relpose_7p_fr_colpiv(C); % solve polynomial system
         if isempty(vv); continue; end
         ff = 1./sqrt(vv);
         [F,E] = esse_relpose_7p_fr(ff,ww,xx,yy,zz,M);

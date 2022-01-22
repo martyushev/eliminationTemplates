@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_8ptF_radial_1s(data); % compute coefficients of polynomial system
-        [xx, yy] = nstd_8ptF_radial_1s_sprs(C); % solve polynomial system
+        [xx, yy] = nstd_8ptF_radial_1s(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME

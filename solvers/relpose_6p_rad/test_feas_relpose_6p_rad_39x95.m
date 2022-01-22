@@ -10,7 +10,7 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_6p_rad(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_relpose_6p_rad_colpiv_sprs_39x95(C); % solve polynomial system
+        [ww, xx, yy, zz] = nstd_relpose_6p_rad_colpiv_39x95(C); % solve polynomial system
         if isempty(ww); continue; end
         E = esse_relpose_6p_rad(ww,xx,yy,zz,M);
     catch ME

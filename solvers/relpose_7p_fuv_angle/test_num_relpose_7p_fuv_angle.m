@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_relpose_7p_fuv_angle(data); % compute coefficients of polynomial system
-        [aa, bb, pp] = nstd_relpose_7p_fuv_angle_colpiv_sprs(C); % solve polynomial system
+        [aa, bb, pp] = nstd_relpose_7p_fuv_angle_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(aa); continue; end
     catch ME

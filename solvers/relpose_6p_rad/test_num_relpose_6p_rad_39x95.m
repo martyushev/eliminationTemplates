@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         [C,~] = coefs_relpose_6p_rad(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_relpose_6p_rad_colpiv_sprs_39x95(C); % solve polynomial system
+        [ww, xx, yy, zz] = nstd_relpose_6p_rad_colpiv_39x95(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME

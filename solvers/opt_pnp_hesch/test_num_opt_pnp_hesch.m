@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_opt_pnp_hesch(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = std_opt_pnp_hesch_colpiv_sprs(C); % solve polynomial system
+        [xx, yy, zz] = std_opt_pnp_hesch_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME

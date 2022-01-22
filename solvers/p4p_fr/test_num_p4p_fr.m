@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_p4p_fr(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = std_p4p_fr_colpiv_sprs(C); % solve polynomial system
+        [ww, xx, yy, zz] = std_p4p_fr_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME

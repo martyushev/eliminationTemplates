@@ -10,7 +10,7 @@ for i = 1:N
 
     try
         C = coefs_rdist9p(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_rdist9p_colpiv_sprs(C); % solve polynomial system
+        [ww, xx, yy, zz] = nstd_rdist9p_colpiv(C); % solve polynomial system
         if isempty(ww); continue; end
     catch ME
         continue;

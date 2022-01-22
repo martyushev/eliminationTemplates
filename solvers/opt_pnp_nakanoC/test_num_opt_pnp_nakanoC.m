@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_opt_pnp_nakanoC(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = nstd_opt_pnp_nakanoC_colpiv_sprs(C); % solve polynomial system
+        [xx, yy, zz] = nstd_opt_pnp_nakanoC_colpiv(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME
