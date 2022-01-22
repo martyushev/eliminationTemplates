@@ -1,0 +1,8 @@
+[87, 114]
+.82456
+32749
+[x, y, z]
+z
+wdeg([6, 5, 14],[x, y, z])
+[y^6, x^3*y^2, z^2, x^2*y^3, x*y^4, x^2*z, y^5, z*x*y, x^4, y^2*z, y*x^3, y^2*x^2, x*y^3, y^4, z*x, z*y, x^3, y*x^2, x*y^2, y^3, z, x^2, x*y, y^2, x, y, 1]
+[Vector(29, [1,x,y,z,x^2*z,x*z^2,y*x^3,y*x^2*z,y*z^2*x,x^2,z*x,x*y,z*y,y^2*z^2,y^2,z^2,x*y^3,y^3,y^2*z,z*x*y,x*y^2,y*x^2,x^3*z,x^2*z^2,x^3,y^3*z,y^4,y^2*x*z,y^2*x^2]), Vector(29, [1,x,y,z,x^2*z,x*z^2,y*x^3,y*x^2*z,y*z^2*x,x^2,z*x,x*y,z*y,y^2*z^2,y^2,z^2,x*y^3,y^3,y^2*z,z*x*y,x*y^2,y*x^2,x^3*z,x^2*z^2,x^3,y^3*z,y^4,y^2*x*z,y^2*x^2]), Vector(29, [1,x,y,z,x^2*z,x*z^2,y*x^3,y*x^2*z,y*z^2*x,x^2,z*x,x*y,z*y,y^2*z^2,y^2,z^2,x*y^3,y^3,y^2*z,z*x*y,x*y^2,y*x^2,x^3*z,x^2*z^2,x^3,y^3*z,y^4,y^2*x*z,y^2*x^2])]
