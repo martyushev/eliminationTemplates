@@ -91,17 +91,11 @@
 <Group hide-output="false" labelreference="L29" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
 with(LinearAlgebra):
-with(Groebner):
-infolevel[GroebnerBasis] := 1:
-read &quot;D:/CurrentWork/DBs/Routines.m&quot;:</Text-field>
+with(Groebner):</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L3887" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Digits := 15: #### accuracy of floating-point calculations</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L3886" drawlabel="true">
@@ -124,20 +118,8 @@ eq3 := 555*x^3*z^2 + 1759*x^3*z + 1034*x^3 + 442*x^2*y*z^2 + 1619*x^2*y*z + 1478
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYmLUYjNiotRiw2JVEieEYnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieUYnRi9GMkZXLUYsNiVRInpGJ0YvRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOUY5LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRl1vRmBvRjk=">NyVJInhHNiJJInlHRiRJInpHRiQ=</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-output="false" labelreference="L4069" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4070" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L4020" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_8ptF_radial := eqs:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_8ptF_radial, &quot;../F_8ptF_radial.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
@@ -154,8 +136,6 @@ eq3 := 555*x^3*z^2 + 1759*x^3*z + 1034*x^3 + 442*x^2*y*z^2 + 1619*x^2*y*z + 1478
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(eqs, tord, characteristic=3001):
 nops(Gr);</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">basis:       0.000</Text-field>
-</Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjMTFGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiM2</Equation></Text-field>
 </Output>
 </Group>
@@ -186,6 +166,30 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4063" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_8ptF_radial := eqs:</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_8ptF_radial, &quot;F_8ptF_radial.m&quot;:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L4073" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4074" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4075" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4076" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

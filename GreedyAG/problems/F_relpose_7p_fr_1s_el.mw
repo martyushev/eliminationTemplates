@@ -94,52 +94,11 @@ with(LinearAlgebra):
 with(Groebner):</Text-field>
 </Input>
 </Group>
+<Group hide-output="false" labelreference="L4082" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
+</Input>
+</Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L3898" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eq1 := -538*x^2 - 1855*x*y - 1336*x*z - 1160*x*w - 932*x - 889*y^2 - 1111*y*z - 1587*y*w - 1360*y - 222*z^2 - 898*z*w - 830*z - 478*w^2 - 782*w - 534:
-eq2 := -526*x^2 - 501*x*y - 1787*x*z - 759*x*w - 2121*x + 181*y^2 - 296*y*z + 722*y*w - 1389*y - 565*z^2 - 208*z*w - 1633*z + 705*w^2 - 2017*w - 1392:
-eq3 := -114*x^2 + 325*x*y - 514*x*z + 352*x*w - 626*x + 1047*y^2 + 625*y*z + 2318*y*w + 160*y - 400*z^2 + 939*z*w - 923*z + 957*w^2 - 194*w - 743:
-eq4 := 7455*x^3 + 20475*x^2*y + 5764*x^2*z - 15685*x^2*w + 14955*x^2 + 50104*x*y^2 + 62132*x*y*z - 798*x*y*w - 5312*x*y - 36177*x*z^2 - 34338*x*z*w + 3948*x*z - 16868*x*w^2 - 45503*x*w + 500*x + 30856*y^3 + 69071*y^2*z + 51485*y^2*w + 4243*y^2 + 7907*y*z^2 + 67851*y*z*w + 35378*y*z + 22815*y*w^2 - 23221*y*w - 23232*y - 15982*z^3 - 29085*z^2*w - 22064*z^2 - 14168*z*w^2 - 10691*z*w + 5811*z + 19946*w^3 + 37087*w^2 + 4761*w + 40:
-eq5 := -1380*x^3 - 6783*x^2*y + 5249*x^2*z - 1871*x^2*w - 24493*x^2 - 8655*x*y^2 + 37697*x*y*z + 5315*x*y*w - 61525*x*y + 28880*x*z^2 + 24068*x*z*w + 27680*x*z + 12126*x*w^2 + 22362*x*w - 56276*x - 1166*y^3 + 50568*y^2*z + 12181*y^2*w - 60751*y^2 + 57110*y*z^2 + 42154*y*z*w + 29414*y*z + 12781*y*w^2 + 39287*y*w - 65199*y - 10756*z^3 - 39532*z^2*w + 69620*z^2 - 12702*z*w^2 + 162139*z*w + 40862*z + 13722*w^3 + 104463*w^2 + 71157*w - 12726:
-eq6 := -1545984*x^4 - 7227158*x^3*y - 5722646*x^3*z - 4525840*x^3*w - 3365195*x^3 - 11616242*x^2*y^2 - 18928411*x^2*y*z - 18430647*x^2*y*w - 14567250*x^2*y - 7359002*x^2*z^2 - 16984872*x^2*z*w - 13659231*x^2*z - 5701370*x^2*w^2 - 5606445*x^2*w + 223638*x^2 - 7860128*x*y^3 - 20365386*x*y^2*z - 21927918*x*y^2*w - 17144976*x*y^2 - 16541942*x*y*z^2 - 39120944*x*y*z*w - 30261673*x*y*z - 17490812*x*y*w^2 - 22591028*x*y*w - 4681071*x*y - 4511746*x*z^3 - 17370385*x*z^2*w - 13097088*x*z^2 - 17077380*x*z*w^2 - 24978406*x*z*w - 7073471*x*z - 2692548*x*w^3 - 2294868*x*w^2 + 5689753*x*w + 4369046*x - 1896596*y^4 - 6772963*y^3*z - 7796691*y^3*w - 5961937*y^3 - 8420702*y^2*z^2 - 20938874*y^2*z*w - 15688927*y^2*z - 10890701*y^2*w^2 - 14875789*y^2*w - 3825253*y^2 - 4630113*y*z^3 - 18147178*y*z^2*w - 13313286*y*z^2 - 19833999*y*z*w^2 - 28201347*y*z*w - 7979256*y*z - 5251090*y*w^3 - 8623201*y*w^2 - 123457*y*w + 2627992*y - 972286*z^4 - 5327753*z^3*w - 3841532*z^3 - 9327879*z^2*w^2 - 13457845*z^2*w - 4064120*z^2 - 5192206*z*w^3 - 10474507*z*w^2 - 3885094*z*w + 761783*z - 114884*w^4 + 952840*w^3 + 5610445*w^2 + 6768932*w + 2279640:
-eq7 := -620220*x^4 - 3311290*x^3*y - 4771978*x^3*z - 1449266*x^3*w + 1142268*x^3 - 7529344*x^2*y^2 - 20873840*x^2*y*z - 7744640*x^2*y*w + 3230836*x^2*y - 13106758*x^2*z^2 - 14177480*x^2*z*w - 4560266*x^2*z - 593338*x^2*w^2 + 6855488*x^2*w + 7966324*x^2 - 7671208*x*y^3 - 29820306*x*y^2*z - 14183607*x*y^2*w + 326520*x*y^2 - 36143277*x*y*z^2 - 45716509*x*y*z*w - 20066213*x*y*z - 7395320*x*y*w^2 + 9810404*x*y*w + 18273829*x*y - 13577226*x*z^3 - 29092928*x*z^2*w - 18221257*x*z^2 - 14993034*x*z*w^2 - 7146411*x*z*w + 9726233*x*z + 521168*x*w^3 + 11597758*x*w^2 + 21883932*x*w + 10357736*x - 2484270*y^4 - 11904388*y^3*z - 7313363*y^3*w - 1539398*y^3 - 20280579*y^2*z^2 - 30861595*y^2*z*w - 15345112*y^2*z - 7423833*y^2*w^2 + 1219477*y^2*w + 8797284*y^2 - 14448605*y*z^3 - 37216509*y*z^2*w - 23201755*y*z^2 - 24675183*y*z*w^2 - 19455979*y*z*w + 6057869*y*z - 2632218*y*w^3 + 6917146*y*w^2 + 21894037*y*w + 11846050*y - 3703074*z^4 - 13695711*z^3*w - 9388010*z^3 - 15416609*z^2*w^2 - 17434460*z^2*w - 1372520*z^2 - 5264986*z*w^3 - 1721209*z*w^2 + 13406997*z*w + 9391814*z + 335092*w^4 + 5757068*w^3 + 14930438*w^2 + 13653662*w + 4225818:
-eq8 := -1096623*x^4 - 1476328*x^3*y - 4741642*x^3*z - 2829530*x^3*w - 4701415*x^3 + 1728463*x^2*y^2 - 8527168*x^2*y*z + 1310080*x^2*y*w - 3910173*x^2*y - 6259212*x^2*z^2 - 11958558*x^2*z*w - 14844171*x^2*z - 208655*x^2*w^2 - 5704456*x^2*w - 6711200*x^2 + 3080316*x*y^3 - 2326266*x*y^2*z + 10474714*x*y^2*w + 5828122*x*y^2 - 9154920*x*y*z^2 - 8976569*x*y*z*w - 15593689*x*y*z + 12075468*x*y*w^2 + 13069968*x*y*w - 571121*x*y - 3525318*x*z^3 - 11961252*x*z^2*w - 12866085*x*z^2 - 6863879*x*z*w^2 - 19696894*x*z*w - 13717388*x*z + 4447838*x*w^3 + 8832924*x*w^2 + 784373*x*w - 3210362*x + 1066084*y^4 + 1133118*y^3*z + 5874180*y^3*w + 4813832*y^3 - 2248845*y^2*z^2 + 3677339*y^2*z*w + 550417*y^2*z + 12005394*y^2*w^2 + 18959610*y^2*w + 6171303*y^2 - 2714688*y*z^3 - 6412743*y*z^2*w - 7678404*y*z^2 + 4050638*y*z*w^2 + 1261457*y*z*w - 4065319*y*z + 10358416*y*w^3 + 25168783*y*w^2 + 17025479*y*w + 2104416*y - 692821*z^4 - 3503552*z^3*w - 3408145*z^3 - 4320958*z^2*w^2 - 9362414*z^2*w - 5634307*z^2 + 1433921*z*w^3 + 1513636*z*w^2 - 3682166*z*w - 3283941*z + 2959390*w^4 + 10952149*w^3 + 12344643*w^2 + 3856876*w - 215880:
-eq9 := -185922*x^4 + 1187740*x^3*y - 1030046*x^3*z + 986579*x^3*w - 1130426*x^3 + 5609842*x^2*y^2 + 2290249*x^2*y*z + 10551874*x^2*y*w + 2636969*x^2*y - 1733974*x^2*z^2 + 2358811*x^2*z*w - 3989696*x^2*z + 3576005*x^2*w^2 + 708851*x^2*w - 2832790*x^2 + 6745344*x*y^3 + 9942840*x*y^2*z + 21014816*x*y^2*w + 11385406*x*y^2 + 1409760*x*y*z^2 + 21556628*x*y*z*w + 4755244*x*y*z + 19533622*x*y*w^2 + 19718225*x*y*w + 678252*x*y - 1174442*x*z^3 + 2005774*x*z^2*w - 4148643*x*z^2 + 10550038*x*z*w^2 + 4539464*x*z*w - 5318545*x*z + 4965532*x*w^3 + 5563309*x*w^2 - 2698764*x*w - 3064612*x + 2560044*y^4 + 7094193*y^3*z + 11794781*y^3*w + 7559219*y^3 + 5180000*y^2*z^2 + 24237518*y^2*z*w + 11916834*y^2*z + 19040339*y^2*w^2 + 23423304*y^2*w + 5166262*y^2 + 599859*y*z^3 + 12662457*y*z^2*w + 2309022*y*z^2 + 25576794*y*z*w^2 + 25550589*y*z*w + 1694557*y*z + 11753672*y*w^3 + 21169691*y*w^2 + 7708256*y*w - 854600*y - 284592*z^4 + 1148510*z^3*w - 1286949*z^3 + 7419802*z^2*w^2 + 3377648*z^2*w - 2446021*z^2 + 7802419*z*w^3 + 12336235*z*w^2 + 1035289*z*w - 2464138*z + 1585126*w^4 + 4554161*w^3 + 1096351*w^2 - 2446396*w - 1138960:
-eq10 := -85956*x^4 + 166231*x^3*y - 1832885*x^3*z - 439249*x^3*w + 2571405*x^3 + 673782*x^2*y^2 - 4938082*x^2*y*z + 503853*x^2*y*w + 9111516*x^2*y - 7505504*x^2*z^2 - 7645779*x^2*z*w + 672246*x^2*z - 30771*x^2*w^2 + 10940061*x^2*w + 11274298*x^2 + 401670*x*y^3 - 5409188*x*y^2*z + 999250*x*y^2*w + 9195934*x*y^2 - 13528266*x*y*z^2 - 10780295*x*y*z*w + 4721784*x*y*z + 3620010*x*y*w^2 + 27707468*x*y*w + 24849227*x*y - 7964822*x*z^3 - 16333118*x*z^2*w - 10550637*x*z^2 - 6164864*x*z*w^2 + 5533164*x*z*w + 12509449*x*z + 1823068*x*w^3 + 18043431*x*w^2 + 32101311*x*w + 15681570*x + 51491*y^4 - 1743120*y^3*z + 379588*y^3*w + 3058867*y^3 - 5482344*y^2*z^2 - 3842709*y^2*z*w + 4092605*y^2*z + 2659431*y^2*w^2 + 15276372*y^2*w + 13056873*y^2 - 6132744*y*z^3 - 11728160*y*z^2*w - 5117903*y*z^2 - 852124*y*z*w^2 + 15946554*y*z*w + 17439211*y*z + 4192912*y*w^3 + 24450736*y*w^2 + 37548699*y*w + 17003428*y - 2161271*z^4 - 7469889*z^3*w - 5528081*z^3 - 6299511*z^2*w^2 - 5349721*z^2*w + 974421*z^2 + 409409*z*w^3 + 11674853*z*w^2 + 23043196*z*w + 11057339*z + 1468222*w^4 + 10744761*w^3 + 24533677*w^2 + 22098348*w + 6739440:
-eq11 := 205968*x^4 + 1503780*x^3*y + 1186360*x^3*z + 620702*x^3*w + 1682826*x^3 + 3945253*x^2*y^2 + 6835427*x^2*y*z + 4862085*x^2*y*w + 7974848*x^2*y + 1862274*x^2*z^2 + 3117051*x^2*z*w + 5481984*x^2*z + 593427*x^2*w^2 + 3479829*x^2*w + 2846136*x^2 + 4084987*x*y^3 + 11366307*x*y^2*z + 9558056*x*y^2*w + 12216308*x*y^2 + 9104990*x*y*z^2 + 17990694*x*y*z*w + 21237608*x*y*z + 7098098*x*y*w^2 + 17884530*x*y*w + 10533402*x*y + 1311978*x*z^3 + 7050243*x*z^2*w + 6708113*x*z^2 + 6295857*x*z*w^2 + 14044798*x*z*w + 7329527*x*z + 887842*x*w^3 + 3916512*x*w^2 + 3971558*x*w + 1259360*x + 1437098*y^4 + 5883027*y^3*z + 5474125*y^3*w + 6017420*y^3 + 8785218*y^2*z^2 + 17942665*y^2*z*w + 18174303*y^2*z + 8046401*y^2*w^2 + 16911722*y^2*w + 8556465*y^2 + 4741433*y*z^3 + 17925084*y*z^2*w + 15548384*y*z^2 + 17504155*y*z*w^2 + 33761870*y*z*w + 15082132*y*z + 4661478*y*w^3 + 14718972*y*w^2 + 13362887*y*w + 3707060*y + 643312*z^4 + 5255352*z^3*w + 3149913*z^3 + 8360467*z^2*w^2 + 14639997*z^2*w + 4939579*z^2 + 3922733*z*w^3 + 13062578*z*w^2 + 10962894*z*w + 2431638*z + 168126*w^4 + 1829113*w^3 + 2677395*w^2 + 779446*w - 98368:
-eq12 := 98448*x^4 + 1292756*x^3*y - 201196*x^3*z + 1318780*x^3*w + 3400884*x^3 + 3674072*x^2*y^2 + 62948*x^2*y*z + 6809902*x^2*y*w + 16877690*x^2*y - 4125718*x^2*z^2 + 290546*x^2*z*w + 12409818*x^2*z + 4194508*x^2*w^2 + 15711588*x^2*w + 9650260*x^2 + 3731153*x*y^3 - 1476892*x*y^2*z + 9000989*x*y^2*w + 26478012*x*y^2 - 15710397*x*y*z^2 - 3957205*x*y*z*w + 39255077*x*y*z + 10092196*x*y*w^2 + 48071822*x*y*w + 30718436*x*y - 10515138*x*z^3 - 14248346*x*z^2*w + 10577436*x*z^2 + 578492*x*z*w^2 + 35226890*x*z*w + 29274638*x*z + 4802344*x*w^3 + 24296620*x*w^2 + 29837044*x*w + 9488528*x + 1159977*y^4 - 2952520*y^3*z + 2936240*y^3*w + 13916307*y^3 - 17011628*y^2*z^2 - 10219596*y^2*z*w + 30630568*y^2*z + 4444251*y^2*w^2 + 35652942*y^2*w + 24054018*y^2 - 20917666*y*z^3 - 32617229*y*z^2*w + 15228378*y*z^2 - 9041363*y*z*w^2 + 49425773*y*z*w + 47166482*y*z + 3618850*y*w^3 + 33774500*y*w^2 + 46597930*y*w + 15066248*y - 7846140*z^4 - 18860646*z^3*w - 1423312*z^3 - 13620852*z^2*w^2 + 10945934*z^2*w + 21299416*z^2 - 830754*z*w^3 + 24796938*z*w^2 + 43866492*z*w + 16052148*z + 1723304*w^4 + 12560204*w^3 + 22996228*w^2 + 14971140*w + 3104304:
-eq13 := 339096*x^4 + 2342650*x^3*y + 1730506*x^3*z + 1910258*x^3*w + 4575102*x^3 + 5420662*x^2*y^2 + 8344302*x^2*y*z + 9449764*x^2*y*w + 18612682*x^2*y + 1519612*x^2*z^2 + 5618642*x^2*z*w + 18885188*x^2*z + 3904426*x^2*w^2 + 20723830*x^2*w + 14424312*x^2 + 5141747*x*y^3 + 11491387*x*y^2*z + 13674834*x*y^2*w + 25003153*x*y^2 + 4282159*x*y*z^2 + 17789110*x*y*z*w + 50551645*x*y*z + 12560291*x*y*w^2 + 55062645*x*y*w + 37594646*x*y - 2708273*x*z^3 - 670952*x*z^2*w + 22621906*x*z^2 + 5455105*x*z*w^2 + 53945922*x*z*w + 43842311*x*z + 3634500*x*w^3 + 31197354*x*w^2 + 45905690*x*w + 17576744*x + 1702307*y^4 + 4511055*y^3*z + 5937161*y^3*w + 11081914*y^3 + 930834*y^2*z^2 + 10412300*y^2*z*w + 33031451*y^2*z + 8396655*y^2*w^2 + 36371469*y^2*w + 25677083*y^2 - 5174174*y*z^3 - 1112055*y*z^2*w + 29479804*y*z^2 + 9818720*y*z*w^2 + 72309163*y*z*w + 58840760*y*z + 6224281*y*w^3 + 41569097*y*w^2 + 59279242*y*w + 22814390*y - 3612970*z^4 - 7371423*z^3*w + 5624312*z^3 - 3288378*z^2*w^2 + 28563074*z^2*w + 31901922*z^2 + 1935223*z*w^3 + 37894714*z*w^2 + 67465481*z*w + 29745060*z + 1400948*w^4 + 15505910*w^3 + 36049462*w^2 + 29060100*w + 7056780:
-eq14 := 226344*x^4 + 1494922*x^3*y + 1669414*x^3*z + 726206*x^3*w + 1827546*x^3 + 3987233*x^2*y^2 + 8270661*x^2*y*z + 4116339*x^2*y*w + 8209541*x^2*y + 4666288*x^2*z^2 + 4299682*x^2*z*w + 9197822*x^2*z + 104486*x^2*w^2 + 4830352*x^2*w + 3306706*x^2 + 4726394*x*y^3 + 14492814*x*y^2*z + 8324078*x*y^2*w + 12911162*x*y^2 + 16709580*x*y*z^2 + 18615192*x*y*z*w + 29447548*x*y*z + 3539330*x*y*w^2 + 17106910*x*y*w + 10040374*x*y + 6829544*x*z^3 + 11060310*x*z^2*w + 18400032*x*z^2 + 3483930*x*z*w^2 + 20484616*x*z*w + 13281968*x*z - 950436*x*w^3 + 3401738*x*w^2 + 6938978*x*w + 2288608*x + 2026199*y^4 + 8357459*y^3*z + 5222363*y^3*w + 6835479*y^3 + 15819710*y^2*z^2 + 20372880*y^2*z*w + 25640180*y^2*z + 6007645*y^2*w^2 + 16406172*y^2*w + 8065173*y^2 + 14397322*y*z^3 + 28174816*y*z^2*w + 34601841*y*z^2 + 16831151*y*z*w^2 + 44339280*y*z*w + 23086759*y*z + 2655655*y*w^3 + 12686026*y*w^2 + 14390783*y*w + 3901404*y + 4671992*z^4 + 11766613*z^3*w + 14992774*z^3 + 9765068*z^2*w^2 + 27026296*z^2*w + 15313380*z^2 + 2251067*z*w^3 + 13048782*z*w^2 + 16816889*z*w + 5305418*z - 364668*w^4 + 368082*w^3 + 2704332*w^2 + 2442090*w + 523044:</Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4067" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eqs := [seq(eq||i, i=1..14)]:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4068" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYmLUYjNiwtRiw2JVEid0YnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieEYnRi9GMkZXLUYsNiVRInlGJ0YvRjJGVy1GLDYlUSJ6RidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOS8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Zgb0Zjb0Y5">NyZJIndHNiJJInhHRiRJInlHRiRJInpHRiQ=</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4069" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">[seq(map(vr-&gt;degree(eqs[i], vr), [op(vars)]), i=1..nops(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZALUYjNiYtRiw2LC1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMkY5RjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj9GNkY2LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRjlGLkY5Ri5GOS1GIzYmLUYsNiwtRjM2JFEiM0YnRjZGOUZcb0Y5RlxvRjlGXG9GU0ZWRjZGNkZYRmVuRjlGaG5GOS1GIzYmLUYsNiwtRjM2JFEiNEYnRjZGOUZjb0Y5RmNvRjlGY29GU0ZWRjZGNkZYRmVuRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0ZTRlZGNkY2RlhGZW4=">NzA3JiIiI0YkRiRGJEYjRiM3JiIiJEYmRiZGJkYlNyYiIiVGKEYoRihGJ0YnRidGJ0YnRidGJ0Yn</Equation></Text-field>
-</Output>
-</Group>
-<Group labelreference="L4078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4079" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4072" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -197,28 +156,8 @@ eqs := map(expand, [f33*y23-f23*y33,
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZALUYjNiYtRiw2LC1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMkY5RjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj9GNkY2LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRjlGLkY5Ri5GOS1GIzYmLUYsNiwtRjM2JFEiM0YnRjZGOUZcb0Y5RlxvRjlGXG9GU0ZWRjZGNkZYRmVuRjlGaG5GOS1GIzYmLUYsNiwtRjM2JFEiNEYnRjZGOUZjb0Y5RmNvRjlGY29GU0ZWRjZGNkZYRmVuRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0ZTRlZGNkY2RlhGZW4=">NzA3JiIiI0YkRiRGJEYjRiM3JiIiJEYmRiZGJkYlNyYiIiVGKEYoRihGJ0YnRidGJ0YnRidGJ0Yn</Equation></Text-field>
 </Output>
 </Group>
-<Group labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4080" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4081" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4070" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4020" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_relpose_7p_fr_1s_el := eqs:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_relpose_7p_fr_1s_el, &quot;../F_relpose_7p_fr_1s_el.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
@@ -241,7 +180,7 @@ nops(Gr);</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY8LUYjNigtSSNtbkdGJDYkUSQ0OTFGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUTEmSW52aXNpYmxlVGltZXM7RidGMS8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGOi8lKXN0cmV0Y2h5R0Y6LyUqc3ltbWV0cmljR0Y6LyUobGFyZ2VvcEdGOi8lLm1vdmFibGVsaW1pdHNHRjovJSdhY2NlbnRHRjovJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZJLUkjbWlHRiQ2JVEid0YnLyUnaXRhbGljR1EldHJ1ZUYnL0YyUSdpdGFsaWNGJ0Y0LUZNNiVRInlGJ0ZQRlNGMS1GNTYtUSIrRidGMUY4RjtGPUY/RkFGQ0ZFL0ZIUSwwLjIyMjIyMjJlbUYnL0ZLRmZuLUYjNigtRi42JFElMTQ4NUYnRjFGNEZMRjQtRk02JVEiekYnRlBGU0YxRlgtRiM2JC1JJW1zdXBHRiQ2JS1GTTYlUSJ4RidGUEZTLUYuNiRRIjJGJ0YxLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0YxRlgtRiM2KC1GLjYkUSUyNTI0RidGMUY0RmVvRjRGVUYxRlgtRiM2KC1GLjYkUSQ3MjdGJ0YxRjRGZW9GNEZdb0YxRlgtRiM2Ji1GLjYkUSUyMjc4RidGMUY0LUZjbzYlRlVGaG9GW3BGMUZYLUYjNigtRi42JFElMjY4OUYnRjFGNEZVRjRGXW9GMUZYLUYjNiYtRi42JFElMjYwOUYnRjFGNC1GY282JUZdb0Zob0ZbcEYxRlgtRiM2Ji1GLjYkUSUxMDkzRidGMUY0RkxGMUZYLUYjNiYtRi42JFEkMjMwRidGMUY0RmVvRjFGWC1GIzYmLUYuNiRRJTIwNjdGJ0YxRjRGVUYxRlgtRiM2Ji1GLjYkUSUyMTA3RidGMUY0Rl1vRjFGWC1GLjYkUSUyMzA5RidGMUYx">LDwqJkkid0c2IiIiIkkieUdGJUYmIiQiXComRiRGJkkiekdGJUYmIiUmWyIqJEkieEdGJSIiI0YmKiZGLUYmRidGJiIlQ0QqJkYtRiZGKkYmIiRGKCokRidGLiIleUEqJkYnRiZGKkYmIiUqbyMqJEYqRi4iJTRFRiQiJSQ0IkYtIiRJI0YnIiVuP0YqIiUyQCIlNEJGJg==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY8LUYjNigtSSNtbkdGJDYkUSUyOTA3RicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnRjEvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjovJSlzdHJldGNoeUdGOi8lKnN5bW1ldHJpY0dGOi8lKGxhcmdlb3BHRjovJS5tb3ZhYmxlbGltaXRzR0Y6LyUnYWNjZW50R0Y6LyUnbHNwYWNlR1EmMC4wZW1GJy8lJ3JzcGFjZUdGSS1JI21pR0YkNiVRIndGJy8lJ2l0YWxpY0dRJXRydWVGJy9GMlEnaXRhbGljRidGNC1GTTYlUSJ5RidGUEZTRjEtRjU2LVEiK0YnRjFGOEY7Rj1GP0ZBRkNGRS9GSFEsMC4yMjIyMjIyZW1GJy9GS0Zmbi1GIzYoLUYuNiRRIzkyRidGMUY0RkxGNC1GTTYlUSJ6RidGUEZTRjFGWC1GIzYkLUklbXN1cEdGJDYlLUZNNiVRInhGJ0ZQRlMtRi42JFEiMkYnRjEvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjFGWC1GIzYoLUYuNiRRJTE2MTBGJ0YxRjRGZW9GNEZVRjFGWC1GIzYoLUYuNiRRJTI1MThGJ0YxRjRGZW9GNEZdb0YxRlgtRiM2Ji1GLjYkUSQzNjNGJ0YxRjQtRmNvNiVGVUZob0ZbcEYxRlgtRiM2KC1GLjYkUSUxMzYxRidGMUY0RlVGNEZdb0YxRlgtRiM2Ji1GLjYkUSQzMjFGJ0YxRjQtRmNvNiVGXW9GaG9GW3BGMUZYLUYjNiYtRi42JFEkNTcyRidGMUY0RkxGMUZYLUYjNiYtRi42JFElMTM5OUYnRjFGNEZlb0YxRlgtRiM2Ji1GLjYkUSUyNTA2RidGMUY0RlVGMUZYLUYjNiYtRi42JFEiNUYnRjFGNEZdb0YxRlgtRi42JFElMTcwOUYnRjFGMQ==">LDwqJkkid0c2IiIiIkkieUdGJUYmIiUySComRiRGJkkiekdGJUYmIiMjKiokSSJ4R0YlIiIjRiYqJkYtRiZGJ0YmIiU1OyomRi1GJkYqRiYiJT1EKiRGJ0YuIiRqJComRidGJkYqRiYiJWg4KiRGKkYuIiRAJEYkIiRzJkYtIiUqUiJGJyIlMURGKiIiJiIlNDxGJg==</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -261,6 +200,34 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4062" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4083" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4086" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4088" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_relpose_7p_fr_1s_el := eqs:</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4089" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_relpose_7p_fr_1s_el, &quot;F_relpose_7p_fr_1s_el.m&quot;:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L4087" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

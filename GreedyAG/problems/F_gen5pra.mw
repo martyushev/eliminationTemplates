@@ -95,7 +95,7 @@ with(Groebner):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L1196" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../../top_v0.81.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L1190" drawlabel="true" applyint="true" applyrational="true">
@@ -230,7 +230,7 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L1314" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_gen5pra, &quot;../F_gen5pra.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_gen5pra, &quot;F_gen5pra.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L1313" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

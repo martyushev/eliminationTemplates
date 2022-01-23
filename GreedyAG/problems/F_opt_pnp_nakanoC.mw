@@ -94,38 +94,11 @@ with(LinearAlgebra):
 with(Groebner):</Text-field>
 </Input>
 </Group>
+<Group hide-output="false" labelreference="L4081" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
+</Input>
+</Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L3898" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eq1 := -314*x^4 + 2052*x^3*y + 416*x^3*z + 684*x^3 + 114*x^2*y^2 + 5956*x^2*y*z - 832*x^2*y + 1488*x^2*z^2 - 1996*x^2*z + 682*x^2 - 2764*x*y^3 - 2444*x*y^2*z - 944*x*y^2 + 1452*x*y*z^2 - 1880*x*y*z + 68*x*y - 148*x*z^3 + 2960*x*z^2 + 1344*x*z - 1196*x + 276*y^4 - 1616*y^3*z + 676*y^3 - 1622*y^2*z^2 - 3380*y^2*z - 548*y^2 - 56*y*z^3 + 3492*y*z^2 - 460*y*z - 1464*y - 182*z^4 - 1020*z^3 + 354*z^2 + 2308*z + 64:
-eq2 := -738*x^4 + 1064*x^3*y + 1310*x^3*z - 212*x^3 + 1952*x^2*y^2 + 3612*x^2*y*z + 3690*x^2*y + 1110*x^2*z^2 + 2420*x^2*z + 1086*x^2 + 388*x*y^3 - 242*x*y^2*z - 2632*x*y^2 - 3340*x*y*z^2 + 776*x*y*z - 776*x*y - 1290*x*z^3 + 636*x*z^2 + 638*x*z + 720*x - 282*y^4 + 512*y^3*z - 94*y^3 - 1474*y^2*z^2 - 2240*y^2*z + 1014*y^2 - 1204*y*z^3 + 2810*y*z^2 - 1064*y*z - 1926*y + 368*z^4 - 856*z^3 - 1564*z^2 + 876*z - 56:
-eq3 := -324*x^4 - 792*x^3*y + 416*x^3*z - 1162*x^3 + 208*x^2*y^2 - 266*x^2*y*z + 2612*x^2*y - 386*x^2*z^2 + 4548*x^2*z + 1854*x^2 + 2180*x*y^3 + 3364*x*y^2*z - 2194*x*y^2 - 5324*x*y*z^2 + 2632*x*y*z + 1080*x*y - 1568*x*z^3 - 2786*x*z^2 - 1180*x*z + 2470*x - 144*y^4 + 2998*y^3*z + 40*y^3 - 1074*y^2*z^2 - 3592*y^2*z + 1702*y^2 - 2266*y*z^3 - 1460*y*z^2 - 858*y*z - 848*y + 502*z^4 + 792*z^3 - 1524*z^2 - 1084*z - 294:
-eq4 := 314*x^4 - 2052*x^3*y - 1064*x^3*z + 792*x^3 - 114*x^2*y^2 - 6064*x^2*y*z - 648*x^2*y - 1284*x^2*z^2 - 2948*x^2*z - 886*x^2 + 2764*x*y^3 + 1380*x*y^2*z - 2852*x*y^2 - 500*x*y*z^2 - 528*x*y*z - 1020*x*y + 856*x*z^3 + 3808*x*z^2 - 996*x*z - 1084*x - 276*y^4 + 2180*y^3*z - 388*y^3 + 1150*y^2*z^2 - 2428*y^2*z + 1020*y^2 - 792*y*z^3 + 4200*y*z^2 + 1820*y*z - 876*y - 182*z^4 - 1020*z^3 + 354*z^2 + 2308*z + 64:
-eq5 := 738*x^4 - 416*x^3*y - 1310*x^3*z - 416*x^3 - 1844*x^2*y^2 - 3816*x^2*y*z + 2738*x^2*y - 1110*x^2*z^2 - 940*x^2*z - 1194*x^2 + 676*x*y^3 - 710*x*y^2*z - 2160*x*y^2 + 2632*x*y*z^2 + 2256*x*y*z - 3116*x*y + 1290*x*z^3 + 2136*x*z^2 + 314*x*z + 848*x - 282*y^4 - 40*y^3*z - 94*y^3 + 2322*y^2*z^2 - 3304*y^2*z + 1014*y^2 + 1568*y*z^3 + 3762*y*z^2 + 504*y*z - 1926*y - 368*z^4 - 148*z^3 + 716*z^2 + 1464*z - 56:
-eq6 := -324*x^4 + 684*x^3*y - 212*x^3*z - 1162*x^3 - 1272*x^2*y^2 + 1218*x^2*y*z + 2408*x^2*y + 1094*x^2*z^2 + 4440*x^2*z + 1854*x^2 - 1616*x*y^3 - 3836*x*y^2*z - 3146*x*y^2 + 4476*x*y*z^2 - 912*x*y*z - 1200*x*y + 1204*x*z^3 - 1834*x*z^2 + 388*x*z + 2470*x + 144*y^4 - 2998*y^3*z + 512*y^3 + 1074*y^2*z^2 - 204*y^2*z - 638*y^2 + 2266*y*z^3 - 1312*y*z^2 - 94*y*z - 720*y - 502*z^4 - 56*z^3 + 816*z^2 - 1196*z - 294:</Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4067" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eqs := [seq(eq||i, i=1..6)]:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4068" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYmLUYjNiotRiw2JVEieEYnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieUYnRi9GMkZXLUYsNiVRInpGJ0YvRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOUY5LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRl1vRmBvRjk=">NyVJInhHNiJJInlHRiRJInpHRiQ=</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-output="false" labelreference="L4069" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4079" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4080" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -162,26 +135,6 @@ eqs := map(expand, [P[1,2], P[1,3], P[2,3], Q[1,2], Q[1,3], Q[2,3]]):</Text-fiel
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4076" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group labelreference="L4078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4020" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_opt_pnp_nakanoC := eqs:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_opt_pnp_nakanoC, &quot;../F_opt_pnp_nakanoC.m&quot;:</Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">tord := tdeg(op(vars));</Text-field>
 </Input>
@@ -202,7 +155,7 @@ nops(Gr);</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzZobi1GIzYmLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEieEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21uR0YkNiRRIjNGJy9GOFEnbm9ybWFsRicvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnRj4vJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkkvJSlzdHJldGNoeUdGSS8lKnN5bW1ldHJpY0dGSS8lKGxhcmdlb3BHRkkvJS5tb3ZhYmxlbGltaXRzR0ZJLyUnYWNjZW50R0ZJLyUnbHNwYWNlR1EmMC4wZW1GJy8lJ3JzcGFjZUdGWC1GMTYlUSJ6RidGNEY3Rj4tRkQ2LVEiK0YnRj5GR0ZKRkxGTkZQRlJGVC9GV1EsMC4yMjIyMjIyZW1GJy9GWkZcby1GIzYqLUY7NiRRJTE0NDdGJ0Y+RkMtRi42JUYwLUY7NiRRIjJGJ0Y+RkBGQy1GMTYlUSJ5RidGNEY3RkNGZW5GPkZobi1GIzYoLUY7NiRRJTIzOTlGJ0Y+RkNGY29GQy1GLjYlRmVuRmVvRkBGPkZobi1GIzYqLUY7NiRRJDk3M0YnRj5GQ0YwRkMtRi42JUZob0Zlb0ZARkNGZW5GPkZobi1GIzYqLUY7NiRRJDg1M0YnRj5GQ0YwRkNGaG9GQ0ZgcEY+RmhuLUYjNigtRjs2JFElMTQ2OUYnRj5GQ0YwRkMtRi42JUZlbkY6RkBGPkZobi1GIzYoLUY7NiRRJTIyMjlGJ0Y+RkMtRi42JUZob0Y6RkBGQ0ZlbkY+RmhuLUYjNigtRjs2JFEkMjU5RidGPkZDRmdwRkNGYHBGPkZobi1GIzYoLUY7NiRRJTIxMzFGJ0Y+RkNGaG9GQ0ZjcUY+RmhuLUYjNiYtRjs2JFElMjMzOUYnRj5GQy1GLjYlRmVuLUY7NiRRIjRGJ0Y+RkBGPkZobi1GIzYmLUY7NiRRJTIxNDdGJ0Y+RkNGLUY+RmhuLUYjNigtRjs2JFElMTE0MUYnRj5GQ0Zjb0ZDRmhvRj5GaG4tRiM2KC1GOzYkUSUxNjQwRidGPkZDRmNvRkNGZW5GPkZobi1GIzYoLUY7NiRRJTI1ODlGJ0Y+RkNGMEZDRmdwRj5GaG4tRiM2Ki1GOzYkUSQ1MDFGJ0Y+RkNGMEZDRmhvRkNGZW5GPkZobi1GIzYoLUY7NiRRJDY0M0YnRj5GQ0YwRkNGYHBGPkZobi1GIzYmLUY7NiRRJTE1NTBGJ0Y+RkNGanFGPkZobi1GIzYoLUY7NiRRJTI5ODJGJ0Y+RkNGZ3BGQ0ZlbkY+RmhuLUYjNigtRjs2JFEjNDRGJ0Y+RkNGaG9GQ0ZgcEY+RmhuLUYjNiYtRjs2JFElMjY1M0YnRj5GQ0ZjcUY+RmhuLUYjNiYtRjs2JFElMjMyOUYnRj5GQ0Zjb0Y+RmhuLUYjNigtRjs2JFElMjI3M0YnRj5GQ0YwRkNGaG9GPkZobi1GIzYoLUY7NiRRJDk0NkYnRj5GQ0YwRkNGZW5GPkZobi1GIzYmLUY7NiRRJTEyMDBGJ0Y+RkNGZ3BGPkZobi1GIzYoLUY7NiRRJTEyMzVGJ0Y+RkNGaG9GQ0ZlbkY+RmhuLUYjNiYtRjs2JFElMjcwOUYnRj5GQ0ZgcEY+RmhuLUYjNiYtRjs2JFElMTg5OEYnRj5GQ0YwRj5GaG4tRiM2Ji1GOzYkUSQ5MTlGJ0Y+RkNGaG9GPkZobi1GIzYmLUY7NiRRJTE0ODdGJ0Y+RkNGZW5GPkZobi1GOzYkUSUyODEwRidGPkY+">LGhuKiZJInhHNiIiIiRJInpHRiUiIiJGKCooRiQiIiNJInlHRiVGKEYnRigiJVo5KiZGJEYqRidGKiIlKlIjKihGJEYoRitGKkYnRigiJHQqKihGJEYoRitGKEYnRioiJGApKiZGJEYoRidGJiIlcDkqJkYrRiZGJ0YoIiVIQSomRitGKkYnRioiJGYjKiZGK0YoRidGJiIlSkAqJEYnIiIlIiVSQiokRiRGJiIlWkAqJkYkRipGK0YoIiVUNiomRiRGKkYnRigiJVM7KiZGJEYoRitGKiIlKmUjKihGJEYoRitGKEYnRigiJCwmKiZGJEYoRidGKiIkVicqJEYrRiYiJV06KiZGK0YqRidGKCIlIylIKiZGK0YoRidGKiIjVyokRidGJiIlYEUqJEYkRioiJUhCKiZGJEYoRitGKCIldEEqJkYkRihGJ0YoIiRZKiokRitGKiIlKzcqJkYrRihGJ0YoIiVONyokRidGKiIlNEZGJCIlKSo9RisiJD4qRiciJShbIiIlNUdGKA==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzZobi1GIzYmLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEieEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21uR0YkNiRRIjNGJy9GOFEnbm9ybWFsRicvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnRj4vJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkkvJSlzdHJldGNoeUdGSS8lKnN5bW1ldHJpY0dGSS8lKGxhcmdlb3BHRkkvJS5tb3ZhYmxlbGltaXRzR0ZJLyUnYWNjZW50R0ZJLyUnbHNwYWNlR1EmMC4wZW1GJy8lJ3JzcGFjZUdGWC1GMTYlUSJ6RidGNEY3Rj4tRkQ2LVEiK0YnRj5GR0ZKRkxGTkZQRlJGVC9GV1EsMC4yMjIyMjIyZW1GJy9GWkZcby1GIzYqLUY7NiRRJDgxOEYnRj5GQy1GLjYlRjAtRjs2JFEiMkYnRj5GQEZDLUYxNiVRInlGJ0Y0RjdGQ0ZlbkY+RmhuLUYjNigtRjs2JFEkNTI1RidGPkZDRmNvRkMtRi42JUZlbkZlb0ZARj5GaG4tRiM2Ki1GOzYkUSUyOTM1RidGPkZDRjBGQy1GLjYlRmhvRmVvRkBGQ0ZlbkY+RmhuLUYjNiotRjs2JFEkOTAzRidGPkZDRjBGQ0Zob0ZDRmBwRj5GaG4tRiM2KC1GOzYkUSUxNTA0RidGPkZDRjBGQy1GLjYlRmVuRjpGQEY+RmhuLUYjNigtRjs2JFEkODYxRidGPkZDLUYuNiVGaG9GOkZARkNGZW5GPkZobi1GIzYoLUY7NiRRJTIxOThGJ0Y+RkNGZ3BGQ0ZgcEY+RmhuLUYjNigtRjs2JFElMjk2MEYnRj5GQ0Zob0ZDRmNxRj5GaG4tRiM2Ji1GOzYkUSUxNDk2RidGPkZDLUYuNiVGZW4tRjs2JFEiNEYnRj5GQEY+RmhuLUYjNiYtRjs2JFElMTgxOEYnRj5GQ0YtRj5GaG4tRiM2KC1GOzYkUSQ1OTFGJ0Y+RkNGY29GQ0Zob0Y+RmhuLUYjNigtRjs2JFElMjQwM0YnRj5GQ0Zjb0ZDRmVuRj5GaG4tRiM2KC1GOzYkUSUyMjUxRidGPkZDRjBGQ0ZncEY+RmhuLUYjNiotRjs2JFEkOTk5RidGPkZDRjBGQ0Zob0ZDRmVuRj5GaG4tRiM2KC1GOzYkUSQ5MzFGJ0Y+RkNGMEZDRmBwRj5GaG4tRiM2Ji1GOzYkUSUyNDA0RidGPkZDRmpxRj5GaG4tRiM2KC1GOzYkUSUxNjI0RidGPkZDRmdwRkNGZW5GPkZobi1GIzYoLUY7NiRRIzYwRidGPkZDRmhvRkNGYHBGPkZobi1GIzYmLUY7NiRRIzcyRidGPkZDRmNxRj5GaG4tRiM2Ji1GOzYkUSUxMjg3RidGPkZDRmNvRj5GaG4tRiM2KC1GOzYkUSUyNjkwRidGPkZDRjBGQ0Zob0Y+RmhuLUYjNigtRjs2JFEkNjM5RidGPkZDRjBGQ0ZlbkY+RmhuLUYjNiYtRjs2JFElMTQxMEYnRj5GQ0ZncEY+RmhuLUYjNihGYG9GQ0Zob0ZDRmVuRj5GaG4tRiM2Ji1GOzYkUSUyMjc4RidGPkZDRmBwRj5GaG4tRiM2Ji1GOzYkUSQzNjlGJ0Y+RkNGMEY+RmhuLUYjNiYtRjs2JFElMjc4M0YnRj5GQ0Zob0Y+RmhuLUYjNiYtRjs2JFElMjMyMkYnRj5GQ0ZlbkY+RmhuLUY7NiRRIzEzRidGPkY+">LGhuKiZJInhHNiIiIiRJInpHRiUiIiJGKCooRiQiIiNJInlHRiVGKEYnRigiJD0pKiZGJEYqRidGKiIkRCYqKEYkRihGK0YqRidGKCIlTkgqKEYkRihGK0YoRidGKiIkLioqJkYkRihGJ0YmIiUvOiomRitGJkYnRigiJGgpKiZGK0YqRidGKiIlKT4jKiZGK0YoRidGJiIlZ0gqJEYnIiIlIiUnXCIqJEYkRiYiJT09KiZGJEYqRitGKCIkImYqJkYkRipGJ0YoIiUuQyomRiRGKEYrRioiJV5BKihGJEYoRitGKEYnRigiJCoqKiomRiRGKEYnRioiJEoqKiRGK0YmIiUvQyomRitGKkYnRigiJUM7KiZGK0YoRidGKiIjZyokRidGJiIjcyokRiRGKiIlKEciKiZGJEYoRitGKCIlIXAjKiZGJEYoRidGKCIkUicqJEYrRioiJTU5KiZGK0YoRidGKEYsKiRGJ0YqIiV5QUYkIiRwJEYrIiUkeSNGJyIlQUIiIzhGKA==</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -226,6 +179,30 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4063" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4082" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4086" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_opt_pnp_nakanoC := eqs:</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4087" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_opt_pnp_nakanoC, &quot;F_opt_pnp_nakanoC.m&quot;:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L4083" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

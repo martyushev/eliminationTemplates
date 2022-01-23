@@ -94,38 +94,11 @@ with(LinearAlgebra):
 with(Groebner):</Text-field>
 </Input>
 </Group>
+<Group hide-output="false" labelreference="L4079" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
+</Input>
+</Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L3898" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eq1 := 3298*y^2 + 3240*y*z + 7038*y*w + 5865*y + 1668*z^2 + 3836*z*w + 5002*z + 3798*w^2 + 6453*w + 3285:
-eq2 := 1721*x*y^2 + 4089*x*y*z + 3698*x*y*w + 5054*x*y + 1538*x*z^2 + 4887*x*z*w + 5298*x*z + 2073*x*w^2 + 5481*x*w + 3984*x + 747*y^2 + 3040*y*z + 2954*y*w + 3290*y + 1872*z^2 + 4198*z*w + 5693*z + 2348*w^2 + 5824*w + 3215:
-eq3 := 2290*x*y^2 + 4469*x*y*z + 3544*x*y*w + 4467*x*y + 1866*x*z^2 + 4565*x*z*w + 4944*x*z + 1692*x*w^2 + 4842*x*w + 2826*x + 646*y^2 + 4109*y*z + 3744*y*w + 3143*y + 3251*z^2 + 6065*z*w + 5425*z + 2990*w^2 + 5084*w + 2307:
-eq4 := -354*y^2 - 1796*y*z + 524*y*w + 1650*y - 1697*z^2 - 1878*z*w - 840*z + 725*w^2 + 2050*w + 2144:</Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4067" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eqs := [seq(eq||i, i=1..4)]:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYmLUYjNiwtRiw2JVEid0YnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieEYnRi9GMkZXLUYsNiVRInlGJ0YvRjJGVy1GLDYlUSJ6RidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOS8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Zgb0Zjb0Y5">NyZJIndHNiJJInhHRiRJInlHRiRJInpHRiQ=</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">[seq(map(vr-&gt;degree(eqs[i], vr), vars), i=1..nops(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYsLUYjNiYtRiw2LC1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJy1GMzYkUSIwRidGNkY5RjJGOUYyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y/RjZGNi8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Y5LUYjNiYtRiw2LEYyRjktRjM2JFEiMUYnRjZGOUYyRjlGMkZWRllGNkY2RmVuRmhuRjlGW29GOUYuRlZGWUY2RjZGZW5GaG4=">NyY3JiIiIyIiIUYkRiQ3JkYkIiIiRiRGJEYmRiM=</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4068" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-output="false" labelreference="L4069" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -165,18 +138,6 @@ eqs := [seq(eq[i], i=1..4)]:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4070" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4020" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_p4p_fr := eqs:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_p4p_fr, &quot;../F_p4p_fr.m&quot;:</Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">tord := tdeg(op(vars));</Text-field>
 </Input>
@@ -197,7 +158,7 @@ nops(Gr);</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY0LUYjNiYtSSNtaUdGJDYlUSJ3RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnL0Y1USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUYuNiVRInlGJ0YxRjRGOy1GODYtUSIrRidGO0Y9RkBGQkZERkZGSEZKL0ZNUSwwLjIyMjIyMjJlbUYnL0ZQRlgtRiM2KC1JI21uR0YkNiRRJTI3NjJGJ0Y7RjdGLUY3LUYuNiVRInpGJ0YxRjRGO0ZULUYjNiYtRmduNiRRJTIzMjdGJ0Y7RjctSSVtc3VwR0YkNiVGUS1GZ242JFEiMkYnRjsvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjtGVC1GIzYoLUZnbjYkUSQyOTlGJ0Y7RjdGUUY3RmpuRjtGVC1GIzYmLUZnbjYkUSUxOTQ0RidGO0Y3LUZjbzYlRmpuRmVvRmhvRjtGVC1GIzYmLUZnbjYkUSUxNTIxRidGO0Y3Ri1GO0ZULUYjNiYtRmduNiRRJDUzNkYnRjtGN0ZRRjtGVC1GIzYmLUZnbjYkUSUxMTU3RidGO0Y3RmpuRjtGVC1GZ242JFEkNjYxRidGO0Y7">LDQqJkkid0c2IiIiIkkieUdGJUYmRiYqJkYkRiZJInpHRiVGJiIlaUYqJEYnIiIjIiVGQiomRidGJkYpRiYiJCpIKiRGKUYsIiVXPkYkIiVAOkYnIiRPJkYpIiVkNiIkaCdGJg==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY0LUYjNiYtSSNtaUdGJDYlUSJ3RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnL0Y1USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUYuNiVRInlGJ0YxRjRGOy1GODYtUSIrRidGO0Y9RkBGQkZERkZGSEZKL0ZNUSwwLjIyMjIyMjJlbUYnL0ZQRlgtRiM2KC1JI21uR0YkNiRRJTI2NDhGJ0Y7RjdGLUY3LUYuNiVRInpGJ0YxRjRGO0ZULUYjNiYtRmduNiRRJDk2N0YnRjtGNy1JJW1zdXBHRiQ2JUZRLUZnbjYkUSIyRidGOy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGO0ZULUYjNigtRmduNiRRJTEwNDVGJ0Y7RjdGUUY3RmpuRjtGVC1GIzYmLUZnbjYkUSUyMjYzRidGO0Y3LUZjbzYlRmpuRmVvRmhvRjtGVC1GIzYmLUZnbjYkUSQzNzhGJ0Y7RjdGLUY7RlQtRiM2Ji1GZ242JFElMjk0OUYnRjtGN0ZRRjtGVC1GIzYmLUZnbjYkUSUxNzUxRidGO0Y3RmpuRjtGVC1GZ242JFEkMjU2RidGO0Y7">LDQqJkkid0c2IiIiIkkieUdGJUYmRiYqJkYkRiZJInpHRiVGJiIlW0UqJEYnIiIjIiRuKiomRidGJkYpRiYiJVg1KiRGKUYsIiVqQUYkIiR5JEYnIiVcSEYpIiVePCIkYyNGJg==</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -221,6 +182,30 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4063" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4080" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4081" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F_p4p_fr := eqs:</Text-field>
+</Input>
+</Group>
+<Group hide-input="false" hide-output="false" labelreference="L4085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_p4p_fr, &quot;F_p4p_fr.m&quot;:</Text-field>
+</Input>
+</Group>
+<Group labelreference="L4082" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group labelreference="L4083" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
