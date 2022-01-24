@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_satellite_triang(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = std_satellite_triang_colpiv(C); % solve polynomial system
+        [xx, yy, zz] = std_87x114_colpiv_satellite_triang(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME

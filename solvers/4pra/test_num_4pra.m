@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_4pra(data); % compute coefficients of polynomial system
-        [uu, vv, ww] = std_4pra_colpiv(C); % solve polynomial system
+        [uu, vv, ww] = std_16x36_colpiv_4pra(C); % solve polynomial system
         tm = toc;
         if isempty(uu); continue; end
     catch ME

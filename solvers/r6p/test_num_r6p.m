@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_r6p(data); % compute coefficients of polynomial system
-        [uu, vv, ww, xx, yy, zz] = std_r6p_colpiv(C); % solve polynomial system
+        [uu, vv, ww, xx, yy, zz] = std_120x140_colpiv_r6p(C); % solve polynomial system
         tm = toc;
         if isempty(uu); continue; end
     catch ME

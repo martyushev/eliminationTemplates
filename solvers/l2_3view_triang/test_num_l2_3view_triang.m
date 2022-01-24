@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_l2_3view_triang(data); % compute coefficients of polynomial system
-        [xx1, xx2, xx3, xx4, xx5, xx6, xx7, xx8] = std_l2_3view_triang_colpiv(C); % solve polynomial system
+        [xx1, xx2, xx3, xx4, xx5, xx6, xx7, xx8] = std_217x248_colpiv_l2_3view_triang(C); % solve polynomial system
         tm = toc;
         if isempty(xx1); continue; end
     catch ME

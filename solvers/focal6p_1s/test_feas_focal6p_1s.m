@@ -10,7 +10,7 @@ for i = 1:N
 
     try
         [C,M] = coefs_focal6p_1s(data); % compute coefficients of polynomial system
-        [gg,uu,vv] = std_focal6p_1s_colpiv(C); % solve polynomial system
+        [gg,uu,vv] = std_11x20_colpiv_focal6p_1s(C); % solve polynomial system
         if isempty(gg); continue; end
         ff = 1./sqrt(gg);
         [F,E] = esse_focal6p_1s(ff,uu,vv,M);

@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_optpose3pt_v2(data); % compute coefficients of polynomial system
-        [vv, ww, xx, yy, zz] = std_optpose3pt_v2_colpiv(C); % solve polynomial system
+        [vv, ww, xx, yy, zz] = std_397x445_colpiv_optpose3pt_v2(C); % solve polynomial system
         tm = toc;
         if isempty(vv); continue; end
     catch ME

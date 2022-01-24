@@ -362,111 +362,6 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4996" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">readTemplate := proc(prob::string, showlog:=false)
-    local F, nF, M0, U0, V0, pp, vars, av, tord, qb, mon, Gr, aB, B, RB, T, G, nG, deg, M, tM, t1, r2del, c2del, V, E, mn, E0:
-
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F := eval(cat(F_, prob)):
-    nF := nops(F):
-    M0, U0 := poly2matrix(F, nF, indets(F)):
-    V0 := srt(U0, tdeg(op(indets(F)))):
-    M0 := permuteColumns(M0, U0, V0):
-    pp, vars, av, tord, qb, mon := readData(prob)[3..8]:
-    Gr := Groebner[Basis](F, tord, characteristic=pp):
-    aB, B, RB, T, G := getPartition(av, Gr, tord, pp, qb)[1..5]:
-    nG, deg := nops(G), nops(B):
-    if showlog then print(&quot;nG = &quot;, nG, &quot;RB = &quot;, RB): end if:
-    M, V := constructTemplate(mon, F, vars, RB)[2..3]:
-    tM := reduceLinDep(M, pp, true):
-    M, r2del, c2del := reduceLinDep(M, pp):
-    t1 := map(x-&gt;op(select(y-&gt;tM[y, x]&lt;&gt;0, {$ 1..op([1, 1], tM)})), {op(c2del)}):
-    if showlog then print(r2del, c2del): end if:
-    V := V[remove(i-&gt;is(i in c2del), [$ 1..op(1, V)])]:
-    E0 := convert(V[[op(t1)]], set):
-    E := srt(convert(convert(V, set) minus convert(RB, set), list), tdeg(op(vars))):
-    if showlog then print(&quot;nE = &quot;, nops(E), &quot;nRB = &quot;, nops(RB), &quot;nB = &quot;, nops(B)): end if:
-    tM := Gaussjord(M) mod pp:
-    mn := [op(1, M)]:
-    print(cat(`Template's size: `, mn)):
-    print(cat(`Action matrix found: `, isActionMatrixFound(T, M, aB, B, nG, pp))):
-
-    return vars, av, M0, V0, E, RB, aB, B, mon, r2del, c2del, mn, nG, E0:
-end proc:</Text-field>
-</Input>
-</Group>
-<Group view="code" labelreference="L4997" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator
-SolverGenerator := proc(prob::string, probid::posint)
-    local vars, av, M0, V0, E, RB, aB, B, mon, r2del, c2del, mn, nG, E0, nF, deg, nE, nv, iM0, eM0, nc, M, iM, eM, kk, ll, mm, vv, dir, fd, fb, i, vars1:
-
-    vars, av, M0, V0, E, RB, aB, B, mon, r2del, c2del, mn, nG, E0 := readTemplate(prob):
-    nF, deg, nE, nv := op([1, 1], M0), nops(B), nops(E), nops(vars):
-    iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
-    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*nF, string), iM0):
-    nc := nops(iM0):
-    vars1 := convert(convert(vars, set) minus {av}, list):
-
-    M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
-    M := constructTemplate(mon, convert(M.V0, list), vars, RB)[2]:
-    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), ..]:
-    M := M[.., remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M)])]:
-    iM := [indices(convert(M, table), indexorder)]:
-    eM := map(op, [entries(convert(M, table), indexorder)]):
-    kk := [seq(iM[i][1] + mn[1]*(iM[i][2] - 1), i=1..nops(iM))]:
-    ll := map(c-&gt;{ListTools[SearchAll](c, eM)}, eM0):
-    mm := map(x-&gt;map(y-&gt;kk[y], x), ll):
-    vv := [seq(ListTools[Search](vars1[i]*B[deg], B), i=1..nv-1)]:
-
-    #write_inidata(prob):
-    #write_test_num(prob, probid, vars, V0):
-    #write_histo_num(prob, probid):
-
-    dir := cat(&quot;../solvers_temp/&quot;, prob):
-    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
-    fd := fopen(cat(dir, &quot;/&quot;, prob, &quot;_sprs.m&quot;), WRITE):
-    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1, 2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
-
-<Font encoding="UTF-8">    fprintf(fd, cat(&quot;function &quot;, vars, &quot; = &quot;, prob, &quot;(C)\134n\134n&quot;)):
-</Font>    fb := &quot;    &quot;:
-
-    fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
-
-<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M</Font>(:,&quot;, nE+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;M = M(end-&quot;, nG-1, &quot;:end,:)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-
-    fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;T<Font encoding="UTF-8"> = zeros(&quot;, deg, &quot;);\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;T(1:&quot;, nG, &quot;,:) = -M(:,1:&quot;, nG, &quot;)<Font encoding="UTF-8">\134\134</Font>M(:,&quot;, nG+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    if deg-nG = 1 then
-        fprintf(fd, cat(fb, &quot;T(&quot;, deg*ListTools[Search](aB[-1], B)<Font encoding="UTF-8">, &quot;) = 1;\134n&quot;)):</Font>
-    elif deg-nG &gt; 1 then
-        fprintf(fd, cat(fb, &quot;T([&quot;, convert([seq(deg*(ListTools[Search](aB[i-deg-1], B)-1)+i, i=nG+1..deg)], string)[2..-2]<Font encoding="UTF-8">, &quot;]) = 1;\134n&quot;)):</Font>
-    end if:
-
-<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;sol = [V(&quot;, convert(vv, string), &quot;,:)./repmat(V(&quot;, deg, &quot;,:),<Font encoding="UTF-8">&quot;, nv-1, &quot;,1); diag(D).'];\134n\134n&quot;)):
-</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))));\134n</Font>&quot;)):
-    fprintf(fd, cat(fb, &quot;%%<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(imag(sol(1,:))));\134n</Font>&quot;)):
-    for i from 1 to nv-1 do
-        fprintf(fd, cat(fb, vars1[i], &quot; = sol(&quot;, i, &quot;,I)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    end do:
-    fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
-    fprintf(fd, &quot;end&quot;):
-    fclose(fd):
-end proc:</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" hide-output="false" labelreference="L4809" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group view="code" hide-output="false" labelreference="L4968" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### solve polynomial system F = 0 by the action matrix method
 eigSolver := proc(F::{list,set,Vector}, {digits::posint:=15, actvar::integer:=1})
@@ -867,6 +762,274 @@ TemplateFinder := proc(prob::string, {quo_bases::nonnegint:=0, action_vars::list
     print(sprintf(&quot;Best template: [%d,%d],%a&quot;, mo, no, evalf(spo,3))):
 end proc:</Text-field>
 </Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" labelreference="L5002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5001" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read template data
+readTemplate := proc(prob::string, std::boolean)
+    local mn0, sp0, pp, vars, av, tord, QB, shifts, F, M0, U0, tord0, V0, Gr, aB, B, RB, T, G, nG, M, tM, t1, r2del, c2del, V, E, mn, E0:
+    mn0, sp0, pp, vars, av, tord, QB, shifts := readData(prob, std):
+    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
+    F := eval(cat(F_, prob)):
+    M0, U0 := poly2matrix(F, nops(F), vars):
+    tord0 := tdeg(op(vars)):
+    V0 := srt(U0, tord0):
+    M0 := permuteColumns(M0, U0, V0):
+    Gr := Groebner[Basis](F, tord, characteristic=pp):
+    aB, B, RB, T, G := monPartition(av, Gr, tord, pp, QB)[1..5]:
+    nG := nops(G):
+    M, V := constructTemplate(shifts, F, vars, RB)[2..3]:
+    M, r2del, c2del := LinDepReduction(M, pp):
+    mn := [op(1, M)]:
+    print(cat(`Template's size: `, mn)):
+    if mn0[1]&lt;&gt;mn[1] or mn0[2]&lt;&gt;mn[2] then error(&quot;Wrong template&quot;): end if:
+    V := V[remove(i-&gt;is(i in c2del), [$ 1..op(1, V)])]:
+    tM := Gaussjord(M) mod pp:
+    t1 := map(x-&gt;op(select(y-&gt;tM[y, x]&lt;&gt;0, {$ 1..op([1, 1], tM)})), {op(c2del)}):
+    E0 := convert(V[[op(t1)]], set): # this set of monomials is needed for column pivoting
+    E := srt(convert(convert(V, set) minus convert(RB, set), list), tord0):
+    print(cat(`Action matrix found: `, isActionMatrixFound(T, M, aB, B, nG, pp))):
+    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5010" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute data for column-pivoting
+colpiv := proc(V::Vector, E0::set, av::monomial, tord::ShortMonomialOrder)
+    local Vl, P, B0, aP, R, P0, RP, E, vars := [op(indets(V))]:
+    Vl := convert(convert(V, set) minus E0, list):
+    P := convert(select(m-&gt;member(av*m, Vl), Vl), set): # set of permissible monomials
+    B0 := select(m-&gt;convert(map(vr-&gt;member(vr*m, P), vars), `and`), P):
+    if nops(B0) = 0 then error(&quot;Can't solve for all variables&quot;): end if:
+    B0 := sort(B0, (p, q)-&gt;degree(p, vars) &lt; degree(q, vars)):
+    B0 := srt(map(vr-&gt;vr*B0[1], [op(vars), 1]), tord):
+    print(B0):
+    aP := map(m-&gt;av*m, P):
+    R := srt(convert(aP minus P, list), tord):
+    P0 := P minus convert(B0, set):
+    P := [op(srt(convert(P0, list), tord)), op(B0)]:
+    RP := [op(R), op(P)]:
+    E := srt(convert(convert(Vl, set) minus convert(RP, set) union E0, list), tord):
+    print(&quot;nE = &quot;, nops(E), &quot;nR = &quot;, nops(R), &quot;nP = &quot;, nops(P)):
+    print(E0, convert(&lt;op(E), op(RP)&gt;, list), P):
+    &lt;op(E), op(RP)&gt;, E, R, P, [op(indets(B0))]:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5011" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator with column-pivoting strategy
+SolverGenerator_colpiv := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
+    local vars, av, M0, V0, E, RB, aB, B, B1, mon, r2del, c2del, mn, nR, tord, V, E0, V1, R, P, vars0, nF, deg, nE, nP, nv0, iM0, eM0, nc, M, Mt, m1, m2, iM, eM, kk, ll, mm, vv, dir, fd, fb := &quot;    &quot;, i, vars1:
+    vars, av, M0, V0, E, RB, aB, B, mon, r2del, c2del, mn, nR, E0 := readTemplate(prob, evalb(basis=std)):
+    tord := tdeg(op(vars)):
+    V := &lt;op(E), op(RB)&gt;:
+    V1, E, R, P, vars0 := colpiv(V, E0, av, tord):
+    nF, deg, nE, nR, nP, nv0 := op([1, 1], M0), nops(B), nops(E), nops(R), nops(P), nops(vars0):
+    B1 := P[-deg..-1]:
+    iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
+    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*nF, string), iM0):
+    nc := nops(iM0):
+    vars1 := convert(convert(vars0, set) minus {av}, list):
+    M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
+    M := constructTemplate(mon, convert(M.V0, list), vars, RB)[2]:
+    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M)])]:
+    M := permuteColumns(M, V, V1):
+    mn := op(1, M):
+    m1 := mn[1]:
+    m2 := m1-nE:
+    Mt := convert(M, table):
+    iM, eM := [indices(Mt, indexorder)], map(op, [entries(Mt, indexorder)]):
+    kk := [seq(iM[i][1] + mn[1]*(iM[i][2] - 1), i=1..nops(iM))]:
+    ll := map(c-&gt;{ListTools[SearchAll](c, eM)}, eM0):
+    mm := map(x-&gt;map(y-&gt;kk[y], x), ll):
+    vv := [seq(ListTools[Search](vars1[i]*B1[deg], B1), i=1..nv0-1)]:
+    dir := cat(root_dir, &quot;/&quot;, prob):
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    fd := fopen(cat(dir, &quot;/&quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1, 2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)): </Font># start writing solver
+    fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(&quot;function &quot;, vars0, &quot; = &quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;<Font encoding="UTF-8">(C)\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
+    if nE &lt;&gt; 0 then
+<Font encoding="UTF-8">        fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
+</Font>        fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
+        fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M(:,&quot;, nE+1, &quot;:end);\134n&quot;)):</Font>
+        fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = full(M(&quot;, nE+1, &quot;:end,:));\134n&quot;)):</Font>
+    end if:
+    if nR &lt;&gt; 0 then
+        fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;[L,UR,Pi] = lu(M(:,1:&quot;, nR, &quot;));<Font encoding="UTF-8">\134n&quot;)):</Font>
+        fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
+        fprintf(fd, cat(fb, &quot;M = [Pi*L Pi(:,&quot;<Font encoding="UTF-8">, nR+1, &quot;:end)]\134\134M(:,&quot;, nR+1, &quot;:end);\134n&quot;</Font>)):
+    end if:
+    fprintf(fd, cat(fb, &quot;MP = M(1:&quot;, nR, &quot;,:)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;NP = M(&quot;, nR+1, &quot;:end,:)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;[Q<Font encoding="UTF-8">,U,Pi] = qr(NP(:,1:end-&quot;, nv0+1, &quot;));\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">A = UR\134\134[MP(:,1:end-&quot;, nv0+1, &quot;)*Pi MP(:,end-&quot;, nv0, &quot;:end)];\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">B = U(:,1:&quot;, m2-nR, &quot;)\134\134[U(:,&quot;, m2-nR+1, &quot;:</Font>end) Q'*NP(:,end-&quot;, nv0, &quot;:end)];<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;M = [-A(:,end-&quot;, deg-1, &quot;:end)+A(:,1:end-&quot;, deg, &quot;)*B; -B];<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;xP = &quot;, map(b-&gt;ListTools[Search](b*av, [op(P), op(R)]), P), &quot;<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;P1 = [(1:&quot;, nP-nv0-1, &quot;)*Pi &quot;, nP-nv0, &quot;:&quot;, nP, &quot;];<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;T = getT(M,[&quot;, nP+1, &quot;:&quot;, nP+nR, &quot; P1(1:end-&quot;, deg, &quot;)],P1(end-&quot;, deg-1, &quot;:end)&quot;, &quot;,xP)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    <Font encoding="UTF-8">fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;sol = [V(&quot;, convert(vv, string), &quot;,:)./repmat(V(&quot;, deg, &quot;,:),<Font encoding="UTF-8">&quot;, nv0-1, &quot;,1); diag(D).'];\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:))));\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;%%<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:))) &amp; not(imag(sol(1,:))));\134n</Font>&quot;)):
+    for i from 1 to nv0-1 do
+        fprintf(fd, cat(fb, vars1[i], &quot; = sol(&quot;, i, &quot;,I)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    end do:
+    fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv0, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
+    fprintf(fd, &quot;end&quot;):
+    fclose(fd):
+    deg, [mn], vars, V0:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5000" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator (no column-pivoting)
+SolverGenerator := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
+    local vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0, nF, deg, nE, nv, iM0, eM0, nc, M, Mt, iM, eM, kk, ll, mm, vv, dir, fd, fb := &quot;    &quot;, i, vars1:
+    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0 := readTemplate(prob, evalb(basis=std)):
+    nF, deg, nE, nv := op([1, 1], M0), nops(B), nops(E), nops(vars):
+    iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
+    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*nF, string), iM0):
+    nc := nops(iM0):
+    vars1 := convert(convert(vars, set) minus {av}, list):
+    M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
+    M := constructTemplate(shifts, convert(M.V0, list), vars, RB)[2]:
+    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M)])]:
+    Mt := convert(M, table):
+    iM, eM := [indices(Mt, indexorder)], map(op, [entries(Mt, indexorder)]):
+    kk := [seq(iM[i][1] + mn[1]*(iM[i][2] - 1), i=1..nops(iM))]:
+    ll := map(c-&gt;{ListTools[SearchAll](c, eM)}, eM0):
+    mm := map(x-&gt;map(y-&gt;kk[y], x), ll):
+    vv := [seq(ListTools[Search](vars1[i]*B[deg], B), i=1..nv-1)]:
+    dir := cat(root_dir, &quot;/&quot;, prob):
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    fd := fopen(cat(dir, &quot;/&quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1, 2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font> # start writing solver
+    fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(&quot;function &quot;, vars, &quot; = &quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, <Font encoding="UTF-8">&quot;(C)\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
+<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M</Font>(:,&quot;, nE+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;M = M(end-&quot;, nG-1, &quot;:end,:)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;T<Font encoding="UTF-8"> = zeros(&quot;, deg, &quot;);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;T(1:&quot;, nG, &quot;,:) = -M(:,1:&quot;, nG, &quot;)<Font encoding="UTF-8">\134\134</Font>M(:,&quot;, nG+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    if deg-nG = 1 then
+        fprintf(fd, cat(fb, &quot;T(&quot;, deg*ListTools[Search](aB[-1], B)<Font encoding="UTF-8">, &quot;) = 1;\134n&quot;)):</Font>
+    elif deg-nG &gt; 1 then
+        fprintf(fd, cat(fb, &quot;T([&quot;, convert([seq(deg*(ListTools[Search](aB[i-deg-1], B)-1)+i, i=nG+1..deg)], string)[2..-2]<Font encoding="UTF-8">, &quot;]) = 1;\134n&quot;)):</Font>
+    end if:
+<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;sol = [V(&quot;, convert(vv, string), &quot;,:)./repmat(V(&quot;, deg, &quot;,:),<Font encoding="UTF-8">&quot;, nv-1, &quot;,1); diag(D).'];\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:))));\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;%%I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:)))<Font encoding="UTF-8"> &amp; not(imag(sol(1,:))));\134n</Font>&quot;)):
+    for i from 1 to nv-1 do
+        fprintf(fd, cat(fb, vars1[i], &quot; = sol(&quot;, i, &quot;,I)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    end do:
+    fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
+    fprintf(fd, &quot;end&quot;):
+    fclose(fd):
+    deg, mn, vars, V0:
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L5009" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_test_num := proc(prob, deg::posint, mn::[posint,posint], vars::list, V0::Vector, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
+    local dir := cat(root_dir, &quot;/&quot;, prob), fd, j, fb := &quot;    &quot;, fb2 := cat(fb, fb), vars2 := map(vr-&gt;cat(vr, vr), vars):
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    fd := fopen(cat(dir, &quot;/test_num_&quot;, prob, &quot;.m&quot;), WRITE):
+<Font encoding="UTF-8">    fprintf(fd, &quot;rng(23);\134n\134n&quot;):
+</Font>    fprintf(fd, &quot;<Font encoding="UTF-8">N = 10000;\134n\134n&quot;):
+</Font>    fprintf(fd, cat(&quot;Err_&quot;, prob, &quot; = [];<Font encoding="UTF-8">\134nTm_&quot;, prob, &quot; = [];\134n\134n</Font>&quot;)):
+    fprintf(fd, &quot;for i = 1:N<Font encoding="UTF-8">\134n\134n&quot;):</Font>
+    fprintf(fd, cat(fb, &quot;data = inidata_&quot;, prob, &quot;(); %% generate initial data of the problem<Font encoding="UTF-8">\134n\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;try<Font encoding="UTF-8">\134n</Font>&quot;)):
+    fprintf(fd, cat(fb2, &quot;tic;<Font encoding="UTF-8">\134n</Font>&quot;)):
+<Font encoding="UTF-8">    fprintf(fd, cat(fb2, &quot;C = coefs_&quot;, prob, &quot;(data); %% compute coefficients of polynomial system\134n&quot;)):</Font>
+    fprintf(fd, cat(fb2, vars2, &quot; = &quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, &quot;(C); %% solve polynomial system<Font encoding="UTF-8">\134n&quot;)):</Font>
+    if prob = &quot;relpose_7p_fr_1s&quot; then fprintf(fd, cat(fb2, &quot;ww = arrayfun(@(j) get_w(C,xx(j),yy(j),zz(j)), 1:length(xx));<Font encoding="UTF-8">\134n&quot;)):</Font> end if:
+    fprintf(fd, cat(fb2, &quot;tm = toc;<Font encoding="UTF-8">\134n</Font>&quot;)):
+    fprintf(fd, cat(fb2, &quot;if isempty(&quot;, vars2[1], &quot;); continue; end<Font encoding="UTF-8">\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;catch ME<Font encoding="UTF-8">\134n</Font>&quot;)):
+    fprintf(fd, cat(fb2, &quot;continue;<Font encoding="UTF-8">\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;end<Font encoding="UTF-8">\134n\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;M = [];<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;for j=1:length(&quot;, vars2[1], &quot;)<Font encoding="UTF-8">\134n&quot;)):</Font>
+    for j from 1 to nops(vars) do
+        fprintf(fd, cat(fb2, vars[j], &quot; = &quot;, vars2[j], &quot;(j);<Font encoding="UTF-8">\134n&quot;)):</Font>
+    end do:
+    fprintf(fd, cat(fb2, &quot;m = &quot;, convert(V0, list), &quot;;<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb2, &quot;m = m/norm(m,'fro');<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb2, &quot;M = [M; norm(C*m.','fro')];<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;end<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;M = sort(M);<Font encoding="UTF-8">\134n&quot;)):</Font>
+<Font encoding="UTF-8">    fprintf(fd, cat(fb, &quot;err = norm(M(1:&quot;, deg, &quot;),'fro');\134n\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;Err_&quot;, prob, &quot; = [Err_&quot;, prob, &quot; err];<Font encoding="UTF-8">\134n&quot;, fb, &quot;Tm_&quot;, prob, &quot; = [Tm_&quot;, prob, &quot; tm];\134n\134n&quot;)):</Font>
+    fprintf(fd, &quot;end<Font encoding="UTF-8">\134n\134n&quot;):</Font>
+    fprintf(fd, &quot;folder = fileparts(which('add_all.m'));<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, cat(&quot;<Font encoding="UTF-8">save(strcat(folder,'\134\134_results\134\134Err_&quot;, prob, &quot;.mat'),'Err_&quot;, prob, &quot;');\134n&quot;)):
+</Font>    fprintf(fd, cat(&quot;<Font encoding="UTF-8">save(strcat(folder,'\134\134_results\134\134Tm_&quot;, prob, &quot;.mat'),'Tm_&quot;, prob, &quot;');\134n\134n&quot;)):
+</Font>    fprintf(fd, cat(&quot;<Font encoding="UTF-8">fprintf('Problem: &quot;, prob, &quot;. Ave. runtime: %%0.1f ms. Med. error: %%0.2e\134\134n',10^3*mean(Tm_&quot;, prob, &quot;),median(Err_&quot;, prob, &quot;));\134n&quot;)):</Font>
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5006" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_inidata := proc(prob, {root_dir::string:=&quot;../solvers_temp&quot;})
+    local dir := cat(root_dir, &quot;/&quot;, prob), fd, fb := &quot;    &quot;:
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    fd := fopen(cat(dir, &quot;/inidata_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, cat(&quot;<Font encoding="UTF-8">function data = inidata_&quot;, prob, &quot;()\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">data = cell([1,2]);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">data{1} = randn(3,6);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">data{2} = randn(3,6);\134n&quot;)):
+</Font>    fprintf(fd, &quot;end&quot;):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5007" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_histo_num := proc(prob, {root_dir::string:=&quot;../solvers_temp&quot;})
+    local dir := cat(root_dir, &quot;/&quot;, prob), fd, fb := &quot;    &quot;:
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    fd := fopen(cat(dir, &quot;/histo_num_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, &quot;<Font encoding="UTF-8">folder = fileparts(which('add_all.m'));\134n&quot;):</Font>
+    fprintf(fd, cat(&quot;<Font encoding="UTF-8">load(strcat(folder, '\134\134_results\134\134Err_&quot;, prob, &quot;.mat'));\134n\134n&quot;)):</Font>
+    fprintf(fd, &quot;<Font encoding="UTF-8">bwd = 3e-1;\134n&quot;):
+</Font>    fprintf(fd, &quot;nbins = 60;<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;clr = [70 100 160]/255;<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, cat(&quot;err = log10(Err_&quot;, prob, &quot;);<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, &quot;hr1 = histogram(err,nbins,'BinWidth',bwd);<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;hr1.FaceColor = clr;<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;hr1.EdgeColor = clr;<Font encoding="UTF-8">\134n\134n&quot;):</Font>
+    fprintf(fd, &quot;axis([-17 1 0 1150]);<Font encoding="UTF-8">\134n\134n&quot;):</Font>
+    fprintf(fd, &quot;set(gca,'fontsize',54,'fontname','Times New Roman');<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;set(gcf,'PaperPositionMode','auto');<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;set(gcf,'PaperOrientation','landscape');<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, &quot;set(gcf,'PaperPosition',[1 1 28 19]);<Font encoding="UTF-8">\134n&quot;):</Font>
+    fprintf(fd, cat(&quot;<Font encoding="UTF-8">print(gcf,'-dpdf',strcat(folder,'\134\134_results\134\134fig-&quot;, prob, &quot;.pdf'));</Font>&quot;)):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L5003" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L4999" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4833" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
@@ -893,7 +1056,6 @@ readCM,
 getTord,
 saveData,
 readData,
-SolverGenerator,
 eigSolver,
 srt,
 poly2matrix,
@@ -917,6 +1079,13 @@ rectTord,
 filterBases,
 iniProb,
 TemplateFinder,
+readTemplate,
+colpiv,
+SolverGenerator_colpiv,
+SolverGenerator,
+write_inidata,
+write_test_num,
+write_histo_num,
 &quot;EliminationTemplates.m&quot;:</Text-field>
 </Input>
 </Group>
@@ -940,11 +1109,11 @@ TemplateFinder,
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4936" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4936" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4937" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4937" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
