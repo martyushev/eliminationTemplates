@@ -1,6 +1,6 @@
 % Input: coefficient matrix C of size 10x26
 
-% Monomial vector: [g^2*u^2, g*u^3, g^2*u*v, g*u^2*v, g^2*v^2, v^2*u*g, v^3*g, u*g^2, u^2*g, u^3, v*g^2, g*u*v, v*u^2, g*v^2, v^2*u, v^3, g^2, g*u, u^2, g*v, v*u, v^2, g, u, v, 1]
+% Monomial vector: [g^2*u^2, u^3*g, g^2*u*v, u^2*v*g, g^2*v^2, v^2*u*g, v^3*g, u*g^2, u^2*g, u^3, v*g^2, g*v*u, v*u^2, v^2*g, v^2*u, v^3, g^2, g*u, u^2, v*g, v*u, v^2, g, u, v, 1]
 
 function [g, u, v] = nstd_11x26_focal6p(C)
 

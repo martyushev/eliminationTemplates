@@ -89,7 +89,7 @@
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4443" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for automatic template generator</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for automatic generating elimination templates</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4464" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -99,12 +99,9 @@
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4466" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
-</Group>
-<Group view="code" labelreference="L4978" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4981" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L5054" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if monomials from M are linearly independent
 isLinIndep := proc(M::list, G::list, tord::ShortMonomialOrder, pp::posint)
     local vars := indets(G), S:
@@ -114,7 +111,7 @@ isLinIndep := proc(M::list, G::list, tord::ShortMonomialOrder, pp::posint)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4980" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5056" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if M contains a basis
 testBasis := proc(M::set, deg::posint, G::list, tord::ShortMonomialOrder, pp::nonnegint)
     local vars := indets(G), S:
@@ -124,7 +121,7 @@ testBasis := proc(M::set, deg::posint, G::list, tord::ShortMonomialOrder, pp::no
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4983" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5052" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate initial set of monomials
 iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint, dom::nonnegint:=0)
     local E, M, vr, d, deg := nops(B0), flag, S, d_min := 0:
@@ -142,7 +139,7 @@ iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::Sho
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" hide-output="false" labelreference="L4986" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" hide-output="false" labelreference="L5050" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### neighboring monomials
 neighborMons := proc(B::set, MB::set, vars::list)
     local nB:
@@ -153,7 +150,7 @@ neighborMons := proc(B::set, MB::set, vars::list)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4985" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5051" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use random sampling for basis construction
 genBasis := proc(E::set, M::set, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint)
     local rnd := rand(0..1000)/1000, B := {}, EB, MB := M, nB, nB1, bv, k, a, nv := nops(vars), wt, m, i, deg := nops(B0):
@@ -177,7 +174,7 @@ genBasis := proc(E::set, M::set, B0::list, vars::list, G::list, tord::ShortMonom
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4992" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5055" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save non-standard bases
 saveBases := proc(prob::string, QBs::{list,set})
     local fd := fopen(cat(&quot;nongb/nongb_&quot;, prob, &quot;.txt&quot;), WRITE):
@@ -186,7 +183,7 @@ saveBases := proc(prob::string, QBs::{list,set})
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4993" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5053" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read non-standard bases
 readBases := proc(prob::string)
     local st := 1, QBs := [], nongbfile := cat(&quot;nongb/nongb_&quot;, prob, &quot;.txt&quot;):
@@ -198,7 +195,7 @@ readBases := proc(prob::string)
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4990" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5057" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save N non-standard monomial bases of the quotient ring
 BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
     local F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn, fd, pp := prime_number:
@@ -222,12 +219,10 @@ BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::
     fclose(fd):
 end proc:</Text-field>
 </Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L4984" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4971" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block>
+</Section><Presentation-Block></Presentation-Block><Presentation-Block></Presentation-Block><Presentation-Block></Presentation-Block><Presentation-Block></Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L5066" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for Grobner fan computation in Gfan
 writeGfan := proc(F::{list,set}, vars::{list,set}, pp::posint)
     local fd := fopen(&quot;gfan/igfan.txt&quot;, WRITE):
@@ -236,7 +231,7 @@ writeGfan := proc(F::{list,set}, vars::{list,set}, pp::posint)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4973" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5061" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data from a file generated by Gfan
 readGfan := proc(prob::string)
     local flag := false, st := 1, n := 0, gfanfile := cat(&quot;gfan/gfan_&quot;, prob, &quot;.txt&quot;), pp:
@@ -259,7 +254,7 @@ readGfan := proc(prob::string)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4994" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5064" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find monomial ordering which is compatible with a given Grobner basis and leading monomial
 ### in case of error, try to increase depthlimit option
 getTord := proc(gb, lm)
@@ -273,7 +268,7 @@ getTord := proc(gb, lm)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4972" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5065" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for change matrix computation in Macaulay2
 writeCM := proc(prob::string, Ws0::list, k::posint, pp::posint)
     local fd := fopen(cat(&quot;cm/icm&quot;, k, &quot;.txt&quot;), WRITE), F, vars, Ws:
@@ -298,7 +293,7 @@ writeCM := proc(prob::string, Ws0::list, k::posint, pp::posint)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4974" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5060" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read precomputed change matrices
 readCM := proc(prob::string)
     local st := 1, cmfile, pp, vars, m := 0, n := 0:
@@ -319,7 +314,7 @@ readCM := proc(prob::string)
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4829" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5059" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save data needed to construct template
 saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::nonnegint, vars::{list,set}, av::monomial, tord::ShortMonomialOrder, QB::list, shifts::list, std::boolean)
     local fn := `if`(std, cat(&quot;optim/o_std_&quot;, prob, &quot;.txt&quot;), cat(&quot;optim/o_nstd_&quot;, prob, &quot;.txt&quot;)), fd, mn0, sp0, flag := false:
@@ -340,7 +335,7 @@ saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::nonnegint, 
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4830" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5062" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data needed to construct template
 readData := proc(prob::string, std::boolean)
     local fn := `if`(std, cat(&quot;optim/o_std_&quot;, prob, &quot;.txt&quot;), cat(&quot;optim/o_nstd_&quot;, prob, &quot;.txt&quot;)), fd, mn, sp, pp, vars, av, tord, QB, shifts:
@@ -357,12 +352,8 @@ readData := proc(prob::string, std::boolean)
     mn, sp, pp, vars, av, tord, QB, map(eval, shifts):
 end proc:</Text-field>
 </Input>
-</Group>
-<Group view="code" labelreference="L4995" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L4968" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" labelreference="L5024" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### solve polynomial system F = 0 by the action matrix method
 eigSolver := proc(F::{list,set,Vector}, {digits::posint:=15, actvar::integer:=1})
     local fB2C, vars := [op(indets(F))], a := vars[actvar], tord := tdeg(op(vars)), B, deg, G, T, V, S:
@@ -379,11 +370,11 @@ eigSolver := proc(F::{list,set,Vector}, {digits::posint:=15, actvar::integer:=1}
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group hide-output="false" labelreference="L4438" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5040" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v::{list,set,Vector}, tord::ShortMonomialOrder)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4449" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5041" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of polynomials into coefficient (Macaulay) matrix and monomial vector
 poly2matrix := proc(F::{list,set,Vector}, nF::posint, vars::{list,set})
     local mons, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
@@ -391,7 +382,7 @@ poly2matrix := proc(F::{list,set,Vector}, nF::posint, vars::{list,set})
 end proc:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4432" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5037" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### permute columns of matrix M
 permuteColumns := proc(M::Matrix, V1::Vector, V2::Vector)
     local n := op(1, V1):
@@ -399,7 +390,7 @@ permuteColumns := proc(M::Matrix, V1::Vector, V2::Vector)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4843" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5029" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute sparsity of matrix M
 sparsity := proc(M::Matrix)
     local numzr := nops(select(x-&gt;is(x=0), convert(M, list))):
@@ -407,7 +398,7 @@ sparsity := proc(M::Matrix)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4548" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5042" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute change-of-basis matrix S
 matrixS := proc(B::list, B0::list, G::list, tord::ShortMonomialOrder, pp::nonnegint)
     local S, V0, deg := nops(B):
@@ -421,14 +412,14 @@ matrixS := proc(B::list, B0::list, G::list, tord::ShortMonomialOrder, pp::nonneg
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4834" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5043" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quotients := proc(g::polynom, G::list, tord::ShortMonomialOrder, pp::nonnegint)
     Groebner[NormalForm](g, G, tord, 'Q', characteristic=pp):
     Q:
 end proc:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4446" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5033" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">monPartition := proc(av::monomial, Gr::list, tord::ShortMonomialOrder, pp::nonnegint, QB::list:=[])
     local B0, B, aB, R, B2, RB, G, nG, T, S, i:
     B0 := Groebner[NormalSet](Gr, tord)[1]:
@@ -451,7 +442,7 @@ end proc:</Text-field>
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L4536" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5046" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### iteratively construct matrix H of size nG x nF
 matrixH := proc(F::{list,set,Vector}, G::list, vars::{list,set}, pp::nonnegint, dom::nonnegint)
     local undetPoly, pv := add(vars), nF := nops(F), nG := nops(G), uH, leqs, sol, i, dF := map(degree, F, vars), dG, d, d_min, h:
@@ -475,7 +466,7 @@ matrixH := proc(F::{list,set,Vector}, G::list, vars::{list,set}, pp::nonnegint, 
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5028" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use known change matrix to non-iteratively construct matrix H of size nG x nF
 matrixHni := proc(F::{list,set,Vector}, G::list, C::Matrix, CM::Matrix, vars::{list,set}, pp::nonnegint)
     local undetPolyni, nF := nops(F), nG := nops(G), H0, uH, leqs, sol, pars:
@@ -494,7 +485,7 @@ matrixHni := proc(F::{list,set,Vector}, G::list, C::Matrix, CM::Matrix, vars::{l
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4941" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5034" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate syzygy module
 syzModule := proc(F::{list,set,Vector}, G::list, A::Matrix, tord::ShortMonomialOrder, pp::nonnegint)
     local nF := nops(F), nG := nops(G), e, L, Lt, M, S, B:
@@ -511,7 +502,7 @@ syzModule := proc(F::{list,set,Vector}, G::list, A::Matrix, tord::ShortMonomialO
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4942" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5030" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### syzygy-based construction of matrix H of size nG x nF
 matrixHsyz := proc(F::{list,set,Vector}, G::list, C::Matrix, A::Matrix, tord::ShortMonomialOrder, pp::nonnegint)
     local S, Theta:
@@ -521,12 +512,12 @@ matrixHsyz := proc(F::{list,set,Vector}, G::list, C::Matrix, A::Matrix, tord::Sh
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4811" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5047" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of polynomial f
 support := proc(f::polynom, vars::{list,set}) coeffs(f, vars, 'm'): {m}: end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4812" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5044" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### fix incomplete template by adding more rows and columns
 fixTemplate := proc(admons, F::{list,set,Vector}, vars::{list,set}, mon::list, RB::list)
     local nF := nops(F), monF := map(f-&gt;support(f, vars), F), admon := [{} $ nF], i, j, Q, flag, xF, M, V0, E, V, mon1:
@@ -549,7 +540,7 @@ fixTemplate := proc(admons, F::{list,set,Vector}, vars::{list,set}, mon::list, R
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4827" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5038" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### construct elimination template from either matrix H or a list of expansion monomials
 constructTemplate := proc(H::{Matrix,list}, F::{list,set,Vector}, vars::{list,set}, RB::list)
     local nF := nops(F), mon, xF, M, V0, E, V:
@@ -567,7 +558,7 @@ constructTemplate := proc(H::{Matrix,list}, F::{list,set,Vector}, vars::{list,se
 end proc:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4444" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5035" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters
 adjustParams := proc(F::{list,set,Vector}, H::Matrix, RB::list, vars::set, pp::nonnegint)
     local nF := nops(F), nG := op([1,1], H), H1 := H, Lm, cols, L, mon, V0, E, e, sm, rm, np, ss, prm, leqs, sol:
@@ -604,7 +595,7 @@ adjustParams := proc(F::{list,set,Vector}, H::Matrix, RB::list, vars::set, pp::n
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group hide-output="false" labelreference="L4433" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L5036" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if the action matrix found
 isActionMatrixFound := proc(T::Matrix, M::Matrix, aB::list, B::list, nG::posint, pp::nonnegint)
     local tM, T1, deg := nops(B), m := deg - nG, r:
@@ -614,7 +605,7 @@ isActionMatrixFound := proc(T::Matrix, M::Matrix, aB::list, B::list, nG::posint,
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4935" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5039" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Schur complement reduction of the template
 SchurReduction := proc(M::Matrix, mon, nE::nonnegint, pp::nonnegint, pols::list)
     local rg, crg, m, M1, bs, M2, tM2, M3, tM3, M4, basis, lindep, B1, B2, B3, B4, iB1:
@@ -638,9 +629,9 @@ SchurReduction := proc(M::Matrix, mon, nE::nonnegint, pp::nonnegint, pols::list)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4450" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L5026" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### remove dependent rows and columns from the template
-LinDepReduction := proc(M::Matrix, pp::nonnegint)
+LinDepReduction := proc(M::Matrix, pp::nonnegint, show_tM:=false)
     local r, tM, M1, tM1, basis, r2del, c2del:
     ### remove linearly dependent rows
     tM := Gaussjord(M^%T, 'r') mod pp:
@@ -651,11 +642,12 @@ LinDepReduction := proc(M::Matrix, pp::nonnegint)
     tM1 := Gaussjord(M1, 'r') mod pp:
     basis := map(i-&gt;ListTools[Search](1, convert(tM1[i], list)), {$ 1..r}):
     c2del := convert({$ 1..max(basis)} minus basis, list):
+    if show_tM then return tM1: end if:
     M1[.., remove(i-&gt;is(i in c2del), [$ 1..op([1,2], M1)])], r2del, c2del:
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4821" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5031" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### rectify monomial ordering by heuristics
 rectTord := proc(F::{list,set,Vector}, vars::list, Ts::list, pp::nonnegint)
     local nF := nops(F), dg, wt, nn, GBs, Ws:
@@ -670,7 +662,7 @@ rectTord := proc(F::{list,set,Vector}, vars::list, Ts::list, pp::nonnegint)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4546" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5032" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### filter out some quotient space bases
 filterBases := proc(F::{list,set,Vector}, QBs::list, nQBs::posint, ff::numeric)
     local mF, Bs, prm, n := round(ff*nQBs):
@@ -682,7 +674,7 @@ filterBases := proc(F::{list,set,Vector}, QBs::list, nQBs::posint, ff::numeric)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4537" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5045" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### initialize minimal problem
 iniProb := proc(prob::string, qb::nonnegint, ff::numeric, pn::posint)
     local F, vF, pp, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs:
@@ -724,7 +716,7 @@ iniProb := proc(prob::string, qb::nonnegint, ff::numeric, pn::posint)
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4461" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5027" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### main function, find templates for a given minimal problem
 TemplateFinder := proc(prob::string, {quo_bases::nonnegint:=0, action_vars::list({posint,negint}):=[], parts::[posint,posint]:=[1,1], schur_pols::list({posint,negint}):=[], filter_frac::numeric:=0, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
     local F, pp, vars, avars, av, GBs, Ts, QBs, CMs, Gr, tord, i, j, k, H, mon, M, V, aB, B, RB, T, G, C, fl, m, n, mo := 10^6, no, sp, spo := -1, N, nv, nG, deg, q, irng, nk, QB, CM, tord1:
@@ -762,15 +754,13 @@ TemplateFinder := proc(prob::string, {quo_bases::nonnegint:=0, action_vars::list
     print(sprintf(&quot;Best template: [%d,%d],%a&quot;, mo, no, evalf(spo,3))):
 end proc:</Text-field>
 </Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="code" labelreference="L5002" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L5001" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block>
+</Section><Presentation-Block></Presentation-Block><Presentation-Block></Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Matlab solver generator</Text-field></Title><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L5018" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read template data
 readTemplate := proc(prob::string, std::boolean)
-    local mn0, sp0, pp, vars, av, tord, QB, shifts, F, M0, U0, tord0, V0, Gr, aB, B, RB, T, G, nG, M, tM, t1, r2del, c2del, V, E, mn, E0:
+    local mn0, sp0, pp, vars, av, tord, QB, shifts, F, M0, U0, tord0, V0, Gr, aB, B, RB, T, G, nG, M, tM, t1, r2del, c2del, V, E, mn, xE:
     mn0, sp0, pp, vars, av, tord, QB, shifts := readData(prob, std):
     read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
     F := eval(cat(F_, prob)):
@@ -782,23 +772,23 @@ readTemplate := proc(prob::string, std::boolean)
     aB, B, RB, T, G := monPartition(av, Gr, tord, pp, QB)[1..5]:
     nG := nops(G):
     M, V := constructTemplate(shifts, F, vars, RB)[2..3]:
+    tM := LinDepReduction(M, pp, true):
     M, r2del, c2del := LinDepReduction(M, pp):
+    t1 := map(x-&gt;op(select(y-&gt;tM[y, x]&lt;&gt;0, {$ 1..op([1, 1], tM)})), {op(c2del)}):
     mn := [op(1, M)]:
     print(cat(`Template's size: `, mn)):
     if mn0[1]&lt;&gt;mn[1] or mn0[2]&lt;&gt;mn[2] then error(&quot;Wrong template&quot;): end if:
     V := V[remove(i-&gt;is(i in c2del), [$ 1..op(1, V)])]:
-    tM := Gaussjord(M) mod pp:
-    t1 := map(x-&gt;op(select(y-&gt;tM[y, x]&lt;&gt;0, {$ 1..op([1, 1], tM)})), {op(c2del)}):
-    E0 := convert(V[[op(t1)]], set): # this set of monomials is needed for column pivoting
-    E := srt(convert(convert(V, set) minus convert(RB, set), list), tord0):
+    xE := convert(V[[op(t1)]], set): # this set of monomials is needed for column pivoting
+    E := srt(convert(convert(V, set) minus convert(RB, set), list), tord0): # list of excessive monomials
     print(cat(`Action matrix found: `, isActionMatrixFound(T, M, aB, B, nG, pp))):
-    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0:
+    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, xE:
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L5010" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5017" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute data for column-pivoting
-colpiv := proc(V::Vector, E0::set, av::monomial, tord::ShortMonomialOrder)
+iniColpiv := proc(V::Vector, E0::set, av::monomial, tord::ShortMonomialOrder)
     local Vl, P, B0, aP, R, P0, RP, E, vars := [op(indets(V))]:
     Vl := convert(convert(V, set) minus E0, list):
     P := convert(select(m-&gt;member(av*m, Vl), Vl), set): # set of permissible monomials
@@ -813,45 +803,58 @@ colpiv := proc(V::Vector, E0::set, av::monomial, tord::ShortMonomialOrder)
     P := [op(srt(convert(P0, list), tord)), op(B0)]:
     RP := [op(R), op(P)]:
     E := srt(convert(convert(Vl, set) minus convert(RP, set) union E0, list), tord):
-    print(&quot;nE = &quot;, nops(E), &quot;nR = &quot;, nops(R), &quot;nP = &quot;, nops(P)):
-    print(E0, convert(&lt;op(E), op(RP)&gt;, list), P):
+    print(&quot;Number of permissible monomials: &quot;, nops(P)):
+    #print(E0, convert(&lt;op(E), op(RP)&gt;, list), P):
     &lt;op(E), op(RP)&gt;, E, R, P, [op(indets(B0))]:
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L5011" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator with column-pivoting strategy
-SolverGenerator_colpiv := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
-    local vars, av, M0, V0, E, RB, aB, B, B1, mon, r2del, c2del, mn, nR, tord, V, E0, V1, R, P, vars0, nF, deg, nE, nP, nv0, iM0, eM0, nc, M, Mt, m1, m2, iM, eM, kk, ll, mm, vv, dir, fd, fb := &quot;    &quot;, i, vars1:
-    vars, av, M0, V0, E, RB, aB, B, mon, r2del, c2del, mn, nR, E0 := readTemplate(prob, evalb(basis=std)):
-    tord := tdeg(op(vars)):
-    V := &lt;op(E), op(RB)&gt;:
-    V1, E, R, P, vars0 := colpiv(V, E0, av, tord):
-    nF, deg, nE, nR, nP, nv0 := op([1, 1], M0), nops(B), nops(E), nops(R), nops(P), nops(vars0):
-    B1 := P[-deg..-1]:
-    iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
-    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*nF, string), iM0):
-    nc := nops(iM0):
-    vars1 := convert(convert(vars0, set) minus {av}, list):
-    M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
-    M := constructTemplate(mon, convert(M.V0, list), vars, RB)[2]:
-    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M)])]:
-    M := permuteColumns(M, V, V1):
-    mn := op(1, M):
-    m1 := mn[1]:
-    m2 := m1-nE:
-    Mt := convert(M, table):
-    iM, eM := [indices(Mt, indexorder)], map(op, [entries(Mt, indexorder)]):
-    kk := [seq(iM[i][1] + mn[1]*(iM[i][2] - 1), i=1..nops(iM))]:
-    ll := map(c-&gt;{ListTools[SearchAll](c, eM)}, eM0):
-    mm := map(x-&gt;map(y-&gt;kk[y], x), ll):
-    vv := [seq(ListTools[Search](vars1[i]*B1[deg], B1), i=1..nv0-1)]:
-    dir := cat(root_dir, &quot;/&quot;, prob):
-    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
-    fd := fopen(cat(dir, &quot;/&quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;.m&quot;), WRITE):
-    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1, 2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)): </Font># start writing solver
+<Group view="code" hide-output="false" labelreference="L5078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver w/o column-pivoting
+writeSolver := proc(dir, M0, V0, vars, vars1, av, iM, eM, B, aB, mn, nE, nR, std)
+    local vv, fd, nv := nops(vars), deg := nops(B), i, fb := &quot;    &quot;:
+    vv := [seq(ListTools[Search](vars1[i]*B[-1], B), i=1..nv-1)]:
+    fd := fopen(cat(dir, &quot;/&quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1,2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):
+</Font>    fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(&quot;function &quot;, vars, &quot; = &quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, <Font encoding="UTF-8">&quot;(C)\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
+<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M</Font>(:,&quot;, nE+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;M = M(end-&quot;, nR-1, &quot;:end,:)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;T<Font encoding="UTF-8"> = zeros(&quot;, deg, &quot;);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;T(1:&quot;, nR, &quot;,:) = -M(:,1:&quot;, nR, &quot;)<Font encoding="UTF-8">\134\134</Font>M(:,&quot;, nR+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    if deg-nR = 1 then
+        fprintf(fd, cat(fb, &quot;T(&quot;, deg*ListTools[Search](aB[-1], B)<Font encoding="UTF-8">, &quot;) = 1;\134n&quot;)):</Font>
+    elif deg-nR &gt; 1 then
+        fprintf(fd, cat(fb, &quot;T([&quot;, convert([seq(deg*(ListTools[Search](aB[i-deg-1], B)-1)+i, i=nR+1..deg)], string)[2..-2]<Font encoding="UTF-8">, &quot;]) = 1;\134n&quot;)):</Font>
+    end if:
+<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
+</Font>    fprintf(fd, cat(fb, &quot;sol = [V(&quot;, convert(vv, string), &quot;,:)./repmat(V(&quot;, deg, &quot;,:),<Font encoding="UTF-8">&quot;, nv-1, &quot;,1); diag(D).'];\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:))));\134n</Font>&quot;)):
+    fprintf(fd, cat(fb, &quot;%%I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:)))<Font encoding="UTF-8"> &amp; not(imag(sol(1,:))));\134n</Font>&quot;)):
+    for i from 1 to nv-1 do
+        fprintf(fd, cat(fb, vars1[i], &quot; = sol(&quot;, i, &quot;,I)<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    end do:
+    fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
+    fprintf(fd, &quot;end&quot;):
+    fclose(fd):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5076" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver w/ column-pivoting
+writeSolver_colpiv := proc(dir, M0, V0, vars0, vars1, av, iM, eM, P, aP, mn, nE, nR, deg, std)
+    local vv, fd, nv0 := nops(vars0), nP := nops(P), i, fb := &quot;    &quot;:
+    vv := [seq(ListTools[Search](vars1[i]*P[-1], P[-deg..-1]), i=1..nv0-1)]:
+    fd := fopen(cat(dir, &quot;/&quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;.m&quot;), WRITE):
+    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, op([1,1], M0), &quot;x&quot;, op([1,2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
     fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(&quot;function &quot;, vars0, &quot; = &quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;<Font encoding="UTF-8">(C)\134n\134n&quot;)):</Font>
+    fprintf(fd, cat(&quot;function &quot;, vars0, &quot; = &quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_colpiv_&quot;, prob, &quot;<Font encoding="UTF-8">(C)\134n\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
@@ -861,7 +864,7 @@ SolverGenerator_colpiv := proc(prob::string, {basis::symbol:=std, root_dir::stri
 </Font>        fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
         fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M(:,&quot;, nE+1, &quot;:end);\134n&quot;)):</Font>
         fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = full(M(&quot;, nE+1, &quot;:end,:));\134n&quot;)):</Font>
-    end if:
+    end if: 
     if nR &lt;&gt; 0 then
         fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;[L,UR,Pi] = lu(M(:,1:&quot;, nR, &quot;));<Font encoding="UTF-8">\134n&quot;)):</Font>
         fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
@@ -871,9 +874,9 @@ SolverGenerator_colpiv := proc(prob::string, {basis::symbol:=std, root_dir::stri
     fprintf(fd, cat(fb, &quot;NP = M(&quot;, nR+1, &quot;:end,:)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;[Q<Font encoding="UTF-8">,U,Pi] = qr(NP(:,1:end-&quot;, nv0+1, &quot;));\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">A = UR\134\134[MP(:,1:end-&quot;, nv0+1, &quot;)*Pi MP(:,end-&quot;, nv0, &quot;:end)];\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">B = U(:,1:&quot;, m2-nR, &quot;)\134\134[U(:,&quot;, m2-nR+1, &quot;:</Font>end) Q'*NP(:,end-&quot;, nv0, &quot;:end)];<Font encoding="UTF-8">\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;B = U(:,1:&quot;, mn[1]-nE<Font encoding="UTF-8">-nR, &quot;)\134\134[U(:,&quot;, </Font>mn[1]-nE-nR+1, &quot;:end) Q'*NP(:,end-&quot;, nv0, &quot;:end)];<Font encoding="UTF-8">\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;M = [-A(:,end-&quot;, deg-1, &quot;:end)+A(:,1:end-&quot;, deg, &quot;)*B; -B];<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;xP = &quot;, map(b-&gt;ListTools[Search](b*av, [op(P), op(R)]), P), &quot;<Font encoding="UTF-8">;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;xP = &quot;, aP, &quot;<Font encoding="UTF-8">;\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;P1 = [(1:&quot;, nP-nv0-1, &quot;)*Pi &quot;, nP-nv0, &quot;:&quot;, nP, &quot;];<Font encoding="UTF-8">\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;T = getT(M,[&quot;, nP+1, &quot;:&quot;, nP+nR, &quot; P1(1:end-&quot;, deg, &quot;)],P1(end-&quot;, deg-1, &quot;:end)&quot;, &quot;,xP)<Font encoding="UTF-8">;\134n&quot;)):</Font>
     <Font encoding="UTF-8">fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
@@ -886,65 +889,60 @@ SolverGenerator_colpiv := proc(prob::string, {basis::symbol:=std, root_dir::stri
     fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv0, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
     fprintf(fd, &quot;end&quot;):
     fclose(fd):
-    deg, [mn], vars, V0:
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L5000" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator (no column-pivoting)
-SolverGenerator := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
-    local vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0, nF, deg, nE, nv, iM0, eM0, nc, M, Mt, iM, eM, kk, ll, mm, vv, dir, fd, fb := &quot;    &quot;, i, vars1:
-    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nG, E0 := readTemplate(prob, evalb(basis=std)):
-    nF, deg, nE, nv := op([1, 1], M0), nops(B), nops(E), nops(vars):
+<Group view="code" hide-output="false" labelreference="L5015" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator with column-pivoting strategy
+SolverGenerator := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;, colpiv::boolean:=true})
+    local vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nR, xE, V, E0, V1, R0, P, aP, vars0, deg, nE, nE0, nR0, nP, iM0, eM0, M, Mt, iM, eM, dir, vars1:
+    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nR, xE := readTemplate(prob, evalb(basis=std)):
+    V := &lt;op(E), op(RB)&gt;:
+    V1, E0, R0, P, vars0 := iniColpiv(V, xE, av, tdeg(op(vars))):
+    aP := map(b-&gt;ListTools[Search](b*av, [op(P), op(R0)]), P):
+    deg, nE, nE0, nR0, nP := nops(B), nops(E), nops(E0), nops(R0), nops(P):
     iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
-    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*nF, string), iM0):
-    nc := nops(iM0):
+    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*op([1,1], M0), string), iM0):
+    vars1 := convert(convert(`if`(colpiv, vars0, vars), set) minus {av}, list):
+    M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
+    M := constructTemplate(shifts, convert(M.V0, list), vars, RB)[2]:
+    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1,1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1,2], M)])]:
+    if colpiv then M := permuteColumns(M, V, V1): end if:
+    Mt := convert(M, table):
+    iM, eM := [indices(Mt, indexorder)], map(op, [entries(Mt, indexorder)]):
+    dir := cat(root_dir, &quot;/&quot;, prob):
+    if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
+    if colpiv then
+        writeSolver_colpiv(dir, M0, V0, vars0, vars1, av, iM, eM, P, aP, mn, nE0, nR0, deg, evalb(basis=std)):
+    else
+        writeSolver(dir, M0, V0, vars, vars1, av, iM, eM, B, aB, mn, nE, nR, evalb(basis=std)):
+    end if:
+    deg, mn, vars, V0:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-output="false" labelreference="L5016" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator (old version)
+SolverGenerator_old := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
+    local vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nR, xE, deg, nE, iM0, eM0, M, Mt, iM, eM, vv, dir, fd, i, vars1:
+    vars, av, M0, V0, E, RB, aB, B, shifts, r2del, c2del, mn, nR, xE := readTemplate(prob, evalb(basis=std)):
+    deg, nE := nops(B), nops(E):
+    iM0 := [indices(convert(M0, table), indexorder)]: # indices of non-zero entries of coefficient matrix M0
+    eM0 := map(x-&gt;convert(x[1]+(x[2]-1)*op([1,1], M0), string), iM0):
     vars1 := convert(convert(vars, set) minus {av}, list):
     M := Matrix(op(1, M0), {op(zip((x, y)-&gt;(op(x))=y, iM0, eM0))}):
     M := constructTemplate(shifts, convert(M.V0, list), vars, RB)[2]:
-    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1, 1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1, 2], M)])]:
+    M := M[remove(i-&gt;is(i in r2del), [$ 1..op([1,1], M)]), remove(i-&gt;is(i in c2del), [$ 1..op([1,2], M)])]:
     Mt := convert(M, table):
     iM, eM := [indices(Mt, indexorder)], map(op, [entries(Mt, indexorder)]):
-    kk := [seq(iM[i][1] + mn[1]*(iM[i][2] - 1), i=1..nops(iM))]:
-    ll := map(c-&gt;{ListTools[SearchAll](c, eM)}, eM0):
-    mm := map(x-&gt;map(y-&gt;kk[y], x), ll):
-    vv := [seq(ListTools[Search](vars1[i]*B[deg], B), i=1..nv-1)]:
     dir := cat(root_dir, &quot;/&quot;, prob):
     if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
-    fd := fopen(cat(dir, &quot;/&quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, &quot;.m&quot;), WRITE):
-    fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, nF, &quot;x&quot;, op([1, 2], M0), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font> # start writing solver
-    fprintf(fd, cat(&quot;%% Monomial vector: &quot;, convert(V0, list), &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(&quot;function &quot;, vars, &quot; = &quot;, `if`(evalb(basis=std), &quot;std_&quot;, &quot;nstd_&quot;), mn[1], &quot;x&quot;, mn[2], &quot;_&quot;, prob, <Font encoding="UTF-8">&quot;(C)\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;i_dx = &quot;, map(i-&gt;i[1], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;j_dx = &quot;, map(i-&gt;i[2], iM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;C_dx = &quot;, eM,<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
-<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;Pi = <Font encoding="UTF-8">Pi';\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = [Pi*L Pi(:,&quot;, nE+1, &quot;:end)]\134\134M</Font>(:,&quot;, nE+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;M = M(end-&quot;, nG-1, &quot;:end,:)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    fprintf(fd, cat(<Font encoding="UTF-8">&quot;\134n&quot;, </Font>fb, &quot;T<Font encoding="UTF-8"> = zeros(&quot;, deg, &quot;);\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;T(1:&quot;, nG, &quot;,:) = -M(:,1:&quot;, nG, &quot;)<Font encoding="UTF-8">\134\134</Font>M(:,&quot;, nG+1, &quot;:end)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    if deg-nG = 1 then
-        fprintf(fd, cat(fb, &quot;T(&quot;, deg*ListTools[Search](aB[-1], B)<Font encoding="UTF-8">, &quot;) = 1;\134n&quot;)):</Font>
-    elif deg-nG &gt; 1 then
-        fprintf(fd, cat(fb, &quot;T([&quot;, convert([seq(deg*(ListTools[Search](aB[i-deg-1], B)-1)+i, i=nG+1..deg)], string)[2..-2]<Font encoding="UTF-8">, &quot;]) = 1;\134n&quot;)):</Font>
-    end if:
-<Font encoding="UTF-8">    fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;[V,D] = eig(T);\134n&quot;)):
-</Font>    fprintf(fd, cat(fb, &quot;sol = [V(&quot;, convert(vv, string), &quot;,:)./repmat(V(&quot;, deg, &quot;,:),<Font encoding="UTF-8">&quot;, nv-1, &quot;,1); diag(D).'];\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:))));\134n</Font>&quot;)):
-    fprintf(fd, cat(fb, &quot;%%I = find(not(isnan(sol(1,:))) &amp; not(isinf(sol(1,:)))<Font encoding="UTF-8"> &amp; not(imag(sol(1,:))));\134n</Font>&quot;)):
-    for i from 1 to nv-1 do
-        fprintf(fd, cat(fb, vars1[i], &quot; = sol(&quot;, i, &quot;,I)<Font encoding="UTF-8">;\134n&quot;)):</Font>
-    end do:
-    fprintf(fd, cat(fb, av, &quot; = sol(&quot;, nv, &quot;,I)<Font encoding="UTF-8">;\134n\134n&quot;)):</Font>
-    fprintf(fd, &quot;end&quot;):
-    fclose(fd):
+    writeSolver(dir, M0, V0, vars, vars1, av, iM, eM, B, aB, mn, nE, nR, evalb(basis=std)):
     deg, mn, vars, V0:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L5009" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5019" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_test_num := proc(prob, deg::posint, mn::[posint,posint], vars::list, V0::Vector, {basis::symbol:=std, root_dir::string:=&quot;../solvers_temp&quot;})
     local dir := cat(root_dir, &quot;/&quot;, prob), fd, j, fb := &quot;    &quot;, fb2 := cat(fb, fb), vars2 := map(vr-&gt;cat(vr, vr), vars):
     if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
@@ -985,7 +983,7 @@ end proc:</Text-field>
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L5006" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5021" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_inidata := proc(prob, {root_dir::string:=&quot;../solvers_temp&quot;})
     local dir := cat(root_dir, &quot;/&quot;, prob), fd, fb := &quot;    &quot;:
     if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
@@ -999,7 +997,7 @@ end proc:</Text-field>
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L5007" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5020" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">write_histo_num := proc(prob, {root_dir::string:=&quot;../solvers_temp&quot;})
     local dir := cat(root_dir, &quot;/&quot;, prob), fd, fb := &quot;    &quot;:
     if not FileTools[Exists](dir) then FileTools[MakeDirectory](dir): end if:
@@ -1021,6 +1019,11 @@ end proc:</Text-field>
     fprintf(fd, cat(&quot;<Font encoding="UTF-8">print(gcf,'-dpdf',strcat(folder,'\134\134_results\134\134fig-&quot;, prob, &quot;.pdf'));</Font>&quot;)):
     fclose(fd):
 end proc:</Text-field>
+</Input>
+</Group></Presentation-Block>
+</Section><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L5009" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L5003" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -1080,8 +1083,9 @@ filterBases,
 iniProb,
 TemplateFinder,
 readTemplate,
-colpiv,
-SolverGenerator_colpiv,
+iniColpiv,
+writeSolver,
+writeSolver_colpiv,
 SolverGenerator,
 write_inidata,
 write_test_num,
@@ -1117,11 +1121,11 @@ write_histo_num,
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4938" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4938" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4939" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4939" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

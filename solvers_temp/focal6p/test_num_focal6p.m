@@ -1,6 +1,6 @@
 rng(23);
 
-N = 10000;
+N = 100;
 
 Err_focal6p = [];
 Tm_focal6p = [];

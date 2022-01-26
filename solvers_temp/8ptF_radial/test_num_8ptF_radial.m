@@ -1,6 +1,6 @@
 rng(23);
 
-N = 10000;
+N = 100;
 
 Err_8ptF_radial = [];
 Tm_8ptF_radial = [];
@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_8ptF_radial(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = std_31x47_colpiv_8ptF_radial(C); % solve polynomial system
+        [xx, yy, zz] = nstd_31x47_colpiv_8ptF_radial(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME
@@ -29,7 +29,7 @@ for i = 1:N
         M = [M; norm(C*m.','fro')];
     end
     M = sort(M);
-    err = norm(M(1:end),'fro');
+    err = norm(M(1:16),'fro');
 
     Err_8ptF_radial = [Err_8ptF_radial err];
     Tm_8ptF_radial = [Tm_8ptF_radial tm];
