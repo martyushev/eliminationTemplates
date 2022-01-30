@@ -1,6 +1,6 @@
 Collection of state-of-the-art solvers for minimal problems in geometric computer vision.
 
-If you use these solvers in your research, please cite the following work:
+If you use this code in your research, please cite the following work:
 
 @inproceedings{martyushev2022optimizing,
   title={Optimizing Elimination Templates by Greedy Parameter Search},
@@ -12,6 +12,13 @@ If you use these solvers in your research, please cite the following work:
 
 E-mail: martiushevev@susu.ru
 Project page: github.com/martyushev/EliminationTemplates
+
+
+How to use:
+
+1) Run add_all.m to add paths
+2) Run prob/test_num_prob.m
+
 
 
 Folders (minimal problems):
@@ -50,7 +57,7 @@ Folders (minimal problems):
 32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
 33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
 34) relpose_7p_r1r2: calibrated 7-point relative pose estimation with two unknown radial distortions
-_helpers: auxiliary functions that are common for several problems
+_common: auxiliary functions that are common for several problems
 _results: output data (mat-files and figures)
 
 
