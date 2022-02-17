@@ -11,9 +11,9 @@ If you use this code in your research, please cite the following work:
 } 
 
 E-mail: martiushevev@susu.ru
-Project page: github.com/martyushev/EliminationTemplates
+Project page: https://github.com/martyushev/EliminationTemplates
 
-Software needed:
+Software required:
 
 1) Maple
 2) Macaulay2 (http://www2.macaulay2.com/Macaulay2/)
@@ -21,7 +21,7 @@ Software needed:
 
 How to use:
 
-1) Formulating minimal problem as polynomial system
+1) Formulating minimal problem as a polynomial system
  1.1) See examples in /problems/F_prob.mw
 
 2) Finding quotient space bases
@@ -59,5 +59,3 @@ Folders:
 5) optim: best templates found
 6) solvers: generated Matlab solvers
 7) weights: pre-computed weight vectors for weighted-degree orderings
-
-
