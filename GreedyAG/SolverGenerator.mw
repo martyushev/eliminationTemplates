@@ -98,12 +98,15 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;8ptF_radial&quot;: ### pick minimal problem (see F_prob.m files in folder ./problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;relpose_4pt&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
-basis = nstd, ### either std for standard quotient space basis or nstd for non-standard
+basis = std, ### std/nstd - using standard/non-standard quotient space basis
 root_dir = &quot;solvers&quot;, ### root directory for solvers
-colpiv = true: ### apply column-pivoting strategy in the solver</Text-field>
+colpiv = 1, ### 1/0 - applying/non-applying column-pivoting strategy
+create_coefs_file = 0, ### 1/0 - creating/non-creating inidata_prob.m and coefs_prob.m for computing initial Macaulay matrix
+create_test_file = 1, ### 1/0 - creating/non-creating test file test_num_prob.m
+create_histo_file = 1: ### 1/0 - creating/non-creating histo_num_prob.m for plotting numerical error histogram</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -112,41 +115,26 @@ colpiv = true: ### apply column-pivoting strategy in the solver</Text-field>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4772" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### create Matlab solver (n)std_mxn(_colpiv)_prob.m
-deg, mn, vars, V0 := SolverGenerator(prob, opts):</Text-field>
+SolverGenerator(prob, opts):</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6VGVtcGxhdGUnc35zaXplOn5bMzEsfjQ3XUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpUZW1wbGF0ZSdzfnNpemU6flszMSx+NDddRzYi</Equation></Text-field>
-</Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6QWN0aW9ufm1hdHJpeH5mb3VuZDp+dHJ1ZUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpBY3Rpb25+bWF0cml4fmZvdW5kOn50cnVlRzYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYsLUYsNiYtSSNtaUdGJDYlUSJ4RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnL0Y4USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGQi8lKXN0cmV0Y2h5R0ZCLyUqc3ltbWV0cmljR0ZCLyUobGFyZ2VvcEdGQi8lLm1vdmFibGVsaW1pdHNHRkIvJSdhY2NlbnRHRkIvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZRLUYxNiVRInpGJ0Y0RjdGPi1GOzYtUSIsRidGPkZAL0ZERjZGRUZHRklGS0ZNRk8vRlNRLDAuMzMzMzMzM2VtRictRiw2Ji1GMTYlUSJ5RidGNEY3RjpGVEY+RlctRiw2JC1JJW1zdXBHRiQ2JUZULUkjbW5HRiQ2JFEiMkYnRj4vJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRj5GV0ZULyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0ZCRj5GPi8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJw==">NyYqJkkieEc2IiIiIkkiekdGJUYmKiZJInlHRiVGJkYnRiYqJEYnIiIjRic=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE7VGVtcGxhdGUnc35zaXplOn5bOTksfjExOV1GJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">STtUZW1wbGF0ZSdzfnNpemU6fls5OSx+MTE5XUc2Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFETnVtYmVyfm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczp+MjBGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUROdW1iZXJ+b2Z+cGVybWlzc2libGV+bW9ub21pYWxzOn4yMEc2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE/TGlzdH5vZn5wZXJtaXNzaWJsZX5tb25vbWlhbHM6RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">ST9MaXN0fm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczpHNiI=</Equation></Text-field>
+</Output>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZecS1GLDYoLUkjbWlHRiQ2JVEidkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RMSZJbnZpc2libGVUaW1lcztGJy9GOFEnbm9ybWFsRicvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRkIvJSlzdHJldGNoeUdGQi8lKnN5bW1ldHJpY0dGQi8lKGxhcmdlb3BHRkIvJS5tb3ZhYmxlbGltaXRzR0ZCLyUnYWNjZW50R0ZCLyUnbHNwYWNlR1EmMC4wZW1GJy8lJ3JzcGFjZUdGUS1GMTYlUSJ4RidGNEY3RjotSSVtc3VwR0YkNiUtRjE2JVEieUYnRjRGNy1JI21uR0YkNiRRIjJGJ0Y+LyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJ0Y+LUY7Ni1RIixGJ0Y+RkAvRkRGNkZFRkdGSUZLRk1GTy9GU1EsMC4zMzMzMzMzZW1GJy1GLDYoLUYxNiVRIndGJ0Y0RjdGOkZURjpGV0Y+Rl5vLUYsNiYtRlg2JUZaLUZobjYkUSIzRidGPkZbb0Y6RjBGPkZeby1GLDYmRltwRjpGZm9GPkZeby1GLDYqRlpGOi1GMTYlUSJ6RidGNEY3RjpGVEY6RjBGPkZeby1GLDYqRmZvRjpGVEY6RlpGOkZkcEY+Rl5vLUYsNihGMEY6RldGOkZkcEY+Rl5vLUYsNihGZm9GOkZXRjpGZHBGPkZeby1GLDYoRjBGOkZURjotRlg2JUZkcEZnbkZbb0Y+Rl5vLUYsNihGZm9GOkZURjpGX3FGPkZeby1GLDYoRjBGOkZaRjpGX3FGPkZeby1GLDYoRmZvRjpGWkY6Rl9xRj5GXm8tRiw2Ji1GWDYlRmRwRl1wRltvRjpGMEY+Rl5vLUYsNiZGZm9GOkZpcUY+Rl5vLUYsNihGWkY6RlRGOkYwRj5GXm8tRiw2KEZaRjpGVEY6RmZvRj5GXm8tRiw2JkZXRjpGMEY+Rl5vLUYsNiZGV0Y6RmZvRj5GXm8tRiw2JkZXRjpGVEY+Rl5vLUYsNiRGW3BGPkZeby1GLDYoRmRwRjpGVEY6RjBGPkZeby1GLDYoRmZvRjpGVEY6RmRwRj5GXm8tRiw2KEZaRjpGZHBGOkYwRj5GXm8tRiw2KEZaRjpGZHBGOkZmb0Y+Rl5vLUYsNihGWkY6RmRwRjpGVEY+Rl5vLUYsNiZGV0Y6RmRwRj5GXm8tRiw2JkZfcUY6RjBGPkZeby1GLDYmRl9xRjpGZm9GPkZeby1GLDYmRl9xRjpGVEY+Rl5vLUYsNiZGX3FGOkZaRj5GXm8tRiw2JEZpcUY+Rl5vLUYsNiZGVEY6RjBGPkZeby1GLDYmRlRGOkZmb0Y+Rl5vLUYsNiZGWkY6RjBGPkZeby1GLDYmRmZvRjpGWkY+Rl5vLUYsNiZGVEY6RlpGPkZeby1GLDYkRldGPkZeby1GLDYmRmRwRjpGMEY+Rl5vLUYsNiZGZHBGOkZmb0Y+Rl5vLUYsNiZGVEY6RmRwRj5GXm8tRiw2JkZkcEY6RlpGPkZeby1GLDYkRl9xRj5GXm9GMEZeb0Zmb0Zeb0ZURl5vRlpGXm9GZHBGXm8tRmhuNiRRIjFGJ0Y+LyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0ZCRj5GPi8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJw==">N1IqKEkidkc2IiIiIkkieEdGJUYmSSJ5R0YlIiIjKihJIndHRiVGJkYnRiZGKEYpKiZGKCIiJEYkRiYqJkYoRi1GK0YmKipGKEYmSSJ6R0YlRiZGJ0YmRiRGJioqRitGJkYnRiZGKEYmRjBGJiooRiRGJkYoRilGMEYmKihGK0YmRihGKUYwRiYqKEYkRiZGJ0YmRjBGKSooRitGJkYnRiZGMEYpKihGJEYmRihGJkYwRikqKEYrRiZGKEYmRjBGKSomRjBGLUYkRiYqJkYrRiZGMEYtKihGKEYmRidGJkYkRiYqKEYoRiZGJ0YmRitGJiomRihGKUYkRiYqJkYoRilGK0YmKiZGKEYpRidGJiokRihGLSooRjBGJkYnRiZGJEYmKihGK0YmRidGJkYwRiYqKEYoRiZGMEYmRiRGJiooRihGJkYwRiZGK0YmKihGKEYmRjBGJkYnRiYqJkYoRilGMEYmKiZGMEYpRiRGJiomRjBGKUYrRiYqJkYwRilGJ0YmKiZGMEYpRihGJiokRjBGLSomRidGJkYkRiYqJkYnRiZGK0YmKiZGKEYmRiRGJiomRitGJkYoRiYqJkYnRiZGKEYmKiRGKEYpKiZGMEYmRiRGJiomRjBGJkYrRiYqJkYnRiZGMEYmKiZGMEYmRihGJiokRjBGKUYkRitGJ0YoRjBGJg==</Equation></Text-field>
+</Output>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFETnVtYmVyfm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczp+NDhGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUROdW1iZXJ+b2Z+cGVybWlzc2libGV+bW9ub21pYWxzOn40OEc2Ig==</Equation></Text-field>
+</Output>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFRVmFyaWFibGVzfnRoYXR+Y2Fufm5vdH5iZX5ldmFsdWF0ZWR+YXR+cm9vdHM6fltdRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SVFWYXJpYWJsZXN+dGhhdH5jYW5+bm90fmJlfmV2YWx1YXRlZH5hdH5yb290czp+W11HNiI=</Equation></Text-field>
 </Output>
 </Group>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4774" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### create inidata_prob.m for random instance of the problem
-#write_inidata(prob, opts):</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L4789" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4769" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### create testing file test_num_prob.m
-#write_test_num(prob, deg, mn, vars, V0, opts):</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" hide-output="false" labelreference="L4770" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### create histo_num_prob.m for plotting numerical error histogram
-#write_histo_num(prob, opts):</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-output="false" labelreference="L4784" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4789" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -154,15 +142,27 @@ deg, mn, vars, V0 := SolverGenerator(prob, opts):</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4786" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4786" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" hide-output="false" labelreference="L4787" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4788" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4792" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4793" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4794" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4791" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

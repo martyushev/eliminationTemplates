@@ -39,6 +39,5 @@ end
 
 folder = fileparts(which('add_all.m'));
 save(strcat(folder,'\_results\Err_relpose_7p_fr.mat'),'Err_relpose_7p_fr');
-save(strcat(folder,'\_results\Tm_relpose_7p_fr.mat'),'Tm_relpose_7p_fr');
 
 fprintf('Problem #33. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_relpose_7p_fr),median(Err_relpose_7p_fr));

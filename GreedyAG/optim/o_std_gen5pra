@@ -1,0 +1,10 @@
+[37, 81]
+862/2997
+32749
+[u, v, w]
+u
+wdeg([18, 27, 24],[u, v, w])
+[w^2*u^3*v, u^7, u^3*w^3, w*u^4*v, v*w^4, w^2*u^4, w^5, u^5*v, u*v*w^3, w*u^5, u*w^4, u^2*v*w^2, u^6, u^2*w^3, u^3*v*w, u^3*w^2, u^4*v, v*w^3, u^4*w, w^4, u*v*w^2, u^5, u*w^3, u^2*v*w, u^2*w^2, u^3*v, u^3*w, v*w^2, u^4, w^3, u*v*w, u*w^2, u^2*v, u^2*w, u^3, v*w, w^2, u*v, u*w, u^2, v, w, u, 1]
+[Vector(8, [1,v,u,w,u*w,v*w,v^2,w^2]), Vector(8, [1,v,u,w,u*w,v*w,v^2,w^2]), Vector(8, [1,v,u,w,u*w,v*w,v^2,w^2]), Vector(8, [1,v,u,w,u*w,v*w,v^2,w^2]), Vector(8, [1,v,u,w,u*w,v*w,v^2,w^2]), Vector(83, [1,v,u,w,u*v,u*w,v*w,v^2*w^4,v^5*w,w^2*v^4,v^3*w^3,w^5*v,u*v^5,u*w^5,u^4*w,u^3*v^2,u^3*w^2,u^2*v^3,u^2*w^3,v*w^4,v^4*w,v^3*w^2,v^2*w^3,u^2*v^4,u^2*w^4,w*u^5,v^2*u^4,w^2*u^4,u^3*v^3,u^3*w^3,u*v^4,u*w^4,u^4*v,u^2*v,u^2*w,u*v^2,u*w^2,v^2*w,v*w^2,u^3*v,u^3*w,u^2*v^2,u^2*w^2,u*v^3,u*w^3,v^3*w,v^2*w^2,v*w^3,u^2*v*w,u^3*v*w,u*v*w^2,v^2*w^3*u,u*v*w,u*w^4*v,u*v^4*w,u*v^2*w,u^2*v^2*w,u^2*w^3*v,w*u^4*v,v^2*u^3*w,u*v*w^3,u*v^3*w,u*v^2*w^2,u^2*v*w^2,u^2*v^3*w,w^2*u^3*v,u^2*v^2*w^2,w^2*v^3*u,u^2,v^2,w^2,v^6,w^6,w^5,u^5,v^5,u^6,u^3,v^3,u^4,v^4,w^4,w^3])]
+[6]
+[]

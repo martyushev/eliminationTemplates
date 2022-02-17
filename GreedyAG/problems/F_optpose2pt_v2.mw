@@ -95,64 +95,47 @@ with(Groebner):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4088" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4073" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">irnd := rand(-1000..1000)/1000:</Text-field>
+<Group hide-output="false" labelreference="L4101" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### procedure that computes Macaulay matrix of initial polynomial system
+C_optpose2pt_v2 := proc({symbolic:=1})
+    local _name, _size, AA, eqs, vars, C0, V0, V, C1, C2, t, R, boffa:
+    _name, _size := [`U`, `u`], [[3,2], [8,1]]:
+    if symbolic=1 then
+        AA := seq(Matrix(op(_size[i]), (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name)):
+    else
+        AA := seq(rndMat(op(_size[i])), i=1..nops(_name)):
+    end if:
+    C1 := &lt;&lt;AA[2][1]|0|AA[2][2]&gt;, &lt;0|AA[2][1]|AA[2][3]&gt;, &lt;AA[2][2]|AA[2][3]|AA[2][4]&gt;&gt;:
+    C2 := &lt;&lt;AA[2][5]|0|AA[2][6]&gt;, &lt;0|AA[2][5]|AA[2][7]&gt;, &lt;AA[2][6]|AA[2][7]|AA[2][8]&gt;&gt;:
+    t, R := &lt;v, w, x&gt;, &lt;&lt;1|0|0&gt;, &lt;0|y|-z&gt;, &lt;0|z|y&gt;&gt;:
+    eqs := [(R.AA[1][..,1]+t)^%T.C1.(R.AA[1][..,1]+t), (R.AA[1][..,2]+t)^%T.C2.(R.AA[1][..,2]+t), y^2+z^2-1]:
+    boffa := &lt;seq(&lt;seq(diff(eqs[i], t[j]), j=1..3), diff(eqs[i], y), diff(eqs[i], z)&gt;^%T, i=1..2)&gt;/2:
+    eqs := [op(eqs), LinearAlgebra[Determinant](boffa[..,[3,4]]), LinearAlgebra[Determinant](boffa[..,[3,5]]), LinearAlgebra[Determinant](boffa[..,[4,5]])]:
+    eqs := map(expand, eqs):
+    if symbolic=0 then return eqs: end if:
+    vars := indets(eqs) minus indets([AA]):
+    C0, V0 := poly2matrix(eqs, nops(eqs), vars):
+    V := srt(V0, tdeg(op(vars))):
+    [`cf`, permuteColumns(C0, V0, V)], _name, _size:
+end proc:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4082" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">U := Matrix(3,2, (x,y)-&gt;irnd());
-u := Vector(14, x-&gt;irnd());</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEiVUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWFjdGlvbkdGJDYlLUkobWZlbmNlZEdGJDYoLUYjNiYtSSdtdGFibGVHRiQ2Ny1JJG10ckdGJDYnLUkkbXRkR0YkNigtRiM2Jy1GNjYtUSomdW1pbnVzMDtGJ0Y5RjtGPkZARkJGREZGRkgvRktRLDAuMjIyMjIyMmVtRicvRk5GYG8tSSZtZnJhY0dGJDYoLUkjbW5HRiQ2JFEiN0YnRjktRmZvNiRRIzUwRidGOS8lLmxpbmV0aGlja25lc3NHUSIxRicvJStkZW5vbWFsaWduR1EnY2VudGVyRicvJSludW1hbGlnbkdGYXAvJSliZXZlbGxlZEdGPS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5LyUpcm93YWxpZ25HUSFGJy8lLGNvbHVtbmFsaWduR0ZdcS8lK2dyb3VwYWxpZ25HRl1xLyUocm93c3BhbkdGXnAvJStjb2x1bW5zcGFuR0ZecC1GaG42KC1GY282KC1GZm82JFEkMzkxRidGOS1GZm82JFEkNTAwRidGOUZccEZfcEZicEZkcEZbcUZecUZgcUZicUZkcUZbcUZecUZgcS1GZW42Jy1GaG42KC1GIzYnRlxvLUZjbzYoLUZmbzYkRl5wRjktRmZvNiRRIjRGJ0Y5RlxwRl9wRmJwRmRwRmZwRmlwRjlGW3FGXnFGYHFGYnFGZHEtRmhuNigtRmNvNigtRmZvNiRRJDkxM0YnRjktRmZvNiRRJTEwMDBGJ0Y5RlxwRl9wRmJwRmRwRltxRl5xRmBxRmJxRmRxRltxRl5xRmBxLUZlbjYnLUZobjYoLUZjbzYoLUZmbzYkUSM4MUYnRjktRmZvNiRRJDI1MEYnRjlGXHBGX3BGYnBGZHBGW3FGXnFGYHFGYnFGZHEtRmhuNigtRiM2J0Zcby1GY282KC1GZm82JFEkMTk5RidGOS1GZm82JFEkMjAwRidGOUZccEZfcEZicEZkcEZmcEZpcEY5RltxRl5xRmBxRmJxRmRxRltxRl5xRmBxLyUmYWxpZ25HUSVheGlzRicvRlxxUSliYXNlbGluZUYnL0ZfcUZhcC9GYXFRJ3xmcmxlZnR8aHJGJy8lL2FsaWdubWVudHNjb3BlR0YxLyUsY29sdW1ud2lkdGhHUSVhdXRvRicvJSZ3aWR0aEdGW3YvJStyb3dzcGFjaW5nR1EmMS4wZXhGJy8lLmNvbHVtbnNwYWNpbmdHUSYwLjhlbUYnLyUpcm93bGluZXNHUSVub25lRicvJSxjb2x1bW5saW5lc0dGZnYvJSZmcmFtZUdGZnYvJS1mcmFtZXNwYWNpbmdHUSwwLjRlbX4wLjVleEYnLyUqZXF1YWxyb3dzR0Y9LyUtZXF1YWxjb2x1bW5zR0Y9LyUtZGlzcGxheXN0eWxlR0Y9LyUlc2lkZUdRJnJpZ2h0RicvJTBtaW5sYWJlbHNwYWNpbmdHRmN2RmZwRmlwRjlGOS9JK21zZW1hbnRpY3NHRiRRJ01hdHJpeEYnLyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRml3LyUrYWN0aW9udHlwZUdRLnJ0YWJsZWFkZHJlc3NGJy8lKXJ0YWJsZWlkR1E1MTg0NDY3NDU5NjE3MDQ5ODA4MzhGJ0ZmcEZpcEY5">LUknTWF0cml4RzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiNiMvSSQlaWRHRiciNVEzKVxxaGZ1WSU9</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEidUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWFjdGlvbkdGJDYlLUkobWZlbmNlZEdGJDYmLUknbXRhYmxlR0YkNjgtSSRtdHJHRiQ2Ji1JJG10ZEdGJDYoLUYjNiYtRiw2JVEqfjF+Li5+MTR+RidGL0YyLUklbXN1YkdGJDYlLUYsNiVRJ1ZlY3RvckYnRi9GMi1GIzYlLUYsNiVRJ2NvbHVtbkYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRidGOS8lL3N1YnNjcmlwdHNoaWZ0R1EiMEYnRmhvRjkvJSlyb3dhbGlnbkdRIUYnLyUsY29sdW1uYWxpZ25HRmBwLyUrZ3JvdXBhbGlnbkdGYHAvJShyb3dzcGFuR1EiMUYnLyUrY29sdW1uc3BhbkdGZ3BGXnBGYXBGY3AtRlk2Ji1GZm42KC1GIzYmLUYsNiVRLERhdGF+VHlwZTp+RidGL0YyLUYsNiVRKWFueXRoaW5nRidGL0YyRmhvRjlGXnBGYXBGY3BGZXBGaHBGXnBGYXBGY3AtRlk2Ji1GZm42KC1GIzYmLUYsNiVRKlN0b3JhZ2U6fkYnRi9GMi1GLDYlUSxyZWN0YW5ndWxhckYnRi9GMkZob0Y5Rl5wRmFwRmNwRmVwRmhwRl5wRmFwRmNwLUZZNiYtRmZuNigtRiM2Ji1GLDYlUShPcmRlcjp+RidGL0YyLUYsNiVRLkZvcnRyYW5fb3JkZXJGJ0YvRjJGaG9GOUZecEZhcEZjcEZlcEZocEZecEZhcEZjcC8lJmFsaWduR1ElYXhpc0YnL0ZfcFEpYmFzZWxpbmVGJy9GYnBRJ2NlbnRlckYnL0ZkcFEnfGZybGVmdHxockYnLyUvYWxpZ25tZW50c2NvcGVHRjEvJSxjb2x1bW53aWR0aEdRJWF1dG9GJy8lJndpZHRoR0ZbdC8lK3Jvd3NwYWNpbmdHUSYxLjBleEYnLyUuY29sdW1uc3BhY2luZ0dRJjAuOGVtRicvJSlyb3dsaW5lc0dRJW5vbmVGJy8lLGNvbHVtbmxpbmVzR0ZmdC8lJmZyYW1lR0ZmdC8lLWZyYW1lc3BhY2luZ0dRLDAuNGVtfjAuNWV4RicvJSplcXVhbHJvd3NHRj0vJS1lcXVhbGNvbHVtbnNHRj0vJS1kaXNwbGF5c3R5bGVHRj0vJSVzaWRlR1EmcmlnaHRGJy8lMG1pbmxhYmVsc3BhY2luZ0dGY3RGOS8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJy8lK2FjdGlvbnR5cGVHUS1icm93c2VydGFibGVGJy8lKXJ0YWJsZWlkR1E1MTg0NDY3NDU5NjE3MDQ5ODEwNzhGJ0Zoby8lKXJlYWRvbmx5R0Y9Rjk=">LSZJJ1ZlY3Rvckc2JCUqcHJvdGVjdGVkR0koX3N5c2xpYkc2IjYjSSdjb2x1bW5HRig2Iy9JJCVpZEdGKCI1eTUpXHFoZnVZJT0=</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-output="false" labelreference="L4085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">c := 6:
-for iii from 1 to 2 do
-    C||iii := &lt;&lt;u[1+c]|0|u[2+c]&gt;, &lt;0|u[1+c]|u[3+c]&gt;, &lt;u[2+c]|u[3+c]|u[4+c]&gt;&gt;:
-    c := c+4:
-end do:</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4102" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">eqs := C_optpose2pt_v2(symbolic=0):</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4087" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">t := &lt;v, w, x&gt;:
-R := &lt;&lt;1|0|0&gt;, &lt;0|y|-z&gt;, &lt;0|z|y&gt;&gt;:
-eqs := []:
-for iii from 1 to 2 do
-    Up := R.U[..,iii]+t:
-    eqs := [op(eqs), factor(Up^%T.C||iii.Up)]:
-end do:
-eqs := [op(eqs), y^2+z^2-1]:
-boffa := &lt;seq(&lt;seq(diff(eqs[iii], t[j]), j=1..3), diff(eqs[iii], y), diff(eqs[iii], z)&gt;^%T, iii=1..2)&gt;:
-eqs := [op(eqs), Determinant(boffa[..,[3,4]])]:
-eqs := [op(eqs), Determinant(boffa[..,[3,5]])]:
-eqs := [op(eqs), Determinant(boffa[..,[4,5]])]:</Text-field>
-</Input>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4083" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L4103" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(eqs))];</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUkobWZlbmNlZEdGJDYmLUYjNi4tRiw2JVEidkYnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEid0YnRi9GMkZXLUYsNiVRInhGJ0YvRjJGVy1GLDYlUSJ5RidGL0YyRlctRiw2JVEiekYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjkvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGY29GZm9GOQ==">NydJInZHNiJJIndHRiRJInhHRiRJInlHRiRJInpHRiQ=</Equation></Text-field>
 </Output>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">[seq(map(vr-&gt;degree(eqs[i], vr), [op(vars)]), i=1..nops(eqs))];</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYwLUYjNiYtRiw2Li1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMkY5RjJGOUYyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y/RjZGNi8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJ0Y5Ri5GOS1GIzYmLUYsNi4tRjM2JFEiMEYnRjZGOUZcb0Y5RlxvRjlGMkY5RjJGU0ZWRjZGNkZYRmVuRjlGLkY5Ri5GOUYuRlNGVkY2RjZGWEZlbg==">Nyg3JyIiI0YkRiRGJEYkRiM3JyIiIUYmRiZGJEYkRiNGI0Yj</Equation></Text-field>
-</Output>
-</Group>
-<Group hide-input="false" hide-output="false" labelreference="L4074" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">tord := tdeg(op(vars));</Text-field>
@@ -160,25 +143,15 @@ eqs := [op(eqs), Determinant(boffa[..,[4,5]])]:</Text-field>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUYjNigtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkhGSkZNLUkobWZlbmNlZEdGJDYkLUYjNi4tRiw2JVEidkYnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEid0YnRi9GMkZpbi1GLDYlUSJ4RidGL0YyRmluLUYsNiVRInlGJ0YvRjJGaW4tRiw2JVEiekYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjlGW3BGXnBGOUZbcEZecEY5">LUkldGRlZ0c2IjYnSSJ2R0YkSSJ3R0YkSSJ4R0YkSSJ5R0YkSSJ6R0Yk</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L3934" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L3907" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(eqs, tord, characteristic=3001):
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(eqs, tord, characteristic=32749):
 nops(Gr);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjMTdGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiM8</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUYjNiQtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ5RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW5HRiQ2JFEiMkYnL0Y4USdub3JtYWxGJy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGPi1JI21vR0YkNi1RIitGJ0Y+LyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZJLyUpc3RyZXRjaHlHRkkvJSpzeW1tZXRyaWNHRkkvJShsYXJnZW9wR0ZJLyUubW92YWJsZWxpbWl0c0dGSS8lJ2FjY2VudEdGSS8lJ2xzcGFjZUdRLDAuMjIyMjIyMmVtRicvJSdyc3BhY2VHRlgtRiM2JC1GLjYlLUYxNiVRInpGJ0Y0RjdGOkZARj5GQy1GOzYkUSUzMDAwRidGPkY+">LCgqJEkieUc2IiIiIyIiIiokSSJ6R0YlRiZGJyIlK0lGJw==</Equation></Text-field>
-</Output>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=3001);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=32749);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIh</Equation></Text-field>
 </Output>
@@ -193,23 +166,23 @@ nops(Gr);</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4062" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4062" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4063" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4063" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4064" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4064" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4089" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4089" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4090" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4090" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -218,14 +191,17 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4096" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save F_optpose2pt_v2, &quot;F_optpose2pt_v2.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save
+F_optpose2pt_v2,
+C_optpose2pt_v2,
+&quot;F_optpose2pt_v2.m&quot;:</Text-field>
 </Input>
 </Group>
-<Group labelreference="L4097" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4097" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4091" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4091" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -248,5 +224,5 @@ nops(Gr);</Text-field>
 <Group labelreference="L4066" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
-</Group><RTable handle="18446745961704980838">TTdSMApJQVJUQUJMRV9TQVZFLzE4NDQ2NzQ1OTYxNzA0OTgwODM4WCwlKWFueXRoaW5nRzYiRiVbZ2whIiUhISEjJyIkIiMjISIoIiNdIyEiIiIiJSMiIyIpIiRdIyMiJCJSIiQrJiMiJDgqIiUrNSMhJCo+IiQrI0Yl</RTable><RTable handle="18446745961704981078">TTdSMApJQVJUQUJMRV9TQVZFLzE4NDQ2NzQ1OTYxNzA0OTgxMDc4WColKWFueXRoaW5nRzYiRiVbZ2whIyUhISEiLyIvIyEjQiIkKyYjISQsKCIlKzUjISQsKkYrIyIkdCZGKyMhJCwjIiRdIyMiJGAiRigjIiIkIiIpIyEkQiIiJEQiIyEkZCNGKyMiJCI+RjIjIiQiKSlGKyMhJD4iRigjIiNQIiQrIyMiJChIRitGJQ==</RTable>
+</Group>
 </Worksheet>

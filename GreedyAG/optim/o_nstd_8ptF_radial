@@ -1,0 +1,10 @@
+[31, 47]
+.77076
+32749
+[x, y, z]
+z
+tdeg(x,y,z)
+[x^3*z, x^2*y*z, x*y^2*z, z*y^3, x^2*z^2, x*z^3, y*z^3, z*y*x, y^2*z, z^3, y*z, z*x^2, z^2*x, x*z, z^2, z]
+[Vector(15, [z*x^2,x^2,z*y*x,x*y,z^2*x,x*z,x,y^2*z,y^2,z^2*y,y*z,y,z^2,z,1]), Vector(15, [z*x^2,x^2,z*y*x,x*y,z^2*x,x*z,x,y^2*z,y^2,z^2*y,y*z,y,z^2,z,1]), Vector(1, [z])]
+[]
+[]

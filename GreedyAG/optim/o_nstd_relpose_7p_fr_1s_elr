@@ -1,0 +1,10 @@
+[22, 41]
+617/902
+32749
+[x, y, z]
+z
+wdeg([6, 5, 4],[x, y, z])
+[y^4*z, y*x^3, y^2*x^2, y^3*x, z*y^3, x^3, y*x^2, x*y^2, x^2*z, x*y, y^2, y*z, x, z, y^4, y^3, x^2, y, 1]
+[Vector(16, [y*x^2,x^2,x*y^2*z,x*y^2,y*z*x,x*y,z*x,x,z*y^3,y^3,y^2*z,y^2,y*z,y,z,1]), Vector(3, [x,y,1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]
+[]
+[]

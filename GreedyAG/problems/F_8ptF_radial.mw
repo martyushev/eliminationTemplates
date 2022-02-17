@@ -95,7 +95,7 @@ with(Groebner):</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L353" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../EliminationTemplates.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L3886" drawlabel="true">
@@ -142,7 +142,7 @@ nops(Gr);</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY0LUYjNiYtSSNtaUdGJDYlUSJ5RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnL0Y1USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUklbXN1cEdGJDYlLUYuNiVRInpGJ0YxRjQtSSNtbkdGJDYkUSIyRidGOy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGOy1GODYtUSIrRidGO0Y9RkBGQkZERkZGSEZKL0ZNUSwwLjIyMjIyMjJlbUYnL0ZQRlxvLUYjNiYtRlg2JFElMTE1M0YnRjtGNy1GUjYlRlQtRlg2JFEiM0YnRjtGZW5GO0Zobi1GIzYoLUZYNiRRJDE0NUYnRjtGNy1GLjYlUSJ4RidGMUY0RjdGVEY7RmhuLUYjNigtRlg2JFElMTczNUYnRjtGN0YtRjdGVEY7RmhuLUYjNiYtRlg2JFElMTU3OEYnRjtGN0ZRRjtGaG4tRiM2Ji1GWDYkUSUyMjcxRidGO0Y3Rl1wRjtGaG4tRiM2Ji1GWDYkUSUxNjI4RidGO0Y3Ri1GO0Zobi1GIzYmLUZYNiRRJTI3ODZGJ0Y7RjdGVEY7RmhuLUZYNiRRJTIyNDlGJ0Y7Rjs=">LDQqJkkieUc2IiIiIkkiekdGJSIiI0YmKiRGJyIiJCIlYDYqJkkieEdGJUYmRidGJiIkWCIqJkYkRiZGJ0YmIiVOPCokRidGKCIleTpGLSIlckFGJCIlRztGJyIlJ3kjIiVcQUYm</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY0LUYjNiYtSSNtaUdGJDYlUSJ5RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnL0Y1USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZOLUklbXN1cEdGJDYlLUYuNiVRInpGJ0YxRjQtSSNtbkdGJDYkUSIyRidGOy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGOy1GODYtUSIrRidGO0Y9RkBGQkZERkZGSEZKL0ZNUSwwLjIyMjIyMjJlbUYnL0ZQRlxvLUYjNiYtRlg2JFElMTE1M0YnRjtGNy1GUjYlRlQtRlg2JFEiM0YnRjtGZW5GO0Zobi1GIzYoLUZYNiRRJDE0NUYnRjtGNy1GLjYlUSJ4RidGMUY0RjdGVEY7RmhuLUYjNigtRlg2JFElMTczNUYnRjtGN0YtRjdGVEY7RmhuLUYjNiYtRlg2JFElMTU3OEYnRjtGN0ZRRjtGaG4tRiM2Ji1GWDYkUSUyMjcxRidGO0Y3Rl1wRjtGaG4tRiM2Ji1GWDYkUSUxNjI4RidGO0Y3Ri1GO0Zobi1GIzYmLUZYNiRRJTI3ODZGJ0Y7RjdGVEY7RmhuLUZYNiRRJTIyNDlGJ0Y7Rjs=">LDQqJkkieUc2IiIiIilJInpHRiUiIiNGJkYmKiYiJWA2RiYpRigiIiRGJkYmKigiJFgiRiZJInhHRiVGJkYoRiZGJiooIiVOPEYmRiRGJkYoRiZGJiomIiV5OkYmRidGJkYmKiYiJXJBRiZGMEYmRiYqJiIlRztGJkYkRiZGJiomIiUneSNGJkYoRiZGJiIlXEFGJg==</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

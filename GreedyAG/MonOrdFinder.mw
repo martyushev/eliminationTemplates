@@ -98,11 +98,12 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;8ptF_radial&quot;: ### pick minimal problem (see F_prob.m files in folder ./problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;relpose_7p_fr_1s&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
-numbers_of_weights = 100, ### number of weights to be generated
-prime_number = 32749: ### sufficiently large prime number (32749 is a maximal prime number for Gfan)</Text-field>
+prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
+numbers_of_weights = 500, ### number of random weight vectors to be generated
+rand_range = [200, 800]: ### interval from which random weights are taken</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -120,23 +121,23 @@ writeGfan(prob, opts);</Text-field>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4784" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### 1. Move /gfan/igf to a folder where Gfan can read it
-### 2. Run Gfan and type gfan_bases &lt;~/igf &gt;~/gf_prob
-### 3. Move gf_prob to /gfan</Text-field>
+### 2. Run Gfan and type gfan_bases &lt;igf &gt;gf_prob
+### 3. Move gf_prob to /gfan
+### 4. In case of no result in a reasonable time, interrupt the computation with Ctrl+C</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4785" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4787" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">writeWeights(prob, opts);</Text-field>
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4787" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate either weight vectors for all Grobner bases provided by Gfan or randomly selected weight vectors
+writeWeights(prob, opts);</Text-field>
 </Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFJR2VuZXJhdGluZ353ZWlnaHR+dmVjdG9yc35mcm9tfkdmYW5+ZmlsZUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUlHZW5lcmF0aW5nfndlaWdodH52ZWN0b3JzfmZyb21+R2Zhbn5maWxlRzYi</Equation></Text-field>
+</Output>
 </Group>
-<Group view="code" labelreference="L4788" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" labelreference="L4786" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4788" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -145,7 +146,7 @@ writeGfan(prob, opts);</Text-field>
 writeCM(prob, opts):</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -159,7 +160,7 @@ writeCM(prob, opts):</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4769" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L4769" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -196,7 +197,7 @@ writeCM(prob, opts):</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

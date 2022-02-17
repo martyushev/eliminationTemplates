@@ -27,6 +27,6 @@ function C = coefs_8ptF_radial_1s(data)
     C(18) = d(3);
     C(26) = d(11);
 
-    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
+    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
 
 end

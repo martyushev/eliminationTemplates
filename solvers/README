@@ -23,6 +23,8 @@ How to use:
 
 Folders (minimal problems):
 
+_common: auxiliary functions that are common for several problems
+_results: output data (mat-files and figures)
 1) 8ptF_radial_1s: uncalibrated 8-point relative pose estimation with one unknown radial distortion
 2) focal6p_1s: 6-point relative pose estimation with one unknown focal length
 3) focal6p: 6-point relative pose estimation with unknown but common focal length
@@ -57,8 +59,6 @@ Folders (minimal problems):
 32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
 33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
 34) relpose_7p_r1r2: calibrated 7-point relative pose estimation with two unknown radial distortions
-_common: auxiliary functions that are common for several problems
-_results: output data (mat-files and figures)
 
 
 Each problem folder contains at least 5 m-files:

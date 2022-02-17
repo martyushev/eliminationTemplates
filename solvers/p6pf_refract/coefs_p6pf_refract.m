@@ -45,6 +45,6 @@ function C = coefs_p6pf_refract(data)
     C(104) = M(150);
     C(108) = M(156);
 
-    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
+    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
 
 end

@@ -220,6 +220,6 @@ function C = coefs_rollingshutter(data)
     C(157) = v6(4)*v1(7)+v1(5)*v6(8)+v1(4)*v6(7)+v6(5)*v1(8)+v1(6)*v6(9)+v6(6)*v1(9);
     C(167) = v6(4)*v2(7)+v2(4)*v6(7)+v2(5)*v6(8)+v6(5)*v2(8)+v2(6)*v6(9)+v6(6)*v2(9);
 
-    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
+    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
 
 end

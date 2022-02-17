@@ -1,8 +1,0 @@
-[28, 40]
-.57143
-32749
-[w, x, y, z]
-x
-tdeg(w,x,y,z)
-[y*w*x, z*x*w, z*y*w, z^2*w, x*w, y*x, z^2, x, z, z*w, w, 1]
-[Vector(4, [x,y,z,1]), Vector(4, [x,y,z,1]), Vector(8, [x*w,y*w,z*w,w,x,y,z,1]), Vector(8, [x*w,y*w,z*w,w,x,y,z,1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]

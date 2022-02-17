@@ -1,0 +1,10 @@
+[16, 36]
+.22917
+32749
+[u, v, w]
+v
+wdeg([13, 6, 5],[u, v, w])
+[v^4, w*u*v, w*v^3, w^2*u, w^2*v^2, w^3*v, w^4, u*v, v^3, w*u, w*v^2, w^2*v, w^3, u, v^2, w*v, w^2, v, w, 1]
+[Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(4, [u,v,w,1]), Vector(20, [u^3,u^2*v,w*u^2,u^2,v^2*u,w*u*v,u*v,w^2*u,w*u,u,v^3,w*v^2,v^2,w^2*v,w*v,v,w^3,w^2,w,1])]
+[5]
+[]

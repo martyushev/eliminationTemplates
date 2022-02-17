@@ -1,7 +1,7 @@
 folder = fileparts(which('add_all.m'));
 load(strcat(folder, '\_results\Err_focal6p.mat'));
 
-bwd = 3e-1;
+bwd = 0.3;
 nbins = 60;
 clr = [70 100 160]/255;
 err = log10(Err_focal6p);
@@ -11,8 +11,8 @@ hr1.EdgeColor = clr;
 
 axis([-17 1 0 1150]);
 
-set(gca,'fontsize',54,'fontname','Times New Roman');
+set(gca,'FontSize',54,'FontName','Times New Roman');
 set(gcf,'PaperPositionMode','auto');
 set(gcf,'PaperOrientation','landscape');
 set(gcf,'PaperPosition',[1 1 28 19]);
-print(gcf,'-dpdf',strcat(folder,'\_results\fig2-3.pdf'));
+print(gcf,'-dpdf',strcat(folder,'\_results\fig_focal6p.pdf'));

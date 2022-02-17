@@ -1,8 +1,0 @@
-[57, 73]
-.84691
-32749
-[x, y, z]
-x
-tdeg(x,y,z)
-[z^3*x^2, z*x^3, z^4, y^2*z, z^2*x, z^2*y, x^2, y^2, y, z, z^3*x, z*x^2, z^3, z^2, x, 1]
-[Vector(8, [x^2,z*x,x,z*y,y,z^2,z,1]), Vector(28, [1,x,y,z,y*x,z*x,z*y,z^2*x^2,z^2,x^2,y^2,x^3,z^3,z^4,z*x^2,x^2*y,z^2*x,y^2*x,z^2*y,y^2*z,z*x^3,z^3*x,z^3*y,z^2*y^2,x*y*z,x*y*z^2,x*y^2*z,x^2*y*z]), Vector(26, [1,x,y,z,y*x,z*x,z*y,z^2*x^2,z^2,x^2,y^2,x^3,z^3,z^4,z*x^2,x^2*y,z^2*x,z^2*y,y^2*z,z*x^3,z^3*x,z^3*y,z^2*y^2,x*y*z,x*y*z^2,x^2*y*z])]

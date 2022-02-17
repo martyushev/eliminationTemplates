@@ -1,8 +1,0 @@
-[51, 70]
-.60784
-32749
-[w, x, y, z]
-w
-wdeg([3, 12, 4, 3],[w, x, y, z])
-[w*y^2, z*y^2, w^2*y, z*w*y, z^2*y, w^3, z*w^2, z^2*w, z^3, y^2, w*y, z*y, w^2, z*w, z^2, y, w, z, 1]
-[Vector(15, [1,x,y,z,w,z*x,y*x,z*y,w*y,z*w,w*x,w^2,x^2,y^2,z^2]), Vector(15, [1,x,y,z,w,z*x,y*x,z*y,w*y,z*w,w*x,w^2,x^2,y^2,z^2]), Vector(15, [1,x,y,z,w,z*x,y*x,z*y,w*y,z*w,w*x,w^2,x^2,y^2,z^2]), Vector(5, [1,x,y,z,w]), Vector(5, [1,x,y,z,w]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]

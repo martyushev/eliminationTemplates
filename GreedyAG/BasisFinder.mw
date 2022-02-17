@@ -98,12 +98,12 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;opt_pnp_hesch&quot;: ### pick minimal problem (see F_prob.m files in folder ./problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;8ptF_radial_1s&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
+prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
 numbers_of_bases = 100, ### number of quotient space bases to be generated
-deg_over_min = 0, ### degree over a minimal value for iterative construction of the initial set of monomials
-prime_number = 32749: ### sufficiently large prime number (32749 is a maximal prime number for Gfan)</Text-field>
+deg_over_min = 0: ### degree over a minimal value for iterative construction of the initial set of monomials</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -113,9 +113,9 @@ prime_number = 32749: ### sufficiently large prime number (32749 is a maximal pr
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4772" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">BasisFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFIUG9seW5vbWlhbH5zeXN0ZW1+Y29udGFpbnN+MjB+bW9ub21pYWxzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SUhQb2x5bm9taWFsfnN5c3RlbX5jb250YWluc34yMH5tb25vbWlhbHNHNiI=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFIUG9seW5vbWlhbH5zeXN0ZW1+Y29udGFpbnN+MTZ+bW9ub21pYWxzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SUhQb2x5bm9taWFsfnN5c3RlbX5jb250YWluc34xNn5tb25vbWlhbHNHNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFCSW5pdGlhbH5zZXR+Y29udGFpbnN+ODR+bW9ub21pYWxzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SUJJbml0aWFsfnNldH5jb250YWluc344NH5tb25vbWlhbHNHNiI=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFCSW5pdGlhbH5zZXR+Y29udGFpbnN+MTZ+bW9ub21pYWxzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SUJJbml0aWFsfnNldH5jb250YWluc34xNn5tb25vbWlhbHNHNiI=</Equation></Text-field>
 </Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1EtMSV+Y29tcGxldGVkRic=">US0xJX5jb21wbGV0ZWQ2Ig==</Equation></Text-field>
 </Output>
@@ -363,7 +363,7 @@ prime_number = 32749: ### sufficiently large prime number (32749 is a maximal pr
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

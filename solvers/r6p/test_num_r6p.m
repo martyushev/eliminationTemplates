@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_r6p(data); % compute coefficients of polynomial system
-        [uu, vv, ww, xx, yy, zz] = std_120x140_colpiv_r6p(C); % solve polynomial system
+        [uu,vv,ww,xx,yy,zz] = std_120x140_colpiv_r6p(C); % solve polynomial system
         tm = toc;
         if isempty(uu); continue; end
     catch ME
@@ -27,11 +27,12 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [x*u, x*v, x*w, y*u, y*v, y*w, z*u, v*z, z*w, u, v, w, x, y, z, 1];
+        m = [u*x,v*x,w*x,u*y,v*y,w*y,u*z,z*v,w*z,u,v,w,x,y,z,1];
         m = m/norm(m,'fro');
-        M = [M; m];
+        M = [M; norm(C*m.','fro')];
     end
-    err = norm(C*M.','fro');
+    M = sort(M);
+    err = norm(M(1:min(20,length(M))),'fro');
 
     Err_r6p = [Err_r6p err];
     Tm_r6p = [Tm_r6p tm];
@@ -40,6 +41,5 @@ end
 
 folder = fileparts(which('add_all.m'));
 save(strcat(folder,'\_results\Err_r6p.mat'),'Err_r6p');
-save(strcat(folder,'\_results\Tm_r6p.mat'),'Tm_r6p');
 
-fprintf('Problem #28. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_r6p),median(Err_r6p));
+fprintf('Problem: r6p. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_r6p),median(Err_r6p));
