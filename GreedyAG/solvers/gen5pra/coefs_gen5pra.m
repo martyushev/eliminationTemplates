@@ -5,7 +5,7 @@ function C = coefs_gen5pra(data)
     v1 = data{3};
     v2 = data{4};
     s = data{5};
-    
+
     B = zeros(5,84);
     ss = s^2;
     t = ss-0.5;

@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_4pra(data); % compute coefficients of polynomial system
-        [uu,vv,ww] = nstd_16x36_colpiv_4pra(C); % solve polynomial system
+        [uu,vv,ww] = std_16x36_colpiv_4pra(C); % solve polynomial system
         tm = toc;
         if isempty(uu); continue; end
     catch ME
@@ -24,7 +24,7 @@ for i = 1:N
         u = uu(j);
         v = vv(j);
         w = ww(j);
-        m = [u^4,u^3*v,u^2*v^2,v^3*u,v^4,u^3*w,u^2*v*w,w*v^2*u,w*v^3,u^2*w^2,w^2*v*u,v^2*w^2,u*w^3,v*w^3,w^4,u^3,u^2*v,u*v^2,v^3,u^2*w,u*v*w,w*v^2,u*w^2,v*w^2,w^3,u^2,u*v,v^2,u*w,v*w,w^2,u,v,w,1];
+        m = [u^4,u^3*v,u^2*v^2,u*v^3,v^4,w*u^3,u^2*v*w,u*v^2*w,v^3*w,u^2*w^2,w^2*v*u,v^2*w^2,u*w^3,v*w^3,w^4,u^3,u^2*v,u*v^2,v^3,u^2*w,u*v*w,w*v^2,u*w^2,v*w^2,w^3,u^2,u*v,v^2,u*w,v*w,w^2,u,v,w,1];
         m = m/norm(m,'fro');
         M = [M; norm(C*m.','fro')];
     end

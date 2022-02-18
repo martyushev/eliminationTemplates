@@ -197,6 +197,10 @@ end proc:</Text-field>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5057" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save N non-standard monomial bases of the quotient ring
+### this is our implementation of the random sampling strategy from
+### V. Larsson, M. Oskarsson, K. Astrom, A. Wallis, Z. Kukelova, and T. Pajdla
+### Beyond Grobner bases: Basis selection for minimal solvers
+### Proceedings of the CVPR, 2018, pp. 3945-3954
 BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
     local pp := prevprime(prime_number+1), F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn := cat(&quot;bases/b_&quot;, prob), fd:
     read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
@@ -972,12 +976,12 @@ write_solver_colpiv := proc(dir::string, mn0, vars0, av, iM, eM, P, aP, mn, nE, 
     fd := fopen(cat(dir, &quot;/&quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1]-r, &quot;x&quot;, mn[2]-r, &quot;_colpiv_&quot;, prob, &quot;.m&quot;), WRITE):
     fprintf(fd, cat(&quot;%% Input: coefficient matrix C of size &quot;, mn0[1], &quot;x&quot;, mn0[2], &quot;<Font encoding="UTF-8">\134n\134n&quot;)):</Font>
     fprintf(fd, cat(&quot;function &quot;, alter_comma(vars0), &quot; = &quot;, `if`(std, &quot;std_&quot;, &quot;nstd_&quot;), mn[1]-r, &quot;x&quot;, mn[2]-r, &quot;_colpiv_&quot;, prob, &quot;<Font encoding="UTF-8">(C)\134n\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;i_dx = &quot;, alter_comma(map(k-&gt;k[1], iM)),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
-    fprintf(fd, cat(fb, &quot;j_dx = &quot;, alter_comma(map(k-&gt;k[2], iM)),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;i_dx = &quot;, alter_comma(map(i-&gt;i[1], iM)),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
+    fprintf(fd, cat(fb, &quot;j_dx = &quot;, alter_comma(map(i-&gt;i[2], iM)),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;C_dx = &quot;, alter_comma(eM),<Font encoding="UTF-8"> &quot;;\134n&quot;)):</Font>
     fprintf(fd, cat(fb, &quot;<Font encoding="UTF-8">M = sparse(i_dx,j_dx,C(C_dx),&quot;, mn[1], &quot;,&quot;, mn[2], &quot;);\134n&quot;)):</Font>
     if r&lt;&gt;0 then
-        <Font encoding="UTF-8">fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;M = M(&quot;, r+1, &quot;:end,&quot;, r+1, &quot;:end)-(M(&quot;, r+1, &quot;:end,1:&quot;, r, &quot;)/M(1:&quot;, r, &quot;,1:&quot;, r, &quot;))*M(1:&quot;, r, &quot;,&quot;, r+1, &quot;:end); %% Schur complement reduction\134n&quot;))</Font>:
+<Font encoding="UTF-8">        fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;M = M(&quot;, r+1, &quot;:end,&quot;, r+1, &quot;:end)-(M(&quot;, r+1, &quot;:end,1:&quot;, r, &quot;)/M(1:&quot;, r, &quot;,1:&quot;, r, &quot;))*M(1:&quot;, r, &quot;,&quot;, r+1, &quot;:end); %% Schur complement reduction\134n&quot;))</Font>:
     end if:
     if nE &lt;&gt; 0 then
 <Font encoding="UTF-8">        fprintf(fd, cat(&quot;\134n&quot;, fb, &quot;</Font>[L,~,Pi] = lu(M(:,1:&quot;, nE, &quot;));<Font encoding="UTF-8">\134n&quot;)):
