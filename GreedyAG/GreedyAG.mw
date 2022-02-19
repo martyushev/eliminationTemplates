@@ -100,7 +100,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title><Presentation-Block>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5054" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if monomials from M are linearly independent
 isLinIndep := proc(M::list, G::list, tord::ShortMonomialOrder, pp::posint)
@@ -198,9 +198,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5057" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save N non-standard monomial bases of the quotient ring
 ### this is our implementation of the random sampling strategy from
-### V. Larsson, M. Oskarsson, K. Astrom, A. Wallis, Z. Kukelova, and T. Pajdla
-### Beyond Grobner bases: Basis selection for minimal solvers
-### Proceedings of the CVPR, 2018, pp. 3945-3954
+### V. Larsson et al., Beyond Grobner bases: Basis selection for minimal solvers, CVPR, 2018
 BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
     local pp := prevprime(prime_number+1), F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn := cat(&quot;bases/b_&quot;, prob), fd:
     read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
@@ -222,13 +220,9 @@ BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::
     fclose(fd):
 end proc:</Text-field>
 </Input>
-</Group>
-<Group view="code" labelreference="L5080" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for Grobner fan computation in Gfan
 writeGfan := proc(prob::string, {prime_number::posint:=32749})
@@ -363,11 +357,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L5115" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5059" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save data needed to construct template
 saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::posint, vars::{list,set}, av::monomial, tord::ShortMonomialOrder, QB::list, shifts::list, pols::list, std::boolean)
@@ -908,8 +898,7 @@ iniColpiv := proc(V::Vector, xE::set, av::monomial, vars::list)
     aP := map(m-&gt;av*m, P):
     R := srt(convert(aP minus P, list), tord):
     P := [op(srt(convert(P minus B0, list), tord)), op(srt(convert(B0, list), tord))]:
-    print(`List of permissible monomials:`):
-    print(P):
+    print(`List of permissible monomials:`): print(P):
     print(cat(`Number of permissible monomials: `, nops(P))):
     aP := map(m-&gt;ListTools[Search](av*m, [op(P), op(R)]), P):
     RP := [op(R), op(P)]:

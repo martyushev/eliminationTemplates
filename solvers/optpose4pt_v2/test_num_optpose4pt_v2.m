@@ -26,7 +26,7 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [v^2,w^2,x*v,w*x,x^2,y*v,w*y,x*y,y^2,z*v,w*z,x*z,z*y,z^2,v,x,y,z,1];
+        m = [v^2,w^2,v*x,w*x,x^2,v*y,w*y,x*y,y^2,v*z,z*w,x*z,y*z,z^2,v,x,y,z,1];
         m = m/norm(m,'fro');
         M = [M; norm(C*m.','fro')];
     end
