@@ -120,7 +120,7 @@ C_l2_3view_triang := proc({symbolic:=1})
     vars := indets(eqs) minus indets([AA]):
     C0, V0 := poly2matrix(eqs, nops(eqs), vars):
     V := srt(V0, tdeg(op(vars))):
-    permuteColumns(C0, V0, V), _name, _size:
+    [`cf`, permuteColumns(C0, V0, V)], _name, _size:
 end proc:</Text-field>
 </Input>
 </Group>

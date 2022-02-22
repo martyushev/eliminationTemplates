@@ -12,7 +12,7 @@ for i = 1:N
     try
         tic;
         C = coefs_8ptF_radial(data); % compute coefficients of polynomial system
-        [xx,yy,zz] = nstd_31x47_colpiv_8ptF_radial(C); % solve polynomial system
+        [xx,yy,zz] = std_31x47_colpiv_8ptF_radial(C); % solve polynomial system
         tm = toc;
         if isempty(xx); continue; end
     catch ME
@@ -24,7 +24,7 @@ for i = 1:N
         x = xx(j);
         y = yy(j);
         z = zz(j);
-        m = [x^3*z^2,x^2*y*z^2,x*y^2*z^2,y^3*z^2,x^2*z^3,x*y*z^3,y^2*z^3,x*z^4,y*z^4,x^3*z,x^2*y*z,x*y^2*z,z*y^3,x^2*z^2,x*y*z^2,y^2*z^2,x*z^3,y*z^3,z^4,x^3,x^2*y,y^2*x,y^3,z*x^2,z*y*x,y^2*z,z^2*x,z^2*y,z^3,x^2,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
+        m = [z^2*x^3,z^2*y*x^2,z^2*y^2*x,z^2*y^3,z^3*x^2,z^3*y*x,z^3*y^2,z^4*x,z^4*y,z*x^3,z*y*x^2,z*y^2*x,y^3*z,z^2*x^2,z^2*y*x,y^2*z^2,z^3*x,z^3*y,z^4,x^3,x^2*y,y^2*x,y^3,z*x^2,y*z*x,z*y^2,z^2*x,z^2*y,z^3,x^2,x*y,y^2,z*x,z*y,z^2,x,y,z,1];
         m = m/norm(m,'fro');
         M = [M; norm(C*m.','fro')];
     end

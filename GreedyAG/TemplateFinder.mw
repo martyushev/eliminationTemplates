@@ -98,7 +98,7 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;relpose_7p_fr_1s&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;8ptF_radial&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 basis = std, ### quotient space bases to use
@@ -107,7 +107,7 @@ basis = std, ### quotient space bases to use
 prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
 action_vars = [], ### list of preferred action variables, e.g. [1,2] - first 2 variables, [-1] - last variable, [] - all variables
 schur_pols = [], ### polynomials to be reduced by the Schur complement reduction
-filter_frac = 0.9: ### number from 0 to 1, fraction of quotient space bases to be filtered out, 0 - no filtering</Text-field>
+filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to be filtered out, 0 - no filtering</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -117,89 +117,71 @@ filter_frac = 0.9: ### number from 0 to 1, fraction of quotient space bases to b
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TemplateFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFJVGhlfnByb2JsZW1+aXN+ZGVmaW5lZH5ieX4xMH5wb2x5bm9taWFsc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUlUaGV+cHJvYmxlbX5pc35kZWZpbmVkfmJ5fjEwfnBvbHlub21pYWxzRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFIVGhlfnByb2JsZW1+aXN+ZGVmaW5lZH5ieX4zfnBvbHlub21pYWxzRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SUhUaGV+cHJvYmxlbX5pc35kZWZpbmVkfmJ5fjN+cG9seW5vbWlhbHNHNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFhcFZhcmlhYmxlczp+W3gsfnksfnpdO35kZWdyZWVzOn5bMix+NSx+OSx+OSx+OCx+OSx+OSx+OCx+OSx+OV07fm51bWJlcn5vZn5zb2x1dGlvbnM6fjE5RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SWFwVmFyaWFibGVzOn5beCx+eSx+el07fmRlZ3JlZXM6flsyLH41LH45LH45LH44LH45LH45LH44LH45LH45XTt+bnVtYmVyfm9mfnNvbHV0aW9uczp+MTlHNiI=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFcb1ZhcmlhYmxlczp+W3gsfnksfnpdO35kZWdyZWVzOn5bMyx+Myx+NV07fm51bWJlcn5vZn5zb2x1dGlvbnM6fjE2RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SVxvVmFyaWFibGVzOn5beCx+eSx+el07fmRlZ3JlZXM6flszLH4zLH41XTt+bnVtYmVyfm9mfnNvbHV0aW9uczp+MTZHNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE7MzMyfmNoYW5nZX5tYXRyaWNlc35sb2FkZWRGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">STszMzJ+Y2hhbmdlfm1hdHJpY2VzfmxvYWRlZEc2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE7MjQxfmNoYW5nZX5tYXRyaWNlc35sb2FkZWRGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">STsyNDF+Y2hhbmdlfm1hdHJpY2VzfmxvYWRlZEc2Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FMU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjExNzcseEYn">UUxTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MTE3Nyx4NiI=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTg3LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xODcseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjk0NSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+OTQ1LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTY0LHlGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xNjQseTYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjkwMix5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+OTAyLHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTYxLHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xNjEseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjgwOCx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+ODA4LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTM4LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xMzgseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjczMSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NzMxLHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTM1LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xMzUseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjY3Mix5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NjcyLHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTIyLHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xMjIseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjYwNSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NjA1LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTA5LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xMDkseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjQ4OCx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NDg4LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+OTYseEYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn45Nix4NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjQzOSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NDM5LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+ODMseEYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn44Myx4NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjQzNyx4Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NDM3LHg2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+NzAsekYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn43MCx6NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjQwOSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+NDA5LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+NTcsekYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn41Nyx6NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjM0Mix5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MzQyLHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+NDQsekYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn40NCx6NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjI5Nix5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+Mjk2LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MzMsekYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4zMyx6NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjIyNSx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MjI1LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E9U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MzEsekYn">UT1TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4zMSx6NiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjE2OCx4Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MTY4LHg2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFBMTkzfnF1b3RpZW50fnNwYWNlfmJhc2VzfnJlbW92ZWRGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUExOTN+cXVvdGllbnR+c3BhY2V+YmFzZXN+cmVtb3ZlZEc2Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjE0NSx4Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MTQ1LHg2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FmblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzYyLDc4XSwuODMwLHgsWzUsfjQsfjZdRic=">UWZuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bNjIsNzhdLC44MzAseCxbNSx+NCx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FLU21hbGxlcn5wYXJhbWV0cml6ZWR+dGVtcGxhdGV+Zm91bmQ6fjE0NCx5Ric=">UUtTbWFsbGVyfnBhcmFtZXRyaXplZH50ZW1wbGF0ZX5mb3VuZDp+MTQ0LHk2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8MSUsWzYyLDc4XSwuODMwLHgsWzUsfjQsfjZdRic=">UTwxJSxbNjIsNzhdLC44MzAseCxbNSx+NCx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFBMjk5fnF1b3RpZW50fnNwYWNlfmJhc2VzfnJlbW92ZWRGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUEyOTl+cXVvdGllbnR+c3BhY2V+YmFzZXN+cmVtb3ZlZEc2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8MSUsWzYyLDc4XSwuODMwLHksWzUsfjQsfjZdRic=">UTwxJSxbNjIsNzhdLC44MzAseSxbNSx+NCx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FoblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzEyMSwxNDBdLC44MzAseCxbNSx+Myx+Nl1GJw==">UWhuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bMTIxLDE0MF0sLjgzMCx4LFs1LH4zLH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FmblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzMxLDQ3XSwuNzcwLHosWzUsfjQsfjZdRic=">UWZuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bMzEsNDddLC43NzAseixbNSx+NCx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+MSUsWzEyMSwxNDBdLC44MzAseCxbNSx+Myx+Nl1GJw==">UT4xJSxbMTIxLDE0MF0sLjgzMCx4LFs1LH4zLH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8MiUsWzMxLDQ3XSwuNzcwLHosWzUsfjQsfjZdRic=">UTwyJSxbMzEsNDddLC43NzAseixbNSx+NCx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+MiUsWzEyMSwxNDBdLC44MzAseSxbNSx+Myx+Nl1GJw==">UT4yJSxbMTIxLDE0MF0sLjgzMCx5LFs1LH4zLH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8MyUsWzYyLDc4XSwuODMwLHgsWzQsfjUsfjZdRic=">UTwzJSxbNjIsNzhdLC44MzAseCxbNCx+NSx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+MyUsWzEyMSwxNDBdLC44MzAseixbNSx+Myx+Nl1GJw==">UT4zJSxbMTIxLDE0MF0sLjgzMCx6LFs1LH4zLH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8MyUsWzYyLDc4XSwuODMwLHksWzQsfjUsfjZdRic=">UTwzJSxbNjIsNzhdLC44MzAseSxbNCx+NSx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+NCUsWzEyMiwxNDFdLC44MzIseCxbMyx+NSx+Nl1GJw==">UT40JSxbMTIyLDE0MV0sLjgzMix4LFszLH41LH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8NCUsWzMxLDQ3XSwuNzcwLHosWzQsfjUsfjZdRic=">UTw0JSxbMzEsNDddLC43NzAseixbNCx+NSx+Nl02Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FoblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzExNywxMzZdLC44MTcseSxbMyx+NSx+Nl1GJw==">UWhuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bMTE3LDEzNl0sLjgxNyx5LFszLH41LH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8NSUsWzYyLDc4XSwuODMwLHgsWzksfjgsfjddRic=">UTw1JSxbNjIsNzhdLC44MzAseCxbOSx+OCx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+NSUsWzExNywxMzZdLC44MTcseSxbMyx+NSx+Nl1GJw==">UT41JSxbMTE3LDEzNl0sLjgxNyx5LFszLH41LH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8NiUsWzYyLDc4XSwuODMwLHksWzksfjgsfjddRic=">UTw2JSxbNjIsNzhdLC44MzAseSxbOSx+OCx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FoblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzExNiwxMzVdLC44MTgseixbMyx+NSx+Nl1GJw==">UWhuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bMTE2LDEzNV0sLjgxOCx6LFszLH41LH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8NiUsWzMxLDQ3XSwuNzcwLHosWzksfjgsfjddRic=">UTw2JSxbMzEsNDddLC43NzAseixbOSx+OCx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+NiUsWzExNiwxMzVdLC44MTgseixbMyx+NSx+Nl1GJw==">UT42JSxbMTE2LDEzNV0sLjgxOCx6LFszLH41LH42XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8NyUsWzYyLDc4XSwuODMwLHgsWzgsfjksfjddRic=">UTw3JSxbNjIsNzhdLC44MzAseCxbOCx+OSx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+NyUsWzEyMSwxNDBdLC44MzAseCxbNSx+Myx+N11GJw==">UT43JSxbMTIxLDE0MF0sLjgzMCx4LFs1LH4zLH43XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8OCUsWzYyLDc4XSwuODMwLHksWzgsfjksfjddRic=">UTw4JSxbNjIsNzhdLC44MzAseSxbOCx+OSx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+OCUsWzEyMSwxNDBdLC44MzAseSxbNSx+Myx+N11GJw==">UT44JSxbMTIxLDE0MF0sLjgzMCx5LFs1LH4zLH43XTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8OCUsWzMxLDQ3XSwuNzcwLHosWzgsfjksfjddRic=">UTw4JSxbMzEsNDddLC43NzAseixbOCx+OSx+N102Ig==</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+OSUsWzEyMSwxNDBdLC44MzAseixbNSx+Myx+N11GJw==">UT45JSxbMTIxLDE0MF0sLjgzMCx6LFs1LH4zLH43XTYi</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTAlLFsxMjEsMTQwXSwuODMwLHgsWzcsfjMsfjExXUYn">UUAxMCUsWzEyMSwxNDBdLC44MzAseCxbNyx+Myx+MTFdNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTElLFsxMjEsMTQwXSwuODMwLHksWzcsfjMsfjExXUYn">UUAxMSUsWzEyMSwxNDBdLC44MzAseSxbNyx+Myx+MTFdNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTIlLFsxMjEsMTQwXSwuODMwLHosWzcsfjMsfjExXUYn">UUAxMiUsWzEyMSwxNDBdLC44MzAseixbNyx+Myx+MTFdNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E/MTMlLFsxMjIsMTQxXSwuODMyLHgsWzMsfjUsfjddRic=">UT8xMyUsWzEyMiwxNDFdLC44MzIseCxbMyx+NSx+N102Ig==</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E/MTQlLFsxMjEsMTQwXSwuODMwLHksWzMsfjUsfjddRic=">UT8xNCUsWzEyMSwxNDBdLC44MzAseSxbMyx+NSx+N102Ig==</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E/MTUlLFsxMjEsMTQwXSwuODMwLHosWzMsfjUsfjddRic=">UT8xNSUsWzEyMSwxNDBdLC44MzAseixbMyx+NSx+N102Ig==</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTYlLFsxMjUsMTQ0XSwuODM4LHgsWzMsfjcsfjExXUYn">UUAxNiUsWzEyNSwxNDRdLC44MzgseCxbMyx+Nyx+MTFdNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTclLFsxMjMsMTQyXSwuODM0LHksWzMsfjcsfjExXUYn">UUAxNyUsWzEyMywxNDJdLC44MzQseSxbMyx+Nyx+MTFdNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FAMTglLFsxMjIsMTQxXSwuODMyLHosWzMsfjcsfjExXUYn">UUAxOCUsWzEyMiwxNDFdLC44MzIseixbMyx+Nyx+MTFdNiI=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E8OSUsWzYyLDc4XSwuODMwLHgsWzksfjcsfjhdRic=">UTw5JSxbNjIsNzhdLC44MzAseCxbOSx+Nyx+OF02Ig==</Equation></Text-field>
 </Output>
 <Output><Text-field style="HyperlinkWarning" layout="HyperlinkWarning"><Hyperlink linktarget="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20%20computation%20interrupted" hyperlink="true"><Font style="HyperlinkWarning">Warning,  computation interrupted</Font></Hyperlink></Text-field>
 </Output>

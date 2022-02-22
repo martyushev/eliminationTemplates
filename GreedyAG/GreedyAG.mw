@@ -100,7 +100,18 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block>
-<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title><Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title>
+<Group hide-output="false" labelreference="L5129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read minimal problem, output list of polynomials and list os variables
+readProblem := proc(prob::string)
+    local fn := cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;), F:
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    read fn:
+    F := map(expand, eval(cat(F_, prob))):
+    F, [op(indets(F))]:
+end proc:</Text-field>
+</Input>
+</Group><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5054" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if monomials from M are linearly independent
 isLinIndep := proc(M::list, G::list, tord::ShortMonomialOrder, pp::posint)
@@ -183,12 +194,13 @@ saveBases := proc(prob::string, QBs::{list,set})
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5053" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5053" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read non-standard bases
 readBases := proc(prob::string)
-    local st := 1, QBs := [], nongbfile := cat(&quot;bases/b_&quot;, prob):
+    local st := 1, QBs := [], fn := cat(&quot;bases/b_&quot;, prob):
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
     while st &lt;&gt; 0 do
-        st := readline(nongbfile):
+        st := readline(fn):
         if st &lt;&gt; 0 then QBs := [op(QBs), parse(st)]: end if:
     end do:
     QBs:
@@ -201,9 +213,7 @@ end proc:</Text-field>
 ### V. Larsson et al., Beyond Grobner bases: Basis selection for minimal solvers, CVPR, 2018
 BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
     local pp := prevprime(prime_number+1), F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn := cat(&quot;bases/b_&quot;, prob), fd:
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F := eval(cat(F_, prob)):
-    vars := [op(indets(F))]:
+    F, vars := readProblem(prob):
     tord := tdeg(op(vars)):
     G := Groebner[Basis](F, tord, characteristic=pp):
     B0 := Groebner[NormalSet](G, tord)[1]:
@@ -222,27 +232,27 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for Grobner fan computation in Gfan
 writeGfan := proc(prob::string, {prime_number::posint:=32749})
-    local pp := prevprime(prime_number+1), F, fd := fopen(&quot;gfan/igf&quot;, WRITE):
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F := eval(cat(F_, prob)):
+    local pp := prevprime(prime_number+1), F, vars, fd := fopen(&quot;gfan/igf&quot;, WRITE):
+    F, vars := readProblem(prob):
     F := map(expand, convert(F, set)) mod pp:
-    <Font encoding="UTF-8">fprintf(fd, &quot;Z/%aZ%a\134n%a&quot;, pp, [op(indets(F))], F):
+    <Font encoding="UTF-8">fprintf(fd, &quot;Z/%aZ%a\134n%a&quot;, pp, vars, F):
 </Font>    fclose(fd):
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5087" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data from a file generated by Gfan
-readGfan := proc(gfanfile::string)
+readGfan := proc(fn::string)
     local flag := false, st := 1, n := 0, pp:
-    st := readline(gfanfile):
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    st := readline(fn):
     pp := parse(substring(st, 3..StringTools[FirstFromLeft](&quot;[&quot;, st)-2)): # read prime number
     while st &lt;&gt; 0 do
-        st := readline(gfanfile):
+        st := readline(fn):
         if st = &quot;{{&quot; or st = &quot;{&quot; then
             flag := true:
             n := n + 1:
@@ -284,9 +294,7 @@ end proc:</Text-field>
         fclose(fd):
     else
         print(cat(`Gfan file not found. Generating `, numbers_of_weights, ` random weight vectors`)):
-        read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-        F := eval(cat(F_, prob)):
-        vars := [op(indets(F))]:
+        F, vars := readProblem(prob):
         WW := []:
         rnd := rand(rand_range[1]..rand_range[2]):
         fd := fopen(fn, WRITE):fclose(fd):fd := fopen(fn, APPEND):
@@ -308,15 +316,15 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for change matrix computation in Macaulay2
 writeCM := proc(prob::string, {prime_number::posint:=32749})
-    local pp := prevprime(prime_number+1), st := 1, Ws0 := [], wfile := cat(&quot;weights/w_&quot;, prob), fd, F, vars, Ws:
+    local pp := prevprime(prime_number+1), st := 1, Ws0 := [], fn := cat(&quot;weights/w_&quot;, prob), fd, F, vars, Ws:
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
     while st &lt;&gt; 0 do
-        st := readline(wfile):
+        st := readline(fn):
         if st &lt;&gt; 0 then Ws0 := [op(Ws0), parse(st)]: end if:
     end do:
     Ws := StringTools[SubstituteAll](StringTools[SubstituteAll](convert(Ws0, string), &quot;[&quot;, &quot;(&quot;), &quot;]&quot;, &quot;)&quot;):
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F := eval(cat(F_, prob)):
-    vars := convert([op(indets(F))], string):
+    F, vars := readProblem(prob):
+    vars := convert(vars, string):
     F := convert(map(expand, F) mod pp, string):
     fd := fopen(&quot;cm/icm&quot;, WRITE):
     <Font encoding="UTF-8">fprintf(fd, &quot;Ws = %s;\134npp = %a;\134nvr = %s;\134n</Font>&quot;, Ws, pp, vars):
@@ -335,15 +343,15 @@ writeCM := proc(prob::string, {prime_number::posint:=32749})
 end proc:</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5088" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-output="false" labelreference="L5088" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read pre-computed change matrices
 readCM := proc(prob::string)
-    local st := 1, cmfile, pp, vars, m := 0, n := 0:
-    cmfile := cat(&quot;cm/cm_&quot;, prob):
-    pp := parse(readline(cmfile)): # read prime number
-    vars := parse(readline(cmfile)): # read variables
+    local st := 1, fn := cat(&quot;cm/cm_&quot;, prob), pp, vars, m := 0, n := 0:
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    pp := parse(readline(fn)): # read prime number
+    vars := parse(readline(fn)): # read variables
     while st &lt;&gt; 0 do
-        st := readline(cmfile):
+        st := readline(fn):
         if st &lt;&gt; 0 and substring(st, 1) = &quot;(&quot; then
             m := m + 1:
             T||m := substring(st, 2..-2):
@@ -357,7 +365,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
+<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5059" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save data needed to construct template
 saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::posint, vars::{list,set}, av::monomial, tord::ShortMonomialOrder, QB::list, shifts::list, pols::list, std::boolean)
@@ -736,7 +744,7 @@ end proc:</Text-field>
             m := add(`if`(type(c, `+`), nops(c), 1), c in cHs):
             if m &lt; mp then mp := m: avo := av: end if:
         end do:
-        if mp &lt; mo then mo := mp: print(sprintf(&quot;Smaller parametrized template found: %d,%a&quot;, mo, avo)): end if:
+        if mp &lt; mo then mo := mp: print(sprintf(&quot;Smaller template found: %d,%a&quot;, mo, avo)): end if:
         ms := [op(ms), mp]:
     end do:
     prm := sort(ms, `&lt;`, output=permutation):
@@ -748,10 +756,9 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5045" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### initialize minimal problem
 iniProb := proc(prob::string, std::boolean, ff::numeric, pn::posint)
-    local F, vF, pp, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs:
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F, pp := eval(cat(F_, prob)), pn:
-    vF, vars := Vector(F), indets(F):
+    local F, vF, pp := pn, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs:
+    F, vars := readProblem(prob):
+    vF, vars := Vector(F), {op(vars)}:
     tord := tdeg(op(vars)):
     print(cat(`The problem is defined by `, nops(F), ` polynomials`)):
     G := Groebner[Basis](F, tord, characteristic=pp):
@@ -850,8 +857,7 @@ end proc:</Text-field>
 readTemplate := proc(prob::string, std::boolean)
     local mn0, sp0, pp, vars, av, tord, shifts, schur_pols, F, C, U0, tord0, U, Gr, aB, B1, B, R, B2, B0, RB, T, G, S, deg, nR, M1, V, V1, r, rperm, cperm, M, tM1, t1, r2del, c2del, E, mn, xE, xV, xE0:
     mn0, sp0, pp, vars, av, tord, B, shifts, schur_pols, xE0 := readData(prob, std):
-    read cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;):
-    F := eval(cat(F_, prob)):
+    F := readProblem(prob)[1]:
     C, U0 := poly2matrix(F, nops(F), vars):
     tord0 := tdeg(op(vars)):
     U := srt(U0, tord0):
@@ -1188,6 +1194,7 @@ end proc:</Text-field>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4439" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save
+readProblem,
 isLinIndep,
 testBasis,
 iniMonSet,

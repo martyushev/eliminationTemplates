@@ -156,35 +156,21 @@ eqs := map(expand, [f33*y23-f23*y33,
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZALUYjNiYtRiw2LC1JI21uR0YkNiRRIjJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMkY5RjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj9GNkY2LyUlb3BlbkdRIltGJy8lJmNsb3NlR1EiXUYnRjlGLkY5Ri5GOS1GIzYmLUYsNiwtRjM2JFEiM0YnRjZGOUZcb0Y5RlxvRjlGXG9GU0ZWRjZGNkZYRmVuRjlGaG5GOS1GIzYmLUYsNiwtRjM2JFEiNEYnRjZGOUZjb0Y5RmNvRjlGY29GU0ZWRjZGNkZYRmVuRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0Y5Rl9vRjlGX29GOUZfb0ZTRlZGNkY2RlhGZW4=">NzA3JiIiI0YkRiRGJEYjRiM3JiIiJEYmRiZGJkYlNyYiIiVGKEYoRihGJ0YnRidGJ0YnRidGJ0Yn</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-output="false" labelreference="L4077" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L3939" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">tord := tdeg(op(vars));</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKn4mIzg3ODg7fkYnL0YzUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGPS8lKXN0cmV0Y2h5R0Y9LyUqc3ltbWV0cmljR0Y9LyUobGFyZ2VvcEdGPS8lLm1vdmFibGVsaW1pdHNHRj0vJSdhY2NlbnRHRj0vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZMLUYjNigtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkhGSkZNLUkobWZlbmNlZEdGJDYkLUYjNiwtRiw2JVEid0YnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRkovRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieEYnRi9GMkZpbi1GLDYlUSJ5RidGL0YyRmluLUYsNiVRInpGJ0YvRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRj1GOUY5RmhvRltwRjlGaG9GW3BGOQ==">LUkldGRlZ0c2IjYmSSJ3R0YkSSJ4R0YkSSJ5R0YkSSJ6R0Yk</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L3934" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L3907" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(eqs, tord, characteristic=3001):
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(eqs, tord, characteristic=32749):
 nops(Gr);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjMTNGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiM4</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L3922" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
-</Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzY8LUYjNigtSSNtbkdGJDYkUSUyOTA3RicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLUkjbW9HRiQ2LVExJkludmlzaWJsZVRpbWVzO0YnRjEvJSZmZW5jZUdRJmZhbHNlRicvJSpzZXBhcmF0b3JHRjovJSlzdHJldGNoeUdGOi8lKnN5bW1ldHJpY0dGOi8lKGxhcmdlb3BHRjovJS5tb3ZhYmxlbGltaXRzR0Y6LyUnYWNjZW50R0Y6LyUnbHNwYWNlR1EmMC4wZW1GJy8lJ3JzcGFjZUdGSS1JI21pR0YkNiVRIndGJy8lJ2l0YWxpY0dRJXRydWVGJy9GMlEnaXRhbGljRidGNC1GTTYlUSJ5RidGUEZTRjEtRjU2LVEiK0YnRjFGOEY7Rj1GP0ZBRkNGRS9GSFEsMC4yMjIyMjIyZW1GJy9GS0Zmbi1GIzYoLUYuNiRRIzkyRidGMUY0RkxGNC1GTTYlUSJ6RidGUEZTRjFGWC1GIzYkLUklbXN1cEdGJDYlLUZNNiVRInhGJ0ZQRlMtRi42JFEiMkYnRjEvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnRjFGWC1GIzYoLUYuNiRRJTE2MTBGJ0YxRjRGZW9GNEZVRjFGWC1GIzYoLUYuNiRRJTI1MThGJ0YxRjRGZW9GNEZdb0YxRlgtRiM2Ji1GLjYkUSQzNjNGJ0YxRjQtRmNvNiVGVUZob0ZbcEYxRlgtRiM2KC1GLjYkUSUxMzYxRidGMUY0RlVGNEZdb0YxRlgtRiM2Ji1GLjYkUSQzMjFGJ0YxRjQtRmNvNiVGXW9GaG9GW3BGMUZYLUYjNiYtRi42JFEkNTcyRidGMUY0RkxGMUZYLUYjNiYtRi42JFElMTM5OUYnRjFGNEZlb0YxRlgtRiM2Ji1GLjYkUSUyNTA2RidGMUY0RlVGMUZYLUYjNiYtRi42JFEiNUYnRjFGNEZdb0YxRlgtRi42JFElMTcwOUYnRjFGMQ==">LDwqKCIlMkgiIiJJIndHNiJGJUkieUdGJ0YlRiUqKCIjIypGJUYmRiVJInpHRidGJUYlKiQpSSJ4R0YnIiIjRiVGJSooIiU1O0YlRi5GJUYoRiVGJSooIiU9REYlRi5GJUYrRiVGJSomIiRqJEYlKUYoRi9GJUYlKigiJWg4RiVGKEYlRitGJUYlKiYiJEAkRiUpRitGL0YlRiUqJiIkcyZGJUYmRiVGJSomIiUqUiJGJUYuRiVGJSomIiUxREYlRihGJUYlKiYiIiZGJUYrRiVGJSIlNDxGJQ==</Equation></Text-field>
-</Output>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L4071" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=3001);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=32749);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIh</Equation></Text-field>
 </Output>
