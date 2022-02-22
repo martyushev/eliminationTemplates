@@ -1,6 +1,6 @@
 Maple implementation of the Automatic template generator.
 
-If you use this code in your research, please cite the following work:
+If you use this code, please cite the following work:
 
 @inproceedings{martyushev2022optimizing,
   title={Optimizing Elimination Templates by Greedy Parameter Search},
