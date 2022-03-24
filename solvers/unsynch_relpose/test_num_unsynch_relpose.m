@@ -13,6 +13,7 @@ for i = 1:N
         tic;
         C = coefs_unsynch_relpose(data); % compute coefficients of polynomial system
         [ww,xx,yy,zz] = nstd_139x155_colpiv_unsynch_relpose(C); % solve polynomial system
+        %[ww,xx,yy,zz] = red_59x79_colpiv_unsynch_relpose(C); % solve polynomial system
         tm = toc;
         if isempty(ww); continue; end
     catch ME
