@@ -282,9 +282,24 @@ getTord := proc(gb, lm)
 end proc:</Text-field>
 </Input>
 </Group>
+<Group view="code" hide-output="false" labelreference="L5130" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read weight file
+readWeights := proc(fn::string)
+    local st := 1, Ws := []:
+    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    while st &lt;&gt; 0 do
+        st := readline(fn):
+        if st &lt;&gt; 0 then Ws := [op(Ws), parse(st)]: end if:
+    end do:
+    print(cat(nops(Ws), ` weight vectors loaded`)):
+    return Ws:
+end proc:</Text-field>
+</Input>
+</Group>
 <Group view="code" hide-output="false" labelreference="L5089" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">writeWeights := proc(prob::string, {numbers_of_weights::posint:=100, rand_range::[posint,posint]:=[200,800], prime_number::posint:=32749})
-    local pp := prevprime(prime_number+1), Gs, LMs, WW, gffn := cat(&quot;gfan/gf_&quot;, prob), fn := cat(&quot;weights/w_&quot;, prob), fd, W, F, vars, rnd, tord, G:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write weight file
+writeWeights := proc(prob::string, {numbers_of_weights::posint:=100, rand_range::[posint,posint]:=[200,800], prime_number::posint:=32749, mode := APPEND})
+    local pp := prevprime(prime_number+1), Gs, LMs, WW, gffn := cat(&quot;gfan/gf_&quot;, prob), fn := cat(&quot;weights/w_&quot;, prob), fd, i, W, F, vars, rnd, tord, G:
     if FileTools[Exists](gffn) then
         print(`Generating weight vectors from Gfan file`):
         pp, Gs, LMs := readGfan(gffn):
@@ -293,11 +308,13 @@ end proc:</Text-field>
 <Font encoding="UTF-8">        for W in WW do fprintf(fd, &quot;%a\134n&quot;, W</Font>): end do:
         fclose(fd):
     else
-        print(cat(`Gfan file not found. Generating `, numbers_of_weights, ` random weight vectors`)):
+        print(`Gfan file not found`):
+        print(cat(`Generating `, numbers_of_weights, ` random weight vectors`)):
         F, vars := readProblem(prob):
-        WW := []:
         rnd := rand(rand_range[1]..rand_range[2]):
-        fd := fopen(fn, WRITE):fclose(fd):fd := fopen(fn, APPEND):
+        randomize(): # reset the seed for rnd()
+        WW := `if`(mode=APPEND, readWeights(fn), []):
+        fd := fopen(fn, mode):
         while nops(WW) &lt; numbers_of_weights do
             tord := wdeg([seq(rnd(), i=1..nops(vars))], vars):
             G := Groebner[Basis](F, tord, characteristic=pp):
@@ -316,12 +333,8 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5085" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for change matrix computation in Macaulay2
 writeCM := proc(prob::string, {prime_number::posint:=32749})
-    local pp := prevprime(prime_number+1), st := 1, Ws0 := [], fn := cat(&quot;weights/w_&quot;, prob), fd, F, vars, Ws:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
-    while st &lt;&gt; 0 do
-        st := readline(fn):
-        if st &lt;&gt; 0 then Ws0 := [op(Ws0), parse(st)]: end if:
-    end do:
+    local Ws0, pp := prevprime(prime_number+1), fn := cat(&quot;weights/w_&quot;, prob), fd, F, vars, Ws:
+    Ws0 := readWeights(fn):
     Ws := StringTools[SubstituteAll](StringTools[SubstituteAll](convert(Ws0, string), &quot;[&quot;, &quot;(&quot;), &quot;]&quot;, &quot;)&quot;):
     F, vars := readProblem(prob):
     vars := convert(vars, string):
@@ -1208,6 +1221,7 @@ readGfan,
 writeCM,
 readCM,
 getTord,
+readWeights,
 writeWeights,
 saveData,
 readData,
