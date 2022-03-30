@@ -98,7 +98,7 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;gen_relpose_scale&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;gen6p&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 basis = std, ### quotient space bases to use
@@ -117,19 +117,19 @@ filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to b
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TemplateFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFJVGhlfnByb2JsZW1+aXN+ZGVmaW5lZH5ieX4yMX5wb2x5bm9taWFsc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUlUaGV+cHJvYmxlbX5pc35kZWZpbmVkfmJ5fjIxfnBvbHlub21pYWxzRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFJVGhlfnByb2JsZW1+aXN+ZGVmaW5lZH5ieX4xNX5wb2x5bm9taWFsc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUlUaGV+cHJvYmxlbX5pc35kZWZpbmVkfmJ5fjE1fnBvbHlub21pYWxzRzYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFjclZhcmlhYmxlczp+W3gsfnksfnpdO35kZWdyZWVzOn5bOCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OCx+OF07fm51bWJlcn5vZn5zb2x1dGlvbnM6fjE0MEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SWNyVmFyaWFibGVzOn5beCx+eSx+el07fmRlZ3JlZXM6fls4LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44LH44XTt+bnVtYmVyfm9mfnNvbHV0aW9uczp+MTQwRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFgcVZhcmlhYmxlczp+W3gsfnksfnpdO35kZWdyZWVzOn5bNix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nix+Nl07fm51bWJlcn5vZn5zb2x1dGlvbnM6fjY0RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SWBxVmFyaWFibGVzOn5beCx+eSx+el07fmRlZ3JlZXM6fls2LH42LH42LH42LH42LH42LH42LH42LH42LH42LH42LH42LH42LH42LH42XTt+bnVtYmVyfm9mfnNvbHV0aW9uczp+NjRHNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6MjB+Y2hhbmdlfm1hdHJpY2VzfmxvYWRlZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SToyMH5jaGFuZ2V+bWF0cmljZXN+bG9hZGVkRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6NTB+Y2hhbmdlfm1hdHJpY2VzfmxvYWRlZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STo1MH5jaGFuZ2V+bWF0cmljZXN+bG9hZGVkRzYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTg5LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xODkseDYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1E+U21hbGxlcn50ZW1wbGF0ZX5mb3VuZDp+MTM1LHhGJw==">UT5TbWFsbGVyfnRlbXBsYXRlfmZvdW5kOn4xMzUseDYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFAMTZ+cXVvdGllbnR+c3BhY2V+YmFzZXN+cmVtb3ZlZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUAxNn5xdW90aWVudH5zcGFjZX5iYXNlc35yZW1vdmVkRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFANDB+cXVvdGllbnR+c3BhY2V+YmFzZXN+cmVtb3ZlZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">SUA0MH5xdW90aWVudH5zcGFjZX5iYXNlc35yZW1vdmVkRzYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1Fbb1NtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+WzE0NCwyODRdLC40MTkseixbNDEsfjQ5LH40Ml1GJw==">UVtvU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bMTQ0LDI4NF0sLjQxOSx6LFs0MSx+NDksfjQyXTYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FqblNtYWxsZXJ+b3J+c3BhcnNlcn50ZW1wbGF0ZX5mb3VuZDp+Wzk5LDE2M10sLjQ4NSx6LFsxNix+MjcsfjE3XUYn">UWpuU21hbGxlcn5vcn5zcGFyc2VyfnRlbXBsYXRlfmZvdW5kOn5bOTksMTYzXSwuNDg1LHosWzE2LH4yNyx+MTddNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FCMjUlLFsxNDQsMjg0XSwuNDE5LHosWzQxLH40OSx+NDJdRic=">UUIyNSUsWzE0NCwyODRdLC40MTkseixbNDEsfjQ5LH40Ml02Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbXNHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2I1FBMTAlLFs5OSwxNjNdLC40ODUseixbMTYsfjI3LH4xN11GJw==">UUExMCUsWzk5LDE2M10sLjQ4NSx6LFsxNix+MjcsfjE3XTYi</Equation></Text-field>
 </Output>
 <Output><Text-field style="HyperlinkWarning" layout="HyperlinkWarning"><Hyperlink linktarget="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20%20computation%20interrupted" hyperlink="true"><Font style="HyperlinkWarning">Warning,  computation interrupted</Font></Hyperlink></Text-field>
 </Output>
@@ -179,7 +179,7 @@ filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to b
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

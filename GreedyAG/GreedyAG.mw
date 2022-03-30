@@ -100,7 +100,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title>
 <Group hide-output="false" labelreference="L5129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read minimal problem, output list of polynomials and list os variables
 readProblem := proc(prob::string)
@@ -139,11 +139,11 @@ iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::Sho
     E := convert(map(op, Groebner[Support](F)), set): ### set of monomials occuring in the original equations
     print(cat(`Polynomial system contains `, nops(E), ` monomials`)):
     M := E:
-    for d from 0 while d - d_min &lt;= dom do
+    for d from 0 while d-d_min &lt;= dom do
         vr := select(x-&gt;degree(x, vars) &lt;= d, M):
         M := map(t-&gt;op(map(k-&gt;t*k, vr)), M):
         flag, S := testBasis(M, deg, G, tord, pp):
-        if not flag then d_min := d + 1: end if:
+        if not flag then d_min := d+1: end if:
     end do:
     print(cat(`Initial set contains `, nops(M), ` monomials`)):
     return E, M:
@@ -165,6 +165,7 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use random sampling for basis construction
 genBasis := proc(E::set, M::set, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint)
     local rnd := rand(0..1000)/1000, B := {}, EB, MB := M, nB, nB1, bv, k, a, nv := nops(vars), wt, m, i, deg := nops(B0):
+    randomize(): # reset the seed for rnd()
     bv := [seq(round(rnd()), i=1..nv)]: ### random binary list
     k := max[index](map(x-&gt;x+rnd()/100., bv)):
     a := vars[k]: ### select action variable for guiding the sampling
@@ -185,15 +186,6 @@ genBasis := proc(E::set, M::set, B0::list, vars::list, G::list, tord::ShortMonom
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-output="false" labelreference="L5055" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save non-standard bases
-saveBases := proc(prob::string, QBs::{list,set})
-    local fd := fopen(cat(&quot;bases/b_&quot;, prob), WRITE):
-    map(x-&gt;<Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, x)</Font>, QBs):
-    fclose(fd):
-end proc:</Text-field>
-</Input>
-</Group>
 <Group view="code" hide-output="false" labelreference="L5053" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read non-standard bases
 readBases := proc(prob::string)
@@ -203,28 +195,30 @@ readBases := proc(prob::string)
         st := readline(fn):
         if st &lt;&gt; 0 then QBs := [op(QBs), parse(st)]: end if:
     end do:
+    print(cat(nops(QBs), ` bases loaded`)):
     QBs:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5057" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save N non-standard monomial bases of the quotient ring
-### this is our implementation of the random sampling strategy from
-### V. Larsson et al., Beyond Grobner bases: Basis selection for minimal solvers, CVPR, 2018
-BasisFinder := proc(prob::string, {numbers_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749})
-    local pp := prevprime(prime_number+1), F, vars, tord, G, B0, d, E, M := [], BB := [], B, fn := cat(&quot;bases/b_&quot;, prob), fd:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate and save non-standard monomial bases of the quotient ring
+### this is a reimplementation of the random sampling strategy from
+### V. Larsson et al., Beyond Grobner bases: Basis selection for minimal solvers, CVPR 2018
+BasisFinder := proc(prob::string, {number_of_bases::posint:=100, deg_over_min::nonnegint:=0, prime_number::posint:=32749, mode := APPEND})
+    local pp := prevprime(prime_number+1), F, vars, tord, G, B0, d, E, M := [], BB, B, fn := cat(&quot;bases/b_&quot;, prob), fd:
     F, vars := readProblem(prob):
     tord := tdeg(op(vars)):
     G := Groebner[Basis](F, tord, characteristic=pp):
     B0 := Groebner[NormalSet](G, tord)[1]:
     E, M := iniMonSet(F, B0, vars, G, tord, pp, deg_over_min):
-    fd := fopen(fn, WRITE):fclose(fd):fd := fopen(fn, APPEND):
-    while nops(BB) &lt; numbers_of_bases do
+    BB := `if`(mode=APPEND, readBases(prob), []):
+    fd := fopen(fn, mode):
+    while nops(BB) &lt; number_of_bases do
         B := genBasis(E, M, B0, vars, G, tord, pp):
         if not member(B, BB) then
             BB := [op(BB), B]:
             <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, </Font>convert(B, list)):
-            print(sprintf(&quot;%d%s&quot;, round(nops(BB)/numbers_of_bases*100), &quot;% completed&quot;)):
+            print(sprintf(&quot;%d%s&quot;, round(nops(BB)/number_of_bases*100), &quot;% completed&quot;)):
         end if:
     end do:
     fclose(fd):
@@ -232,7 +226,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Monomial ordering and change matrix finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5084" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for Grobner fan computation in Gfan
 writeGfan := proc(prob::string, {prime_number::posint:=32749})
@@ -292,13 +286,13 @@ readWeights := proc(fn::string)
         if st &lt;&gt; 0 then Ws := [op(Ws), parse(st)]: end if:
     end do:
     print(cat(nops(Ws), ` weight vectors loaded`)):
-    return Ws:
+    Ws:
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5089" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write weight file
-writeWeights := proc(prob::string, {numbers_of_weights::posint:=100, rand_range::[posint,posint]:=[200,800], prime_number::posint:=32749, mode := APPEND})
+writeWeights := proc(prob::string, {number_of_weights::posint:=100, rand_range::[posint,posint]:=[200,800], prime_number::posint:=32749, mode := APPEND})
     local pp := prevprime(prime_number+1), Gs, LMs, WW, gffn := cat(&quot;gfan/gf_&quot;, prob), fn := cat(&quot;weights/w_&quot;, prob), fd, i, W, F, vars, rnd, tord, G:
     if FileTools[Exists](gffn) then
         print(`Generating weight vectors from Gfan file`):
@@ -309,20 +303,20 @@ writeWeights := proc(prob::string, {numbers_of_weights::posint:=100, rand_range:
         fclose(fd):
     else
         print(`Gfan file not found`):
-        print(cat(`Generating `, numbers_of_weights, ` random weight vectors`)):
+        print(cat(`Generating `, number_of_weights, ` random weight vectors`)):
         F, vars := readProblem(prob):
         rnd := rand(rand_range[1]..rand_range[2]):
         randomize(): # reset the seed for rnd()
         WW := `if`(mode=APPEND, readWeights(fn), []):
         fd := fopen(fn, mode):
-        while nops(WW) &lt; numbers_of_weights do
+        while nops(WW) &lt; number_of_weights do
             tord := wdeg([seq(rnd(), i=1..nops(vars))], vars):
             G := Groebner[Basis](F, tord, characteristic=pp):
             W := getTord(G, Groebner[LeadingMonomial](G, tord))[1]:
             if not member(W, WW) then
                 WW := [op(WW), W]:
                 <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, W</Font>):
-                print(sprintf(&quot;%d%s&quot;, round(nops(WW)/numbers_of_weights*100), &quot;% completed&quot;)):
+                print(sprintf(&quot;%d%s&quot;, round(nops(WW)/number_of_weights*100), &quot;% completed&quot;)):
             end if:
         end do:
         fclose(fd):
@@ -378,7 +372,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Template finder</Text-field></Title><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5059" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save data needed to construct template
 saveData := proc(prob::string, mn::[posint,posint], sp::numeric, pp::posint, vars::{list,set}, av::monomial, tord::ShortMonomialOrder, QB::list, shifts::list, pols::list, std::boolean)
@@ -836,7 +830,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section>
-<Section collapsed="false" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Matlab solver generator</Text-field></Title>
+<Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Matlab solver generator</Text-field></Title>
 <Group hide-output="false" labelreference="L5113" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### uniformly distributed rational random numbers from [-1, 1]
 rnd := rand(-1000..1000)/1000:</Text-field>
@@ -1213,7 +1207,6 @@ testBasis,
 iniMonSet,
 neighborMons,
 genBasis,
-saveBases,
 readBases,
 BasisFinder,
 writeGfan,
