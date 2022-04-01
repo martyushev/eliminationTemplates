@@ -133,11 +133,16 @@ end do:</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L4127" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">R := getRotMatrix(&lt;x, y, z&gt;)*(x^2+y^2+z^2+1):
 Acoeffs := eq-&gt;&lt;coeff(eq, lambda1)|coeff(eq, lambda2)|coeff(eq, s)|coeff(coeff(coeff(eq, lambda1, 0), lambda2, 0), s, 0)&gt;:
-mm := [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7]:
-ii := [2, 3, 2, 3, 4, 4, 4, 5, 5, 5, 6, 5, 6, 7, 7, 7, 1, 1, 1, 1, 2]:
-jj := [3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 1, 1, 1, 2, 2, 2, 3, 3]:
-kk := [4, 5, 6, 5, 6, 7, 6, 7, 1, 7, 2, 2, 1, 2, 3, 2, 3, 4, 3, 4, 5]:
-ll := [5, 6, 7, 6, 7, 1, 7, 1, 2, 1, 3, 3, 2, 3, 4, 3, 4, 5, 4, 6, 6]:
+#mm := [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7]:
+#ii := [2, 3, 2, 3, 4, 4, 4, 5, 5, 5, 6, 5, 6, 7, 7, 7, 1, 1, 1, 1, 2]:
+#jj := [3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 1, 1, 1, 2, 2, 2, 3, 3]:
+#kk := [4, 5, 6, 5, 6, 7, 6, 7, 1, 7, 2, 2, 1, 2, 3, 2, 3, 4, 3, 4, 5]:
+#ll := [5, 6, 7, 6, 7, 1, 7, 1, 2, 1, 3, 3, 2, 3, 4, 3, 4, 5, 4, 6, 6]:
+mm := [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 7, 7]:
+ii := [2, 3, 2, 3, 4, 4, 4, 5, 5, 5, 6, 5, 6, 7, 7, 7, 1, 1, 1]:
+jj := [3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 1, 1, 1, 2, 2, 3]:
+kk := [4, 5, 6, 5, 6, 7, 6, 7, 1, 7, 2, 2, 1, 2, 3, 2, 3, 3, 4]:
+ll := [5, 6, 7, 6, 7, 1, 7, 1, 2, 1, 3, 3, 2, 3, 4, 3, 4, 4, 6]:
 eqs := []:
 for n from 1 to nops(mm) do
     m := mm[n]:
@@ -177,7 +182,7 @@ end do:</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L4120" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">[seq(map(vr-&gt;degree(eqs[i], vr), [op(vars)]), i=1..nops(eqs))];</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZOLUYjNiYtRiw2Ki1JI21uR0YkNiRRIjhGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGP0Y2RjYvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkZTRlZGNkY2RlhGZW4=">Nzc3JSIiKUYkRiRGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0Yj</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZKLUYjNiYtRiw2Ki1JI21uR0YkNiRRIjhGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGP0Y2RjYvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GU0ZWRjZGNkZYRmVu">NzU3JSIiKUYkRiRGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiM=</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L1320" drawlabel="true">
@@ -207,7 +212,7 @@ nops(Gr);</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4138" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-output="false" labelreference="L4138" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

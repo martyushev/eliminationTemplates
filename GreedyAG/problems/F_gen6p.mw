@@ -133,10 +133,14 @@ end do:</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L1258" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">R := getRotMatrix(&lt;x, y, z&gt;)*(x^2+y^2+z^2+1):
 Acoeffs := p-&gt;&lt;coeff(p, lambda1)|coeff(p, lambda2)|coeff(coeff(p, lambda1, 0), lambda2, 0)&gt;:
-mm := [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3]:
-ii := [2, 3, 4, 5, 6, 1, 3, 4, 5, 6, 1, 2, 3, 4, 5]:
-jj := [3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6]:
-kk := [4, 5, 6, 1, 2, 3, 5, 6, 1, 2, 3, 4, 6, 1, 2]:
+#mm := [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1, 2, 3]:
+#ii := [2, 3, 4, 5, 6, 1, 3, 4, 5, 6, 1, 2, 3, 4, 5]:
+#jj := [3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4, 5, 6]:
+#kk := [4, 5, 6, 1, 2, 3, 5, 6, 1, 2, 3, 4, 6, 1, 2]:
+mm := [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 1]:
+ii := [2, 3, 4, 5, 6, 1, 3, 4, 5, 6, 1, 2, 3]:
+jj := [3, 4, 5, 6, 1, 2, 4, 5, 6, 1, 2, 3, 4]:
+kk := [4, 5, 6, 1, 2, 3, 5, 6, 1, 2, 3, 4, 6]:
 eqs := []:
 for l from 1 to nops(mm) do
     i, j, k, m := ii[l], jj[l], kk[l], mm[l]:
@@ -169,7 +173,7 @@ end do:</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L4142" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">[seq(map(vr-&gt;degree(eqs[i], vr), [op(vars)]), i=1..nops(eqs))];</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZCLUYjNiYtRiw2Ki1JI21uR0YkNiRRIjZGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGP0Y2RjYvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkZTRlZGNkY2RlhGZW4=">NzE3JSIiJ0YkRiRGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiNGI0Yj</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDY+LUYjNiYtRiw2Ki1JI21uR0YkNiRRIjZGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRictSSNtb0dGJDYtUSIsRidGNi8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdRJXRydWVGJy8lKXN0cmV0Y2h5R0Y/LyUqc3ltbWV0cmljR0Y/LyUobGFyZ2VvcEdGPy8lLm1vdmFibGVsaW1pdHNHRj8vJSdhY2NlbnRHRj8vJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR1EsMC4zMzMzMzMzZW1GJ0YyRjlGMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGP0Y2RjYvJSVvcGVuR1EiW0YnLyUmY2xvc2VHUSJdRidGOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GOUYuRjlGLkY5Ri5GU0ZWRjZGNkZYRmVu">Ny83JSIiJ0YkRiRGI0YjRiNGI0YjRiNGI0YjRiNGI0YjRiM=</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4147" drawlabel="true">

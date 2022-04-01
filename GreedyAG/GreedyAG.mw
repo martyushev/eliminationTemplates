@@ -195,7 +195,7 @@ readBases := proc(prob::string)
         st := readline(fn):
         if st &lt;&gt; 0 then QBs := [op(QBs), parse(st)]: end if:
     end do:
-    print(cat(nops(QBs), ` bases loaded`)):
+    print(cat(nops(QBs), ` quotient space bases loaded`)):
     QBs:
 end proc:</Text-field>
 </Input>
@@ -367,6 +367,7 @@ readCM := proc(prob::string)
             CM||n := StringTools[SubstituteAll](StringTools[SubstituteAll](substring(st, 9..-2), &quot;{&quot;, &quot;[&quot;), &quot;}&quot;, &quot;]&quot;):
         end if:
     end do:
+    print(cat(n, ` change matrices loaded`)):
     return pp, [seq(wdeg([parse(T||i)], vars), i=1..m)], [seq(Matrix([map(parse, CM||i)])^%T, i=1..n)]:
 end proc:</Text-field>
 </Input>
@@ -774,16 +775,13 @@ iniProb := proc(prob::string, std::boolean, ff::numeric, pn::posint)
     if std then # use standard bases
         pp, Ts, CMs := readCM(prob): # read change matrices and monomial orderings
         nQBs := nops(CMs):
-        print(cat(nQBs, ` change matrices loaded`)):
         GBs := [seq(map(expand, convert(CMs[i].vF, list)) mod pp, i=1..nQBs)]:
         QBs := [seq(Groebner[NormalSet](GBs[i], Ts[i])[1], i=1..nQBs)]: # compute quotient space bases
         q := filterBases2(nops(F), vars, CMs, GBs, Ts, QBs, pp, ff):
         CMs, GBs, Ts, QBs := [seq(CMs[i], i in q)], [seq(GBs[i], i in q)], [seq(Ts[i], i in q)], [seq(QBs[i], i in q)]:
     else # use non-standard bases
         QBs := readBases(prob):
-        nQBs := nops(QBs):
-        print(cat(nQBs, ` quotient space bases loaded`)):
-        tord := tdeg(op(vars)):
+        nQBs, tord := nops(QBs), tdeg(op(vars)):
         GC := Groebner[Basis](F, tord, characteristic=pp, output=extended): # compute Grobner bases and change matrices
         G, CM := GC[1], Matrix(GC[2]):
         q := filterBases(F, QBs, nQBs, ff):
