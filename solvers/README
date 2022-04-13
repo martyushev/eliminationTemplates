@@ -62,6 +62,7 @@ Folders (minimal problems):
 34) gen_relpose_scale: 7-point generalized relative pose and scale problem
 35) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
 36) gen6p: 6-point generalized relative pose problem
+37) 3pra_st0: calibrated 3-point relative pose estimation with known relative rotation angle and screw translation
 _common: auxiliary functions that are common for several problems
 _results: output data (mat-files and figures)
 
