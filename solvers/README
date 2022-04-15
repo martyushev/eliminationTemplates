@@ -59,9 +59,9 @@ Folders (minimal problems):
 31*) l2_3view_triang: relaxed L2 3-view triangulation problem
 32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
 33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
-34) gen_relpose_scale: 7-point generalized relative pose and scale problem
+34) gen_relpose_scale: 7-point generalized relative pose and scale estimation
 35) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
-36) gen6p: 6-point generalized relative pose problem
+36) gen6p: 6-point generalized relative pose estimation
 37) 3pra_st0: calibrated 3-point relative pose estimation with known relative rotation angle and zero screw translation
 38) 5p: 5-point relative pose estimation
 _common: auxiliary functions that are common for several problems
