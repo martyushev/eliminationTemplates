@@ -98,7 +98,7 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;3pra_st0&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;5p&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 basis = std, ### std/nstd - using standard/non-standard quotient space basis
@@ -119,13 +119,13 @@ SolverGenerator(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6QWN0aW9ufm1hdHJpeH5mb3VuZDp+dHJ1ZUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpBY3Rpb25+bWF0cml4fmZvdW5kOn50cnVlRzYi</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6VGVtcGxhdGUnc35zaXplOn5bMTMsfjI1XUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpUZW1wbGF0ZSdzfnNpemU6flsxMyx+MjVdRzYi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6VGVtcGxhdGUnc35zaXplOn5bMTAsfjIwXUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpUZW1wbGF0ZSdzfnNpemU6flsxMCx+MjBdRzYi</Equation></Text-field>
 </Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE/TGlzdH5vZn5wZXJtaXNzaWJsZX5tb25vbWlhbHM6RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">ST9MaXN0fm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczpHNiI=</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZELUYsNiYtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ2RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW5HRiQ2JFEiMkYnL0Y7USdub3JtYWxGJy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRictSSNtb0dGJDYtUTEmSW52aXNpYmxlVGltZXM7RidGQS8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGTC8lKXN0cmV0Y2h5R0ZMLyUqc3ltbWV0cmljR0ZMLyUobGFyZ2VvcEdGTC8lLm1vdmFibGVsaW1pdHNHRkwvJSdhY2NlbnRHRkwvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0Zlbi1GNDYlUSJ1RidGN0Y6RkEtRkc2LVEiLEYnRkFGSi9GTkY5Rk9GUUZTRlVGV0ZZL0ZnblEsMC4zMzMzMzMzZW1GJy1GLDYkLUYxNiVGMy1GPjYkUSIzRidGQUZDRkFGW28tRiw2KC1GNDYlUSJ3RidGN0Y6RkZGM0ZGRmhuRkFGW28tRiw2JkZqb0ZGRjBGQUZbby1GLDYmRmhuRkYtRjE2JUZqb0Y9RkNGQUZbby1GLDYmRjNGRkZhcEZBRltvLUYsNiQtRjE2JUZqb0Zlb0ZDRkFGW28tRiw2JkZobkZGRjNGQUZbby1GLDYkRjBGQUZbby1GLDYmRmhuRkZGam9GQUZbby1GLDYmRjNGRkZqb0ZBRltvLUYsNiRGYXBGQUZbb0ZobkZbb0YzRltvRmpvRltvLUY+NiRRIjFGJ0ZBLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0ZMRkFGQS8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJw==">NzIqJkkidkc2IiIiI0kidUdGJSIiIiokRiQiIiQqKEkid0dGJUYoRiRGKEYnRigqJkYsRihGJEYmKiZGJ0YoRixGJiomRiRGKEYsRiYqJEYsRioqJkYnRihGJEYoKiRGJEYmKiZGJ0YoRixGKComRiRGKEYsRigqJEYsRiZGJ0YkRixGKA==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDY4LUYsNiQtSSVtc3VwR0YkNiUtSSNtaUdGJDYlUSJ4RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLUkjbW5HRiQ2JFEiMkYnL0Y7USdub3JtYWxGJy8lMXN1cGVyc2NyaXB0c2hpZnRHUSIwRidGQS1JI21vR0YkNi1RIixGJ0ZBLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y5LyUpc3RyZXRjaHlHRkwvJSpzeW1tZXRyaWNHRkwvJShsYXJnZW9wR0ZMLyUubW92YWJsZWxpbWl0c0dGTC8lJ2FjY2VudEdGTC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYnLUYsNiZGMy1GRzYtUTEmSW52aXNpYmxlVGltZXM7RidGQUZKL0ZORkxGT0ZRRlNGVUZXRlkvRmduRmVuLUY0NiVRInlGJ0Y3RjpGQUZGLUYsNiQtRjE2JUZgb0Y9RkNGQUZGLUYsNiZGM0Zbby1GNDYlUSJ6RidGN0Y6RkFGRi1GLDYmRmBvRltvRmlvRkFGRi1GLDYkLUYxNiVGaW9GPUZDRkFGRkYzRkZGYG9GRkZpb0ZGLUY+NiRRIjFGJ0ZBLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0ZMRkFGQS8lJW9wZW5HUSJbRicvJSZjbG9zZUdRIl1GJw==">NywqJEkieEc2IiIiIyomRiQiIiJJInlHRiVGKCokRilGJiomRiRGKEkiekdGJUYoKiZGKUYoRixGKCokRixGJkYkRilGLEYo</Equation></Text-field>
 </Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFETnVtYmVyfm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczp+MTZGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUROdW1iZXJ+b2Z+cGVybWlzc2libGV+bW9ub21pYWxzOn4xNkc2Ig==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFETnVtYmVyfm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczp+MTBGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUROdW1iZXJ+b2Z+cGVybWlzc2libGV+bW9ub21pYWxzOn4xMEc2Ig==</Equation></Text-field>
 </Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFRVmFyaWFibGVzfnRoYXR+Y2Fufm5vdH5iZX5ldmFsdWF0ZWR+YXR+cm9vdHM6fltdRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SVFWYXJpYWJsZXN+dGhhdH5jYW5+bm90fmJlfmV2YWx1YXRlZH5hdH5yb290czp+W11HNiI=</Equation></Text-field>
 </Output>
@@ -191,7 +191,7 @@ SolverGenerator(prob, opts):</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>
