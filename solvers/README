@@ -6,7 +6,7 @@ If you use this code, please cite the following work:
   title={Optimizing Elimination Templates by Greedy Parameter Search},
   author={Martyushev, Evgeniy and Vrablikova, Jana and Pajdla, Tomas},
   booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={--},
+  pages={15754--15764},
   year={2022}
 }
 Preprint: https://arxiv.org/abs/2203.14901
