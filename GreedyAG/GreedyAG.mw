@@ -418,18 +418,23 @@ end proc:</Text-field>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5024" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### solve polynomial system F = 0 by the action matrix method
-eigSolver := proc(F::{list,set,Vector}, {digits::posint:=15, actvar::integer:=1})
-    local fB2C, vars := [op(indets(F))], a := vars[actvar], tord := tdeg(op(vars)), B, deg, G, T, V, S:
-    fB2C := proc(f, B) local t := table(zip((a, b)-&gt;b=a, [coeffs(f, B, 'm')], [m])): map(b-&gt;`if`(assigned(t[b]), t[b], 0), B) end proc:
+EigenSolver := proc(F::{list,set,Vector}(polynom), {digits::posint:=15})
+    local fB2C, vars := [op(indets(F))], tord := tdeg(op(vars)), G, B, deg, irnd, a, T, V:
+    fB2C := proc(f::polynom, B::list(monomial))
+        local t := table(zip((a,b)-&gt;b=a, [coeffs(f, B, 'm')], [m])):
+        return map(b-&gt;`if`(assigned(t[b]), t[b], 0), B):
+    end proc:
     Digits := digits:
     G := Groebner[Basis](F, tord):
     B := Groebner[NormalSet](G, tord)[1]:
     deg := nops(B):
-    print(cat(`The system is expected to have `, deg, ` roots`)):
+    print(cat(`System is expected to have `, deg, ` roots`)):
+    irnd := rand(-1000..1000)/1000:
+    a := add(vr*irnd(), vr in vars):
     T := Groebner[MultiplicationMatrix](a, B, table(Equate(B, [$ 1..deg])), G, tord):
     V := LinearAlgebra[Eigenvectors](evalf(T))[2]:
     V := V/~(Vector(deg, fill=1).V[1]):
-    S := Matrix(map(v-&gt;fB2C(Groebner[NormalForm](v, G, tord), B), vars)).V:
+    return Matrix(map(v-&gt;fB2C(Groebner[NormalForm](v, G, tord), B), vars)).V:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -1216,7 +1221,7 @@ readWeights,
 writeWeights,
 saveData,
 readData,
-eigSolver,
+EigenSolver,
 srt,
 poly2matrix,
 permuteColumns,
@@ -1302,6 +1307,10 @@ SolverGenerator,
 </Group>
 <Group hide-output="false" labelreference="L5097" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>
