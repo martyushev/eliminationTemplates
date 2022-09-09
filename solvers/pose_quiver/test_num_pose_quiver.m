@@ -1,43 +1,33 @@
 rng(23);
-
 N = 10000;
 
-Err_pose_quiver = [];
-Tm_pose_quiver = [];
+stats = struct('problem','pose_quiver','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_pose_quiver(); % generate initial data of the problem
+    data = inidata_num_pose_quiver(); % generate initial data
 
     try
-        tic;
         C = coefs_pose_quiver(data); % compute coefficients of polynomial system
-        [ww,xx,yy,zz] = std_65x85_colpiv_pose_quiver(C); % solve polynomial system
-        tm = toc;
-        if isempty(ww); continue; end
+        tic;
+        S = red_54x84_colpiv_pose_quiver(C); % solve polynomial system
+        %S = std_65x85_colpiv_pose_quiver(C);
+        stats.tm = [stats.tm toc];
+        if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    M = [];
-    for j=1:length(ww)
-        w = ww(j);
-        x = xx(j);
-        y = yy(j);
-        z = zz(j);
-        m = [x^2*w,y^2*w,z*x*w,z*y*w,z^2*w,w*x,x^2,w*y,x*y,y^2,z*x,z*y,z^2,w,x,y,z,1];
-        m = m/norm(m,'fro');
-        M = [M; norm(C*m.','fro')];
-    end
-    M = sort(M);
-    err = norm(M(1:min(20,length(M))),'fro');
-
-    Err_pose_quiver = [Err_pose_quiver err];
-    Tm_pose_quiver = [Tm_pose_quiver tm];
+    mon = @(w,x,y,z) [w*x^2,y^2*w,z*x*w,z*y*w,w*z^2,w*x,x^2,w*y,x*y,y^2,x*z,y*z,z^2,w,x,y,z,1];
+    [maxe,gme,k,kr] = bwe(C,mon,S,20); % compute backward errors
+    stats.maxe = [stats.maxe maxe];
+    stats.gme = [stats.gme gme];
+    stats.k = [stats.k k];
+    stats.kr = [stats.kr kr];
 
 end
 
 folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\Err_pose_quiver.mat'),'Err_pose_quiver');
+save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
 
-fprintf('Problem: pose_quiver. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_pose_quiver),median(Err_pose_quiver));
+disp_stats(stats,N);

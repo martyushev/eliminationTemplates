@@ -1,41 +1,33 @@
 rng(23);
-
 N = 10000;
 
-Err_stitching = [];
-Tm_stitching = [];
+stats = struct('problem','stitching','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_stitching(); % generate initial data of the problem
+    data = inidata_num_stitching(); % generate initial data
 
     try
-        tic;
         C = coefs_stitching(data); % compute coefficients of polynomial system
-        [xx,yy] = nstd_18x36_colpiv_stitching(C); % solve polynomial system
-        tm = toc;
-        if isempty(xx); continue; end
+        tic;
+        %S = red_6x30_stitching(C); % solve polynomial system
+        S = nstd_18x36_colpiv_stitching(C);
+        stats.tm = [stats.tm toc];
+        if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    M = [];
-    for j=1:length(xx)
-        x = xx(j);
-        y = yy(j);
-        m = [x^6*y^3,x^5*y^3,x^4*y^3,x^4*y^2,x^3*y^3,y^2*x^3,x^2*y^3,x^2*y^2,x*y^3,y*x^2,y^2*x,y^3,x*y,y^2,y,1];
-        m = m/norm(m,'fro');
-        M = [M; norm(C*m.','fro')];
-    end
-    M = sort(M);
-    err = norm(M(1:min(18,length(M))),'fro');
-
-    Err_stitching = [Err_stitching err];
-    Tm_stitching = [Tm_stitching tm];
+    mon = @(x,y) [x^6*y^3,x^5*y^3,x^4*y^3,x^4*y^2,x^3*y^3,x^3*y^2,x^2*y^3,x^2*y^2,x*y^3,x^2*y,x*y^2,y^3,x*y,y^2,y,1];
+    [maxe,gme,k,kr] = bwe(C,mon,S,18); % compute backward errors
+    stats.maxe = [stats.maxe maxe];
+    stats.gme = [stats.gme gme];
+    stats.k = [stats.k k];
+    stats.kr = [stats.kr kr];
 
 end
 
 folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\Err_stitching.mat'),'Err_stitching');
+save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
 
-fprintf('Problem: stitching. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_stitching),median(Err_stitching));
+disp_stats(stats,N);

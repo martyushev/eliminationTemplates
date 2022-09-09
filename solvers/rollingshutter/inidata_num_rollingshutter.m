@@ -1,4 +1,4 @@
-function data = inidata_rollingshutter()
+function data = inidata_num_rollingshutter()
     data = cell([1,6]);
     data{1} = randn(1,9);
     data{2} = randn(1,9);

@@ -1,45 +1,33 @@
 rng(23);
-
 N = 10000;
 
-Err_r6p = [];
-Tm_r6p = [];
+stats = struct('problem','r6p','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_r6p(); % generate initial data of the problem
+    data = inidata_num_r6p(); % generate initial data
 
     try
-        tic;
         C = coefs_r6p(data); % compute coefficients of polynomial system
-        [uu,vv,ww,xx,yy,zz] = std_120x140_colpiv_r6p(C); % solve polynomial system
-        tm = toc;
-        if isempty(uu); continue; end
+        tic;
+        S = red_66x92_colpiv_r6p(C); % solve polynomial system
+        %S = std_120x140_colpiv_r6p(C);
+        stats.tm = [stats.tm toc];
+        if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    M = [];
-    for j=1:length(uu)
-        u = uu(j);
-        v = vv(j);
-        w = ww(j);
-        x = xx(j);
-        y = yy(j);
-        z = zz(j);
-        m = [u*x,v*x,w*x,u*y,v*y,w*y,u*z,z*v,w*z,u,v,w,x,y,z,1];
-        m = m/norm(m,'fro');
-        M = [M; norm(C*m.','fro')];
-    end
-    M = sort(M);
-    err = norm(M(1:min(20,length(M))),'fro');
-
-    Err_r6p = [Err_r6p err];
-    Tm_r6p = [Tm_r6p tm];
+    mon = @(u,v,w,x,y,z) [x*u,x*v,x*w,y*u,y*v,y*w,u*z,v*z,w*z,u,v,w,x,y,z,1];
+    [maxe,gme,k,kr] = bwe(C,mon,S,20); % compute backward errors
+    stats.maxe = [stats.maxe maxe];
+    stats.gme = [stats.gme gme];
+    stats.k = [stats.k k];
+    stats.kr = [stats.kr kr];
 
 end
 
 folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\Err_r6p.mat'),'Err_r6p');
+save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
 
-fprintf('Problem: r6p. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_r6p),median(Err_r6p));
+disp_stats(stats,N);

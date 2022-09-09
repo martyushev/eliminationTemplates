@@ -1,41 +1,33 @@
 rng(23);
-
 N = 10000;
 
-Err_pose_35pt = [];
-Tm_pose_35pt = [];
+stats = struct('problem','pose_35pt','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_pose_35pt(); % generate initial data of the problem
+    data = inidata_num_pose_35pt(); % generate initial data
 
     try
-        tic;
         C = coefs_pose_35pt(data); % compute coefficients of polynomial system
-        [xx,yy] = std_18x28_pose_35pt(C); % solve polynomial system
-        tm = toc;
-        if isempty(xx); continue; end
+        tic;
+        S = red_12x26_pose_35pt(C); % solve polynomial system
+        %S = std_18x28_pose_35pt(C);
+        stats.tm = [stats.tm toc];
+        if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    M = [];
-    for j=1:length(xx)
-        x = xx(j);
-        y = yy(j);
-        m = [x^6,y^2*x^4,x^2*y^4,y^6,x^5,x^4*y,x^3*y^2,x^2*y^3,y^4*x,y^5,x^4,y*x^3,y^2*x^2,y^3*x,y^4,x^3,y*x^2,x*y^2,y^3,x^2,x*y,y^2,x,y,1];
-        m = m/norm(m,'fro');
-        M = [M; norm(C*m.','fro')];
-    end
-    M = sort(M);
-    err = norm(M(1:min(10,length(M))),'fro');
-
-    Err_pose_35pt = [Err_pose_35pt err];
-    Tm_pose_35pt = [Tm_pose_35pt tm];
+    mon = @(x,y) [x^6,y^2*x^4,x^2*y^4,y^6,x^5,x^4*y,x^3*y^2,x^2*y^3,y^4*x,y^5,x^4,y*x^3,y^2*x^2,y^3*x,y^4,x^3,x^2*y,x*y^2,y^3,x^2,x*y,y^2,x,y,1];
+    [maxe,gme,k,kr] = bwe(C,mon,S,10); % compute backward errors
+    stats.maxe = [stats.maxe maxe];
+    stats.gme = [stats.gme gme];
+    stats.k = [stats.k k];
+    stats.kr = [stats.kr kr];
 
 end
 
 folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\Err_pose_35pt.mat'),'Err_pose_35pt');
+save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
 
-fprintf('Problem: pose_35pt. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_pose_35pt),median(Err_pose_35pt));
+disp_stats(stats,N);

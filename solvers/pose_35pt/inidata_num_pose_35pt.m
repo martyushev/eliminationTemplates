@@ -1,4 +1,4 @@
-function data = inidata_pose_35pt()
+function data = inidata_num_pose_35pt()
     data = cell([1,3]);
     data{1} = randn(4,1);
     data{2} = randn(3,1);

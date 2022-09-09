@@ -27,14 +27,13 @@ function [x,y,z] = std_55x74_colpiv_relpose_7p_fr_1s(C)
     P1 = [(1:26)*Pi 27:30];
     T = getT(M,[31:45 P1(1:end-19)],P1(end-18:end),xP);
 
-    [V,D] = eig(T);
-    sol = [V(16:17,:)./repmat(V(19,:),2,1); diag(D).'];
+    [V,~] = eig(T);
+    S = V(16:18,:)./repmat(V(19,:),3,1);
 
-    I = find(not(isnan(sol(1,:))) & not(isinf(sol(1,:))));
-    %I = I(not(imag(sol(1,:)))); % uncomment this line for real roots only
-    %I = I(sol(3,:)>=-1 & sol(3,:)<=1);
-    x = sol(1,I);
-    y = sol(2,I);
-    z = sol(3,I);
+    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
+    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    x = S(1,I);
+    y = S(2,I);
+    z = S(3,I);
 
 end
