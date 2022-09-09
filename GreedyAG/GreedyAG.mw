@@ -102,7 +102,7 @@
 </Group></Presentation-Block>
 <Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Basis finder</Text-field></Title>
 <Group hide-output="false" labelreference="L5129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read minimal problem, output list of polynomials and list os variables
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read minimal problem, output list of polynomials and list of variables
 readProblem := proc(prob::string)
     local fn := cat(&quot;problems/F_&quot;, prob, &quot;.m&quot;), F:
     if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
@@ -840,8 +840,10 @@ rnd := rand(-1000..1000)/1000:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L5112" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### random matrix of size m by n 
-rndMat := (m::posint, n::posint)-&gt;Matrix(m, n, (x, y)-&gt;rnd()):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### random matrix of size m-by-n
+rndMat := (m::posint, n::posint)-&gt;Matrix(m, n, (x, y)-&gt;rnd()):
+### random vector of length m
+rndVec := (m::posint)-&gt;Vector(m, x-&gt;rnd()):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L5125" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -929,7 +931,7 @@ alter_comma := (v::list)-&gt;cat(&quot;[&quot;, op(ListTools[Interleave](v, [&qu
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5078" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver w/o column-pivoting
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver without column-pivoting
 write_solver := proc(dir::string, mn0, vars0, av, iM, eM, B, aB, mn, nE, nR, r, std)
     local vars1, vv, fd, nv0 := nops(vars0), deg := nops(B), i, fb := &quot;    &quot;:
     vars1 := convert(convert(vars0, set) minus {av}, list):
@@ -973,7 +975,7 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5076" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver w/ column-pivoting
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write Matlab solver with column-pivoting
 write_solver_colpiv := proc(dir::string, mn0, vars0, av, iM, eM, P, aP, mn, nE, nR, deg, r, std)
     local vars1, vv, fd, nv0 := nops(vars0), nP := nops(P), i, fb := &quot;    &quot;:
     vars1 := convert(convert(vars0, set) minus {av}, list):
@@ -1148,7 +1150,7 @@ end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-output="false" labelreference="L5015" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator with column-pivoting strategy
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Matlab solver generator
 SolverGenerator := proc(prob::string, {basis::symbol:=std, root_dir::string:=&quot;solvers&quot;, colpiv:=1, create_coefs_file:=1, create_test_file:=1, create_histo_file:=1})
     local vars, av, C, U, E, RB, B, aB, shifts, r2del, c2del, mn, nR, xE, r, rperm, cperm, xV, V, V1, P, aP, nR1, nE1, nB, nP, nE, cp, vars0, iC, eC, M, Mt, iM, eM, dir:
     vars, av, C, U, E, RB, B, aB, shifts, r2del, c2del, mn, nR, xE, r, rperm, cperm, xV := readTemplate(prob, evalb(basis=std)):
@@ -1247,6 +1249,7 @@ iniProb,
 TemplateFinder,
 rnd,
 rndMat,
+rndVec,
 cross,
 readTemplate,
 getB0,
