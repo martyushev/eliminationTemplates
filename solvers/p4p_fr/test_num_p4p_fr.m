@@ -1,43 +1,33 @@
 rng(23);
-
 N = 10000;
 
-Err_p4p_fr = [];
-Tm_p4p_fr = [];
+stats = struct('problem','p4p_fr','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_p4p_fr(); % generate initial data of the problem
+    data = inidata_num_p4p_fr(); % generate initial data
 
     try
-        tic;
         C = coefs_p4p_fr(data); % compute coefficients of polynomial system
-        [ww,xx,yy,zz] = std_52x68_colpiv_p4p_fr(C); % solve polynomial system
-        tm = toc;
-        if isempty(ww); continue; end
+        tic;
+        S = red_42x60_colpiv_p4p_fr(C); % solve polynomial system
+        %S = std_52x68_colpiv_p4p_fr(C);
+        stats.tm = [stats.tm toc];
+        if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    M = [];
-    for j=1:length(ww)
-        w = ww(j);
-        x = xx(j);
-        y = yy(j);
-        z = zz(j);
-        m = [w^2*x,y*w*x,y^2*x,z*w*x,y*z*x,z^2*x,w^2,w*x,w*y,y*x,y^2,z*w,z*x,z*y,z^2,w,x,y,z,1];
-        m = m/norm(m,'fro');
-        M = [M; norm(C*m.','fro')];
-    end
-    M = sort(M);
-    err = norm(M(1:min(16,length(M))),'fro');
-
-    Err_p4p_fr = [Err_p4p_fr err];
-    Tm_p4p_fr = [Tm_p4p_fr tm];
+    mon = @(w,x,y,z) [w^2*x,w*x*y,x*y^2,w*x*z,x*y*z,x*z^2,w^2,w*x,w*y,x*y,y^2,w*z,x*z,y*z,z^2,w,x,y,z,1];
+    [maxe,gme,k,kr] = bwe(C,mon,S,16); % compute backward errors
+    stats.maxe = [stats.maxe maxe];
+    stats.gme = [stats.gme gme];
+    stats.k = [stats.k k];
+    stats.kr = [stats.kr kr];
 
 end
 
 folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\Err_p4p_fr.mat'),'Err_p4p_fr');
+save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
 
-fprintf('Problem: p4p_fr. Ave. runtime: %0.1f ms. Med. error: %0.2e\n',10^3*mean(Tm_p4p_fr),median(Err_p4p_fr));
+disp_stats(stats,N);
