@@ -1,0 +1,10 @@
+M7R0
+I3F_satellite_triang7%,J#!"("#]"""%"zG#"$"R"$+&*$F)""##!""""%*$F)""$#"$8*"%+5%"
+yG#"#")"$]#*&F7F(F)F(#!$*>"$+#*&F7F(F)F.#!#BF,*$F7F.#!$,(F6*&F7F.F)F(#!$,*F6*$F
+7F3#"$t&F6%"xG#!$,#F:*&FKF(F)F(#"$`"F,*&FKF(F)F.#F3"")*&FKF(F7F(#!$B""$D"*(FKF(
+F7F(F)F(#!$d#F6*&F7F.FKF(#"$">F:*$FKF.#"$"))F6*&FKF.F)F(#!$>"F,*&F7F(FKF.#"#PF>
+*$FKF3#"$(HF6,J#"$.#F6F(F)#!$*oF6F-#"#(*F,F2#"$4$F,F7#""'FWF;#!$*RF6F?#"$d"F:FB
+#"$^)F6FE#!$J"F:FH#"$@%F6FK#"#tF6FN#!$6$F,FQ#"#**F,FT#!$$**F6FX#!$R'F6Fen#"$(>F
+6Fhn#!#hF6F[o#!#wFWF^o#"$<#F:Fao#"#@"$+",J#"$z'F6F(F)#!#8FWF-#!$Z&F6F2#F("#5F7#
+"$H"F>F;#"#JF,F?#"$F'F6FB#!$4#F,FE#!#6"#?FH#"$T(F6FK#"$L"F:FN#!$"QF,FQ#"#RF]rFT
+#!#>FasFX#"$Z"F:Fen#"$>%F6Fhn#F\rF,F[o#"#ZF]rF^o#"$f*F6Fao#FfpF>6"

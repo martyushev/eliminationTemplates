@@ -1,0 +1,11 @@
+[34, 56]
+19
+1/y
+[24, 10, 22]
+Vector(56, [x^3*z^3,x^2*z^3*y,y^2*z^3*x,y^3*z^3,w*x^3*z,w*x^2*z*y,w*x*y^2*z,w*y^3*z,x^3*z^2,y*x^2*z^2,x*z^2*y^2,x^2*z^3,x*z^3*y,w*x^3,w*x^2*z,w*x*y*z,x*z*y^2,x^2*z^2,x*z^2*y,x*z^3,w*x*z,x*z*y,x*z^2,z*x,x^2*w,x^2*z,z^3,w*x,w*z,z^2,w,x,z,1,y^3*z^2,y^2*z^3,w*x^2*y,w*x*y^2,w*y^3,x^2*z*y,w*y^2*z,y^3*z,z^2*y^2,z^3*y,y*x*w,y^2*w,y^2*x,y^3,w*y*z,y^2*z,y*z^2,w*y,x*y,y^2,y*z,y])
+[Vector(20, [1,w,y,z,y^2,z^2,w*x,w*y,x*z^2,x^2*w,x^2*z^2,y*z,y*z^2,y^2*w,y^2*z,z*x,z^2*y^2,x*z*y,x*z^2*y,y*x*w]), Vector(2, [1,z]), Vector(1, [1]), Vector(1, [1]), Vector(2, [1,z]), Vector(1, [1]), Vector(1, [1]), Vector(2, [1,z]), Vector(1, [1]), Vector(1, [1]), Vector(2, [1,z])]
+[]
+{}
+[[], 0, []]
+[[3, 6, 10, 11, 15, 17, 18, 19, 21, 22], [177, 200, 224, 247, 315, 338, 361, 386, 409, 432, 456, 482]]
+[]

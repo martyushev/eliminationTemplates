@@ -1,0 +1,7 @@
+[59, 79]
+16
+32749
+[w, x, y, z]
+1/z
+{z, z^2, y^3*z, z*w, z*w^2, z*x, z*x^2, z*y, z^2*x^2, z^2*y, z^2*y^3, z*x*w, z*y*w, z*w*y^2, z*x^2*y, z^2*w*x, z^2*w^2*y, z^2*x*y^2, z^2*x^2*y, z*w*x*y}
+[Vector(20, [z*w^2,z*x*w,z*x^2,z*y*w,z*y*x,z*y^2,w^2,w*x,x^2,w*y,x*y,y^2,z*w,z*x,z*y,w,x,y,z,1]), Vector(20, [z*w^2,z*x*w,z*x^2,z*y*w,z*y*x,z*y^2,w^2,w*x,x^2,w*y,x*y,y^2,z*w,z*x,z*y,w,x,y,z,1]), Vector(18, [z*w^2,z*x*w,z*x^2,z*y*w,z*y*x,z*y^2,w^2,w*x,x^2,w*y,x*y,y^2,z*w,z*x,z*y,w,x,y]), Vector(1, [1])]

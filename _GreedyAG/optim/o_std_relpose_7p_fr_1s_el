@@ -1,0 +1,10 @@
+[51, 70]
+.60784
+32749
+[w, x, y, z]
+w
+wdeg([6, 15, 7, 5],[w, x, y, z])
+[w^2*y, z*y^2, w^3, z*w*y, z*w^2, z^2*y, z^2*w, x, z^3, y^2, w*y, w^2, z*y, z*w, z^2, y, w, z, 1]
+[Vector(15, [1,x,y,z,w,z*x,x^2,z^2,y*x,z*y,z*w,w*y,w*x,y^2,w^2]), Vector(15, [1,x,y,z,w,z*x,x^2,z^2,y*x,z*y,z*w,w*y,w*x,y^2,w^2]), Vector(15, [1,x,y,z,w,z*x,x^2,z^2,y*x,z*y,z*w,w*y,w*x,y^2,w^2]), Vector(4, [w,y,z,1]), Vector(4, [w,y,z,1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]
+[]
+[]

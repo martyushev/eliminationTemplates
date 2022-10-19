@@ -1,0 +1,14 @@
+Maple implementation of the redundant automatic template generator.
+
+E-mail: martiushevev@susu.ru
+Project page: https://github.com/martyushev/EliminationTemplates
+
+Software required:
+
+1) Maple
+
+
+Folders:
+
+1) optim: best templates found
+2) solvers: generated Matlab solvers

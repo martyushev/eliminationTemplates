@@ -1,0 +1,17 @@
+M7R0
+I$rnd,$f*6"F%6"F%,&-f*F%F%6#/%(builtinG%4RandNumberInterfaceGF%F%F%F%F%6%""'"%,
+?"#6"""!%+5F2F%F%6$%6_thismoduledefinitionGF%#F2"%+5F%,
+I'rndMatf*6$'%"mG%'posintG'%"nGF=F%6$%)operatorG%&arrowGF%-%'MatrixG6%9$9%f*6$%
+"xG%"yGF%6$FAFBF%-F"F%F%F%F%F%F%F%F%,
+I'rndVecf*6#F;F%6$FAFBF%-%'VectorG6$FFf*6#FJF%6$FAFBF%FMF%F%F%F%F%F%F%,
+I&crossf*6#%"vGF%6$FAFBF%-%$<,>G6%-%$<|gr>G6%""!,$&FF6#""$!""&FF6#""#-F[o6%F_oF
+]o,$&FF6#F2Fbo-F[o6%,$FcoFboFioF]oF%F%F%F%,
+I-getRotMatrixf*6#'FenFSF%6$FAFBF%-%$mapG6$%'factorG-%".G6$,&-&%.LinearAlgebraG
+6#%/IdentityMatrixGF`oF2-FX6#FFFbo-&F]q6#%.MatrixInverseG6#,&F[qF2F`qF2F%F%F%F%,
+I$srtf*6$'Fen<%FS%%listG%$setG'%%tordG%3ShortMonomialOrderGF%6$FAFBF%-%%sortG6$
+FFf*FIF%6$FAFBF%-&%)GroebnerG6#%*TestOrderG6%FGFFT$F%F%6$F`rFGF%F%F%F%,
+I,poly2matrixt+6%%"FG%#nFG%%varsG6$%%monsG%%cffsG6"F%C$>8%7#-%'coeffsG6%-%'expa
+ndG6#-%$addG6$*&(%$q_qG%"iGF2&FF6#FjtF2/Fjt;F2FG9&.8$6$-FD6%FG-%%nopsG6#F\tf*6$
+Fjt%"jGF%6$FAFBF%-%&coeffG6$&T#6#FG(FitFFF%F%6$FhsF\t-FS6#7#FauF%F%F%6#FaoF%,
+I/permuteColumnst+6%%"MG%"VG%#V1G6#F?6"F%C$>Fau-%#opG6$F2FG-Fhp6$FF-FD6$Fau<#-%
+$seqG6$/6$Fjt-&%*ListToolsG6#%'SearchG6$&FGF\uF_uF2/Fjt;F2FauF%F%F%6#FaoF%
