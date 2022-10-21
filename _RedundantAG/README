@@ -3,9 +3,7 @@ Maple implementation of the redundant automatic template generator.
 E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/EliminationTemplates
 
-Software required:
-
-1) Maple
+Software required: Maple 2016+
 
 
 Folders:
