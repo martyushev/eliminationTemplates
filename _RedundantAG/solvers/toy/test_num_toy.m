@@ -1,23 +1,23 @@
 rng(23);
-N = 1;
+N = 10000;
 
-stats = struct('problem','8ptF_radial_1s','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','toy','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
-    data = inidata_num_8ptF_radial_1s(); % generate initial data
+    data = inidata_num_toy(); % generate initial data
 
     try
-        C = coefs_8ptF_radial_1s(data); % compute coefficients of polynomial system
+        C = coefs_toy(data); % compute coefficients of polynomial system
         tic;
-        S = red_7x15_8ptF_radial_1s(C); % solve polynomial system
+        S = red_14x22_colpiv_toy(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(x,y) [y^3/x^3,y^3/x^2,y^2/x^3,y^3/x,y^2/x^2,y/x^3,y^3,y^2/x,y/x^2,1/x^3,y^2,y/x,1/x^2,y,1/x,1];
+    mon = @(x,y,z) [x^3,y^3,z^2*x,x^2,y*x,y^2,y*z,z^2,z,1];
     [maxe,gme,k,kr] = bwe(C,mon,S,8); % compute backward errors
     stats.maxe = [stats.maxe maxe];
     stats.gme = [stats.gme gme];
