@@ -1,5 +1,5 @@
 rng(23);
-N = 1;
+N = 10000;
 
 stats = struct('problem','8ptF_radial_1s','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
@@ -17,7 +17,7 @@ for i = 1:N
         continue;
     end
 
-    mon = @(x,y) [y^3/x^3,y^3/x^2,y^2/x^3,y^3/x,y^2/x^2,y/x^3,y^3,y^2/x,y/x^2,1/x^3,y^2,y/x,1/x^2,y,1/x,1];
+    mon = @(x,y) [y^3*x^3,y^2*x^3,y^3*x^2,y*x^3,y^2*x^2,y^3*x,x^3,y*x^2,y^2*x,y^3,x^2,y*x,y^2,x,y,1];
     [maxe,gme,k,kr] = bwe(C,mon,S,8); % compute backward errors
     stats.maxe = [stats.maxe maxe];
     stats.gme = [stats.gme gme];

@@ -2,10 +2,11 @@
 12
 1/z
 [21, 7, 12]
-Vector(40, [x^3*w,x^2*w*y,x*y^2*w,y^3*w,x^2*w*z,x*y*w*z,y^2*w*z,x*z^2*w,y*z^2*w,z^3*w,w*x^2,x^3,x*w*y,x^2*y,y^2*w,x*y^2,y^3,x^2*z,x*y*z,x^2,y*x,w*x,w*y,y^2,w,x,y,1,z*x*w,z*y*w,z*y^2,z^2*w,z^2*x,z^2*y,z^3,w*z,x*z,y*z,z^2,z])
-[Vector(4, [x,y,z,1]), Vector(4, [x,y,z,1]), Vector(7, [w*y,w*z,w,x,y,z,1]), Vector(8, [w*x,w*y,w*z,w,x,y,z,1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1]), Vector(1, [1])]
+[x^3*w, y*x^2*w, x*y^2*w, y^3*w, z*x^2*w, x*y*z*w, y^2*z*w, z^2*x*w, z^2*y*w, z^3*w, w*x^2, x^3, w*x*y, y*x^2, w*y^2, y^2*x, y^3, z*x^2, z*y*x, x^2, x*y, x*w, y*w, y^2, w, x, y, 1, w*x*z, w*y*z, z*y^2, w*z^2, z^2*x, z^2*y, z^3, z*w, x*z, y*z, z^2, z]
+[[x, y, z, 1], [x, y, z, 1], [y*w, z*w, w, x, y, z, 1], [x*w, y*w, z*w, w, x, y, z, 1], [1], [1], [1], [1], [1]]
 []
 {}
 [[], 0, []]
 [[1, 2, 3, 8, 9, 10, 12], [88, 101, 114, 127, 143]]
+[[], [1, 1, 1, 1]]
 []
