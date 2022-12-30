@@ -114,15 +114,29 @@ rndVec := (m::posint)-&gt;Vector(m, x-&gt;rnd()):</Text-field>
 </Group>
 <Group hide-output="false" labelreference="L4109" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### cross product matrix
-cross := (v)-&gt;&lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&gt;&gt;:</Text-field>
+cross := proc(v) option inline: &lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&gt;&gt;: end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4108" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getRotMatrix := (v::Vector)-&gt;map(factor, (LinearAlgebra[IdentityMatrix](3) - cross(v)).LinearAlgebra[MatrixInverse](LinearAlgebra[IdentityMatrix](3) + cross(v))):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getRotMatrix := proc(v) option inline: map(factor, (LinearAlgebra[IdentityMatrix](3) - cross(v)).LinearAlgebra[MatrixInverse](LinearAlgebra[IdentityMatrix](3) + cross(v))): end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4118" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#### compute fundamental matrix by 2 camera matrices
+getFundMatrix := proc(P1::Matrix, P2::Matrix)
+    local F, i, j:
+    F := Matrix(3):
+    for i from 1 to 3 do
+        for j from 1 to 3 do
+            F[j, i] := (-1)^(i+j)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, i), LinearAlgebra[DeleteRow](P2, j)&gt;):
+        end do:
+    end do:
+    return F:
+end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v::{list,set,Vector}, tord::ShortMonomialOrder)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v, tord)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4104" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -160,6 +174,7 @@ rndMat,
 rndVec,
 cross,
 getRotMatrix,
+getFundMatrix,
 srt,
 poly2matrix,
 permuteColumns,
@@ -196,10 +211,6 @@ permuteColumns,
 </Group>
 <Group view="code" labelreference="L4116" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L4117" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

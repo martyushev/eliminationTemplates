@@ -1,5 +1,4 @@
 rng(23);
-
 N = 10000;
 
 Err_feas_relpose_7p_fr_1s = [];
@@ -10,7 +9,7 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_7p_fr_1s(data); % compute coefficients of polynomial system
-        [xx, yy, zz] = std_55x74_colpiv_relpose_7p_fr_1s(C); % solve polynomial system
+        [xx,yy,zz] = std_55x74_colpiv_relpose_7p_fr_1s(C); % solve polynomial system
         if isempty(xx); continue; end
         ww = arrayfun(@(j) get_w(C,xx(j),yy(j),zz(j)), 1:length(xx));
         I = find(ww > 0);

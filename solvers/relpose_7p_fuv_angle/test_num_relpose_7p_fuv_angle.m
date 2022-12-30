@@ -8,10 +8,11 @@ for i = 1:N
     data = inidata_num_relpose_7p_fuv_angle(); % generate initial data
 
     try
-        C = coefs_relpose_7p_fuv_angle(data); % compute coefficients of polynomial system
+        B = coefs_relpose_7p_fuv_angle(data); % compute coefficients of polynomial system
         tic;
-        S = red_14x26_relpose_7p_fuv_angle(C); % solve polynomial system
-        %S = nstd_40x46_colpiv_relpose_7p_fuv_angle(C);
+        C = sat_relpose_7p_fuv_angle(B); % saturation of 1-dimensional ideal
+        %S = red_14x26_relpose_7p_fuv_angle(C); % solve polynomial system
+        S = nstd_40x46_colpiv_relpose_7p_fuv_angle(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

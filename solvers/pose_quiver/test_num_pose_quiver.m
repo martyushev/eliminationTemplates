@@ -10,8 +10,8 @@ for i = 1:N
     try
         C = coefs_pose_quiver(data); % compute coefficients of polynomial system
         tic;
-        S = red_54x84_colpiv_pose_quiver(C); % solve polynomial system
-        %S = std_65x85_colpiv_pose_quiver(C);
+        %S = std_65x85_colpiv_pose_quiver(C); % solve polynomial system
+        S = red_56x80_colpiv_pose_quiver(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

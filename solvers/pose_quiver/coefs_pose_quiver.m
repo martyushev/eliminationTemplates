@@ -20,6 +20,6 @@ function C = coefs_pose_quiver(data)
     C(49:52) = M(21:24);
     C(65:72) = M(25:32);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
 
 end

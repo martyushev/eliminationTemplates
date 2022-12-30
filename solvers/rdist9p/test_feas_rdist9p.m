@@ -1,5 +1,4 @@
 rng(23);
-
 N = 10000;
 
 Err_feas_rdist9p = [];
@@ -10,8 +9,12 @@ for i = 1:N
 
     try
         C = coefs_rdist9p(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_76x100_colpiv_rdist9p(C); % solve polynomial system
-        if isempty(ww); continue; end
+        S = red_73x97_colpiv_rdist9p(C); % solve polynomial system
+        if isempty(S); continue; end
+        ww = S(1,:);
+        xx = S(2,:);
+        yy = S(3,:);
+        zz = S(4,:);
     catch ME
         continue;
     end

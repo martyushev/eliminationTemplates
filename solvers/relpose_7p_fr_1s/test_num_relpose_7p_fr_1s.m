@@ -13,8 +13,8 @@ for i = 1:N
         %S = red_34x56_colpiv_relpose_7p_fr_1s(C); % solve polynomial system
         [xx,yy,zz] = std_55x74_colpiv_relpose_7p_fr_1s(C);
         ww = arrayfun(@(j) get_w(C,xx(j),yy(j),zz(j)),1:length(xx));
-        stats.tm = [stats.tm toc];
         S = [ww; xx; yy; zz];
+        stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;

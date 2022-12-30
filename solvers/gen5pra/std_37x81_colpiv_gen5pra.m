@@ -1,4 +1,5 @@
 % Input: coefficient matrix C of size 6x84
+% Output: solution matrix S of size 3x44
 
 function S = std_37x81_colpiv_gen5pra(C)
 

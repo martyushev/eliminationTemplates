@@ -1,0 +1,12 @@
+[66, 92]
+20
+1/w
+[42, 24, 26]
+[y*u*z*x*w, y*v*z*x*w, w^2*x*y*z, y^2*u*z*w, y^2*v*z*w, w^2*y^2*z, x^3*u, x^3*v, y*x^2*u, y*x^2*v, y^2*x*u, y^2*x*v, y^3*u, y^3*v, x^2*z*u, x^2*z*v, x*z*y*u, x*z*y*v, y^2*z*u, y^2*z*v, x*z^2*u, x*z^2*v, z^3*u, z^3*v, x^2*u, x^2*v, x*y*u, y*x*v, y^2*u, y^2*v, x*u*z, z*x*v, z^2*u, v*z^2, x*u, x*v, y*u, y*v, u*z, z*v, u, v, y*z^2*u, y*z^2*v, x^3, y*x^2, y^2*x, y^3, z*x^2, y*u*z, z*y*v, z*y*x, z*y^2, z^2*x, z^2*y, z^3, x^2, x*y, y^2, x*z, y*z, z^2, x, y, z, 1, y*u*z^2*w, y*v*z^2*w, w^2*y*z^2, x^3*w, y*x^2*w, x*y^2*w, y^3*w, z*x^2*w, z^2*x*w, z^3*w, w*x^2, w*x*y, w*y^2, w*x*z, w*z^2, x*w, y*w, z*w, w, y*u*z*w, y*v*z*w, w^2*y*z, x*y*z*w, y^2*z*w, z^2*y*w, w*y*z]
+[[1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z], [1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z], [1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z], [1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z], [1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z], [1, x, y, z, x^2, y^2, z^2, x*z, x*y, y*z, w*y*z]]
+[]
+{}
+[[], 0, []]
+[[1, 2, 4, 5, 6, 7, 8, 20, 21, 23, 24, 9, 25, 10, 11, 12, 13, 14, 26, 15, 16, 17, 18, 19], [627, 672]]
+[[], [1, 1, 1, 1, 1, 1]]
+[]

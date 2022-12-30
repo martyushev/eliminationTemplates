@@ -1,4 +1,4 @@
-Maple implementation of the redundant automatic template generator.
+Maple implementation of the automatic template generator for Laurent polynomial systems.
 
 E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/EliminationTemplates
@@ -9,4 +9,3 @@ Software required: Maple 2021+
 Folders:
 
 1) optim: best templates found
-2) solvers: generated Matlab solvers

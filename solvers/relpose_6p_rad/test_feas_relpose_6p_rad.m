@@ -1,5 +1,4 @@
 rng(23);
-
 N = 10000;
 
 Err_feas_relpose_6p_rad = [];
@@ -10,8 +9,12 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_6p_rad(data); % compute coefficients of polynomial system
-        [ww, xx, yy, zz] = nstd_39x95_colpiv_relpose_6p_rad(C); % solve polynomial system
-        if isempty(ww); continue; end
+        S = nstd_39x95_colpiv_relpose_6p_rad(C); % solve polynomial system
+        if isempty(S); continue; end
+        ww = S(1,:);
+        xx = S(2,:);
+        yy = S(3,:);
+        zz = S(4,:);
         E = esse_relpose_6p_rad(ww,xx,yy,zz,M);
     catch ME
         continue;
@@ -31,10 +34,8 @@ fprintf('Problem #8. Med. error in z: %0.2e. Mean error in z: %0.2e. Number of f
 
 
 function E = esse_relpose_6p_rad(w,x,y,z,M)
-
     n = length(w);
     E = zeros(9,n);
-
     for i = 1:n
         m = [w(i); w(i)*z(i); x(i); x(i)*z(i); y(i); y(i)*z(i); z(i)^2; z(i); 1];
         ee = -M(1:5,:)*m;
@@ -42,5 +43,4 @@ function E = esse_relpose_6p_rad(w,x,y,z,M)
         E(:,i) = reshape(E0,9,1);
         E(:,i) = E(:,i)/norm(E(:,i),'fro');
     end
-
 end

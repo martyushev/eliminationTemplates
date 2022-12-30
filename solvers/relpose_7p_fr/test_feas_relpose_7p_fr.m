@@ -1,5 +1,4 @@
 rng(23);
-
 N = 10000;
 
 Err_fl_relpose_7p_fr = [];
@@ -12,9 +11,13 @@ for i = 1:N
 
     try
         [C,M] = coefs_relpose_7p_fr(data); % compute coefficients of polynomial system
-        [vv, ww, xx, yy, zz] = std_209x277_colpiv_relpose_7p_fr(C); % solve polynomial system
-        if isempty(vv); continue; end
-        ff = 1./sqrt(vv);
+        S = std_209x277_colpiv_relpose_7p_fr(C); % solve polynomial system
+        if isempty(S); continue; end
+        ff = 1./sqrt(S(1,:));
+        ww = S(2,:);
+        xx = S(3,:);
+        yy = S(4,:);
+        zz = S(5,:);
         [F,E] = esse_relpose_7p_fr(ff,ww,xx,yy,zz,M);
     catch ME
         continue;
@@ -40,11 +43,9 @@ fprintf('Problem #33. Med. error in f: %0.2e. Med. error in z: %0.2e. Med. error
 
 
 function [F,E] = esse_relpose_7p_fr(f,w,x,y,z,M)
-
     n = length(f);
     F = zeros(9,n);
     E = zeros(9,n);
-
     for i = 1:n
         m = [w(i); w(i)*z(i); x(i); x(i)*z(i); y(i); y(i)*z(i); z(i); 1];
         ff = -M(1:5,:)*m;
@@ -56,5 +57,4 @@ function [F,E] = esse_relpose_7p_fr(f,w,x,y,z,M)
         E(:,i) = reshape(E0,9,1);
         E(:,i) = E(:,i)/norm(E(:,i),'fro');
     end
-
 end

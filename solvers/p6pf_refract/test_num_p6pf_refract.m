@@ -10,15 +10,14 @@ for i = 1:N
     try
         C = coefs_p6pf_refract(data); % compute coefficients of polynomial system
         tic;
-        S = red_49x85_colpiv_p6pf_refract(C); % solve polynomial system
-        %S = std_126x162_colpiv_p6pf_refract(C); % solve polynomial system
+        S = red_40x61_colpiv_p6pf_refract(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(w,x,y,z) [z*y*x^2*w,z*y^2*x*w,z^3*x*w,z^3*y*w,y*x^2*w,y*x^3,y^2*x*w,y^3*x,z^2*x*w,z^2*x^2,z^2*y*w,z^2*y*x,z^2*y^2,z^4,z*x*w,z*x^2,z*y*w,z*y^2,z^3,w*x,x^2,w*y,y*x,y^2,z^2,z,1];
+    mon = @(w,x,y,z) [w*x^2*y*z,w*x*y^2*z,w*x*z^3,w*y*z^3,w*x^2*y,x^3*y,w*x*y^2,x*y^3,w*x*z^2,x^2*z^2,w*y*z^2,x*y*z^2,y^2*z^2,z^4,w*x*z,x^2*z,w*y*z,y^2*z,z^3,w*x,x^2,w*y,x*y,y^2,z^2,z,1];
     [maxe,gme,k,kr] = bwe(C,mon,S,36); % compute backward errors
     stats.maxe = [stats.maxe maxe];
     stats.gme = [stats.gme gme];

@@ -5,6 +5,6 @@ function C = coefs_satellite_triang(data)
     C([59,56,47,29,53,44,26,38,20,11,50,41,23,35,17,8,32,14,5,2]) = data{2};
     C([60,57,48,30,54,45,27,39,21,12,51,42,24,36,18,9,33,15,6,3]) = data{3};
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
 
 end

@@ -1,5 +1,4 @@
 rng(23);
-
 N = 10000;
 
 Err_feas_focal6p_1s = [];
@@ -10,9 +9,11 @@ for i = 1:N
 
     try
         [C,M] = coefs_focal6p_1s(data); % compute coefficients of polynomial system
-        [gg,uu,vv] = std_11x20_colpiv_focal6p_1s(C); % solve polynomial system
-        if isempty(gg); continue; end
-        ff = 1./sqrt(gg);
+        S = std_11x20_colpiv_focal6p_1s(C); % solve polynomial system
+        if isempty(S); continue; end
+        ff = 1./sqrt(S(1,:));
+        uu = S(2,:);
+        vv = S(3,:);
         [F,E] = esse_focal6p_1s(ff,uu,vv,M);
     catch ME
         continue;
@@ -32,17 +33,14 @@ fprintf('Problem #2. Med. error in f: %0.2e. Mean error in f: %0.2e. Number of f
 
 
 function [F,E] = esse_focal6p_1s(ff,uu,vv,M)
-
     n = length(ff);
     E = zeros(9,n);
     ns = [-M;eye(3)];
     F = ns(:,3)*ones(1,n) + ns(:,2)*uu + ns(:,1)*vv;
-
     for i = 1:n
         K = diag([ff(i) ff(i) 1]);
         F(:,i) = F(:,i)/norm(F(:,i),'fro');
         E(:,i) = reshape(K*reshape(F(:,i),3,3),9,1);
         E(:,i) = E(:,i)/norm(E(:,i),'fro');
     end
-
 end
