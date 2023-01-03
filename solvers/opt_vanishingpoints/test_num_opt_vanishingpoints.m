@@ -6,11 +6,12 @@ stats = struct('problem','opt_vanishingpoints','tm',[],'maxe',[],'gme',[],'k',[]
 for i = 1:N
 
     data = inidata_num_opt_vanishingpoints(); % generate initial data
+    M0 = getM0_red_199x255_colpiv();
 
     try
         C = coefs_opt_vanishingpoints(data); % compute coefficients of polynomial system
         tic;
-        S = red_199x255_colpiv_opt_vanishingpoints(C); % solve polynomial system
+        S = red_199x255_colpiv_opt_vanishingpoints(C,M0); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

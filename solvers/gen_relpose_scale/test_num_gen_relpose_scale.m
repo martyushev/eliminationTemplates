@@ -10,7 +10,7 @@ for i = 1:N
     try
         C = coefs_gen_relpose_scale(data); % compute coefficients of polynomial system
         tic;
-        S = red_114x274_colpiv_gen_relpose_scale(C); % solve polynomial system
+        S = red_130x275_colpiv_gen_relpose_scale(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

@@ -5,13 +5,17 @@ stats = struct('problem','optpose4pt_v2','tm',[],'maxe',[],'gme',[],'k',[],'kr',
 
 for i = 1:N
 
-    [data,M0] = inidata_num_optpose4pt_v2(); % generate initial data
+    %[ix,jx,kx] = find(M0);
+    %clipboard('copy', ix');clipboard('copy', jx');clipboard('copy', kx');clipboard('copy', size(M0));
+    data = inidata_num_optpose4pt_v2(); % generate initial data
+    %M0 = getM0_red_105x138_colpiv();
+    M0 = getM0_std_134x162_colpiv();
 
     try
         C = coefs_optpose4pt_v2(data); % compute coefficients of polynomial system
         tic;
-        S = red_105x138_colpiv_optpose4pt_v2(C,M0); % solve polynomial system
-        %S = std_134x162_colpiv_optpose4pt_v2(C);
+        %S = red_105x138_colpiv_optpose4pt_v2(C,M0); % solve polynomial system
+        S = std_134x162_colpiv_optpose4pt_v2(C,M0);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

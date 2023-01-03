@@ -5,12 +5,17 @@ stats = struct('problem','gen5pra','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
+    %[ix,jx,kx] = find(M0);
+    %clipboard('copy', ix');clipboard('copy', jx');clipboard('copy', kx');clipboard('copy', size(M0));
     data = inidata_num_gen5pra(); % generate initial data
+    %M0 = getM0_red_34x79_colpiv(data{5});
+    M0 = getM0_std_37x81_colpiv(data{5});
 
     try
         C = coefs_gen5pra(data); % compute coefficients of polynomial system
         tic;
-        S = red_21x78_colpiv_gen5pra(C); % solve polynomial system
+        %S = red_34x79_colpiv_gen5pra(C,M0); % solve polynomial system
+        S = std_37x81_colpiv_gen5pra(C,M0);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
