@@ -10,7 +10,7 @@ for i = 1:N
     try
         C = coefs_refract5p(data); % compute coefficients of polynomial system
         tic;
-        S = red_41x60_colpiv_refract5p(C); % solve polynomial system
+        S = red_38x58_colpiv_refract5p(C); % solve polynomial system
         %S = std_57x73_colpiv_refract5p(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end

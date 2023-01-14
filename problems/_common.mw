@@ -89,7 +89,7 @@
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for problem formulating</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for problem formulation</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4107" drawlabel="true">
@@ -135,27 +135,77 @@ getFundMatrix := proc(P1::Matrix, P2::Matrix)
 end proc:</Text-field>
 </Input>
 </Group>
+<Group view="code" labelreference="L4129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quat2rot := q-&gt;&lt;&lt;q[1]^2+q[2]^2-q[3]^2-q[4]^2|2*q[2]*q[3]-2*q[1]*q[4]|2*q[1]*q[3]+2*q[2]*q[4]&gt;, 
+                &lt;2*q[1]*q[4]+2*q[2]*q[3]|q[1]^2-q[2]^2+q[3]^2-q[4]^2|2*q[3]*q[4]-2*q[1]*q[2]&gt;,
+                &lt;2*q[2]*q[4]-2*q[1]*q[3]|2*q[1]*q[2]+2*q[3]*q[4]|q[1]^2-q[2]^2-q[3]^2+q[4]^2&gt;&gt;:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4126" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">adj := proc(A::Matrix)
+    local n := op([1,1], A), d := [$ 1..n-1], B, AA, j, k:
+    B := A[1,1]*LinearAlgebra[ZeroMatrix](n):
+    AA := &lt;&lt;A|A&gt;, &lt;A|A&gt;&gt;^%T:
+    if n mod 2 = 1 then
+        for j from 1 to n do
+            for k from 1 to n do
+                B[j,k] := LinearAlgebra[Determinant](AA[d+~j,d+~k]):
+            end do:
+        end do:
+    else
+        for j from 1 to n do
+            for k from 1 to n do
+                B[j,k] := (-1)^(j+k)*LinearAlgebra[Determinant](AA[d+~j,d+~k]):
+            end do:
+        end do:
+    end if:
+    return B:
+end proc:</Text-field>
+</Input>
+</Group>
 <Group hide-output="false" labelreference="L4106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v, tord)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4104" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of polynomials into coefficient (Macaulay) matrix and monomial vector
-poly2matrix := proc(F, nF, vars)
-    local mons, i, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
-    Matrix(nF, nops(cffs), (i,j)-&gt;coeff(cffs[j], q_q||i)), Vector([mons]):
+<Group view="code" labelreference="L4128" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of Laurent polynomial f
+supp := f-&gt;Groebner[Support](expand(numer(f)))/~Groebner[Support](denom(f))[1]:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4127" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of Laurent polynomials from F
+Supp := proc(F)
+    local SF := map(pl-&gt;supp(pl), F):
+    return SF, convert(map(op, SF), set):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4125" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of Laurent polynomials into coefficient (Macaulay) matrix and monomial vector
+poly2matrix := proc(F, vars)
+    local f, T := [seq(table(zip((a,b)-&gt;b=a, [coeffs(expand(f), vars, 'm')], [m])), f in F)], B := convert(Supp(F)[2], list):
+    return Matrix(map(t-&gt;map(b-&gt;`if`(assigned(t[b]), t[b], 0), B), T)), Vector(B):
 end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4101" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### permute columns of matrix M
-permuteColumns := proc(M, V, V1)
-    local n := op(1, V), i:
-    M.Matrix(n, {seq((i, ListTools[Search](V[i], V1))=1, i=1..n)}):
-end proc:</Text-field>
+permuteColumns := (M, V, V1)-&gt;local mn: M[.., [seq(ListTools[Search](mn, V), mn in V1)]]:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4098" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4121" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4122" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L4123" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L4124" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -175,7 +225,11 @@ rndVec,
 cross,
 getRotMatrix,
 getFundMatrix,
+quat2rot,
+adj,
 srt,
+supp,
+Supp,
 poly2matrix,
 permuteColumns,
 &quot;_common.m&quot;:</Text-field>
@@ -211,6 +265,10 @@ permuteColumns,
 </Group>
 <Group view="code" labelreference="L4116" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L4119" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

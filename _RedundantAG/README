@@ -1,9 +1,26 @@
-Maple implementation of the automatic template generator for Laurent polynomial systems.
+Maple implementation of the automatic template generator for Laurent polynomial systems
 
 E-mail: martiushevev@susu.ru
-Project page: https://github.com/martyushev/EliminationTemplates
+Project page: https://github.com/martyushev/eliminationTemplates
 
 Software required: Maple 2021+
+
+How to use:
+
+1) Formulating minimal problems as polynomial systems
+ 1.1) See examples in ../problems/F_prob.mw
+
+2) Finding elimination templates
+ 2.1) Open templateFinder.mw
+ 2.2) Pick minimal problem (prob := "problem_name")
+ 2.3) Configure parameters (see comments in templateFinder.mw)
+ 2.4) Enter templateFinder(prob, opts):
+
+3) Generating Matlab solver
+ 3.1) Open solverGenerator.mw
+ 3.2) Pick minimal problem (prob := "problem_name")
+ 3.3) Configure parameters (see comments in solverGenerator.mw)
+ 3.4) Enter solverGenerator(prob, opts):
 
 
 Folders:

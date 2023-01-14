@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Worksheet>
-<Version major="2016" minor="0"/>
+<Version major="2021" minor="0"/>
 <Label-Scheme value="2" prefix=""/>
-<View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false">
+<View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
 </View-Properties>
-<MapleNet-Properties prettyprint="3" warnlevel="3" preplot="" helpbrowser="standard" contextmenusize="automatic" displayprecision="-1" echo="1" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="10" useclientjvm="true" labelwidth="20" postplot="" typesetting="standard" ansi="false" elisiondigitsthreshold="10000" showassumed="1" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
+<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="worksheet" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
 <Styles>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -105,7 +105,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read minimal problem, output list of polynomials and list of variables
 readProblem := proc(prob::string)
     local fn := cat(&quot;../problems/F_&quot;, prob, &quot;.m&quot;), F:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     read fn:
     F := map(expand, eval(cat(F_, prob))):
     F, [op(indets(F))]:
@@ -137,7 +137,7 @@ end proc:</Text-field>
 iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::ShortMonomialOrder, pp::posint, dom::nonnegint:=0)
     local E, M, vr, d, deg := nops(B0), flag, S, d_min := 0:
     E := convert(map(op, Groebner[Support](F)), set): ### set of monomials occuring in the original equations
-    print(cat(`Polynomial system contains `, nops(E), ` monomials`)):
+    printf(&quot;Support of polynomial system consists of %a <Font encoding="UTF-8">monomials\134n</Font>&quot;, nops(E)):
     M := E:
     for d from 0 while d-d_min &lt;= dom do
         vr := select(x-&gt;degree(x, vars) &lt;= d, M):
@@ -145,7 +145,7 @@ iniMonSet := proc(F::{list,set,Vector}, B0::list, vars::list, G::list, tord::Sho
         flag, S := testBasis(M, deg, G, tord, pp):
         if not flag then d_min := d+1: end if:
     end do:
-    print(cat(`Initial set contains `, nops(M), ` monomials`)):
+    printf(&quot;Initial set consists of %a <Font encoding="UTF-8">monomials\134n</Font>&quot;, nops(M)):
     return E, M:
 end proc:</Text-field>
 </Input>
@@ -153,7 +153,7 @@ end proc:</Text-field>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L5050" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### neighboring monomials
 neighborMons := proc(B::set, MB::set, vars::list)
-    local nB:
+    local nB, b, v:
     if nops(B) = 0 then return MB: end if:
     nB := select(type, map(op, {seq(seq({b*v, b/v}, v in vars), b in B)}), monomial):
     nB := (nB minus B) intersect MB:
@@ -190,12 +190,12 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read non-standard bases
 readBases := proc(prob::string)
     local st := 1, QBs := [], fn := cat(&quot;bases/b_&quot;, prob):
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     while st &lt;&gt; 0 do
         st := readline(fn):
         if st &lt;&gt; 0 then QBs := [op(QBs), parse(st)]: end if:
     end do:
-    print(cat(nops(QBs), ` quotient space bases loaded`)):
+    <Font encoding="UTF-8">printf(&quot;%a quotient space bases loaded\134n&quot;, </Font>nops(QBs)):
     QBs:
 end proc:</Text-field>
 </Input>
@@ -218,7 +218,7 @@ BasisFinder := proc(prob::string, {number_of_bases::posint:=100, deg_over_min::n
         if not member(B, BB) then
             BB := [op(BB), B]:
             <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, </Font>convert(B, list)):
-            print(sprintf(&quot;%d%s&quot;, round(nops(BB)/number_of_bases*100), &quot;% completed&quot;)):
+            <Font encoding="UTF-8">printf(&quot;%d%% completed\134n&quot;, </Font>round(nops(BB)/number_of_bases*100)):
         end if:
     end do:
     fclose(fd):
@@ -241,8 +241,8 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5087" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data from a file generated by Gfan
 readGfan := proc(fn::string)
-    local flag := false, st := 1, n := 0, pp:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    local flag := false, st := 1, n := 0, pp, i:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     st := readline(fn):
     pp := parse(substring(st, 3..StringTools[FirstFromLeft](&quot;[&quot;, st)-2)): # read prime number
     while st &lt;&gt; 0 do
@@ -266,7 +266,7 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find monomial ordering which is compatible with a given Grobner basis and leading monomial
 ### in case of error, try to increase depthlimit option
 getTord := proc(gb, lm)
-    local vars := [op(indets(gb))], nv := nops(vars), sbt := [0 $ nv]=NULL, degs := [seq(d||i, i=1..nv)], gbdegs, lmdegs, ineqs, sol, weights:
+    local vars := [op(indets(gb))], nv := nops(vars), i, sbt := [0 $ nv]=NULL, degs := [seq(d||i, i=1..nv)], gbdegs, lmdegs, ineqs, sol, weights, y, g:
     gbdegs := map(z-&gt;map(x-&gt;[seq(degree(x, y), y in vars)], convert(z, list)), gb):
     lmdegs := map(x-&gt;[seq(degree(x, y), y in vars)], lm):
     ineqs := map(k-&gt;op(map(x-&gt;add(zip((y, z)-&gt;y*z, x, degs)) &gt;= 1, subs(sbt, [seq(lmdegs[k] - g, g in gbdegs[k])]))), {$ 1..nops(gb)}):
@@ -280,12 +280,12 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read weight file
 readWeights := proc(fn::string)
     local st := 1, Ws := []:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     while st &lt;&gt; 0 do
         st := readline(fn):
         if st &lt;&gt; 0 then Ws := [op(Ws), parse(st)]: end if:
     end do:
-    print(cat(nops(Ws), ` weight vectors loaded`)):
+    printf(&quot;%a <Font encoding="UTF-8">weight vectors loaded\134n</Font>&quot;, nops(Ws)):
     Ws:
 end proc:</Text-field>
 </Input>
@@ -295,15 +295,15 @@ end proc:</Text-field>
 writeWeights := proc(prob::string, {number_of_weights::posint:=100, rand_range::[posint,posint]:=[200,800], prime_number::posint:=32749, mode := APPEND})
     local pp := prevprime(prime_number+1), Gs, LMs, WW, gffn := cat(&quot;gfan/gf_&quot;, prob), fn := cat(&quot;weights/w_&quot;, prob), fd, i, W, F, vars, rnd, tord, G:
     if FileTools[Exists](gffn) then
-        print(`Generating weight vectors from Gfan file`):
+        <Font encoding="UTF-8">printf(&quot;Generating weight vectors from Gfan file\134n&quot;):</Font>
         pp, Gs, LMs := readGfan(gffn):
         WW := [seq(getTord(Gs[i], LMs[i])[1], i=1..nops(Gs))]:
         fd := fopen(fn, WRITE):
 <Font encoding="UTF-8">        for W in WW do fprintf(fd, &quot;%a\134n&quot;, W</Font>): end do:
         fclose(fd):
     else
-        print(`Gfan file not found`):
-        print(cat(`Generating `, number_of_weights, ` random weight vectors`)):
+        <Font encoding="UTF-8">printf(&quot;Gfan file not found\134n&quot;):
+        printf(&quot;Generating %a random weight vectors\134n&quot;, </Font>number_of_weights):
         F, vars := readProblem(prob):
         rnd := rand(rand_range[1]..rand_range[2]):
         randomize(): # reset the seed for rnd()
@@ -316,7 +316,7 @@ writeWeights := proc(prob::string, {number_of_weights::posint:=100, rand_range::
             if not member(W, WW) then
                 WW := [op(WW), W]:
                 <Font encoding="UTF-8">fprintf(fd, &quot;%a\134n&quot;, W</Font>):
-                print(sprintf(&quot;%d%s&quot;, round(nops(WW)/number_of_weights*100), &quot;% completed&quot;)):
+                <Font encoding="UTF-8">printf(&quot;%d%% completed\134n&quot;, </Font>round(nops(WW)/number_of_weights*100)):
             end if:
         end do:
         fclose(fd):
@@ -353,8 +353,8 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5088" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read pre-computed change matrices
 readCM := proc(prob::string)
-    local st := 1, fn := cat(&quot;cm/cm_&quot;, prob), pp, vars, m := 0, n := 0:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    local st := 1, fn := cat(&quot;cm/cm_&quot;, prob), pp, vars, m := 0, n := 0, i:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     pp := parse(readline(fn)): # read prime number
     vars := parse(readline(fn)): # read variables
     while st &lt;&gt; 0 do
@@ -367,7 +367,7 @@ readCM := proc(prob::string)
             CM||n := StringTools[SubstituteAll](StringTools[SubstituteAll](substring(st, 9..-2), &quot;{&quot;, &quot;[&quot;), &quot;}&quot;, &quot;]&quot;):
         end if:
     end do:
-    print(cat(n, ` change matrices loaded`)):
+    <Font encoding="UTF-8">printf(&quot;%d change matrices loaded\134n&quot;, n):</Font>
     return pp, [seq(wdeg([parse(T||i)], vars), i=1..m)], [seq(Matrix([map(parse, CM||i)])^%T, i=1..n)]:
 end proc:</Text-field>
 </Input>
@@ -399,7 +399,7 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### read data needed to construct template
 readData := proc(prob::string, std::boolean)
     local fn := `if`(std, cat(&quot;optim/o_std_&quot;, prob), cat(&quot;optim/o_nstd_&quot;, prob)), fd, mn, sp, pp, vars, av, tord, QB, shifts, pols, xE0:
-    if not FileTools[Exists](fn) then error(cat(`File `, fn, ` not found`)): end if:
+    if not FileTools[Exists](fn) then error(&quot;file %1 not found&quot;, fn): end if:
     fd := fopen(fn, READ):
     mn := parse(readline(fn)):
     sp := parse(readline(fn)):
@@ -419,7 +419,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5024" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### solve polynomial system F = 0 by the action matrix method
 EigenSolver := proc(F::{list,set,Vector}(polynom), {digits::posint:=15})
-    local fB2C, vars := [op(indets(F))], tord := tdeg(op(vars)), G, B, deg, irnd, a, T, V:
+    local fB2C, vars := [op(indets(F))], tord := tdeg(op(vars)), G, B, deg, irnd, a, T, V, vr:
     fB2C := proc(f::polynom, B::list(monomial))
         local t := table(zip((a,b)-&gt;b=a, [coeffs(f, B, 'm')], [m])):
         return map(b-&gt;`if`(assigned(t[b]), t[b], 0), B):
@@ -428,7 +428,7 @@ EigenSolver := proc(F::{list,set,Vector}(polynom), {digits::posint:=15})
     G := Groebner[Basis](F, tord):
     B := Groebner[NormalSet](G, tord)[1]:
     deg := nops(B):
-    print(cat(`System is expected to have `, deg, ` roots`)):
+    printf(&quot;System has %d <Font encoding="UTF-8">roots\134n</Font>&quot;, deg):
     irnd := rand(-1000..1000)/1000:
     a := add(vr*irnd(), vr in vars):
     T := Groebner[MultiplicationMatrix](a, B, table(Equate(B, [$ 1..deg])), G, tord):
@@ -445,17 +445,14 @@ end proc:</Text-field>
 <Group hide-output="false" labelreference="L5041" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of polynomials into coefficient (Macaulay) matrix and monomial vector
 poly2matrix := proc(F::{list,set,Vector}, nF::posint, vars::{list,set})
-    local mons, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
+    local mons, i, cffs := [coeffs(expand(add(q_q||i*F[i], i=1..nF)), vars, 'mons')]:
     Matrix(nF, nops(cffs), (i, j)-&gt;coeff(cffs[j], q_q||i)), Vector([mons]):
 end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L5037" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### permute columns of matrix M
-permuteColumns := proc(M::Matrix, V1::Vector, V2::Vector)
-    local n := op(1, V1):
-    M.Matrix(n, {seq((i, ListTools[Search](V1[i], V2))=1, i=1..n)}):
-end proc:</Text-field>
+permuteColumns := (M, V, V1)-&gt;local mn: M[.., [seq(ListTools[Search](mn, V), mn in V1)]]:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5029" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -470,12 +467,12 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute change-of-basis matrix S
 matrixS := proc(B::list, B0::list, G::list, tord::ShortMonomialOrder, pp::nonnegint)
     local S, V0, deg := nops(B):
-    if nops(B0) &lt;&gt; deg then error(`Lists B0 and B must have the same length`): end if:
+    if nops(B0) &lt;&gt; deg then error(&quot;lists B0 and B must have the same length&quot;): end if:
     S, V0 := poly2matrix(map(b-&gt;Groebner[NormalForm](b, G, tord, characteristic=pp), B), deg, indets(G)):
     if op(1, V0) = deg then
         return permuteColumns(S, V0, Vector(B0)):
     else # should never get here
-        error(`Failed to construct matrix S`):
+        error(&quot;failed to construct matrix S&quot;):
     end if:
 end proc:</Text-field>
 </Input>
@@ -489,7 +486,7 @@ end proc:</Text-field>
 </Group>
 <Group hide-output="false" labelreference="L5033" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">monPartition := proc(av::monomial, Gr::list, tord::ShortMonomialOrder, pp::nonnegint, QB::list:=[])
-    local B0, B, aB, R, B2, RB, G, nG, T, S:
+    local B0, B, aB, R, B2, RB, G, nG, T, S, i:
     B0 := Groebner[NormalSet](Gr, tord)[1]:
     B := convert(`if`(QB = [], B0, QB), set):
     aB := map(x-&gt;x*av, B):
@@ -513,7 +510,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5046" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### iteratively construct matrix H of size nG x nF
 matrixHi := proc(F::{list,set,Vector}, G::list, vars::{list,set}, pp::nonnegint)
-    local undetPoly, pv := add(vars), nF := nops(F), nG := nops(G), uH, leqs, sol, i, dF := map(degree, F, vars), dG, d, d_min, h:
+    local undetPoly, pv := add(vars), nF := nops(F), nG := nops(G), uH, leqs, sol, i, dF := map(degree, F, vars), dG, d, d_min, h, j, p, k:
     undetPoly := proc(vars::{list,set}, pv, d, j)
         local mons:
         coeffs(expand(1 + add(pv^p, p=1..d)), vars, 'mons'):
@@ -537,7 +534,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5028" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### use known change matrix to non-iteratively construct matrix H of size nG x nF
 matrixHni := proc(F::{list,set,Vector}, G::list, C::Matrix, CM::Matrix, vars::{list,set}, pp::nonnegint)
-    local undetPolyni, nF := nops(F), nG := nops(G), H0, uH, leqs, sol, pars:
+    local undetPolyni, nF := nops(F), nG := nops(G), H0, uH, leqs, sol, pars, i, j, k:
     undetPolyni := proc(h::polynom, vars::{list,set}, i::posint, j::posint)
         local mons:
         coeffs(h, vars, 'mons'):
@@ -556,7 +553,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5034" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### generate syzygy module
 syzModule := proc(F::{list,set,Vector}, G::list, A::Matrix, tord::ShortMonomialOrder, pp::nonnegint)
-    local nF := nops(F), nG := nops(G), e, L, Lt, M, S, B:
+    local nF := nops(F), nG := nops(G), e, L, Lt, M, S, B, i, j:
     e := seq(Vector(nG, {i=1}), i=1..nG): # standard basis in R^n
     L := [seq([Groebner[LeadingTerm](G[i], tord)], i=1..nG)]: # leading coefficients and monomials
     Lt := map(x-&gt;x[1]*x[2], L): # leading terms
@@ -588,14 +585,14 @@ support := proc(f::polynom, vars::{list,set}) coeffs(f, vars, 'm'): {m}: end pro
 <Group view="code" hide-output="false" labelreference="L5044" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### try to fix incomplete template by adding more shifts
 fixTemplate := proc(admons, F::{list,set,Vector}, vars::{list,set}, mon::list, RB::list)
-    local nF := nops(F), monF := map(f-&gt;support(f, vars), F), admon := [{} $ nF], i, j, Q, flag, xF, M, V0, E, V, mon1:
+    local nF := nops(F), monF := map(f-&gt;support(f, vars), F), admon := [{} $ nF], i, j, Q, flag, xF, M, V0, E, V, mon1, mn:
     for i from 1 to nops(admons) do
         flag := false:
         for j from 1 to nF do
             Q := map(mf-&gt;`if`(divide(admons[i], mf, 'q'), q, NULL), monF[j]):
             if Q &lt;&gt; {} then admon[j] := {op(admon[j]), Q[1]}: flag := true: break: end if:
         end do:
-        if not flag then error(`Failed to correct template`): end if: # never get here
+        if not flag then error(&quot;failed to correct template&quot;): end if:
     end do:
     mon1 := [seq(convert(convert(mon[j], set) union admon[j], Vector), j=1..nF)]:
     xF := [seq(seq(F[j]*mn, mn in mon1[j]), j=1..nF)]:
@@ -603,7 +600,7 @@ fixTemplate := proc(admons, F::{list,set,Vector}, vars::{list,set}, mon::list, R
     E := convert(V0, set) minus convert(RB, set):
     E := srt([op(E)], tdeg(op(vars))):
     V := &lt;op(E), op(RB)&gt;:
-    print(`Template fixed`):
+    <Font encoding="UTF-8">printf(&quot;Template fixed\134n&quot;):</Font>
     return mon1, M, V0, V:
 end proc:</Text-field>
 </Input>
@@ -611,7 +608,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5038" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### construct elimination template from either matrix H or a list of expansion monomials
 constructTemplate := proc(H::{Matrix,list}, F::{list,set,Vector}, vars::{list,set}, RB::list)
-    local nF := nops(F), mon, xF, M, V0, E, V:
+    local nF := nops(F), mon, xF, M, V0, E, V, j, mn:
     mon := `if`(type(H, Matrix), [seq(poly2matrix(H[.., j], op([1,1], H), vars)[2], j=1..nF)], H):
     xF := [seq(seq(F[j]*mn, mn in mon[j]), j=1..nF)]: # expanded polynomial system
     M, V0 := poly2matrix(xF, nops(xF), vars): # matrix form of xF, M.V0 = v(xF)
@@ -619,7 +616,7 @@ constructTemplate := proc(H::{Matrix,list}, F::{list,set,Vector}, vars::{list,se
     E := srt([op(E)], tdeg(op(vars))):
     V := &lt;op(E), op(RB)&gt;: # monomial vector
     if op(1, V) &lt;&gt; op(1, V0) then # template is incomplete, try to fix
-        print(`Template is incomplete`):
+        <Font encoding="UTF-8">printf(&quot;Template is incomplete\134n&quot;):</Font>
         mon, M, V0, V := fixTemplate(convert(V, set) minus convert(V0, set), F, vars, mon, RB):
     end if:
     mon, permuteColumns(M, V0, V), V: # reorder columns of M w.r.t. permutation from V0 to V
@@ -629,7 +626,7 @@ end proc:</Text-field>
 <Group hide-output="false" labelreference="L5035" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### adjust parameters
 adjustParams := proc(F::{list,set,Vector}, H::Matrix, RB::list, vars::set, pp::nonnegint)
-    local nF := nops(F), nG := op([1,1], H), H1 := H, Lm, cols, L, mon, V0, E, e, sm, rm, np, ss, prm, leqs, sol:
+    local nF := nops(F), nG := op([1,1], H), H1 := H, Lm, cols, L, mon, V0, E, e, sm, rm, np, ss, prm, leqs, sol, j, i:
     Lm := seq(poly2matrix(H[.., j], nG, vars), j=1..nF):
     cols := [seq(remove(x-&gt;membertype(posint, convert(Lm[2*j-1][.., x], list)), [$ 1..op([1,2], Lm[2*j-1])]), j=1..nF)]:
     L, mon := [seq(Lm[2*j-1][.., cols[j]], j=1..nF)], [seq(Lm[2*j][cols[j]], j=1..nF)]:
@@ -662,7 +659,7 @@ end proc:</Text-field>
 <Group hide-output="false" labelreference="L5036" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### check if the action matrix found
 isActionMatrixFound := proc(T::Matrix, M::Matrix, aB::list, B::list, nG::posint, pp::nonnegint)
-    local tM, T1, deg := nops(B), m := deg - nG, r:
+    local tM, T1, deg := nops(B), m := deg - nG, r, k:
     tM := Gaussjord(M, 'r') mod pp: # r is for rank
     T1 := &lt;-tM[r-nG+1..r, -deg..-1], Matrix(m, deg, {seq((m-k+1, ListTools[Search](aB[-k], B)) = 1, k=1..m)})&gt; mod pp:
     LinearAlgebra[Equal](T, T1):
@@ -672,7 +669,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5039" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Schur complement reduction of the template
 SchurReduction := proc(M::Matrix, V::Vector, shifts, nE::nonnegint, pp::posint, pols::list)
-    local rg, crg, m, M1, bs, M2, tM2, r, M3, tM3, M4, basis, lindep, B1, B2, B3, B4, iB1, rperm, cperm:
+    local rg, crg, m, M1, bs, M2, tM2, r, M3, tM3, M4, basis, lindep, B1, B2, B3, B4, iB1, rperm, cperm, p, i:
     if nops(pols)=0 then return M, V, 0, [], []: end if:
     rg := [seq(op([$ add(op(1, shifts[i]), i=1..p-1)+1..add(op(1, shifts[i]), i=1..p)]), p in pols)]:
     m := nops(rg):
@@ -716,7 +713,7 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5031" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### rectify monomial ordering by heuristics
 rectTord := proc(F::{list,set,Vector}, vars::list, Ts::list, pp::nonnegint)
-    local nF := nops(F), dg, wt, nn, GBs, Ws:
+    local nF := nops(F), dg, wt, nn, GBs, Ws, vr, i:
     dg := [seq(add(map(degree, F, vr))/nF, vr in vars)]:
     wt := map(d-&gt;1/d, dg):
     nn := lcm(op(map(denom, wt))):
@@ -735,14 +732,14 @@ filterBases := proc(F::{list,set,Vector}, QBs::list, nQBs::posint, ff::numeric)
     mF := convert(poly2matrix(F, nops(F), indets(F))[2], set): # set of all monomials in F
     Bs := map(x-&gt;nops(convert(x, set) intersect mF), QBs):
     prm := sort(Bs, `&gt;`, output=permutation):
-    print(cat(N, ` quotient space bases removed`)):
+    <Font encoding="UTF-8">printf(&quot;%d quotient space bases removed\134n&quot;, N):</Font>
     [op(1..nQBs-N, prm)]:
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L5090" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">filterBases2 := proc(nF::posint, vars::{list,set}, CMs, GBs, Ts, QBs, pp::posint, ff::numeric)
-    local Gr, tord, B, CM, nQBs := nops(CMs), deg := nops(QBs[1]), i, vB, tB, mp, av, aB, T, G, C, H, cHs, m, avo, ms := [], mo := 10^6, prm, N := round(ff*nQBs):
+    local Gr, tord, B, CM, nQBs := nops(CMs), deg := nops(QBs[1]), i, vB, tB, mp, av, aB, T, G, C, H, cHs, m, avo, ms := [], mo := 10^6, prm, N := round(ff*nQBs), k, c:
     for i from 1 to nQBs do
         Gr, tord, B, CM := GBs[i], Ts[i], QBs[i], CMs[i]:
         if nops(B) &lt;&gt; deg then next: end if:
@@ -757,11 +754,11 @@ end proc:</Text-field>
             m := add(`if`(type(c, `+`), nops(c), 1), c in cHs):
             if m &lt; mp then mp := m: avo := av: end if:
         end do:
-        if mp &lt; mo then mo := mp: print(sprintf(&quot;Smaller template found: %d,%a&quot;, mo, avo)): end if:
+        if mp &lt; mo then mo := mp: <Font encoding="UTF-8">printf(&quot;Smaller template found: %d,%a\134n&quot;, mo, avo):</Font> end if:
         ms := [op(ms), mp]:
     end do:
     prm := sort(ms, `&lt;`, output=permutation):
-    print(cat(N, ` quotient space bases removed`)):
+    <Font encoding="UTF-8">printf(&quot;%d quotient space bases removed\134n&quot;, N):</Font>
     [op(1..nQBs-N, prm)]:
 end proc:</Text-field>
 </Input>
@@ -769,14 +766,14 @@ end proc:</Text-field>
 <Group view="code" hide-output="false" labelreference="L5045" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### initialize minimal problem
 iniProb := proc(prob::string, std::boolean, ff::numeric, pn::posint)
-    local F, vF, pp := pn, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs:
+    local F, vF, pp := pn, vars, GBs, Ts, GC, QBs, CMs, tord, CM, G, q, nQBs, i:
     F, vars := readProblem(prob):
     vF, vars := Vector(F), {op(vars)}:
     tord := tdeg(op(vars)):
-    print(cat(`The problem is defined by `, nops(F), ` polynomials`)):
+    <Font encoding="UTF-8">printf(&quot;The problem is defined by %d polynomials\134n&quot;, </Font>nops(F)):
     G := Groebner[Basis](F, tord, characteristic=pp):
-    if Groebner[HilbertDimension](G, characteristic=pp)&lt;&gt;0 then error(&quot;The problem is expected to have infinitely many solutions&quot;): end if:
-    print(cat(`Variables: `, [op(vars)], `; degrees: `, map(degree, F), `; number of solutions: `, nops(Groebner[NormalSet](G, tord)[1]))):
+    if Groebner[HilbertDimension](G, characteristic=pp)&lt;&gt;0 then error(&quot;the problem has infinitely many solutions&quot;): end if:
+    <Font encoding="UTF-8">printf(&quot;Variables: %a; degrees: %a; number of roots: %d\134n&quot;, </Font>[op(vars)], map(degree, F), nops(Groebner[NormalSet](G, tord)[1])):
     if std then # use standard bases
         pp, Ts, CMs := readCM(prob): # read change matrices and monomial orderings
         nQBs := nops(CMs):
@@ -820,15 +817,15 @@ TemplateFinder := proc(prob::string, {basis::symbol:=std, prime_number::posint:=
             sp := sparsity(M): # template sparsity
             if fl and (m &lt; mo or (m = mo and sp &gt; spo)) then
                 mo, no, spo := m, n, sp:
-                print(sprintf(&quot;Smaller or sparser template found: [%d,%d],%a,%a,%a&quot;, m, n, evalf(sp,3), av, `if`(basis=nstd, i, tord1))):
+                <Font encoding="UTF-8">printf(&quot;Smaller or sparser template found: [%d,%d],%a,%a,%a\134n&quot;, m, n, evalf(sp,3), av, `if`(basis=nstd, i, tord1)):</Font>
                 saveData(prob, [m, n], evalf(sp,5), pp, vars, av, tord, B, shifts, schur_pols, evalb(basis=std)):
             elif not fl then # should never get here
-                error(&quot;Invalid action matrix, %1,%2,%3&quot;, i, av, tord):
+                error(&quot;invalid action matrix: %1,%2,%3&quot;, i, av, tord):
             end if:
-            print(sprintf(&quot;%d%s,[%d,%d],%a,%a,%a&quot;, round(((i-1)*nv+j)*N), &quot;%&quot;, m, n, evalf(sp,3), av, `if`(basis=nstd, i, tord1))):
+            <Font encoding="UTF-8">printf(&quot;%d%s,[%d,%d],%a,%a,%a\134n&quot;, round(((i-1)*nv+j)*N), &quot;%&quot;, m, n, evalf(sp,3), av, `if`(basis=nstd, i, tord1)):</Font>
         end do:
     end do:
-    print(sprintf(&quot;Best template: [%d,%d],%a&quot;, mo, no, evalf(spo,3))):
+    <Font encoding="UTF-8">printf(&quot;Best template: [%d,%d], %a\134n&quot;, mo, no, evalf(spo,3)):</Font>
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block>
@@ -892,10 +889,10 @@ readTemplate := proc(prob::string, std::boolean)
     M1, V1 := constructTemplate(shifts, F, vars, RB)[2..3]:
     M1, V, r, rperm, cperm := SchurReduction(M1, V1, shifts, op([1,2], M1)-deg-nR, pp, schur_pols):
     M, r2del, c2del := LinDepReduction(M1, pp):
-    print(cat(`Action matrix found: `, isActionMatrixFound(T, M, aB, B, nR, pp))):
+    <Font encoding="UTF-8">printf(&quot;Action matrix found: %a\134n&quot;, isActionMatrixFound(T, M, aB, B, nR, pp)):</Font>
     mn := [op(1, M)]:
-    print(cat(`Template's size: `, mn)):
-    if mn0[1]&lt;&gt;mn[1] or mn0[2]&lt;&gt;mn[2] then error(&quot;Wrong template&quot;): end if:
+    <Font encoding="UTF-8">printf(&quot;Template size: %a\134n&quot;, mn):</Font>
+    if mn0[1]&lt;&gt;mn[1] or mn0[2]&lt;&gt;mn[2] then error(&quot;wrong template&quot;): end if:
     xV := convert(V1, set) minus convert(V, set):
     V := V[remove(i-&gt;is(i in c2del), [$ 1..op(1, V)])]:
     tM1 := Gaussjord(M1[remove(i-&gt;is(i in r2del), [$ 1..op([1,1], M1)]), ..]) mod pp:
@@ -916,8 +913,8 @@ iniColpiv := proc(V::Vector, xE::set, av::monomial, vars::list)
     aP := map(m-&gt;av*m, P):
     R := srt(convert(aP minus P, list), tord):
     P := [op(srt(convert(P minus B0, list), tord)), op(srt(convert(B0, list), tord))]:
-    print(`List of permissible monomials:`): print(P):
-    print(cat(`Number of permissible monomials: `, nops(P))):
+    <Font encoding="UTF-8">printf(&quot;List of permissible monomials:\134n%a\134n&quot;, P):
+    printf(&quot;Number of permissible monomials: %d\134n&quot;, nops(P)):</Font>
     aP := map(m-&gt;ListTools[Search](av*m, [op(P), op(R)]), P):
     RP := [op(R), op(P)]:
     E := srt(convert(convert(Vl, set) minus convert(RP, set) union xE, list), tord):
@@ -1159,7 +1156,7 @@ SolverGenerator := proc(prob::string, {basis::symbol:=std, root_dir::string:=&qu
     nB, nP, nE := nops(B), nops(P), nops(E):
     cp := `if`(nP &lt;= nB or colpiv=0, false, true):
     vars0 := `if`(cp, select(vr-&gt;member(vr*P[-1], P[-nB..-1]), vars), select(vr-&gt;member(vr*B[-1], B), vars)):
-    print(cat(`Variables that can not be evaluated at roots: `, [op(convert(vars, set) minus convert(vars0, set))])):
+    <Font encoding="UTF-8">printf(&quot;Variables that can not be evaluated at roots: %a\134n&quot;, [op(convert(vars, set) minus convert(vars0, set))]):</Font>
     iC := [indices(convert(C, table), indexorder)]: # indices of non-zero entries of coefficient matrix C
     eC := map(x-&gt;convert(x[1]+(x[2]-1)*op([1,1], C), string), iC):
     C := Matrix(op(1, C), {op(zip((x, y)-&gt;(op(x))=y, iC, eC))}):
@@ -1261,7 +1258,7 @@ write_inidata_coefs,
 write_test_num,
 write_histo_num,
 SolverGenerator,
-&quot;GreedyAG.m&quot;:</Text-field>
+&quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4441" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

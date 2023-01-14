@@ -1,17 +1,21 @@
 rng(23);
-N = 10000;
+N = 100;
 
 stats = struct('problem','opt_vanishingpoints','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
 
 for i = 1:N
 
+    %[ix,jx,kx] = find(M0);
+    %clipboard('copy', ix');clipboard('copy', jx');clipboard('copy', kx');clipboard('copy', size(M0));
     data = inidata_num_opt_vanishingpoints(); % generate initial data
-    M0 = getM0_red_199x255_colpiv();
+    %M0 = getM0_red_199x255_colpiv();
+    M0 = getM0_red_177x233_colpiv();
 
     try
         C = coefs_opt_vanishingpoints(data); % compute coefficients of polynomial system
         tic;
-        S = red_199x255_colpiv_opt_vanishingpoints(C,M0); % solve polynomial system
+        %S = red_199x255_colpiv_opt_vanishingpoints(C,M0); % solve polynomial system
+        S = red_177x233_colpiv_opt_vanishingpoints(C,M0);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

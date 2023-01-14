@@ -90,7 +90,7 @@
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4541" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
-read &quot;GreedyAG.m&quot;:</Text-field>
+read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4743" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -98,15 +98,15 @@ read &quot;GreedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;wpnp&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;opt_pnp_zheng&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
-basis = nstd, ### std/nstd - using standard/non-standard quotient space basis
+basis = std, ### std/nstd - using standard/non-standard quotient space basis
 root_dir = &quot;solvers&quot;, ### root directory for solvers
 colpiv = 1, ### 1/0 - applying/non-applying column-pivoting strategy
 create_coefs_file = 0, ### (experimental) 1/0 - creating/non-creating inidata_prob.m and coefs_prob.m for computing initial Macaulay matrix
-create_test_file = 1, ### 1/0 - creating/non-creating test file test_num_prob.m
-create_histo_file = 1: ### 1/0 - creating/non-creating histo_num_prob.m for plotting numerical error histogram</Text-field>
+create_test_file = 0, ### 1/0 - creating/non-creating test file test_num_prob.m
+create_histo_file = 0: ### 1/0 - creating/non-creating histo_num_prob.m for plotting numerical error histogram</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -117,17 +117,13 @@ create_histo_file = 1: ### 1/0 - creating/non-creating histo_num_prob.m for plot
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### create Matlab solver (n)std_mxn(_colpiv)_prob.m
 SolverGenerator(prob, opts):</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE6QWN0aW9ufm1hdHJpeH5mb3VuZDp+dHJ1ZUYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJw==">STpBY3Rpb25+bWF0cml4fmZvdW5kOn50cnVlRzYi</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE8VGVtcGxhdGUnc35zaXplOn5bMTMyLH4xNDhdRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">STxUZW1wbGF0ZSdzfnNpemU6flsxMzIsfjE0OF1HNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVE/TGlzdH5vZn5wZXJtaXNzaWJsZX5tb25vbWlhbHM6RicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">ST9MaXN0fm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczpHNiI=</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDZmcC1GLDYmLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEjdzFGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtbkdGJDYkUSI0RicvRjtRJ25vcm1hbEYnLyUxc3VwZXJzY3JpcHRzaGlmdEdRIjBGJy1JI21vR0YkNi1RMSZJbnZpc2libGVUaW1lcztGJ0ZBLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0ZMLyUpc3RyZXRjaHlHRkwvJSpzeW1tZXRyaWNHRkwvJShsYXJnZW9wR0ZMLyUubW92YWJsZWxpbWl0c0dGTC8lJ2FjY2VudEdGTC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHRmVuLUY0NiVRI3gxRidGN0Y6RkEtRkc2LVEiLEYnRkFGSi9GTkY5Rk9GUUZTRlVGV0ZZL0ZnblEsMC4zMzMzMzMzZW1GJy1GLDYoLUYxNiVGMy1GPjYkUSIzRidGQUZDRkZGaG5GRi1GNDYlUSN5MUYnRjdGOkZBRltvLUYsNigtRjE2JUZoby1GPjYkUSIyRidGQUZDRkZGaG5GRi1GMTYlRjNGX3BGQ0ZBRltvLUYsNihGM0ZGRmhuRkYtRjE2JUZob0Zlb0ZDRkFGW28tRiw2Ji1GMTYlRmhvRj1GQ0ZGRmhuRkFGW28tRiw2KEZjb0ZGRmhuRkYtRjQ2JVEjejFGJ0Y3RjpGQUZbby1GLDYqRl5xRkZGM0ZGRl1wRkZGaG5GQUZbby1GLDYoRmhuRkZGZnBGRkZecUZBRltvLUYsNihGYnBGRkZobkZGLUYxNiVGXnFGX3BGQ0ZBRltvLUYsNipGM0ZGRmhuRkZGaG9GRkZncUZBRltvLUYsNihGaG5GRkZdcEZGRmdxRkFGW28tRiw2KEYzRkZGaG5GRi1GMTYlRl5xRmVvRkNGQUZbby1GLDYoRmhuRkZGaG9GRkZfckZBRltvLUYsNiYtRjE2JUZecUY9RkNGRkZobkZBRltvLUYsNiZGY29GRkZobkZBRltvLUYsNihGYnBGRkZobkZGRmhvRkFGW28tRiw2KEZdcEZGRmhuRkZGM0ZBRltvLUYsNiZGZnBGRkZobkZBRltvLUYsNihGYnBGRkZecUZGRmhuRkFGW28tRiw2KkZobkZGRmhvRkZGM0ZGRl5xRkFGW28tRiw2KEZdcEZGRmhuRkZGXnFGQUZbby1GLDYoRmdxRkZGaG5GRkYzRkFGW28tRiw2KEZncUZGRmhvRkZGaG5GQUZbby1GLDYmRl9yRkZGaG5GQUZbby1GLDYmRmJwRkZGaG5GQUZbby1GLDYoRmhvRkZGaG5GRkYzRkFGW28tRiw2JkZdcEZGRmhuRkFGW28tRiw2KEZecUZGRmhuRkZGM0ZBRltvLUYsNihGXnFGRkZob0ZGRmhuRkFGW28tRiw2JkZncUZGRmhuRkFGW29GYnBGW28tRiw2JkYzRkZGaG5GQUZbby1GLDYmRjNGRkZob0ZBRltvLUYsNiZGaG5GRkZob0ZBRltvRl1wRltvLUYsNiZGXnFGRkYzRkFGW28tRiw2JkZecUZGRmhuRkFGW28tRiw2JkZecUZGRmhvRkFGW29GZ3FGW29GM0Zbb0ZobkZbb0Zob0Zbb0ZecUZbby1GPjYkUSIxRidGQS8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGTEZBRkEvJSVvcGVuR1EnJmxzcWI7RicvJSZjbG9zZUdRJyZyc3FiO0Yn">N04qJkkjdzFHNiIiIiVJI3gxR0YlIiIiKihGJCIiJEYnRihJI3kxR0YlRigqKEYrIiIjRidGKEYkRi0qKEYkRihGJ0YoRitGKiomRitGJkYnRigqKEYkRipGJ0YoSSN6MUdGJUYoKipGMUYoRiRGKEYrRi1GJ0YoKihGJ0YoRitGKkYxRigqKEYkRi1GJ0YoRjFGLSoqRiRGKEYnRihGK0YoRjFGLSooRidGKEYrRi1GMUYtKihGJEYoRidGKEYxRioqKEYnRihGK0YoRjFGKiomRjFGJkYnRigqJkYkRipGJ0YoKihGJEYtRidGKEYrRigqKEYrRi1GJ0YoRiRGKComRitGKkYnRigqKEYkRi1GMUYoRidGKCoqRidGKEYrRihGJEYoRjFGKCooRitGLUYnRihGMUYoKihGMUYtRidGKEYkRigqKEYxRi1GK0YoRidGKComRjFGKkYnRigqJkYkRi1GJ0YoKihGK0YoRidGKEYkRigqJkYrRi1GJ0YoKihGMUYoRidGKEYkRigqKEYxRihGK0YoRidGKComRjFGLUYnRigqJEYkRi0qJkYkRihGJ0YoKiZGJEYoRitGKComRidGKEYrRigqJEYrRi0qJkYxRihGJEYoKiZGMUYoRidGKComRjFGKEYrRigqJEYxRi1GJEYnRitGMUYo</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFETnVtYmVyfm9mfnBlcm1pc3NpYmxlfm1vbm9taWFsczp+NDRGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRic=">SUROdW1iZXJ+b2Z+cGVybWlzc2libGV+bW9ub21pYWxzOn40NEc2Ig==</Equation></Text-field>
-</Output>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbWlHNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JVFRVmFyaWFibGVzfnRoYXR+Y2Fufm5vdH5iZX5ldmFsdWF0ZWR+YXR+cm9vdHM6fltdRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn">SVFWYXJpYWJsZXN+dGhhdH5jYW5+bm90fmJlfmV2YWx1YXRlZH5hdH5yb290czp+W11HNiI=</Equation></Text-field>
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">Action matrix found: true
+Template size: [272, 312]
+List of permissible monomials:
+[z1*y1^3*x1^2*w1^4, z1*y1^4*x1^2*w1^3, z1^2*y1^2*x1^2*w1^4, z1^2*y1^3*x1^2*w1^3, z1^2*y1^4*x1^2*w1^2, z1^3*y1*x1^2*w1^4, z1^3*y1^2*x1^2*w1^3, z1^3*y1^3*x1^2*w1^2, z1^4*x1^2*w1^4, y1*z1^4*x1^2*w1^3, y1^2*z1^4*x1^2*w1^2, x1^2*w1^4*y1^3, x1^2*w1^3*y1^4, z1*y1^2*x1^2*w1^4, z1*y1^3*x1^2*w1^3, y1*z1^2*x1^2*w1^4, y1^2*z1^2*x1^2*w1^3, y1^3*z1^2*x1^2*w1^2, z1^3*x1^2*w1^4, y1*z1^3*x1^2*w1^3, y1^2*z1^3*x1^2*w1^2, z1^4*x1^2*w1^3, y1*z1^4*x1^2*w1^2, x1^2*w1^4*y1^2, x1^2*w1^3*y1^3, z1*y1*x1^2*w1^4, z1*x1^2*w1^3*y1^2, z1*x1^2*w1^2*y1^3, z1^2*x1^2*w1^4, y1*x1^2*w1^3*z1^2, z1^2*x1^2*w1^2*y1^2, z1^3*x1^2*w1^3, y1*x1^2*w1^2*z1^3, z1^4*x1^2*w1^2, x1^2*w1^4*y1, y1^2*x1*w1^4, x1^2*w1^3*y1^2, x1*w1^3*y1^3, y1^3*x1^2*w1^2, x1*w1^2*y1^4, w1*x1^2*y1^4, z1*x1^2*w1^4, w1^4*x1*y1*z1, w1^3*x1^2*z1*y1, w1^3*x1*y1^2*z1, y1^2*w1^2*x1^2*z1, w1^2*x1*y1^3*z1, y1^3*w1*x1^2*z1, x1*w1*y1^4*z1, x1^2*z1*y1^4, z1^2*x1*w1^4, z1^2*x1^2*w1^3, w1^3*x1*y1*z1^2, y1*w1^2*x1^2*z1^2, w1^2*x1*y1^2*z1^2, y1^2*w1*x1^2*z1^2, x1*w1*z1^2*y1^3, x1^2*z1^2*y1^3, x1*z1^2*y1^4, x1*w1^3*z1^3, z1^3*x1^2*w1^2, w1^2*x1*y1*z1^3, y1*w1*x1^2*z1^3, x1*w1*z1^3*y1^2, x1^2*z1^3*y1^2, x1*y1^3*z1^3, x1*w1^2*z1^4, w1*x1^2*z1^4, x1*w1*z1^4*y1, x1^2*z1^4*y1, x1*y1^2*z1^4, x1^2*w1^4, w1^4*x1*y1, x1^2*w1^3*y1, w1^3*x1*y1^2, x1^2*w1^2*y1^2, w1^2*x1*y1^3, w1*x1^2*y1^3, w1^4*x1*z1, z1*x1^2*w1^3, w1^3*x1*y1*z1, y1*w1^2*x1^2*z1, w1^2*x1*y1^2*z1, y1^2*w1*x1^2*z1, x1*w1*y1^3*z1, x1^2*z1*y1^3, w1^3*x1*z1^2, x1^2*w1^2*z1^2, w1^2*x1*y1*z1^2, y1*w1*x1^2*z1^2, x1*w1*z1^2*y1^2, x1^2*z1^2*y1^2, x1*y1^3*z1^2, w1^2*x1*z1^3, w1*x1^2*z1^3, x1*w1*z1^3*y1, x1^2*z1^3*y1, y1^2*x1*z1^3, w1*x1*z1^4, z1^4*x1^2, x1*y1*z1^4, w1^4*x1, w1^3*x1^2, y1*w1^3*x1, y1*x1^2*w1^2, y1^2*w1^2*x1, w1*x1^2*y1^2, w1*x1*y1^3, y1^3*x1^2, x1*y1^4, w1^3*x1*z1, x1^2*w1^2*z1, w1^2*x1*y1*z1, y1*w1*x1^2*z1, z1*x1*w1*y1^2, x1^2*z1*y1^2, z1*x1*y1^3, w1^2*x1*z1^2, w1*x1^2*z1^2, y1*x1*w1*z1^2, x1^2*z1^2*y1, y1^2*x1*z1^2, w1*x1*z1^3, z1^3*x1^2, y1*x1*z1^3, x1*z1^4, w1^3*x1, w1^2*x1^2, y1*w1^3, w1^2*x1*y1, w1*x1^2*y1, y1^2*w1^2, y1^2*w1*x1, y1^2*x1^2, y1^3*w1, y1^3*x1, y1^4, w1^3*z1, z1*w1^2*x1, w1*x1^2*z1, z1*y1*w1^2, z1*y1*w1*x1, z1*y1*x1^2, z1*y1^2*w1, z1*y1^2*x1, y1^3*z1, z1^2*w1^2, z1^2*w1*x1, z1^2*x1^2, y1*z1^2*w1, z1^2*y1*x1, z1^2*y1^2, z1^3*w1, z1^3*x1, z1^3*y1, z1^4, w1^3, w1^2*x1, w1*x1^2, y1*w1^2, y1*x1*w1, y1*x1^2, w1*y1^2, x1*y1^2, y1^3, z1*w1^2, z1*x1*w1, z1*x1^2, y1*z1*w1, y1*z1*x1, z1*y1^2, w1*z1^2, x1*z1^2, y1*z1^2, z1^3, w1^2, x1*w1, x1^2, w1*y1, x1*y1, y1^2, w1*z1, x1*z1, y1*z1, z1^2, w1, x1, y1, z1, 1]
+Number of permissible monomials: 190
+Variables that can not be evaluated at roots: []
+</Text-field>
 </Output>
 </Group>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4774" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
