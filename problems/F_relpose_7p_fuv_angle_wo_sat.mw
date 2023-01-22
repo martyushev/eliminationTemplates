@@ -175,15 +175,21 @@ nops(Gr);</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#nops(NormalSet(Gr, tord)[1]);</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" labelreference="L4778" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
 <Group hide-input="false" hide-output="false" labelreference="L4773" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">map(UnivariatePolynomial, vars, F, characteristic=pp);</Text-field>
 </Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYqLUkjbW5HRiQ2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy1JI21vR0YkNi1RIixGJ0YyLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjsvJSpzeW1tZXRyaWNHRjsvJShsYXJnZW9wR0Y7LyUubW92YWJsZWxpbWl0c0dGOy8lJ2FjY2VudEdGOy8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYnRi5GNS1GLDYwLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEiekYnLyUnaXRhbGljR0Y+L0YzUSdpdGFsaWNGJy1GLzYkUSI3RidGMi8lMXN1cGVyc2NyaXB0c2hpZnRHRjEtRjY2LVEnJnBsdXM7RidGMkY5L0Y9RjtGP0ZBRkNGRUZHL0ZKUSwwLjIyMjIyMjJlbUYnL0ZNRmBvLUYsNiYtRi82JFElMzM3N0YnRjItRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjJGOUZeb0Y/RkFGQ0ZFRkdGSS9GTUZLLUZSNiVGVC1GLzYkUSI2RidGMkZpbkYyRltvLUYsNiYtRi82JFEmMTA5NTdGJ0YyRmdvLUZSNiVGVC1GLzYkUSI1RidGMkZpbkYyRltvLUYsNiYtRi82JFElNDE4OUYnRjJGZ28tRlI2JUZULUYvNiRRIjRGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYxOTUwOUYnRjJGZ28tRlI2JUZULUYvNiRRIjNGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYxMzU0N0YnRjJGZ28tRlI2JUZULUYvNiRRIjJGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYyODk2M0YnRjJGZ29GVEYyRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRjtGMkYyLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJw==">NyUiIiFGIywwKiRJInpHNiIiIigiIiIqJEYmIiInIiV4TCokRiYiIiYiJmQ0IiokRiYiIiUiJSo9JSokRiYiIiQiJjQmPiokRiYiIiMiJlpOIkYmIiZqKkc=</Equation></Text-field>
+</Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4783" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4786" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4785" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

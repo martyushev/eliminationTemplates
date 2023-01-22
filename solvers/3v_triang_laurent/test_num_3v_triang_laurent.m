@@ -10,14 +10,14 @@ for i = 1:N
     try
         C = coefs_3v_triang_laurent(data); % compute coefficients of polynomial system
         tic;
-        S = red_106x171_colpiv_3v_triang_laurent(C); % solve polynomial system
+        S = red_63x125_colpiv_3v_triang_laurent(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(x,y,z) [1/z^3*x^2,1/z^3*x*y,1/z^3*y^2,1/z^2*x,1/z^2*y,1/z,1/y^3*x^2,1/y^2*x,1/y,1/x,1/x^2*y,1/x^3*y^2,1/y^3*x*z,1/y^2*z,1/x^2*z,1/x^3*y*z,1/y^3*z^2,1/x^3*z^2,1/z^3*x,1/z^3*y,1/z^2,1/y^3*x,1/y^2,1/x^2,1/x^3*y,1/y^3*z,1/x^3*z,1/z^3,1/y^3,1/x^3];
+    mon = @(x,y,z) [x,y,z,1,1/y^3*x^2,1/y^2*x,1/y,1/x,1/x^2*y,1/x^3*y^2,1/y^3*x*z,1/y^2*z,1/x^2*z,1/x^3*y*z,1/y^3*z^2,1/x^3*z^2,1/y^3*x,1/y^2,1/x^2,1/x^3*y,1/y^3*z,1/x^3*z,1/y^3,1/x^3];
     [maxe,gme,k,kr] = bwe(C,mon,S,47); % compute backward errors
     stats.maxe = [stats.maxe maxe];
     stats.gme = [stats.gme gme];
