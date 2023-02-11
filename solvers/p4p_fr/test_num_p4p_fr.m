@@ -1,7 +1,7 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','p4p_fr','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','p4p_fr','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
@@ -10,8 +10,8 @@ for i = 1:N
     try
         C = coefs_p4p_fr(data); % compute coefficients of polynomial system
         tic;
-        S = red_42x60_colpiv_p4p_fr(C); % solve polynomial system
-        %S = std_52x68_colpiv_p4p_fr(C);
+        %S = red_42x60_colpiv_p4p_fr(C); % solve polynomial system
+        S = std_52x68_colpiv_p4p_fr(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
@@ -19,9 +19,8 @@ for i = 1:N
     end
 
     mon = @(w,x,y,z) [w^2*x,w*x*y,x*y^2,w*x*z,x*y*z,x*z^2,w^2,w*x,w*y,x*y,y^2,w*z,x*z,y*z,z^2,w,x,y,z,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,16); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    [err,k,kr] = numerr(C,mon,S,16); % compute backward errors
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

@@ -98,7 +98,7 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;wpnp&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;opt_vanishingpoints_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
@@ -114,8 +114,8 @@ mode = WRITE: ### APPEND - continue existing file, WRITE - start new file</Text-
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4772" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">basisFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">Support of polynomial system consists of 24 monomials
-Initial set consists of 24 monomials
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">Support: 60 monomials
+Initial set: 144 monomials
 1% completed
 2% completed
 3% completed

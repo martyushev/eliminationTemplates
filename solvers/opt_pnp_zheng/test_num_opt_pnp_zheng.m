@@ -1,7 +1,7 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','opt_pnp_zheng','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','opt_pnp_zheng','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
@@ -19,9 +19,8 @@ for i = 1:N
     end
 
     mon = @(w1,x1,y1,z1) [x1*w1^3,y1*x1*w1^2,y1^2*x1*w1,y1^3*x1,z1*x1*w1^2,z1*y1*x1*w1,z1*y1^2*x1,z1^2*x1*w1,z1^2*y1*x1,x1*z1^3,x1*w1^2,x1*w1*y1,x1*y1^2,x1*w1*z1,x1*y1*z1,x1*z1^2,x1*w1,x1*y1,x1*z1,w1,x1,y1,z1,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,40); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    [err,k,kr] = numerr(C,mon,S,40); % compute backward errors
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

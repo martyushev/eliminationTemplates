@@ -1,28 +1,25 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','relpose_7p_fuv_angle','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','relpose_7p_fuv_angle','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
     data = inidata_num_relpose_7p_fuv_angle(); % generate initial data
 
     try
-        B = coefs_relpose_7p_fuv_angle(data); % compute coefficients of polynomial system
+        C = coefs_relpose_7p_fuv_angle(data); % compute coefficients of polynomial system
         tic;
-        C = sat_relpose_7p_fuv_angle(B); % saturation of 1-dimensional ideal
-        %S = red_14x26_relpose_7p_fuv_angle(C); % solve polynomial system
-        S = nstd_40x46_colpiv_relpose_7p_fuv_angle(C);
+        S = red_26x33_relpose_7p_fuv_angle(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(a,b,p) [a^4,a^3*b,b^2*a^2,a*b^3,b^4,a^3,b*a^2,a*b^2,b^3,a^2*p,a*b*p,b^2*p,a^2,b*a,b^2,p*a,b*p,p^2,a,b,p,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,6); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    mon = @(x,y,z) [x^4,x^3*y,x^2*y^2,x*y^3,y^4,x^3,x^2*y,x*y^2,y^3,x^2*z,x*y*z,y^2*z,x^2,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
+    [err,k,kr] = numerr(C,mon,S,6); % compute numerical error
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

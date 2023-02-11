@@ -30,14 +30,14 @@ function S = red_40x61_colpiv_p6pf_refract(C)
 
     [V,~] = eig(T);
     S = V(17:20,:)./repmat(V(21,:),4,1);
-
-    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
-    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
-    S = S(:,I);
     
     y = sqrt(S(3,:));
     wx = S([1,2],:)./y;
     z = S(4,:);
     S = [wx -wx; y -y; z z];
+    
+    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
+    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    S = S(:,I);
 
 end

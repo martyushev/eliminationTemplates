@@ -1,7 +1,7 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','toy','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','toy','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
@@ -17,10 +17,9 @@ for i = 1:N
         continue;
     end
 
-    mon = @(x,y,z) [x^3,y^3,z^2*x,x^2,y*x,y^2,y*z,z^2,z,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,8); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    mon = @(x,y,z) [x^3,y^3,x*z^2,x^2,x*y,y^2,y*z,z^2,z,1];
+    [err,k,kr] = numerr(C,mon,S,8); % compute backward errors
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

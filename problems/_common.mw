@@ -164,33 +164,34 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">srt := (v, tord)-&gt;sort(v, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### sort w.r.t. monomial ordering
+srt := (V, tord)-&gt;sort(V, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4128" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of Laurent polynomial f
-supp := f-&gt;Groebner[Support](expand(numer(f)))/~Groebner[Support](denom(f))[1]:</Text-field>
+supp := (pl, vars)-&gt;Groebner[Support](expand(numer(pl)), vars)/~Groebner[Support](denom(pl), vars)[1]:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4127" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of Laurent polynomials from F
-Supp := proc(F)
-    local SF := map(pl-&gt;supp(pl), F):
-    return SF, convert(map(op, SF), set):
+Supp := proc(F, vars)
+    local SF := map(supp, F, vars):
+    return SF, {op(map(op, SF))}:
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4125" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of Laurent polynomials into coefficient (Macaulay) matrix and monomial vector
 poly2matrix := proc(F, vars)
-    local f, T := [seq(table(zip((a,b)-&gt;b=a, [coeffs(expand(f), vars, 'm')], [m])), f in F)], B := convert(Supp(F)[2], list):
+    local T := map(pl-&gt;table(zip((a,b)-&gt;b=a, [coeffs(pl, vars, 'mn')], [mn])), F), B := [op(Supp(F, vars)[2])]:
     return Matrix(map(t-&gt;map(b-&gt;`if`(assigned(t[b]), t[b], 0), B), T)), Vector(B):
 end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4101" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### permute columns of matrix M
-permuteColumns := (M, V, V1)-&gt;local mn: M[.., [seq(ListTools[Search](mn, V), mn in V1)]]:</Text-field>
+permuteColumns := (M, V, V1)-&gt;local mn: M[..,[seq(ListTools[Search](mn, V), mn in V1)]]:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4121" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

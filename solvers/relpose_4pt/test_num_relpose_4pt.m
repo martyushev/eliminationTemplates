@@ -1,7 +1,7 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','relpose_4pt','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','relpose_4pt','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
@@ -19,9 +19,8 @@ for i = 1:N
     end
 
     mon = @(v,w,x,y,z) [w*x^2,y*x*v,y*x*w,y^2*v,z*x*v,z*x*w,z*y*v,z*y*w,z^2*v,z^2*w,v*x,w*x,x^2,v*y,w*y,x*y,y^2,v*z,w*z,x*z,y*z,z^2,v,w,x,y,z,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,20); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    [err,k,kr] = numerr(C,mon,S,20); % compute backward errors
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

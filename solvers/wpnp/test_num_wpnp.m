@@ -1,7 +1,7 @@
 rng(23);
 N = 10000;
 
-stats = struct('problem','wpnp','tm',[],'maxe',[],'gme',[],'k',[],'kr',[]);
+stats = struct('problem','wpnp','tm',[],'err',[],'k',[],'kr',[]);
 
 for i = 1:N
 
@@ -10,7 +10,7 @@ for i = 1:N
     try
         C = coefs_wpnp(data); % compute coefficients of polynomial system
         tic;
-        %S = red_86x108_colpiv_wpnp(C); % solve polynomial system
+        %S = red_85x107_colpiv_wpnp(C); % solve polynomial system
         [ww,yy,zz] = std_108x124_colpiv_wpnp(C);
         xx = arrayfun(@(j) get_x(C,ww(j),yy(j),zz(j)),1:length(ww));
         S = [ww; xx; yy; zz];
@@ -21,9 +21,8 @@ for i = 1:N
     end
 
     mon = @(w1,x1,y1,z1) [x1*w1^3,x1*y1*w1^2,x1*w1*y1^2,x1*y1^3,x1*z1*w1^2,x1*y1*w1*z1,x1*z1*y1^2,x1*w1*z1^2,x1*y1*z1^2,x1*z1^3,x1*w1^2,y1*x1*w1,y1^2*x1,z1*x1*w1,z1*y1*x1,z1^2*x1,x1*w1,x1*y1,x1*z1,w1,x1,y1,z1,1];
-    [maxe,gme,k,kr] = bwe(C,mon,S,16); % compute backward errors
-    stats.maxe = [stats.maxe maxe];
-    stats.gme = [stats.gme gme];
+    [err,k,kr] = numerr(C,mon,S,16); % compute backward errors
+    stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 

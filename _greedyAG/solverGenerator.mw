@@ -98,15 +98,15 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;opt_pnp_zheng&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toa_46_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 basis = std, ### std/nstd - using standard/non-standard quotient space basis
 root_dir = &quot;solvers&quot;, ### root directory for solvers
 colpiv = 1, ### 1/0 - applying/non-applying column-pivoting strategy
-create_coefs_file = 0, ### (experimental) 1/0 - creating/non-creating inidata_prob.m and coefs_prob.m for computing initial Macaulay matrix
-create_test_file = 0, ### 1/0 - creating/non-creating test file test_num_prob.m
-create_histo_file = 0: ### 1/0 - creating/non-creating histo_num_prob.m for plotting numerical error histogram</Text-field>
+create_coefs_file = 1, ### 1/0 - creating/non-creating inidata_prob.m and coefs_prob.m for computing initial Macaulay matrix
+create_test_file = 1, ### 1/0 - creating/non-creating test file test_num_prob.m
+create_histo_file = 1: ### 1/0 - creating/non-creating histo_num_prob.m for plotting numerical error histogram</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -118,10 +118,10 @@ create_histo_file = 0: ### 1/0 - creating/non-creating histo_num_prob.m for plot
 solverGenerator(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Action matrix found: true
-Template size: [272, 312]
+Template size: [863, 901]
 List of permissible monomials:
-[z1*y1^3*x1^2*w1^4, z1*y1^4*x1^2*w1^3, z1^2*y1^2*x1^2*w1^4, z1^2*y1^3*x1^2*w1^3, z1^2*y1^4*x1^2*w1^2, z1^3*y1*x1^2*w1^4, z1^3*y1^2*x1^2*w1^3, z1^3*y1^3*x1^2*w1^2, z1^4*x1^2*w1^4, y1*z1^4*x1^2*w1^3, y1^2*z1^4*x1^2*w1^2, x1^2*w1^4*y1^3, x1^2*w1^3*y1^4, z1*y1^2*x1^2*w1^4, z1*y1^3*x1^2*w1^3, y1*z1^2*x1^2*w1^4, y1^2*z1^2*x1^2*w1^3, y1^3*z1^2*x1^2*w1^2, z1^3*x1^2*w1^4, y1*z1^3*x1^2*w1^3, y1^2*z1^3*x1^2*w1^2, z1^4*x1^2*w1^3, y1*z1^4*x1^2*w1^2, x1^2*w1^4*y1^2, x1^2*w1^3*y1^3, z1*y1*x1^2*w1^4, z1*x1^2*w1^3*y1^2, z1*x1^2*w1^2*y1^3, z1^2*x1^2*w1^4, y1*x1^2*w1^3*z1^2, z1^2*x1^2*w1^2*y1^2, z1^3*x1^2*w1^3, y1*x1^2*w1^2*z1^3, z1^4*x1^2*w1^2, x1^2*w1^4*y1, y1^2*x1*w1^4, x1^2*w1^3*y1^2, x1*w1^3*y1^3, y1^3*x1^2*w1^2, x1*w1^2*y1^4, w1*x1^2*y1^4, z1*x1^2*w1^4, w1^4*x1*y1*z1, w1^3*x1^2*z1*y1, w1^3*x1*y1^2*z1, y1^2*w1^2*x1^2*z1, w1^2*x1*y1^3*z1, y1^3*w1*x1^2*z1, x1*w1*y1^4*z1, x1^2*z1*y1^4, z1^2*x1*w1^4, z1^2*x1^2*w1^3, w1^3*x1*y1*z1^2, y1*w1^2*x1^2*z1^2, w1^2*x1*y1^2*z1^2, y1^2*w1*x1^2*z1^2, x1*w1*z1^2*y1^3, x1^2*z1^2*y1^3, x1*z1^2*y1^4, x1*w1^3*z1^3, z1^3*x1^2*w1^2, w1^2*x1*y1*z1^3, y1*w1*x1^2*z1^3, x1*w1*z1^3*y1^2, x1^2*z1^3*y1^2, x1*y1^3*z1^3, x1*w1^2*z1^4, w1*x1^2*z1^4, x1*w1*z1^4*y1, x1^2*z1^4*y1, x1*y1^2*z1^4, x1^2*w1^4, w1^4*x1*y1, x1^2*w1^3*y1, w1^3*x1*y1^2, x1^2*w1^2*y1^2, w1^2*x1*y1^3, w1*x1^2*y1^3, w1^4*x1*z1, z1*x1^2*w1^3, w1^3*x1*y1*z1, y1*w1^2*x1^2*z1, w1^2*x1*y1^2*z1, y1^2*w1*x1^2*z1, x1*w1*y1^3*z1, x1^2*z1*y1^3, w1^3*x1*z1^2, x1^2*w1^2*z1^2, w1^2*x1*y1*z1^2, y1*w1*x1^2*z1^2, x1*w1*z1^2*y1^2, x1^2*z1^2*y1^2, x1*y1^3*z1^2, w1^2*x1*z1^3, w1*x1^2*z1^3, x1*w1*z1^3*y1, x1^2*z1^3*y1, y1^2*x1*z1^3, w1*x1*z1^4, z1^4*x1^2, x1*y1*z1^4, w1^4*x1, w1^3*x1^2, y1*w1^3*x1, y1*x1^2*w1^2, y1^2*w1^2*x1, w1*x1^2*y1^2, w1*x1*y1^3, y1^3*x1^2, x1*y1^4, w1^3*x1*z1, x1^2*w1^2*z1, w1^2*x1*y1*z1, y1*w1*x1^2*z1, z1*x1*w1*y1^2, x1^2*z1*y1^2, z1*x1*y1^3, w1^2*x1*z1^2, w1*x1^2*z1^2, y1*x1*w1*z1^2, x1^2*z1^2*y1, y1^2*x1*z1^2, w1*x1*z1^3, z1^3*x1^2, y1*x1*z1^3, x1*z1^4, w1^3*x1, w1^2*x1^2, y1*w1^3, w1^2*x1*y1, w1*x1^2*y1, y1^2*w1^2, y1^2*w1*x1, y1^2*x1^2, y1^3*w1, y1^3*x1, y1^4, w1^3*z1, z1*w1^2*x1, w1*x1^2*z1, z1*y1*w1^2, z1*y1*w1*x1, z1*y1*x1^2, z1*y1^2*w1, z1*y1^2*x1, y1^3*z1, z1^2*w1^2, z1^2*w1*x1, z1^2*x1^2, y1*z1^2*w1, z1^2*y1*x1, z1^2*y1^2, z1^3*w1, z1^3*x1, z1^3*y1, z1^4, w1^3, w1^2*x1, w1*x1^2, y1*w1^2, y1*x1*w1, y1*x1^2, w1*y1^2, x1*y1^2, y1^3, z1*w1^2, z1*x1*w1, z1*x1^2, y1*z1*w1, y1*z1*x1, z1*y1^2, w1*z1^2, x1*z1^2, y1*z1^2, z1^3, w1^2, x1*w1, x1^2, w1*y1, x1*y1, y1^2, w1*z1, x1*z1, y1*z1, z1^2, w1, x1, y1, z1, 1]
-Number of permissible monomials: 190
+[v^4*z, v^3*w*z, v^2*w^2*z, v*w^3*z, w^4*z, v^3*x*z, v^2*w*x*z, v*w^2*x*z, w^3*x*z, v^2*x^2*z, v*w*x^2*z, w^2*x^2*z, v*x^3*z, w*x^3*z, x^4*z, v^3*y*z, v^2*w*y*z, v*w^2*y*z, w^3*y*z, v^2*x*y*z, v*w*x*y*z, w^2*x*y*z, v*x^2*y*z, w*x^2*y*z, x^3*y*z, v^2*y^2*z, v*w*y^2*z, w^2*y^2*z, v*x*y^2*z, w*x*y^2*z, x^2*y^2*z, v*y^3*z, w*y^3*z, x*y^3*z, y^4*z, v^4, v^3*w, v^2*w^2, v*w^3, w^4, v^3*x, v^2*w*x, v*w^2*x, w^3*x, v^2*x^2, v*w*x^2, w^2*x^2, v*x^3, w*x^3, x^4, v^3*y, v^2*w*y, v*w^2*y, w^3*y, v^2*x*y, v*w*x*y, w^2*x*y, v*x^2*y, w*x^2*y, x^3*y, v^2*y^2, v*w*y^2, w^2*y^2, v*x*y^2, w*x*y^2, x^2*y^2, v*y^3, w*y^3, x*y^3, y^4, v^3*z, v^2*w*z, v*w^2*z, w^3*z, v^2*x*z, v*w*x*z, w^2*x*z, v*x^2*z, w*x^2*z, x^3*z, v^2*y*z, v*w*y*z, w^2*y*z, v*x*y*z, w*x*y*z, x^2*y*z, v*y^2*z, w*y^2*z, x*y^2*z, y^3*z, v^3, v^2*w, v*w^2, w^3, v^2*x, v*w*x, w^2*x, v*x^2, w*x^2, x^3, v^2*y, v*w*y, w^2*y, v*x*y, w*x*y, x^2*y, v*y^2, w*y^2, x*y^2, y^3, v^2*z, v*w*z, w^2*z, v*x*z, w*x*z, x^2*z, v*y*z, w*y*z, x*y*z, y^2*z, v^2, v*w, w^2, v*x, w*x, x^2, v*y, w*y, x*y, y^2, v*z, w*z, x*z, y*z, v, w, x, y, z, 1]
+Number of permissible monomials: 140
 Variables that can not be evaluated at roots: []
 </Text-field>
 </Output>
@@ -187,7 +187,7 @@ Variables that can not be evaluated at roots: []
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

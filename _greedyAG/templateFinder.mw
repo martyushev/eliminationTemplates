@@ -98,7 +98,7 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;wpnp&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toa_55_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 basis = std, ### quotient space bases to use
@@ -110,195 +110,21 @@ schur_pols = [], ### polynomials to be reduced by the Schur complement reduction
 filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to be filtered out, 0 - no filtering</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" hide-output="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 4 polynomials
-Variables: [w1, x1, y1, z1]; degrees: [4, 4, 4, 4]; number of roots: 16
-1894 change matrices loaded
-Smaller template found: 1505,y1
-Smaller template found: 1395,y1
-Smaller template found: 1285,y1
-Smaller template found: 913,z1
-Smaller template found: 787,w1
-Smaller template found: 754,w1
-Smaller template found: 652,w1
-Smaller template found: 635,w1
-Smaller template found: 536,w1
-Smaller template found: 262,w1
-Smaller template found: 261,w1
-Smaller template found: 216,y1
-Smaller template found: 192,z1
-Smaller template found: 157,z1
-Smaller template found: 128,y1
-Smaller template found: 118,w1
-1515 quotient space bases removed
-Smaller or sparser template found: [118,134],.939,w1,[4, 13, 3, 5]
-0%,[118,134],.939,w1,[4, 13, 3, 5]
-0%,[499,515],.983,x1,[4, 13, 3, 5]
-0%,[118,134],.939,y1,[4, 13, 3, 5]
-Smaller or sparser template found: [118,134],.939,z1,[4, 13, 3, 5]
-0%,[118,134],.939,z1,[4, 13, 3, 5]
-0%,[120,136],.939,w1,[5, 13, 4, 3]
-0%,[641,657],.987,x1,[5, 13, 4, 3]
-0%,[120,136],.939,y1,[5, 13, 4, 3]
-1%,[120,136],.939,z1,[5, 13, 4, 3]
-1%,[120,136],.939,w1,[4, 13, 5, 3]
-1%,[649,665],.987,x1,[4, 13, 5, 3]
-1%,[120,136],.939,y1,[4, 13, 5, 3]
-1%,[120,136],.939,z1,[4, 13, 5, 3]
-1%,[118,134],.939,w1,[3, 10, 2, 5]
-1%,[696,712],.988,x1,[3, 10, 2, 5]
-1%,[118,134],.939,y1,[3, 10, 2, 5]
-1%,[118,134],.939,z1,[3, 10, 2, 5]
-1%,[282,298],.971,w1,[15, 20, 4, 5]
-1%,[203,219],.961,x1,[15, 20, 4, 5]
-1%,[330,346],.976,y1,[15, 20, 4, 5]
-1%,[341,357],.976,z1,[15, 20, 4, 5]
-1%,[163,179],.953,w1,[5, 16, 10, 3]
-1%,[576,592],.985,x1,[5, 16, 10, 3]
-2%,[178,194],.957,y1,[5, 16, 10, 3]
-2%,[163,179],.953,z1,[5, 16, 10, 3]
-2%,[278,294],.971,w1,[3, 15, 11, 7]
-2%,[308,324],.973,x1,[3, 15, 11, 7]
-2%,[314,330],.974,y1,[3, 15, 11, 7]
-2%,[282,298],.971,z1,[3, 15, 11, 7]
-2%,[171,187],.955,w1,[3, 6, 2, 1]
-2%,[592,608],.986,x1,[3, 6, 2, 1]
-2%,[171,187],.955,y1,[3, 6, 2, 1]
-2%,[165,181],.954,z1,[3, 6, 2, 1]
-2%,[213,229],.963,w1,[3, 10, 4, 6]
-2%,[288,304],.972,x1,[3, 10, 4, 6]
-2%,[267,283],.970,y1,[3, 10, 4, 6]
-2%,[267,283],.970,z1,[3, 10, 4, 6]
-2%,[120,136],.939,w1,[3, 13, 4, 5]
-3%,[641,657],.987,x1,[3, 13, 4, 5]
-3%,[120,136],.939,y1,[3, 13, 4, 5]
-3%,[120,136],.939,z1,[3, 13, 4, 5]
-3%,[178,194],.957,w1,[10, 16, 5, 3]
-3%,[693,709],.988,x1,[10, 16, 5, 3]
-3%,[163,179],.953,y1,[10, 16, 5, 3]
-3%,[164,180],.953,z1,[10, 16, 5, 3]
-Smaller or sparser template found: [114,130],.937,w1,[2, 8, 2, 3]
-3%,[114,130],.937,w1,[2, 8, 2, 3]
-3%,[459,475],.982,x1,[2, 8, 2, 3]
-Smaller or sparser template found: [108,124],.935,y1,[2, 8, 2, 3]
-3%,[108,124],.935,y1,[2, 8, 2, 3]
-3%,[108,124],.935,z1,[2, 8, 2, 3]
-3%,[120,136],.939,w1,[5, 10, 3, 2]
-3%,[493,509],.983,x1,[5, 10, 3, 2]
-3%,[153,169],.951,y1,[5, 10, 3, 2]
-3%,[120,136],.939,z1,[5, 10, 3, 2]
-3%,[175,191],.956,w1,[4, 24, 11, 10]
-4%,[204,220],.961,x1,[4, 24, 11, 10]
-4%,[175,191],.956,y1,[4, 24, 11, 10]
-4%,[175,191],.956,z1,[4, 24, 11, 10]
-4%,[211,227],.963,w1,[2, 13, 8, 5]
-4%,[272,288],.970,x1,[2, 13, 8, 5]
-4%,[223,239],.964,y1,[2, 13, 8, 5]
-4%,[214,230],.963,z1,[2, 13, 8, 5]
-4%,[114,130],.937,w1,[2, 8, 3, 2]
-4%,[448,464],.981,x1,[2, 8, 3, 2]
-4%,[114,130],.937,y1,[2, 8, 3, 2]
-4%,[114,130],.937,z1,[2, 8, 3, 2]
-4%,[120,136],.939,w1,[3, 13, 5, 4]
-4%,[642,658],.987,x1,[3, 13, 5, 4]
-4%,[120,136],.939,y1,[3, 13, 5, 4]
-4%,[120,136],.939,z1,[3, 13, 5, 4]
-5%,[172,188],.955,w1,[2, 6, 3, 1]
-5%,[640,656],.987,x1,[2, 6, 3, 1]
-5%,[172,188],.955,y1,[2, 6, 3, 1]
-5%,[160,176],.953,z1,[2, 6, 3, 1]
-5%,[121,137],.940,w1,[4, 15, 9, 3]
-5%,[584,600],.985,x1,[4, 15, 9, 3]
-5%,[121,137],.940,y1,[4, 15, 9, 3]
-5%,[121,137],.940,z1,[4, 15, 9, 3]
-5%,[268,284],.970,w1,[3, 12, 4, 11]
-5%,[355,371],.977,x1,[3, 12, 4, 11]
-5%,[274,290],.971,y1,[3, 12, 4, 11]
-5%,[258,274],.968,z1,[3, 12, 4, 11]
-5%,[114,130],.937,w1,[3, 8, 2, 2]
-5%,[440,456],.981,x1,[3, 8, 2, 2]
-Smaller or sparser template found: [108,124],.936,y1,[3, 8, 2, 2]
-5%,[108,124],.936,y1,[3, 8, 2, 2]
-6%,[108,124],.936,z1,[3, 8, 2, 2]
-6%,[176,192],.956,w1,[2, 6, 1, 3]
-6%,[670,686],.987,x1,[2, 6, 1, 3]
-6%,[171,187],.955,y1,[2, 6, 1, 3]
-6%,[178,194],.956,z1,[2, 6, 1, 3]
-6%,[118,134],.939,w1,[9, 15, 3, 4]
-6%,[493,509],.983,x1,[9, 15, 3, 4]
-6%,[120,136],.940,y1,[9, 15, 3, 4]
-6%,[120,136],.939,z1,[9, 15, 3, 4]
-6%,[118,134],.939,w1,[5, 10, 2, 3]
-6%,[696,712],.988,x1,[5, 10, 2, 3]
-6%,[118,134],.939,y1,[5, 10, 2, 3]
-6%,[118,134],.939,z1,[5, 10, 2, 3]
-6%,[118,134],.939,w1,[5, 13, 3, 4]
-6%,[499,515],.983,x1,[5, 13, 3, 4]
-7%,[118,134],.939,y1,[5, 13, 3, 4]
-7%,[118,134],.939,z1,[5, 13, 3, 4]
-7%,[122,138],.940,w1,[6, 15, 3, 5]
-7%,[485,501],.983,x1,[6, 15, 3, 5]
-7%,[118,134],.939,y1,[6, 15, 3, 5]
-7%,[118,134],.939,z1,[6, 15, 3, 5]
-7%,[175,191],.956,w1,[4, 24, 10, 11]
-7%,[200,216],.961,x1,[4, 24, 10, 11]
-7%,[174,190],.956,y1,[4, 24, 10, 11]
-7%,[175,191],.956,z1,[4, 24, 10, 11]
-7%,[280,296],.971,w1,[3, 13, 5, 11]
-7%,[312,328],.974,x1,[3, 13, 5, 11]
-7%,[280,296],.971,y1,[3, 13, 5, 11]
-7%,[270,286],.970,z1,[3, 13, 5, 11]
-7%,[247,263],.968,w1,[8, 11, 3, 2]
-8%,[877,893],.990,x1,[8, 11, 3, 2]
-8%,[162,178],.953,y1,[8, 11, 3, 2]
-8%,[162,178],.953,z1,[8, 11, 3, 2]
-8%,[161,177],.953,w1,[5, 21, 21, 4]
-8%,[729,745],.988,x1,[5, 21, 21, 4]
-8%,[417,433],.980,y1,[5, 21, 21, 4]
-8%,[161,177],.953,z1,[5, 21, 21, 4]
-8%,[120,136],.939,w1,[2, 10, 5, 3]
-8%,[640,656],.987,x1,[2, 10, 5, 3]
-8%,[120,136],.939,y1,[2, 10, 5, 3]
-8%,[120,136],.939,z1,[2, 10, 5, 3]
-8%,[332,348],.975,w1,[8, 19, 10, 3]
-8%,[296,312],.972,x1,[8, 19, 10, 3]
-8%,[414,430],.980,y1,[8, 19, 10, 3]
-8%,[319,335],.974,z1,[8, 19, 10, 3]
-9%,[258,274],.969,w1,[8, 13, 5, 2]
-9%,[822,838],.990,x1,[8, 13, 5, 2]
-9%,[287,303],.972,y1,[8, 13, 5, 2]
-9%,[227,243],.965,z1,[8, 13, 5, 2]
-9%,[120,136],.939,w1,[2, 10, 3, 5]
-9%,[493,509],.983,x1,[2, 10, 3, 5]
-9%,[120,136],.939,y1,[2, 10, 3, 5]
-9%,[120,136],.939,z1,[2, 10, 3, 5]
-9%,[180,196],.957,w1,[10, 16, 3, 5]
-9%,[234,250],.966,x1,[10, 16, 3, 5]
-9%,[170,186],.955,y1,[10, 16, 3, 5]
-9%,[170,186],.955,z1,[10, 16, 3, 5]
-9%,[180,196],.957,w1,[3, 6, 1, 2]
-9%,[675,691],.987,x1,[3, 6, 1, 2]
-9%,[171,187],.955,y1,[3, 6, 1, 2]
-9%,[176,192],.956,z1,[3, 6, 1, 2]
-10%,[180,196],.957,w1,[11, 24, 4, 10]
-10%,[771,787],.989,x1,[11, 24, 4, 10]
-10%,[173,189],.956,y1,[11, 24, 4, 10]
-10%,[178,194],.957,z1,[11, 24, 4, 10]
-10%,[179,195],.957,w1,[10, 24, 4, 11]
-10%,[771,787],.989,x1,[10, 24, 4, 11]
-10%,[173,189],.956,y1,[10, 24, 4, 11]
-10%,[179,195],.957,z1,[10, 24, 4, 11]
-10%,[370,386],.978,w1,[3, 11, 8, 2]
-10%,[272,288],.970,x1,[3, 11, 8, 2]
-10%,[547,563],.985,y1,[3, 11, 8, 2]
-10%,[331,347],.975,z1,[3, 11, 8, 2]
-10%,[165,181],.954,w1,[3, 16, 13, 4]
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 6 polynomials
+Variables: [u, v, w, x, y, z]; degrees: [3, 3, 3, 3, 4, 4]; number of roots: 42
+152 change matrices loaded
+Smaller template found: 10650,y
+Smaller template found: 7055,w
+Smaller template found: 4170,u
+Smaller template found: 3893,y
+122 quotient space bases removed
 </Text-field>
 </Output>
 </Group>
@@ -314,19 +140,19 @@ Smaller or sparser template found: [108,124],.936,y1,[3, 8, 2, 2]
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4784" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L4784" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4769" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L4769" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4791" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L4791" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -343,7 +169,7 @@ Smaller or sparser template found: [108,124],.936,y1,[3, 8, 2, 2]
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

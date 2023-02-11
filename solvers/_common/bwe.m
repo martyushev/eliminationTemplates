@@ -1,4 +1,4 @@
-% backward errors, maximal error and geometric mean of errors
+% find backward errors, maximal error and geometric mean of errors, number of real roots
 function [maxe,gme,k,kr] = bwe(C,mon,S,d)
     s = size(C,1); % number of polynomials
     n = size(S,2);

@@ -4,7 +4,7 @@ load(strcat(folder, '\_results\stats_rollingshutter.mat'));
 bwd = 0.3;
 nbins = 60;
 clr = [70 100 160]/255;
-err = log10(stats.maxe);
+err = stats.err;
 hr1 = histogram(err,nbins,'BinWidth',bwd);
 hr1.FaceColor = clr;
 hr1.EdgeColor = clr;

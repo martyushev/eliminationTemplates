@@ -27,15 +27,15 @@ function S = red_10x20_colpiv_wpnp_2x2sym(C)
 
     [V,~] = eig(T);
     S = V(6:9,:)./repmat(V(10,:),4,1);
-
-    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
-    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
-    S = S(:,I);
     
     z = sqrt(S(4,:));
     y = S(3,:)./z;
     x = 1./S(2,:);
     w = S(1,:);
     S = [w w; x x; y -y; z -z];
+    
+    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
+    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    S = S(:,I);
 
 end
