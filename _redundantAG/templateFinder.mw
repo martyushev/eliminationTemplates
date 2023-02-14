@@ -137,21 +137,21 @@ Action monomials: [1/x, 1/y, 1/z, x, y, z]
 
 #cols-#rows	#rows	runtime
 ---------------------------------------
-7		3	0.016
-8		4	0.016
+7		3	0.015
+8		4	0.032
 10		5	0
-10		6	0.015
+10		6	0
 10		7	0
-10		8	0.015
+10		8	0
 11		9	0.016
-12		10	0.032
+12		10	0.031
 12		11	0.016
-12		12	0.031
+12		12	0.015
 11		15	0.015
-11		16	0.046
-12		17	0.031
-12		19	0.047
-11		21	0.046
+11		16	0.031
+12		17	0.047
+12		19	0.031
+11		21	0.062
 
 Template #1 found
 action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
@@ -163,7 +163,7 @@ action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
 y		[15, 5, 9]	[7, 6, 16]			[20, 29]
 
 
-Total time:	0.75
+Total time:	0.766
 </Text-field>
 </Output>
 </Group>
@@ -206,7 +206,7 @@ action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
 1/y		[9, 5, 8]	[6, 6, 10]			[14, 22]
 70% completed
 
-Total time:	0.359
+Total time:	0.437
 </Text-field>
 </Output>
 </Group>

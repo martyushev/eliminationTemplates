@@ -17,7 +17,7 @@ for i = 1:N
         continue;
     end
 
-    mon = @(a1,a2,a3,a4,a5) [a3^2*a1^2,a2^2*a3^2,a4^2*a1^2,a2^2*a4^2,a5*a3*a1^2,a1*a2*a3*a5,a2^2*a3*a5,a5*a4*a1^2,a1*a2*a4*a5,a2^2*a4*a5,a3*a1^2,a1*a2*a3,a2^2*a3,a3^2*a1,a2*a3^2,a4*a1^2,a1*a2*a4,a2^2*a4,a4^2*a1,a2*a4^2,a5*a1^2,a2^2*a5,a1*a3*a5,a2*a3*a5,a5*a4*a1,a2*a4*a5,a3*a1,a2*a3,a3^2,a4*a1,a2*a4,a4^2,a5*a1,a2*a5,a5*a3,a5*a4,a3,a4,a5];
+    mon = @(a1,a2,a3,a4,a5) [a1^2*a3^2,a2^2*a3^2,a1^2*a4^2,a2^2*a4^2,a1^2*a3*a5,a1*a2*a3*a5,a2^2*a3*a5,a1^2*a4*a5,a1*a2*a4*a5,a2^2*a4*a5,a1^2*a3,a1*a2*a3,a2^2*a3,a1*a3^2,a2*a3^2,a1^2*a4,a1*a2*a4,a2^2*a4,a1*a4^2,a2*a4^2,a1^2*a5,a2^2*a5,a1*a3*a5,a2*a3*a5,a1*a4*a5,a2*a4*a5,a1*a3,a2*a3,a3^2,a1*a4,a2*a4,a4^2,a1*a5,a2*a5,a3*a5,a4*a5,a3,a4,a5];
     [err,k,kr] = numerr(C,mon,S,1); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];

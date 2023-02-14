@@ -123,18 +123,20 @@ cat(C_, prob) := proc({symbolic:=1})
     end if:
     
     ################## place your code for constructing polynomials here
-    R := &lt;&lt;1+x^2-y^2-z^2|2*(x*y-z)|2*(x*z+y)&gt;, &lt;2*(x*y+z)|1-x^2+y^2-z^2|2*(y*z-x)&gt;, &lt;2*(x*z-y)|2*(y*z+x)|1-x^2-y^2+z^2&gt;&gt;:
+    R := &lt;1+x^2-y^2-z^2, 2*(x*y-z), 2*(x*z+y); 2*(x*y+z), 1-x^2+y^2-z^2, 2*(y*z-x); 2*(x*z-y), 2*(y*z+x), 1-x^2-y^2+z^2&gt;:
     KR := LinearAlgebra[DiagonalMatrix]([1, 1, w]).R:
-    eqs0 := map(expand, convert(_A[1].convert(KR, Vector), list)):
-    A0, U0 := poly2matrix(eqs0, indets(eqs0)):
-    U := Vector([w*x^2, z*x*w, w*x, x^2, y^2*w, z*y*w, w*y, w*z^2, w, y^2, x*y, x*z, x, y*z, y, z^2, z, 1]):
-    A := permuteColumns(A0, U0, U):
+    eqs := map(expand, convert(_A[1].convert(KR, Vector), list)):
+    vars := [w, x, y, z]:
+    mm, V := poly2matrix(eqs, vars):
+    V1 := Vector([w*x^2, z*x*w, w*x, x^2, y^2*w, z*y*w, w*y, w*z^2, w, y^2, x*y, x*z, x, y*z, y, z^2, z, 1]):
+    M1 := permuteColumns(mm, V, V1):
     if symbolic=0 then
-        tA := LinearAlgebra[ReducedRowEchelonForm](A):
+        tM1 := LinearAlgebra[ReducedRowEchelonForm](M1):
+        #print(convert(samePattern(tM1, 'A', {1,-1}), listlist)):
     else
-        tA := &lt;Matrix(4, 10, [[1, 0, 0, 0, 1, 0, 0, -1, -1, 0], [0, 1, 0, 0, 0, 0, -1, 0, 0, 0], [0, 0, 1, 0, 0, 1, 0, 0, 0, 0], [0, 0, 0, 1, 0, 0, 0, 0, 0, -1]])|Matrix(4,8, (x,y)-&gt;B(x+(y-1)*4))&gt;:
+        tM1 := Matrix([[1, 0, 0, 0, 1, 0, 0, -1, -1, 0, A(25), A(29), A(33), A(37), A(41), A(45), A(49), A(53)], [0, 1, 0, 0, 0, 0, -1, 0, 0, 0, A(26), A(30), A(34), A(38), A(42), A(46), A(50), A(54)], [0, 0, 1, 0, 0, 1, 0, 0, 0, 0, A(27), A(31), A(35), A(39), A(43), A(47), A(51), A(55)], [0, 0, 0, 1, 0, 0, 0, 0, 0, -1, A(28), A(32), A(36), A(40), A(44), A(48), A(52), A(56)]]):
     end if:
-    eqs := convert(tA.U, list):
+    eqs := convert(tM1.V1, list):
     ##################
     
     _F := map(expand, eqs):
@@ -142,7 +144,7 @@ cat(C_, prob) := proc({symbolic:=1})
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
     _V := srt(_V0, tdeg(op(_vars))):
-    [`cf`, A, `rref`, tA, `cf`, permuteColumns(_C0, _V0, _V)], _name, _size:
+    [`cf`, M1, `rref`, permuteColumns(_C0, _V0, _V)], _name, _size:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -151,9 +153,11 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4789" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(F))]:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(F))];
 tord := tdeg(op(vars));</Text-field>
 </Input>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUkjbWlHRiQ2JVEldmFyc0YnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtSShtZmVuY2VkR0YkNiYtRiM2LC1GLDYlUSJ3RidGL0YyLUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkgvRktRJjAuMGVtRicvRk5RLDAuMzMzMzMzM2VtRictRiw2JVEieEYnRi9GMkZXLUYsNiVRInlGJ0YvRjJGVy1GLDYlUSJ6RidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOS8lJW9wZW5HUScmbHNxYjtGJy8lJmNsb3NlR1EnJnJzcWI7RidGOQ==">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV2YXJzR0YoNyZJIndHRihJInhHRihJInlHRihJInpHRig3I0Yu</Equation></Text-field>
+</Output>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzYsLUYsNiVRIndGJ0YvRjItRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSEZVL0ZOUSwwLjMzMzMzMzNlbUYnLUYsNiVRInhGJ0YvRjJGam4tRiw2JVEieUYnRi9GMkZqbi1GLDYlUSJ6RidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOUY5">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYmSSJ3R0YoSSJ4R0YoSSJ5R0YoSSJ6R0YoNyNGLg==</Equation></Text-field>
 </Output>
 </Group>
@@ -207,7 +211,7 @@ nops(Gr);</Text-field>
 <Group hide-input="false" hide-output="false" labelreference="L4794" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">save
 cat(F_, prob),
-#cat(C_, prob),
+cat(C_, prob),
 cat(&quot;F_&quot;, prob, &quot;.m&quot;):</Text-field>
 </Input>
 </Group></Presentation-Block>

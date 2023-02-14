@@ -46,4 +46,12 @@ lFjdlFVT#F%F%6$FbzFcu6#F26$7'FRFSF_pF\alFV7'FRFSF_p"#BFVF`u-F_o6#FcuF%F%F%6#FO6
 &7'FRFS"#9F/FV7'FRFSFfn"#zFar7'FRFS"##)"$3"Faw7'FRFSF`qFdjlFiwF%,
 I/permuteColumnsw,6%%"MGFi_l%#V1G6#F\gl6$FAFBF%&FF6$;F%F%7#-%$seqG6$-&%*ListToo
 lsG6#%'SearchG6$F`uFG-%#inG6$F`u9&F%F%F%6#F`q6&7'FRFS"#<"#&)FV7'FRFS"#H"#NF^r7'
-FRFSFd\mFj^lFVFf\mF%
+FRFSFd\mFj^lFVFf\mF%,
+I,samePatternw,6%'F\[mFD'%$symG%%nameG>'%$xclG%$setG<"6'F<F?%#MtG%#iMG%#eMG6"F%
+C(>F`uFhz>Fcu-Fiz6$7$F2FOFF>Ffu-%(convertG6$FFFhel>F]\l7#-%(indicesG6$Ffu%+inde
+xorderG>Fj\l-Fhr6$w,6#F[uF%6$FAFBF%-F[il6%-F^\m6$&Fg`l6#&&T%FhblF%T(Fe_m-T,6#,(
+&Fh_mFgqF2*&,&&Fh_mFbqF2FSF2F2T)F2F2*$Fc`mFOFSF%F%6,F\[mFFFh]mF]\lFc]mF`\mF<F`u
+F_]mFG6#F26$7'FRFSFjy"#%)FV7'FRFSFjyF]tFV7#-F_[l6#;F2-%%nopsG6#F]\l-FD6%F`uFcu<
+#-Fiz6#-F[fl6%w,FIF%6$FAFBF%/&FFF%FGF%F%F%6#FO6$7'FRFSF\jlFh\mFV7'FRFSF\jlFg\mF
+VF]\lFj\lF%F%F%6#F`q6)FajlFg^l7'FRFSFj^l"#WFaw7'FRFSF`qFh^lFaw7'FRFSF`q"#LFaw7'
+FRFSF`q"$-"Faw7'FRFSF`qFTFcrF%

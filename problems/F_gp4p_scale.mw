@@ -141,7 +141,7 @@ end proc:</Text-field>
 </Input>
 </Group><Presentation-Block>
 <Group hide-input="false" labelreference="L4660" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=1):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=0):</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4657" drawlabel="true" applyint="true" applyrational="true">

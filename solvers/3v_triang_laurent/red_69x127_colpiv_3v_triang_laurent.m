@@ -32,7 +32,7 @@ function S = red_69x127_colpiv_3v_triang_laurent(C)
     S = repmat(V(58,:),3,1)./V(55:57,:);
 
     I = ~isnan(S(1,:)) & ~isinf(S(1,:));
-    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    I = I & ~imag(S(1,:)); % uncomment this line for real roots only
     S = S(:,I);
 
 end

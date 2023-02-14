@@ -1,5 +1,5 @@
 rng(23);
-N = 10000;
+N = 100;
 
 stats = struct('problem','relpose_9lines','tm',[],'err',[],'k',[],'kr',[]);
 

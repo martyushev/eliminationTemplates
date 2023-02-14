@@ -195,7 +195,14 @@ permuteColumns := (M, V, V1)-&gt;local mn: M[..,[seq(ListTools[Search](mn, V), m
 </Input>
 </Group>
 <Group view="code" labelreference="L4121" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### construct matrix with the same pattern of non-zero entries
+samePattern := proc(M::Matrix, sym::name, xcl::set:={})
+    local m := op([1,1], M), n := op([1,2], M), Mt, iM, eM:
+    Mt := convert(M, table):
+    iM := [indices(Mt, indexorder)]:
+    eM := map(i-&gt;`if`(M[iM[i][]] in xcl, M[iM[i][]], sym(iM[i][1]+(iM[i][2]-1)*m-m^2)), [$ 1..nops(iM)]):
+    Matrix(m,n, {op(zip((x,y)-&gt;x[]=y, iM, eM))}):
+end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4122" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -233,6 +240,7 @@ supp,
 Supp,
 poly2matrix,
 permuteColumns,
+samePattern,
 &quot;_common.m&quot;:</Text-field>
 </Input>
 </Group>
