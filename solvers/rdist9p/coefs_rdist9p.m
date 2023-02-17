@@ -99,6 +99,6 @@ function C = coefs_rdist9p(data)
     C(206) = M(61);
     C(207) = M(63);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

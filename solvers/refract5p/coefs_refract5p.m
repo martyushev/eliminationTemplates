@@ -47,6 +47,6 @@ function C = coefs_refract5p(data)
     C(84) = M(105);
     C(87) = M(75);
 
-    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

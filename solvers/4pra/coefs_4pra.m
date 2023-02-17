@@ -100,6 +100,6 @@ function C = coefs_4pra(data)
  
     C = [B; zeros(1,25),1,0,1,0,0,1,0,0,0,ss-1];
     
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

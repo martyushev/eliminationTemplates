@@ -17,8 +17,8 @@ for i = 1:N
         continue;
     end
 
-    mon = @(x,y,z) [x^3,y^3,x*z^2,x^2,x*y,y^2,y*z,z^2,z,1];
-    [err,k,kr] = numerr(C,mon,S,8); % compute backward errors
+    mon = @(x,y,z) [x^3,y^3,z^2*x,x^2,y*x,y^2,y*z,z^2,z,1];
+    [err,k,kr] = numerr(C,mon,S,8); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];

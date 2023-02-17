@@ -90,8 +90,6 @@
 <Task/>
 <Group hide-output="false" labelreference="L4765" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
-with(LinearAlgebra):
-with(Groebner):
 interface(warnlevel=1):</Text-field>
 </Input>
 </Group>
@@ -114,69 +112,67 @@ interface(warnlevel=1):</Text-field>
 <Group hide-output="false" labelreference="L4756" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute coefficient matrix of initial polynomial system
 cat(C_, prob) := proc({symbolic:=1})
-    local _name, _size, _A, _F, _vars, _C0, _V0, _V:
     _name, _size := [`f`, `tau`], [[3,3], [1,1]]:
-    if symbolic=1 then
-        _A := [seq(Matrix(op(_size[i]), (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
-    else
-        _A := [seq(rndMat(op(_size[i])), i=1..nops(_name))]:
+    if symbolic=0 then
+        _A := [seq(rndMat(_size[i][]), i=1..nops(_name))]:
         _A[1][..,3] := _A[1][..,1]*rnd()+_A[1][..,2]*rnd(): # fundamental matrix must be rank-deficient
+    else
+        _A := [seq(Matrix(_size[i][], (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
     end if:
 
     ################## place your code for constructing polynomials here
     F1, tau1 := _A[1], _A[2][1,1]:
-    K := &lt;&lt;f|0|x&gt;, &lt;0|f|y&gt;, &lt;0|0|1&gt;&gt;:
-    KK := algsubs(f^2=z, K.K^%T):
-    G := 1/2*LinearAlgebra[Trace](F1.KK.F1^%T.KK)*F1-F1.KK.F1^%T.KK.F1:
-    eq1 := 1/2*(tau1^2-1)*LinearAlgebra[Trace](F1.KK.F1^%T.KK)+(tau1+1)*LinearAlgebra[Trace](KK.F1.KK.F1)-tau1*LinearAlgebra[Trace](KK.F1)^2:
-    eqs := [seq(seq(G[i, j], i=1..3), j=1..3), eq1]:
+    K := &lt;f,0,x; 0,f,y; 0,0,1&gt;:
+    KK := algsubs(f^2=z, K.K^+):
+    G := 1/2*LinearAlgebra[Trace](F1.KK.F1^+.KK)*F1-F1.KK.F1^+.KK.F1:
+    eq1 := 1/2*(tau1^2-1)*LinearAlgebra[Trace](F1.KK.F1^+.KK)+(tau1+1)*LinearAlgebra[Trace](KK.F1.KK.F1)-tau1*LinearAlgebra[Trace](KK.F1)^2:
+    eqs := [seq(seq(G[i,j], i=1..3), j=1..3), eq1]:
     eqs := [eqs[1], eqs[5], eqs[9]+eqs[8], eqs[10]]:
-    #eqs := [op(eqs), w*LinearAlgebra[Trace](F.KK)-1]:
     ##################
     
     _F := map(expand, eqs):
-    if symbolic&lt;&gt;1 then return _F: end if:
+    if symbolic=0 then return _F: end if:
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
-    _V := srt(_V0, tdeg(op(_vars))):
-    [`cf`, permuteColumns(_C0, _V0, _V)], _name, _size:
+    _V := srt(_V0, tdeg(_vars[])):
+    [permuteColumns(_C0, _V0, _V)], _name, _size:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group hide-input="false" labelreference="L4782" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" labelreference="L4793" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=0):</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4779" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(F))]:
-tord := tdeg(op(vars));</Text-field>
+<Group view="code" hide-input="false" labelreference="L4792" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [indets(F)[]]:
+tord := tdeg(vars[]);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzYqLUYsNiVRInhGJ0YvRjItRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSEZVL0ZOUSwwLjMzMzMzMzNlbUYnLUYsNiVRInlGJ0YvRjJGam4tRiw2JVEiekYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjlGOQ==">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYlSSJ4R0YoSSJ5R0YoSSJ6R0YoNyNGLg==</Equation></Text-field>
 </Output>
-</Group>
-<Group labelreference="L4775" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group labelreference="L4791" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">pp := 32749:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4776" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(F, tord, characteristic=pp):
+<Group hide-input="false" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := gb(F,tord,pp):
 nops(Gr);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiOEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIp</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4780" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=pp);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4788" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">dim(Gr,pp);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMUYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIi</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4781" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#nops(NormalSet(Gr, tord)[1]);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4787" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#deg(Gr,tord);</Text-field>
 </Input>
-</Group>
+</Group></Presentation-Block><Presentation-Block>
 <Group hide-input="false" hide-output="false" labelreference="L4773" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">map(UnivariatePolynomial, vars, F, characteristic=pp);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">map(Groebner[UnivariatePolynomial], vars, F, characteristic=pp);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDYqLUkjbW5HRiQ2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy1JI21vR0YkNi1RIixGJ0YyLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjsvJSpzeW1tZXRyaWNHRjsvJShsYXJnZW9wR0Y7LyUubW92YWJsZWxpbWl0c0dGOy8lJ2FjY2VudEdGOy8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYnRi5GNS1GLDYwLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEiekYnLyUnaXRhbGljR0Y+L0YzUSdpdGFsaWNGJy1GLzYkUSI3RidGMi8lMXN1cGVyc2NyaXB0c2hpZnRHRjEtRjY2LVEnJnBsdXM7RidGMkY5L0Y9RjtGP0ZBRkNGRUZHL0ZKUSwwLjIyMjIyMjJlbUYnL0ZNRmBvLUYsNiYtRi82JFElMzM3N0YnRjItRjY2LVExJkludmlzaWJsZVRpbWVzO0YnRjJGOUZeb0Y/RkFGQ0ZFRkdGSS9GTUZLLUZSNiVGVC1GLzYkUSI2RidGMkZpbkYyRltvLUYsNiYtRi82JFEmMTA5NTdGJ0YyRmdvLUZSNiVGVC1GLzYkUSI1RidGMkZpbkYyRltvLUYsNiYtRi82JFElNDE4OUYnRjJGZ28tRlI2JUZULUYvNiRRIjRGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYxOTUwOUYnRjJGZ28tRlI2JUZULUYvNiRRIjNGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYxMzU0N0YnRjJGZ28tRlI2JUZULUYvNiRRIjJGJ0YyRmluRjJGW28tRiw2Ji1GLzYkUSYyODk2M0YnRjJGZ29GVEYyRjIvJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRjtGMkYyLyUlb3BlbkdRJyZsc3FiO0YnLyUmY2xvc2VHUScmcnNxYjtGJw==">NyUiIiFGIywwKiRJInpHNiIiIigiIiIqJEYmIiInIiV4TCokRiYiIiYiJmQ0IiokRiYiIiUiJSo9JSokRiYiIiQiJjQmPiokRiYiIiMiJlpOIkYmIiZqKkc=</Equation></Text-field>
 </Output>

@@ -110,6 +110,6 @@ function C = coefs_r6p(data)
     C(90) = -A(90)*q55 - A(87)*q(5) + A(88)*q(5) - X(8)*q(5) + A(85);
     C(96) = -A(96)*q55 - q(5)*A(93) + A(94)*q(5) - q(5)*X(9) + A(91) + X(7);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

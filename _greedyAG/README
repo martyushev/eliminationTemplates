@@ -1,4 +1,4 @@
-Maple implementation of the greedy automatic template generator
+Maple implementation of the automatic template generator for polynomial systems by greedy parameter search
 
 If you use this code, please cite the following work:
 

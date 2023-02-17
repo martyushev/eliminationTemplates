@@ -27,6 +27,6 @@ function C = coefs_l2_3view_triang(data)
     C([176,190]) = E23(6);
     C(200) = E23(9);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

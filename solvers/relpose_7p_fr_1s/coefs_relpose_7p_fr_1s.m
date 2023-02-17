@@ -455,6 +455,6 @@ function [C,M] = coefs_relpose_7p_fr_1s(data)
     C(340) = M(34);
     C(606) = M(35);
 
-    C = C./(sqrt(sum(C.^2,2))*ones(1,size(C,2)));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

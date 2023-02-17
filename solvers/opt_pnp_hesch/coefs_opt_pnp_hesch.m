@@ -54,6 +54,6 @@ function C = coefs_opt_pnp_hesch(data)
     C(12) = c(31);
     C(29) = c(33);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

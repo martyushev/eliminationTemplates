@@ -215,6 +215,6 @@ function C = coefs_gp4p_scale(data)
     C(176) = b(67)*b(34)+b(29)*b(74)+b(68)*b(35)+b(27)*b(72)+b(66)*b(33)+b(28)*b(73);
     C(186) = b(67)*b(47)+b(42)*b(74)+b(68)*b(48)+b(40)*b(72)+b(66)*b(46)+b(41)*b(73);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

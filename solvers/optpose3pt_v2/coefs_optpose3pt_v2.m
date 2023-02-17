@@ -118,6 +118,6 @@ function C = coefs_optpose3pt_v2(data)
     C([178,188]) = u(9);
     C(203) = u(12);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

@@ -19,6 +19,6 @@ function C = coefs_wpnp(data)
     C([7,9,62,76]) = -A(1)^2+A(2)^2+2*A(3)^2;
     C([28,35,42,65]) = -A(2)^2+2*A(3)^2+A(1)^2;
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

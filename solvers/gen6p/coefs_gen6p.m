@@ -309,6 +309,6 @@ function C = coefs_gen6p(data)
         C(n,84) = A(1)*B(3)-A(76)*B(2)+A(79)*B(1);
     end
   
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

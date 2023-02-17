@@ -90,8 +90,6 @@
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4109" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
-with(LinearAlgebra):
-with(Groebner):
 interface(warnlevel=1):</Text-field>
 </Input>
 </Group>
@@ -114,18 +112,17 @@ interface(warnlevel=1):</Text-field>
 <Group labelreference="L4116" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute coefficient matrix of initial polynomial system
 cat(C_, prob) := proc({symbolic:=1})
-    local _name, _size, _A, _F, _vars, _C0, _V0, _V:
-    _name, _size := [`A`,`B`], [[3,1], [2,3]]:
-    if symbolic=1 then
-        _A := [seq(Matrix(op(_size[i]), (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
+    _name, _size := [`A`, `B`], [[3,1], [2,3]]:
+    if symbolic=0 then
+        _A := [seq(rndMat(_size[i][]), i=1..nops(_name))]:
     else
-        _A := [seq(rndMat(op(_size[i])), i=1..nops(_name))]:
+        _A := [seq(Matrix(_size[i][], (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
     end if:
 
     ################## place your code for constructing polynomials here
     A1, B1 := LinearAlgebra[DiagonalMatrix](_A[1]), _A[2]:
-    VV := &lt;&lt;0|-I|-I|0&gt;, &lt;-1|0|0|1&gt;, &lt;I|0|0|I&gt;, &lt;0|-1|1|0&gt;&gt;:
-    q := VV.&lt;w, x, y, z&gt;:
+    V := &lt;0,-I,-I,0; -1,0,0,1; I,0,0,I; 0,-1,1,0&gt;:
+    q := V.&lt;w, x, y, z&gt;:
     R := quat2rot(q):
     L := add(add((R[1..2,..].A1-B1)^~2)):
     eqs := [diff(L, w), diff(L, x), diff(L, y), diff(L, z)]:
@@ -133,49 +130,53 @@ cat(C_, prob) := proc({symbolic:=1})
     ##################
 
     _F := map(expand, eqs):
-    if symbolic&lt;&gt;1 then return _F: end if:
+    if symbolic=0 then return _F: end if:
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
-    _V := srt(_V0, tdeg(op(_vars))):
-    [`cf`, permuteColumns(_C0, _V0, _V)], _name, _size:
+    _V := srt(_V0, tdeg(_vars[])):
+    [permuteColumns(_C0, _V0, _V)], _name, _size:
 end proc:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group hide-input="false" labelreference="L4636" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" labelreference="L4680" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=0):</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4638" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(F))]:
-tord := tdeg(op(vars));</Text-field>
+<Group view="code" hide-input="false" labelreference="L4679" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [indets(F)[]]:
+tord := tdeg(vars[]);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzYsLUYsNiVRI3cxRidGL0YyLUY2Ni1RIixGJ0Y5RjsvRj9GMUZARkJGREZGRkhGVS9GTlEsMC4zMzMzMzMzZW1GJy1GLDYlUSN4MUYnRi9GMkZqbi1GLDYlUSN5MUYnRi9GMkZqbi1GLDYlUSN6MUYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjlGOQ==">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYmSSN3MUdGKEkjeDFHRihJI3kxR0YoSSN6MUdGKDcjRi4=</Equation></Text-field>
 </Output>
-</Group>
-<Group labelreference="L4642" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group labelreference="L4678" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">pp := 32749:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4641" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(F, tord, characteristic=pp):
+<Group hide-input="false" hide-output="false" labelreference="L4677" drawlabel="true" applyint="true" applyrational="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := gb(F,tord,pp):
 nops(Gr);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjMTdGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiM8</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4648" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=pp);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4675" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">dim(Gr,pp);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIh</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4637" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">nops(NormalSet(Gr, tord)[1]);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4674" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">deg(Gr,tord);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjMTZGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiM7</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" labelreference="L4639" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" labelreference="L4676" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-input="false" labelreference="L4636" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

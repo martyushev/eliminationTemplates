@@ -134,6 +134,6 @@ function C = coefs_relpose_7p_fr_1s_elr(data)
     C(196) = M(22);
     C(201) = M(29);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

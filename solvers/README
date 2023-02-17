@@ -53,23 +53,32 @@ Folders (minimal problems):
 24*) gp4p_scale: 4-point generalized pose and scale estimation
 25) 4pra: calibrated 4-point relative pose estimation with known relative rotation angle (another formulation, cf.21)
 26) gen5pra: generalized 5-point relative pose estimation with known relative rotation angle
-27) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle
-28*) r6p: 6-point rolling shutter absolute pose estimation
-29*) optpose4pt_v2: 4-point optimal pose estimation with known gravitational vector
-30*) optpose3pt_v2: 3-point optimal pose estimation with known gravitational vector
-31*) l2_3view_triang: relaxed L2 3-view triangulation problem
-32) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
-33) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
-34) gen_relpose_scale: 7-point generalized relative pose and scale estimation
-35) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
-36) gen6p: 6-point generalized relative pose estimation
-37) 3pra_st0: 3-point calibrated relative pose estimation with known relative rotation angle and zero screw translation
-38) 5p: 5-point calibrated relative pose estimation
-39*) wpnp: weak Perspective-n-Points problem
-40*) wpnp_2x2sym: weak Perspective-n-Points problem
-41) relpose_7p_fuv_angle_sat: same as relpose_7p_fuv_angle but w/o pre-saturation
-42*) opt_vanishingpoints: vanishing point estimation
-43) 3v_triang_laurent: optimal 3-view triangulation (Laurent polynomial formulation)
+27*) r6p: 6-point rolling shutter absolute pose estimation
+28*) optpose4pt_v2: 4-point optimal pose estimation with known gravitational vector
+29*) optpose3pt_v2: 3-point optimal pose estimation with known gravitational vector
+30*) l2_3view_triang: relaxed L2 3-view triangulation problem
+31) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
+32) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
+33) gen_relpose_scale: 7-point generalized relative pose and scale estimation
+34) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
+35) gen6p: 6-point generalized relative pose estimation
+36) 3pra_st0: 3-point calibrated relative pose estimation with known relative rotation angle and zero screw translation
+37) 5p: 5-point calibrated relative pose estimation
+38*) wpnp: weak Perspective-n-Points problem
+39*) wpnp_2x2sym: weak Perspective-n-Points problem
+40) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle (1-dimensional formulation)
+41) relpose_7p_fuv_angle_w_sat: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle (0-dimensional formulation)
+42*) opt_vanishingpoints: vanishing point estimation (1-dimensional formulation)
+43*) opt_vanishingpoints_w_sat: vanishing point estimation (0-dimensional formulation)
+44) 3v_triang_laurent: optimal 3-view triangulation (Laurent polynomial formulation)
+45) 3v_triang_laurent_w_sat: optimal 3-view triangulation (0-dimensional formulation)
+46) hyb51f: 5-point semi-generalized relative pose estimation (1-dimensional formulation)
+47*) opt_pnp_zheng: optimal Perspective-n-Points problem
+48) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
+49*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders (1-dimensional formulation)
+50*) toa_46_w_sat: time-of-arrival self-calibration problem for 6 receivers and 4 senders (0-dimensional formulation)
+51*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (1-dimensional formulation)
+
 
 _common: auxiliary functions that are common for several problems
 _results: output data (mat-files and figures)
@@ -84,7 +93,7 @@ Each problem folder contains at least 6 m-files:
 5) test_num_prob: evaluates speed and numerical accuracy of the solver
 6) histo_num_prob: plots numerical error histogram
 
-Some problem folders contain 2 additional m-files:
+Some problem folders contain additional m-files, e.g.
 
 7) inidata_feas_prob: generates initial data from a random synthetic scene
 8) test_feas_prob: evaluates relative errors in feasible quantities such as focal lengths and/or radial distortion coefficients

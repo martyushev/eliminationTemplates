@@ -1086,6 +1086,6 @@ function [C,M] = coefs_relpose_6p_rad(data)
     C(1013) = M(30);
     C(1035) = M(54);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

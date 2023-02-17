@@ -119,6 +119,6 @@ function C = coefs_relpose_4pt(data)
     C(78) = x2(5)*x1(5)*cth-x2(6)*x1(6)*cth-x2(5)*x1(5)+x2(6)*x1(6);
     C(79) = -x2(8)*x1(8)*cth+x2(7)*x1(7)*cth-x2(7)*x1(7)+x2(8)*x1(8);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

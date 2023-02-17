@@ -107,18 +107,18 @@ rnd := rand(-1000..1000)/1000:</Text-field>
 </Group>
 <Group hide-output="false" labelreference="L4110" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### random matrix of size m-by-n
-rndMat := (m::posint, n::posint)-&gt;Matrix(m, n, (x, y)-&gt;rnd()):
+rndMat := (m::posint, n::posint)-&gt;Matrix(m, n, (x,y)-&gt;rnd()):
 ### random vector of length m
 rndVec := (m::posint)-&gt;Vector(m, x-&gt;rnd()):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4109" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### cross product matrix
-cross := proc(v) option inline: &lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&gt;&gt;: end proc:</Text-field>
+cross := v-&gt;&lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&gt;&gt;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4108" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getRotMatrix := proc(v) option inline: map(factor, (LinearAlgebra[IdentityMatrix](3) - cross(v)).LinearAlgebra[MatrixInverse](LinearAlgebra[IdentityMatrix](3) + cross(v))): end proc:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getRotMatrix := v-&gt;map(factor, (LinearAlgebra[IdentityMatrix](3)-cross(v)).LinearAlgebra[MatrixInverse](LinearAlgebra[IdentityMatrix](3)+cross(v))):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4118" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -145,7 +145,7 @@ end proc:</Text-field>
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">adj := proc(A::Matrix)
     local n := op([1,1], A), d := [$ 1..n-1], B, AA, j, k:
     B := A[1,1]*LinearAlgebra[ZeroMatrix](n):
-    AA := &lt;&lt;A|A&gt;, &lt;A|A&gt;&gt;^%T:
+    AA := &lt;&lt;A|A&gt;, &lt;A|A&gt;&gt;^+:
     if n mod 2 = 1 then
         for j from 1 to n do
             for k from 1 to n do
@@ -177,14 +177,14 @@ supp := (pl, vars)-&gt;Groebner[Support](expand(numer(pl)), vars)/~Groebner[Supp
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### support of Laurent polynomials from F
 Supp := proc(F, vars)
     local SF := map(supp, F, vars):
-    return SF, {op(map(op, SF))}:
+    return SF, {map(op, SF)[]}:
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4125" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### transform list of Laurent polynomials into coefficient (Macaulay) matrix and monomial vector
 poly2matrix := proc(F, vars)
-    local T := map(pl-&gt;table(zip((a,b)-&gt;b=a, [coeffs(pl, vars, 'mn')], [mn])), F), B := [op(Supp(F, vars)[2])]:
+    local T := map(pl-&gt;table(zip((a,b)-&gt;b=a, [coeffs(pl, vars, 'mn')], [mn])), F), B := [Supp(F, vars)[2][]]:
     return Matrix(map(t-&gt;map(b-&gt;`if`(assigned(t[b]), t[b], 0), B), T)), Vector(B):
 end proc:</Text-field>
 </Input>
@@ -201,12 +201,23 @@ samePattern := proc(M::Matrix, sym::name, xcl::set:={})
     Mt := convert(M, table):
     iM := [indices(Mt, indexorder)]:
     eM := map(i-&gt;`if`(M[iM[i][]] in xcl, M[iM[i][]], sym(iM[i][1]+(iM[i][2]-1)*m-m^2)), [$ 1..nops(iM)]):
-    Matrix(m,n, {op(zip((x,y)-&gt;x[]=y, iM, eM))}):
+    Matrix(m,n, {zip((x,y)-&gt;x[]=y, iM, eM)[]}):
 end proc:</Text-field>
 </Input>
 </Group>
+<Group view="code" labelreference="L4131" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Groebner basis of polynomial ideal
+gb := (F,tord,pp)-&gt;Groebner[Basis](F, tord, characteristic=pp):</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4130" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### dimension of polynomial ideal
+dim := (F,pp)-&gt;Groebner[HilbertDimension](F, characteristic=pp):</Text-field>
+</Input>
+</Group>
 <Group view="code" labelreference="L4122" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### degree of polynomial ideal
+deg := (F,tord)-&gt;nops(Groebner[NormalSet](F, tord)[1]):</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L4123" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -241,10 +252,13 @@ Supp,
 poly2matrix,
 permuteColumns,
 samePattern,
+gb,
+dim,
+deg,
 &quot;_common.m&quot;:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4099" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L4099" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

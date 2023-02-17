@@ -90,8 +90,6 @@
 <Task/>
 <Group hide-output="false" labelreference="L4611" drawlabel="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
-with(LinearAlgebra):
-with(Groebner):
 interface(warnlevel=1):</Text-field>
 </Input>
 </Group>
@@ -114,77 +112,80 @@ interface(warnlevel=1):</Text-field>
 <Group labelreference="L4623" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute coefficient matrix of initial polynomial system
 cat(C_, prob) := proc({symbolic:=1})
-    local _name, _size, _A, _F, _vars, _C0, _V0, _V:
     _name, _size := [`M`], [[71,1]]:
-    if symbolic=1 then
-        _A := [seq(Matrix(op(_size[i]), (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
+    if symbolic=0 then
+        _A := [seq(rndMat(_size[i][]), i=1..nops(_name))]:
     else
-        _A := [seq(rndMat(op(_size[i])), i=1..nops(_name))]:
+        _A := [seq(Matrix(_size[i][], (x,y)-&gt;_name[i](x+(y-1)*_size[i][1])), i=1..nops(_name))]:
     end if:
 
     ################## place your code for constructing polynomials here
     M1 := convert(_A[1], Vector):
     vv := [1, u, v, w, x, y]:
-    H, b, count := 0, 0, 0:
+    H, b, k := 0, 0, 0:
     for i from 1 to 6 do
-        C := &lt;&lt;M1[count+1]|M1[count+2]|M1[count+3]&gt;, &lt;M1[count+2]|M1[count+4]|M1[count+5]&gt;, &lt;M1[count+3]|M1[count+5]|M1[count+6]&gt;&gt;:
+        C := &lt;M1[k+1],M1[k+2],M1[k+3]; M1[k+2],M1[k+4],M1[k+5]; M1[k+3],M1[k+5],M1[k+6]&gt;:
         H := H+vv[i]*C:
-        b := b + M1[[$ 7..9]+~count]*vv[i]:
-        count := count+9:
+        b := b + M1[[$ 7..9]+~k]*vv[i]:
+        k := k+9:
     end do:
     adjH := adj(H):
     detH := LinearAlgebra[Determinant](H):
-    S := M1[[$ 1..12]+~count]:
-    S := &lt;&lt;S[1]|S[2]|S[3]&gt;, &lt;S[4]|S[5]|S[6]&gt;, &lt;S[7]|S[8]|S[9]&gt;, &lt;S[10]|S[11]|S[12]&gt;&gt;^%T:
-    dd := M1[[$ 13..17]+~count]:
-    eqs := [seq((S[..,i]^%T.adjH+2*b^%T.adjH).S[..,i]-dd[i]*detH, i=1..4), b^%T.adjH.b-dd[5]*detH]:
-    eqs := [op(eqs), z*detH-1]:
+    S := M1[[$ 1..12]+~k]:
+    S := &lt;S[1],S[2],S[3]; S[4],S[5],S[6]; S[7],S[8],S[9]; S[10],S[11],S[12]&gt;^+:
+    dd := M1[[$ 13..17]+~k]:
+    eqs := [seq((S[..,i]^+.adjH+2*b^+.adjH).S[..,i]-dd[i]*detH, i=1..4), b^+.adjH.b-dd[5]*detH]:
+    eqs := [eqs[], z*detH-1]:
     ##################
 
     _F := map(expand, eqs):
-    if symbolic&lt;&gt;1 then return _F: end if:
+    if symbolic=0 then return _F: end if:
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
-    _V := srt(_V0, tdeg(op(_vars))):
-    [`cf`, permuteColumns(_C0, _V0, _V)], _name, _size:
+    _V := srt(_V0, tdeg(_vars[])):
+    [permuteColumns(_C0, _V0, _V)], _name, _size:
 end proc:</Text-field>
 </Input>
-</Group>
-<Group hide-input="false" labelreference="L4621" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group><Presentation-Block>
+<Group hide-input="false" labelreference="L4694" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=0):</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4602" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [op(indets(F))]:
-tord := tdeg(op(vars));</Text-field>
+<Group view="code" hide-input="false" labelreference="L4693" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [indets(F)[]]:
+tord := tdeg(vars[]);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzYwLUYsNiVRInVGJ0YvRjItRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSEZVL0ZOUSwwLjMzMzMzMzNlbUYnLUYsNiVRInZGJ0YvRjJGam4tRiw2JVEid0YnRi9GMkZqbi1GLDYlUSJ4RidGL0YyRmpuLUYsNiVRInlGJ0YvRjJGam4tRiw2JVEiekYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjlGOQ==">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYoSSJ1R0YoSSJ2R0YoSSJ3R0YoSSJ4R0YoSSJ5R0YoSSJ6R0YoNyNGLg==</Equation></Text-field>
 </Output>
-</Group>
-<Group labelreference="L4628" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group labelreference="L4692" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">pp := 32749:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := Basis(F, tord, characteristic=pp):
+<Group hide-input="false" hide-output="false" labelreference="L4691" drawlabel="true" applyint="true" applyrational="true">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := gb(F,tord,pp):
 nops(Gr);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjNTZGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiNj</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4624" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HilbertDimension(Gr, characteristic=pp);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4690" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">dim(Gr,pp);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIh</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4622" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">nops(NormalSet(Gr, tord)[1]);</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4689" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">deg(Gr,tord);</Text-field>
 </Input>
 <Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjNDJGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiNV</Equation></Text-field>
 </Output>
+</Group></Presentation-Block>
+<Group hide-input="false" labelreference="L4621" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4604" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group labelreference="L4695" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

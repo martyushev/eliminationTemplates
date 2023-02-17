@@ -80,6 +80,6 @@ function C = coefs_optpose4pt_v2(data)
     C([4,9]) = u(13);
     C(24) = u(16);
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

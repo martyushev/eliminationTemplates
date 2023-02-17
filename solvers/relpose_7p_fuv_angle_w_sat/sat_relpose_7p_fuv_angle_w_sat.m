@@ -20,6 +20,6 @@ function C = sat_relpose_7p_fuv_angle_w_sat(B)
           0 0 0 0 0 0 1 0 1 0 0 0 C(6,6) C(6,9) C(6,10) 0 1 0 C(6,18) C(6,19) C(6,20) C(6,23);
           0 0 0 0 0 0 0 1 C(7,11) C(7,13) 0 C(7,7) C(7,6) C(7,9) C(7,10) C(7,8) C(7,16) C(7,17) C(7,18) C(7,19) C(7,20) C(7,23)];
 
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end

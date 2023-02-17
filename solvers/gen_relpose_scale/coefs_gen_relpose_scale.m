@@ -905,6 +905,6 @@ function C = coefs_gen_relpose_scale(data)
         C(n,165) = -A(133)*M(4)+A(137)*M(3)-A(21)*M(2)+A(1)*M(1);
     end
   
-    C = C./repmat(sqrt(sum(C.^2,2)),1,size(C,2));
+    C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
 end
