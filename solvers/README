@@ -77,7 +77,7 @@ Folders (minimal problems):
 48) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
 49*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders (1-dimensional formulation)
 50*) toa_46_w_sat: time-of-arrival self-calibration problem for 6 receivers and 4 senders (0-dimensional formulation)
-51*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (1-dimensional formulation)
+51*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (2-dimensional formulation)
 
 
 _common: auxiliary functions that are common for several problems

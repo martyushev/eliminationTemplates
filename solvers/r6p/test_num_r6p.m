@@ -10,16 +10,16 @@ for i = 1:N
     try
         C = coefs_r6p(data); % compute coefficients of polynomial system
         tic;
-        %S = red_66x92_colpiv_r6p(C); % solve polynomial system
-        S = std_120x140_colpiv_r6p(C);
+        S = red_66x92_colpiv_r6p(C); % solve polynomial system
+        %S = std_120x140_colpiv_r6p(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(u,v,w,x,y,z) [x*u,x*v,x*w,y*u,y*v,y*w,u*z,v*z,w*z,u,v,w,x,y,z,1];
-    [err,k,kr] = numerr(C,mon,S,20); % compute backward errors
+    mon = @(u,v,w,x,y,z) [u*x,v*x,w*x,u*y,v*y,w*y,u*z,v*z,w*z,u,v,w,x,y,z,1];
+    [err,k,kr] = numerr(C,mon,S,20); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];

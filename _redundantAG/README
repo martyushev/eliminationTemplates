@@ -14,13 +14,21 @@ How to use:
 1) Formulating minimal problems as polynomial systems
  1.1) See examples in ../problems/F_prob.mw
 
-2) Finding elimination templates
+2) Finding, reducing and saving elimination templates
  2.1) Open templateFinder.mw
  2.2) Pick minimal problem (prob := "problem_name")
  2.3) Configure parameters (see comments in templateFinder.mw)
  2.4) Enter templateFinder(prob, opts):
+  - can be interrupted at any time
+  - templates are saved to the global variable TD
+  - templates are not saved automatically to a file
+ 2.5) Select the template for reduction (td := TD[i])
+ 2.6) Enter templateReduction(td, opts2):
+  - can be interrupted at any time
+  - the reduced template is saved to the global variable td1
+ 2.7) To save the reduced template to a file enter saveTemplate(prob, td1):
 
-3) Generating Matlab solver
+3) Generating Matlab solver and/or related files
  3.1) Open solverGenerator.mw
  3.2) Pick minimal problem (prob := "problem_name")
  3.3) Configure parameters (see comments in solverGenerator.mw)
@@ -29,4 +37,4 @@ How to use:
 
 Folders:
 
-1) optim: best templates found
+1) templates: saved templates

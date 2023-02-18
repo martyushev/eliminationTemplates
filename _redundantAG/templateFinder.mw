@@ -94,7 +94,7 @@ interface(rtablesize=3):</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L5102" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../../redundantAG.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;redundantAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5178" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -102,19 +102,19 @@ interface(rtablesize=3):</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5119" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toy&quot;:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toy&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
 
 opts :=
-sparsePols = [], ### list of natural numbers, e.g. [1,2], shifts of polynomials from sparsePols are reduced by Schur complement
+sparsePols = [], ### list of natural numbers, e.g. [1,2], polynomials from sparsePols must have constant coefficients for all instances
 primeNumber = 40009, ### sufficiently large prime number (number of elements in finite field)
 sym = 0, ### 0/1 - set to 1 for potentially symmetric systems (slower), otherwise set to 0
 iVars = [], ### list of integers, e.g. [1,2] or [-1], variables from iVars are replaced with their reciprocals in the polynomial system
 guidVars = [], ### list of integers, e.g. [1,2] or [-1], variables from guidVars guide polynomial shift construction, [] = all variables
-delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from initial system
-manShifts = [], ### manual list of shifts
+delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from the initial system
+manShifts = [], ### manual list of shifts, can be copied from templates/t_prob
 manActMons = [], ### manual list of action monomials, e.g. [x] or [1/y, z/x]
-sActMons = 2, ### 1/2/3 - action monomial selection strategy
-dChange = 10, ### &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value
+sActMons = 3, ### 1/2/3/4 - action monomials to use
+dChange = 0, ### &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)
 sShifts = 1: ### -1/0/1 - shift selection strategy</Text-field>
 </Input>
 </Group>
@@ -123,7 +123,8 @@ sShifts = 1: ### -1/0/1 - shift selection strategy</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateFinder(prob, opts):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### can be interrupted at any time, templates are saved to the global variable TD
+templateFinder(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:        3
 Polynomials removed:          []
@@ -133,25 +134,37 @@ Variables:                    [x, y, z]
 Degrees:                      [2, 2, 3]
 Degrees by vars:              [[1, 1, 1], [2, 2, 2], [3, 3, 2]]
 
-Action monomials: [1/x, 1/y, 1/z, x, y, z]
+Action monomials:	[1/x, 1/y, 1/z, x, y, z]
 
-#cols-#rows	#rows	runtime
----------------------------------------
-7		3	0
-17		12	0.031
-23		29	0.016
+d		#cols-#rows	#rows		time
+------------------------------------------------------
+0		7		3		0.016
+1		8		4		0.015
+2		10		5		0.016
+3		10		6		0
+4		10		7		0
+5		10		8		0.016
+6		11		9		0.016
+7		12		10		0.047
+8		12		11		0.031
+9		12		12		0.016
+10		11		15		0.047
+11		11		16		0.032
+12		12		17		0.047
+13		12		19		0.078
+14		11		21		0.078
 
-Template #1 found
-action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
-1/y		[24, 5, 8]	[15, 6, 16]			[29, 37]
+Template #1:
+action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
+1/y		[15, 5, 8]		[12, 6, 10]			[20, 28]
 
 
-Template #2 found
-action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
-y		[24, 5, 8]	[15, 6, 16]			[29, 37]
+Template #2:
+action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
+y		[15, 5, 9]		[7, 6, 16]			[20, 29]
 
 
-Total time:	0.5
+Total time:	0.922
 </Text-field>
 </Output>
 </Group>
@@ -161,8 +174,7 @@ Total time:	0.5
 </Group>
 <Group view="code" hide-input="false" labelreference="L5265" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">opts2 :=
-nRootTol = 0, ### &gt;= 0 - allow to increase the number of roots by this value in the reduction step
-showData = 1: ### 0/1 - show intermediate results while reduction, set to 0 for large templates (faster)</Text-field>
+nRootTol = 0: ### &gt;= 0 - allow to increase the number of roots by this value while reduction</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5269" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -170,46 +182,38 @@ showData = 1: ### 0/1 - show intermediate results while reduction, set to 0 for 
 </Input>
 </Group>
 <Group view="code" labelreference="L5319" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">td := TD[1]: ### select the template for reduction</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">td := TD[1]: ### select the template for reduction
+#td := readTemplate(prob)[14]: ### uncomment to read the saved template for reduction</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5099" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateReduction(prob, td, opts, opts2);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### can be interrupted at any time, the reduced template is saved to the global variable td1
+templateReduction(td, opts2);</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
-action var	[nE, nR, nP]	[nE, nR, nP] (colpiv)		size
-------------------------------------------------------------------------
-1/y		[23, 5, 8]	[14, 6, 16]			[28, 36]
-1/y		[22, 5, 8]	[19, 6, 10]			[27, 35]
+action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
+----------------------------------------------------------------------------------
+1/y		[15, 5, 8]		[12, 6, 10]			[20, 28]
 10% completed
-1/y		[21, 5, 8]	[18, 6, 10]			[26, 34]
 20% completed
-1/y		[20, 5, 8]	[17, 6, 10]			[25, 33]
+1/y		[14, 5, 8]		[11, 6, 10]			[19, 27]
 30% completed
-1/y		[19, 5, 8]	[16, 6, 10]			[24, 32]
-1/y		[18, 5, 8]	[15, 6, 10]			[23, 31]
+1/y		[13, 5, 8]		[10, 6, 10]			[18, 26]
+1/y		[12, 5, 8]		[9, 6, 10]			[17, 25]
 40% completed
-1/y		[17, 5, 8]	[14, 6, 10]			[22, 30]
-1/y		[16, 5, 8]	[13, 6, 10]			[21, 29]
 50% completed
-1/y		[15, 5, 8]	[12, 6, 10]			[20, 28]
-1/y		[14, 5, 8]	[11, 6, 10]			[19, 27]
-1/y		[13, 5, 8]	[10, 6, 10]			[18, 26]
+1/y		[11, 5, 8]		[8, 6, 10]			[16, 24]
+1/y		[10, 5, 8]		[7, 6, 10]			[15, 23]
 60% completed
-1/y		[12, 5, 8]	[9, 6, 10]			[17, 25]
+1/y		[9, 5, 8]		[6, 6, 10]			[14, 22]
 70% completed
-80% completed
-1/y		[11, 5, 8]	[8, 6, 10]			[16, 24]
-1/y		[10, 5, 8]	[7, 6, 10]			[15, 23]
-90% completed
-1/y		[9, 5, 8]	[6, 6, 10]			[14, 22]
 
-Total time:	1.141
+Total time:	0.468
 </Text-field>
 </Output>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5234" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#td1; ### uncomment to see the template data</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5267" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -221,14 +225,14 @@ Total time:	1.141
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5222" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">saveTemplate(prob, td1, opts):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">saveTemplate(prob, td1):</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5200" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5280" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5280" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
