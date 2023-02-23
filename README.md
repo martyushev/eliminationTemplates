@@ -1,5 +1,7 @@
 # eliminationTemplates
-Elimination template generators for solving polynomial systems and related problems and solvers in geometric computer vision
+Elimination template generators for solving polynomial systems and related problems and solvers in geometric computer vision published in
+
+Evgeniy Martyushev, Jana Vrablikova, Tomas Pajdla. Optimizing Elimination Templates by Greedy Parameter Search. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2022, pp. 15754-15764. [https://openaccess.thecvf.com/content/CVPR2022/html/Martyushev_Optimizing_Elimination_Templates_by_Greedy_Parameter_Search_CVPR_2022_paper.html]
 
 Folders:
 
