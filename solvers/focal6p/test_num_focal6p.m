@@ -1,7 +1,8 @@
 rng(23);
 N = 10000;
+d = 15;
 
-stats = struct('problem','focal6p','tm',[],'err',[],'k',[],'kr',[]);
+stats = struct('problem','focal6p','tm',[],'err',[],'k',[],'kr',[],'N',N);
 
 for i = 1:N
 
@@ -10,23 +11,19 @@ for i = 1:N
     try
         C = coefs_focal6p(data); % compute coefficients of polynomial system
         tic;
-        %S = red_11x26_focal6p(C); % solve polynomial system
-        S = nstd_11x26_focal6p(C);
+        S = red_11x26_colpiv_focal6p(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(g,u,v) [g^2*u^2,g*u^3,g^2*u*v,g*u^2*v,g^2*v^2,v^2*u*g,v^3*g,u*g^2,u^2*g,u^3,v*g^2,g*u*v,v*u^2,g*v^2,v^2*u,v^3,g^2,g*u,u^2,g*v,v*u,v^2,g,u,v,1];
-    [err,k,kr] = numerr(C,mon,S,15); % compute backward errors
+    mon = @(x,y,z) [z*x^2*y^2,x^2*z^2*y,x^2*z^3,y^3*x,z*x^2*y,z*x*y^2,z^2*x^2,x*z^2*y,x*z^3,x*y^2,y^3,z*x^2,x*y*z,z*y^2,z^2*x,z^2*y,z^3,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
+    [err,k,kr] = numerr(C,mon,S,d); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];
     stats.kr = [stats.kr kr];
 
 end
 
-folder = fileparts(which('add_all.m'));
-save(strcat(folder,'\_results\stats_',stats.problem,'.mat'),'stats');
-
-disp_stats(stats,N);
+disp_stats(stats,1);

@@ -109,13 +109,13 @@ sparsePols = [], ### list of natural numbers, e.g. [1,2], polynomials from spars
 primeNumber = 40009, ### sufficiently large prime number (number of elements in finite field)
 sym = 0, ### 0/1 - set to 1 for potentially symmetric systems (slower), otherwise set to 0
 iVars = [], ### list of integers, e.g. [1,2] or [-1], variables from iVars are replaced with their reciprocals in the polynomial system
-guidVars = [], ### list of integers, e.g. [1,2] or [-1], variables from guidVars guide polynomial shift construction, [] = all variables
+guidVars = [1,2,3], ### list of integers, e.g. [1,2] or [-1], variables from guidVars guide polynomial shift construction, [] = all variables
 delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from the initial system
 manShifts = [], ### manual list of shifts, can be copied from templates/t_prob
+sShifts = 1, ### -1/0/1 - shift selection strategy
 manActMons = [], ### manual list of action monomials, e.g. [x] or [1/y, z/x]
-sActMons = 3, ### 1/2/3/4 - action monomials to use
-dChange = 0, ### &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)
-sShifts = 1: ### -1/0/1 - shift selection strategy</Text-field>
+sActMons = 3, ### 1/2/3/4 - action monomial selection strategy
+dChange = 100: ### &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5230" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -127,6 +127,7 @@ sShifts = 1: ### -1/0/1 - shift selection strategy</Text-field>
 templateFinder(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:        3
+Sparse constant polynomials:  []
 Polynomials removed:          []
 Number of monomials:          10
 Number of roots:              8
@@ -138,33 +139,21 @@ Action monomials:	[1/x, 1/y, 1/z, x, y, z]
 
 d		#cols-#rows	#rows		time
 ------------------------------------------------------
-0		7		3		0.016
-1		8		4		0.015
-2		10		5		0.016
-3		10		6		0
-4		10		7		0
-5		10		8		0.016
-6		11		9		0.016
-7		12		10		0.047
-8		12		11		0.031
-9		12		12		0.016
-10		11		15		0.047
-11		11		16		0.032
-12		12		17		0.047
-13		12		19		0.078
-14		11		21		0.078
+0		7		3		0.015
+1		17		12		0
+2		23		29		0
 
 Template #1:
 action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
-1/y		[15, 5, 8]		[12, 6, 10]			[20, 28]
+1/y		[24, 5, 8]		[15, 6, 16]			[29, 37]
 
 
 Template #2:
 action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
-y		[15, 5, 9]		[7, 6, 16]			[20, 29]
+y		[24, 5, 8]		[15, 6, 16]			[29, 37]
 
 
-Total time:	0.922
+Total time:	0.657
 </Text-field>
 </Output>
 </Group>
@@ -193,22 +182,32 @@ templateReduction(td, opts2);</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action mon	[nE, nR, nP]		[nE, nR, nP] (colpiv)		size
 ----------------------------------------------------------------------------------
-1/y		[15, 5, 8]		[12, 6, 10]			[20, 28]
+1/y		[23, 5, 8]		[14, 6, 16]			[28, 36]
+1/y		[22, 5, 8]		[19, 6, 10]			[27, 35]
 10% completed
+1/y		[21, 5, 8]		[18, 6, 10]			[26, 34]
 20% completed
-1/y		[14, 5, 8]		[11, 6, 10]			[19, 27]
+1/y		[20, 5, 8]		[17, 6, 10]			[25, 33]
 30% completed
-1/y		[13, 5, 8]		[10, 6, 10]			[18, 26]
-1/y		[12, 5, 8]		[9, 6, 10]			[17, 25]
+1/y		[19, 5, 8]		[16, 6, 10]			[24, 32]
+1/y		[18, 5, 8]		[15, 6, 10]			[23, 31]
 40% completed
+1/y		[17, 5, 8]		[14, 6, 10]			[22, 30]
+1/y		[16, 5, 8]		[13, 6, 10]			[21, 29]
 50% completed
+1/y		[15, 5, 8]		[12, 6, 10]			[20, 28]
+1/y		[14, 5, 8]		[11, 6, 10]			[19, 27]
+1/y		[13, 5, 8]		[10, 6, 10]			[18, 26]
+60% completed
+1/y		[12, 5, 8]		[9, 6, 10]			[17, 25]
+70% completed
+80% completed
 1/y		[11, 5, 8]		[8, 6, 10]			[16, 24]
 1/y		[10, 5, 8]		[7, 6, 10]			[15, 23]
-60% completed
+90% completed
 1/y		[9, 5, 8]		[6, 6, 10]			[14, 22]
-70% completed
 
-Total time:	0.468
+Total time:	1.547
 </Text-field>
 </Output>
 </Group>
@@ -269,7 +268,7 @@ Total time:	0.468
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLyUrZXhlY3V0YWJsZUdRJmZhbHNlRicvRjNRJ25vcm1hbEYn">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>
