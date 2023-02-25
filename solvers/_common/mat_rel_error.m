@@ -1,6 +1,6 @@
 % 3x3 matrix relative error
 function [errE,c] = mat_rel_error(E,E0)
-    errE = 1000;
+    errE = inf;
     c = 0;
     e0 = E0(:)/norm(E0,'fro');
     for i = 1:size(E,2)
