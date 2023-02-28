@@ -98,10 +98,10 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toa_55_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;5p&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
 
 opts :=
-basis = std, ### quotient space bases to use
+basis = nstd, ### quotient space bases to use
 # std - standard bases associated with Grobner bases and change matrices (see cm_prob files in folder /cm for pre-computed change matrices)
 # nstd - non-standard bases (see b_prob files in folder /bases for pre-computed non-standard bases)
 prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
@@ -117,14 +117,133 @@ filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to b
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 6 polynomials
-Variables: [u, v, w, x, y, z]; degrees: [3, 3, 3, 3, 4, 4]; number of roots: 42
-152 change matrices loaded
-Smaller template found: 10650,y
-Smaller template found: 7055,w
-Smaller template found: 4170,u
-Smaller template found: 3893,y
-122 quotient space bases removed
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 10 polynomials
+Variables: [x, y, z]; degrees: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3]; number of roots: 10
+200 quotient space bases loaded
+160 quotient space bases removed
+Smaller or sparser template found: [20,30],.333,x,1
+1%,[20,30],.333,x,1
+2%,[20,30],.333,y,1
+3%,[20,30],.333,z,1
+3%,[20,30],.333,x,2
+4%,[20,30],.333,y,2
+5%,[20,30],.333,z,2
+6%,[20,30],.333,x,3
+7%,[20,30],.333,y,3
+8%,[20,30],.333,z,3
+8%,[20,30],.333,x,4
+9%,[20,30],.333,y,4
+10%,[20,30],.333,z,4
+11%,[20,30],.333,x,5
+12%,[20,30],.333,y,5
+13%,[20,30],.333,z,5
+13%,[20,30],.333,x,6
+14%,[20,30],.333,y,6
+15%,[20,30],.333,z,6
+16%,[20,30],.333,x,7
+17%,[20,30],.333,y,7
+18%,[20,30],.333,z,7
+18%,[20,30],.333,x,8
+19%,[20,30],.333,y,8
+20%,[20,30],.333,z,8
+Smaller or sparser template found: [10,20],0.,x,9
+21%,[10,20],0.,x,9
+22%,[10,20],0.,y,9
+23%,[10,20],0.,z,9
+23%,[20,30],.333,x,10
+24%,[20,30],.333,y,10
+25%,[20,30],.333,z,10
+26%,[20,30],.333,x,11
+27%,[20,30],.333,y,11
+28%,[20,30],.333,z,11
+28%,[20,30],.333,x,12
+29%,[20,30],.333,y,12
+30%,[20,30],.333,z,12
+31%,[20,30],.333,x,13
+32%,[20,30],.333,y,13
+33%,[20,30],.333,z,13
+33%,[20,30],.333,x,14
+34%,[20,30],.333,y,14
+35%,[20,30],.333,z,14
+36%,[20,30],.333,x,15
+37%,[20,30],.333,y,15
+38%,[20,30],.333,z,15
+38%,[20,30],.333,x,16
+39%,[20,30],.333,y,16
+40%,[20,30],.333,z,16
+41%,[20,30],.333,x,17
+42%,[20,30],.333,y,17
+43%,[20,30],.333,z,17
+43%,[20,30],.333,x,18
+44%,[20,30],.333,y,18
+45%,[20,30],.333,z,18
+46%,[20,30],.333,x,19
+47%,[20,30],.333,y,19
+48%,[20,30],.333,z,19
+48%,[20,30],.333,x,20
+49%,[20,30],.333,y,20
+50%,[20,30],.333,z,20
+51%,[20,30],.333,x,21
+52%,[20,30],.333,y,21
+53%,[20,30],.333,z,21
+53%,[20,30],.333,x,22
+54%,[20,30],.333,y,22
+55%,[20,30],.333,z,22
+56%,[20,30],.333,x,23
+57%,[20,30],.333,y,23
+58%,[20,30],.333,z,23
+58%,[20,30],.333,x,24
+59%,[20,30],.333,y,24
+60%,[20,30],.333,z,24
+61%,[20,30],.333,x,25
+62%,[20,30],.333,y,25
+63%,[20,30],.333,z,25
+63%,[20,30],.333,x,26
+64%,[20,30],.333,y,26
+65%,[20,30],.333,z,26
+66%,[20,30],.333,x,27
+67%,[20,30],.333,y,27
+68%,[20,30],.333,z,27
+68%,[20,30],.333,x,28
+69%,[20,30],.333,y,28
+70%,[20,30],.333,z,28
+71%,[20,30],.333,x,29
+72%,[20,30],.333,y,29
+73%,[20,30],.333,z,29
+73%,[20,30],.333,x,30
+74%,[20,30],.333,y,30
+75%,[20,30],.333,z,30
+76%,[20,30],.333,x,31
+77%,[20,30],.333,y,31
+78%,[20,30],.333,z,31
+78%,[20,30],.333,x,32
+79%,[20,30],.333,y,32
+80%,[20,30],.333,z,32
+81%,[20,30],.333,x,33
+82%,[20,30],.333,y,33
+83%,[20,30],.333,z,33
+83%,[20,30],.333,x,34
+84%,[20,30],.333,y,34
+85%,[20,30],.333,z,34
+86%,[20,30],.333,x,35
+87%,[20,30],.333,y,35
+88%,[20,30],.333,z,35
+88%,[20,30],.333,x,36
+89%,[20,30],.333,y,36
+90%,[20,30],.333,z,36
+91%,[20,30],.333,x,37
+92%,[20,30],.333,y,37
+93%,[20,30],.333,z,37
+93%,[20,30],.333,x,38
+94%,[20,30],.333,y,38
+95%,[20,30],.333,z,38
+96%,[20,30],.333,x,39
+97%,[20,30],.333,y,39
+98%,[20,30],.333,z,39
+98%,[20,30],.333,x,40
+99%,[20,30],.333,y,40
+100%,[20,30],.333,z,40
+Best template: [10,20], 0.
 </Text-field>
 </Output>
 </Group>
@@ -169,7 +288,7 @@ Smaller template found: 3893,y
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLyUrZXhlY3V0YWJsZUdRJmZhbHNlRicvRjNRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

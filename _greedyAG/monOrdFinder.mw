@@ -4,7 +4,7 @@
 <Label-Scheme value="2" prefix=""/>
 <View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
 </View-Properties>
-<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
+<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="worksheet" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
 <Styles>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -98,12 +98,12 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toa_55_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;5p&quot;: ### pick minimal problem (see F_prob.m files in folder /problems)
 
 opts :=
 prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
-number_of_weights = 200, ### number of random weight vectors to be generated
-rand_range = [300, 700], ### interval from which random weights are taken
+number_of_weights = 500, ### number of random weight vectors to be generated
+rand_range = [200, 800], ### interval from which random weights are taken
 mode = WRITE: ### APPEND - continue existing file, WRITE - start new file</Text-field>
 </Input>
 </Group>
@@ -136,207 +136,43 @@ writeGfan(prob, opts);</Text-field>
 writeWeights(prob, opts);</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Gfan file not found
-Generating 200 random weight vectors
+Generating 500 random weight vectors
+0% completed
+0% completed
+1% completed
+1% completed
+1% completed
 1% completed
 1% completed
 2% completed
 2% completed
+2% completed
+2% completed
+2% completed
+3% completed
+3% completed
+3% completed
 3% completed
 3% completed
 4% completed
 4% completed
+4% completed
+4% completed
+4% completed
+5% completed
+5% completed
+5% completed
 5% completed
 5% completed
 6% completed
 6% completed
+6% completed
+6% completed
+6% completed
 7% completed
 7% completed
-8% completed
-8% completed
-9% completed
-9% completed
-10% completed
-10% completed
-11% completed
-11% completed
-12% completed
-12% completed
-13% completed
-13% completed
-14% completed
-14% completed
-15% completed
-15% completed
-16% completed
-16% completed
-17% completed
-17% completed
-18% completed
-18% completed
-19% completed
-19% completed
-20% completed
-20% completed
-21% completed
-21% completed
-22% completed
-22% completed
-23% completed
-23% completed
-24% completed
-24% completed
-25% completed
-25% completed
-26% completed
-26% completed
-27% completed
-27% completed
-28% completed
-28% completed
-29% completed
-29% completed
-30% completed
-30% completed
-31% completed
-31% completed
-32% completed
-32% completed
-33% completed
-33% completed
-34% completed
-34% completed
-35% completed
-35% completed
-36% completed
-36% completed
-37% completed
-37% completed
-38% completed
-38% completed
-39% completed
-39% completed
-40% completed
-40% completed
-41% completed
-41% completed
-42% completed
-42% completed
-43% completed
-43% completed
-44% completed
-44% completed
-45% completed
-45% completed
-46% completed
-46% completed
-47% completed
-47% completed
-48% completed
-48% completed
-49% completed
-49% completed
-50% completed
-50% completed
-51% completed
-51% completed
-52% completed
-52% completed
-53% completed
-53% completed
-54% completed
-54% completed
-55% completed
-55% completed
-56% completed
-56% completed
-57% completed
-57% completed
-58% completed
-58% completed
-59% completed
-59% completed
-60% completed
-60% completed
-61% completed
-61% completed
-62% completed
-62% completed
-63% completed
-63% completed
-64% completed
-64% completed
-65% completed
-65% completed
-66% completed
-66% completed
-67% completed
-67% completed
-68% completed
-68% completed
-69% completed
-69% completed
-70% completed
-70% completed
-71% completed
-71% completed
-72% completed
-72% completed
-73% completed
-73% completed
-74% completed
-74% completed
-75% completed
-75% completed
-76% completed
-76% completed
-77% completed
-77% completed
-78% completed
-78% completed
-79% completed
-79% completed
-80% completed
-80% completed
-81% completed
-81% completed
-82% completed
-82% completed
-83% completed
-83% completed
-84% completed
-84% completed
-85% completed
-85% completed
-86% completed
-86% completed
-87% completed
-87% completed
-88% completed
-88% completed
-89% completed
-89% completed
-90% completed
-90% completed
-91% completed
-91% completed
-92% completed
-92% completed
-93% completed
-93% completed
-94% completed
-94% completed
-95% completed
-95% completed
-96% completed
-96% completed
-97% completed
-97% completed
-98% completed
-98% completed
-99% completed
-99% completed
-100% completed
-100% completed
+7% completed
+7% completed
 </Text-field>
 </Output>
 </Group>
@@ -348,7 +184,7 @@ Generating 200 random weight vectors
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### write data for computing change matrices in Macaulay2
 writeCM(prob, opts):</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">200 weight vectors loaded
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">36 weight vectors loaded
 </Text-field>
 </Output>
 </Group>
@@ -359,7 +195,7 @@ writeCM(prob, opts):</Text-field>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4773" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### 1. Move /cm/icm to a folder where Macaulay2 can read it
 ### 2. Run Macaulay2 and type load &quot;icm&quot;;
-### 3. Move cm_prob to /cm</Text-field>
+### 3. Move cm_prob back to /cm</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4774" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

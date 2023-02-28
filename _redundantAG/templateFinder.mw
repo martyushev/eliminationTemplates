@@ -153,7 +153,7 @@ action mon.          [#E, #R, #B]          [#E, #R, #P] (colpiv)          size
 y                    [24, 5, 8]            [15, 6, 16]                    [29, 37]
 
 
-Total time: 0.469
+Total time: 0.485
 </Text-field>
 </Output>
 </Group>
@@ -207,7 +207,7 @@ action mon.          [#E, #R, #B]          [#E, #R, #P] (colpiv)          size
 90% completed
 1/y                  [9, 5, 8]             [6, 6, 10]                     [14, 22]
 
-Total time: 1.093
+Total time: 1
 </Text-field>
 </Output>
 </Group>
