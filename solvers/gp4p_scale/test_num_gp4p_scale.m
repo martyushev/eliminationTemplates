@@ -12,6 +12,7 @@ for i = 1:N
         C = coefs_gp4p_scale(data); % compute coefficients of polynomial system
         tic;
         S = red_40x52_colpiv_gp4p_scale(C); % solve polynomial system
+        %S = std_47x55_colpiv_gp4p_scale(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

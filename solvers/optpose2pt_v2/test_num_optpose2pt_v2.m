@@ -1,5 +1,5 @@
 rng(23);
-N = 10000;
+N = 10;
 d = 24;
 
 stats = struct('problem','optpose2pt_v2','tm',[],'err',[],'k',[],'kr',[],'N',N);
@@ -11,7 +11,7 @@ for i = 1:N
     try
         C = coefs_optpose2pt_v2(data); % compute coefficients of polynomial system
         tic;
-        S = red_87x120_colpiv_optpose2pt_v2(C); % solve polynomial system
+        S = red_184x208_colpiv_optpose2pt_v2(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
