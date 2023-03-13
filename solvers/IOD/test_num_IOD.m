@@ -1,5 +1,5 @@
 rng(23);
-N = 1000;
+N = 10000;
 d = 66;
 
 stats = struct('problem','IOD','tm',[],'err',[],'k',[],'kr',[],'N',N);
@@ -11,7 +11,7 @@ for i = 1:N
     try
         C = coefs_IOD(data); % compute coefficients of polynomial system
         tic;
-        S = red_635x717_colpiv_IOD(C); % solve polynomial system
+        S = red_481x561_colpiv_IOD(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
