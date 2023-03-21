@@ -1,5 +1,5 @@
 % Input: coefficient matrix C of size 20x99
-% Output: solution matrix S of size 6x19
+% Output: solution matrix S of size 6x15
 
 function S = red_115x134_colpiv_hyb13f_depth_laurent(C)
 
@@ -26,6 +26,10 @@ function S = red_115x134_colpiv_hyb13f_depth_laurent(C)
     T = getT(M,P1(1:end-19),P1(end-18:end),P2);
 
     [V,D] = eig(T);
+    [f,I] = sort(diag(D).','descend');
+    V = V(:,I(1:15)); % remove last 4 smallest eigenvalues
+    f = f(1:15);
+    
     S([2,3],:) = V([16,17],:)./repmat(V(19,:),2,1);
     S([1,4],:) = repmat(V(19,:),2,1)./V([15,18],:);
 
@@ -33,8 +37,7 @@ function S = red_115x134_colpiv_hyb13f_depth_laurent(C)
     a24 = S(2,:);
     a34 = S(3,:);
     b1 = S(4,:);
-    f = diag(D).';
-    a4 = sqrt(-(C(1140)./a34)./(C([40,80,120,180,220,260])*[a34; ones(1,19); 1./a34; a34.*f; f; f./a34]));
+    a4 = sqrt(-(C(1140)./a34)./(C([40,80,120,180,220,260])*[a34; ones(1,15); 1./a34; a34.*f; f; f./a34]));
     S = [a14.*a4; a24.*a4; a34.*a4; a4; b1; 1./f];
     
     I = ~isnan(S(1,:)) & ~isinf(S(1,:));
