@@ -118,21 +118,13 @@ cross := v-&gt;&lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4108" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getRotMatrix := v-&gt;map(factor, (LinearAlgebra[IdentityMatrix](3)-cross(v)).LinearAlgebra[MatrixInverse](LinearAlgebra[IdentityMatrix](3)+cross(v))):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### get rotation matrix by the Cayley transform
+getRotMatrix := v-&gt;&lt;v[1]^2-v[2]^2-v[3]^2+1, 2*(v[1]*v[2]+v[3]), 2*(v[1]*v[3]-v[2]); 2*(v[1]*v[2]-v[3]), -v[1]^2+v[2]^2-v[3]^2+1, 2*(v[2]*v[3]+v[1]); 2*(v[1]*v[3]+v[2]), 2*(v[2]*v[3]-v[1]), -v[1]^2-v[2]^2+v[3]^2+1&gt;/~(v[1]^2+v[2]^2+v[3]^2+1):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4118" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#### compute fundamental matrix by 2 camera matrices
-getFundMatrix := proc(P1::Matrix, P2::Matrix)
-    local F, i, j:
-    F := Matrix(3):
-    for i from 1 to 3 do
-        for j from 1 to 3 do
-            F[j, i] := (-1)^(i+j)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, i), LinearAlgebra[DeleteRow](P2, j)&gt;):
-        end do:
-    end do:
-    return F:
-end proc:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#### compute fundamental matrix from 2 camera matrices
+getFundMatrix := (P1, P2)-&gt;Matrix(3, (j,i)-&gt;(-1)^(i+j)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, i), LinearAlgebra[DeleteRow](P2, j)&gt;)):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

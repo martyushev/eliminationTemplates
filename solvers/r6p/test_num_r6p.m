@@ -11,7 +11,8 @@ for i = 1:N
     try
         C = coefs_r6p(data); % compute coefficients of polynomial system
         tic;
-        S = red_66x92_colpiv_r6p(C); % solve polynomial system
+        %S = red_66x92_colpiv_r6p(C); % solve polynomial system
+        S = red_61x87_r6p(C);
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
