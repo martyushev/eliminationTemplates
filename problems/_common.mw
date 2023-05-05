@@ -128,31 +128,9 @@ getFundMatrix := (P1, P2)-&gt;Matrix(3, (j,i)-&gt;(-1)^(i+j)*LinearAlgebra[Deter
 </Input>
 </Group>
 <Group view="code" labelreference="L4129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quat2rot := q-&gt;&lt;&lt;q[1]^2+q[2]^2-q[3]^2-q[4]^2|2*q[2]*q[3]-2*q[1]*q[4]|2*q[1]*q[3]+2*q[2]*q[4]&gt;, 
-                &lt;2*q[1]*q[4]+2*q[2]*q[3]|q[1]^2-q[2]^2+q[3]^2-q[4]^2|2*q[3]*q[4]-2*q[1]*q[2]&gt;,
-                &lt;2*q[2]*q[4]-2*q[1]*q[3]|2*q[1]*q[2]+2*q[3]*q[4]|q[1]^2-q[2]^2-q[3]^2+q[4]^2&gt;&gt;:</Text-field>
-</Input>
-</Group>
-<Group view="code" labelreference="L4126" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">adj := proc(A::Matrix)
-    local n := op([1,1], A), d := [$ 1..n-1], B, AA, j, k:
-    B := A[1,1]*LinearAlgebra[ZeroMatrix](n):
-    AA := &lt;&lt;A|A&gt;, &lt;A|A&gt;&gt;^+:
-    if n mod 2 = 1 then
-        for j from 1 to n do
-            for k from 1 to n do
-                B[j,k] := LinearAlgebra[Determinant](AA[d+~j,d+~k]):
-            end do:
-        end do:
-    else
-        for j from 1 to n do
-            for k from 1 to n do
-                B[j,k] := (-1)^(j+k)*LinearAlgebra[Determinant](AA[d+~j,d+~k]):
-            end do:
-        end do:
-    end if:
-    return B:
-end proc:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quat2rot := q-&gt;&lt;q[1]^2+q[2]^2-q[3]^2-q[4]^2,2*q[2]*q[3]-2*q[1]*q[4],2*q[1]*q[3]+2*q[2]*q[4]; 
+                2*q[1]*q[4]+2*q[2]*q[3],q[1]^2-q[2]^2+q[3]^2-q[4]^2,2*q[3]*q[4]-2*q[1]*q[2];
+                2*q[2]*q[4]-2*q[1]*q[3],2*q[1]*q[2]+2*q[3]*q[4],q[1]^2-q[2]^2-q[3]^2+q[4]^2&gt;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -233,7 +211,6 @@ cross,
 getRotMatrix,
 getFundMatrix,
 quat2rot,
-adj,
 srt,
 supp,
 Supp,

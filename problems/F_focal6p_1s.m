@@ -48,10 +48,10 @@ hlF1Fchl-F]]m6%FchlFchl*$%"fGF_[m>8,-I(algsubsG6$F]jlF^jl6$/*$F[am!"#F%-I".G6$F
 raG6$F]jlF^jl6#I&TraceG6$F]jlF^jl6#-Ffam6%Fh_mF]amFabmF1Fh_mF1F_[m>8.7$&-%(conv
 ertG6$F\bm%%listGF]fl-&Febm6#%,DeterminantG6#Fh_m>8/-Fd\m6$%'expandGF^cm@$FahlO
 F[dm>80-%&minusG6$-%'indetsG6#F[dm-Fgdm6#Fehl>6$8182-%,poly2matrixG6$F[dmFbdm>8
-3-%$srtG6$F^em-%%tdegG6#&FbdmF]fl6%7#-%/permuteColumnsG6%F]emF^emFcemFhglFiglF]
-flF]flF]fl6#Fchl657'Fh[mF_[m"#;F_^mF[\m7'Fh[mF_[mFfn"#KF]\m7'Fh[mF_[mFfnF_hl"#X
-7'Fh[mF_[mFd^m"#bF]\m7'Fh[mF_[mFd^m"#$*F]\m7'Fh[mF_[mFfnF^_mF]\m7'Fh[mF_[mFfn"#
-"*F]\m7'Fh[mF_[mFfn"#DF]\m7'Fh[mF_[mFfn"#IF]\m7'Fh[mF_[mFfn"#NF]\m7'Fh[mF_[mFfn
-"#fF]\m7'Fh[mF_[mFfn"#gF]\m7'Fh[mF_[mFfn"#CF]\m7'Fh[mF_[mFfn"#RFgfm7'Fh[mF_[m"#
-A"#J"#_7'Fh[mF_[mFfn"#QF]\m7'Fh[mF_[mFfnF[\mF]\m7'Fh[mF_[mFfnF_hmF]\m7'Fh[mF_[m
-Ffn"#ZF_hmF]fl
+3-%$srtG6$F^em-%%tdegG6#&FbdmF]fl6&7#-%/permuteColumnsG6%F]emF^emFcemFcemFhglFi
+glF]flF]flF]fl6#Fchl657'Fh[mF_[m"#;F_^mF[\m7'Fh[mF_[mFfn"#KF]\m7'Fh[mF_[mFfnF_h
+l"#X7'Fh[mF_[mFd^m"#bF]\m7'Fh[mF_[mFd^m"#$*F]\m7'Fh[mF_[mFfnF^_mF]\m7'Fh[mF_[mF
+fn"#"*F]\m7'Fh[mF_[mFfn"#DF]\m7'Fh[mF_[mFfn"#IF]\m7'Fh[mF_[mFfn"#NF]\m7'Fh[mF_[
+mFfn"#fF]\m7'Fh[mF_[mFfn"#gF]\m7'Fh[mF_[mFfn"#CF]\m7'Fh[mF_[mFfn"#RFgfm7'Fh[mF_
+[m"#A"#J"#_7'Fh[mF_[mFfn"#QF]\m7'Fh[mF_[mFfnF[\mF]\m7'Fh[mF_[mFfnF_hmF]\m7'Fh[m
+F_[mFfn"#^F_hmF]fl

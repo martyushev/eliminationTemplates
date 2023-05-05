@@ -113,7 +113,7 @@ delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from the initia
 manShifts = [], ### manual list of shifts (can be copied/pasted from templates/t_prob)
 sShifts = 1, ### -1/0/1 - shift selection strategy, set to 1 for polynomial systems
 sActMons = 3, ### either 1/2/3/4 - action monomial selection strategy, or manual list of action monomials, e.g. [x] or [1/y, z/x]
-dChange = 100: ### integer &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)</Text-field>
+dChange = 0: ### integer &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5230" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -121,7 +121,7 @@ dChange = 100: ### integer &gt;= 0 - change shift construction function (from sh
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### can be interrupted at any time, templates are saved to the global variable TD
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### it can be interrupted at any time, templates are saved to the global variable TD
 templateFinder(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:                  3
@@ -137,21 +137,33 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
-0              7              3              0              0.016
-1              17             12             1              0.016
-2              23             29             2              0
+0              7              3              0              0
+1              8              4              1              0
+2              10             5              1              0
+3              10             6              1              0.016
+4              10             7              1              0
+5              10             8              1              0
+6              11             9              1              0
+7              12             10             2              0.015
+8              12             11             2              0.016
+9              12             12             2              0
+10             11             15             2              0.016
+11             11             16             1              0
+12             12             17             1              0
+13             12             19             2              0.015
+14             11             21             2              0.016
 
 Template #1:
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
-1/y                 [24,5,8]            [15,6,16]           [29,37]             0.047
+1/y                 [15,5,8]            [12,6,10]           [20,28]             0.031
 
 
 Template #2:
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
-y                   [24,5,8]            [15,6,16]           [29,37]             0.046
+y                   [15,5,9]            [7,6,16]            [20,29]             0.031
 
 
-Total time: 0.547
+Total time: 0.734
 </Text-field>
 </Output>
 </Group>
@@ -163,7 +175,8 @@ Total time: 0.547
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">opts2 :=
 sRed = 0, ### 0/1 - template reduction strategy (0 - faster)
 nRootTol = 0, ### &gt;= 0 - allow to increase the number of roots by this value while reduction (applicable to sRed=1 only)
-showInfo = 1: ### 0/1 - show intermediate data while reduction (0 - faster)</Text-field>
+showInfo = 1, ### 0/1 - show intermediate data while reduction (0 - faster)
+autoBckUp = 1: ### 0/1 - automatically save the reduced template to templates/bak_td</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5269" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -172,54 +185,53 @@ showInfo = 1: ### 0/1 - show intermediate data while reduction (0 - faster)</Tex
 </Group>
 <Group view="code" labelreference="L5319" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">td := TD[1]: ### select the template for reduction
-#td := readTemplate(prob)[14]: ### uncomment to read the saved template for reduction</Text-field>
+#td := readTemplate(prob)[14]: ### uncomment to read the saved template
+#read &quot;templates/bak_td&quot;: ### uncomment to read the backed up template td1</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5099" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### can be interrupted at any time, the reduced template is saved to the global variable td1
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### it can be interrupted at any time, the reduced template is saved to the global variable td1
 templateReduction(prob, td, opts2);</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
 ---------------------------------------------------------------------------------------
-1/y                 [23,5,8]            [14,6,16]           [28,36]             0
-10% completed
-1/y                 [22,5,8]            [13,6,16]           [27,35]             0.016
-1/y                 [21,5,8]            [18,6,10]           [26,34]             0
-20% completed
-1/y                 [20,5,8]            [17,6,10]           [25,33]             0
-1/y                 [19,5,8]            [16,6,10]           [24,32]             0
-30% completed
-1/y                 [18,5,8]            [15,6,10]           [23,31]             0
-1/y                 [17,5,8]            [14,6,10]           [22,30]             0
-40% completed
-1/y                 [16,5,8]            [13,6,10]           [21,29]             0
 1/y                 [15,5,8]            [12,6,10]           [20,28]             0
+10% completed
+20% completed
 1/y                 [14,5,8]            [11,6,10]           [19,27]             0
-50% completed
+30% completed
 1/y                 [13,5,8]            [10,6,10]           [18,26]             0
 1/y                 [12,5,8]            [9,6,10]            [17,25]             0
+40% completed
+50% completed
 1/y                 [11,5,8]            [8,6,10]            [16,24]             0
-60% completed
-70% completed
 1/y                 [10,5,8]            [7,6,10]            [15,23]             0
-80% completed
+60% completed
 1/y                 [9,5,8]             [6,6,10]            [14,22]             0
-90% completed
+70% completed
 
-Total time: 0.266
+Total time: 0.141
 </Text-field>
 </Output>
 </Group>
-<Group view="code" labelreference="L5347" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5347" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5348" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5351" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5349" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5352" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5353" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5354" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>

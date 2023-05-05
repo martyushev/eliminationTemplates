@@ -44,10 +44,10 @@ br][[[[[[[[[[[mF.!F.>6%8.8/806%-Fa^l6%F.F\yF\y-Fa^l6%F\yF.F\y-Fa^l6%F\yF\yF.>81
 Fjcl6$FfblF4>837%,&*&F)F.&FfclF[\lF.F.*&F%F.FfblF.!"%,&*&F)F.&FfclFe]lF.F.*&F/F
 .FfblF.Fgdl,&*&F)F.&FfclFi]lF.F.*&F4F.FfblF.Fgdl>Fadl7$&FadlF\v,&F)F.Fc`lFbr>84
 -%$mapG6$%'expandGFadl@$FjxOFeel>85-%&minusG6$-%'indetsG6#Feel-Fbfl6#F^y>6$8687
--%,poly2matrixG6$FeelF]fl>88-%$srtG6$Fifl-%%tdegG6#&F]flF\v6%7#-%/permuteColumn
-sG6%FhflFiflF^glF\xF]xF\vF\vF\v6#F\y687'F`\lFbr"#;FhxFc\l7'F`\lFbrF^o"#\Fe\l7'F
-`\lFbrF^o""*"#X7'F`\lFbr""("#bFe\l7'F`\lFbrFehl"#$*Fe\l7'F`\lFbrF^o"#*)Fe\l7'F`
-\lFbrF^oFg_lFe\l7'F`\lFbrF^o"#cFe\l7'F`\lFbrF^oF+Fe\l7'F`\lFbrF^o"$9"Fe\l7'F`\l
-FbrF^o"#ZFe\l7'F`\lFbrF^o"#iFe\l7'F`\lFbrF^o"#[Fe\l7'F`\lFbrF^o"#gFe\lF^il7'F`
-\lFbrF^o"#CFe\l7'F`\lFbrF^o"#RFchl7'F`\lFbr"#A"#J"#_7'F`\lFbrF^o"#QFe\l7'F`\lFb
-rF^oFc\lFe\l7'F`\lFbrF^oF_jlFe\l7'F`\lFbrF^oFbilF_jlF\v
+-%,poly2matrixG6$FeelF]fl>88-%$srtG6$Fifl-%%tdegG6#&F]flF\v6&7#-%/permuteColumn
+sG6%FhflFiflF^glF^glF\xF]xF\vF\vF\v6#F\y687'F`\lFbr"#;FhxFc\l7'F`\lFbrF^o"#\Fe
+\l7'F`\lFbrF^o""*"#X7'F`\lFbr""("#bFe\l7'F`\lFbrFehl"#$*Fe\l7'F`\lFbrF^o"#*)Fe
+\l7'F`\lFbrF^oFg_lFe\l7'F`\lFbrF^o"#cFe\l7'F`\lFbrF^oF+Fe\l7'F`\lFbrF^o"$9"Fe\l
+7'F`\lFbrF^o"#ZFe\l7'F`\lFbrF^o"#iFe\l7'F`\lFbrF^o"#[Fe\l7'F`\lFbrF^o"#gFe\lF^i
+l7'F`\lFbrF^o"#CFe\l7'F`\lFbrF^o"#RFchl7'F`\lFbr"#A"#J"#_7'F`\lFbrF^o"#QFe\l7'F
+`\lFbrF^oFc\lFe\l7'F`\lFbrF^oF_jlFe\l7'F`\lFbrF^o"#^F_jlF\v

@@ -32,7 +32,7 @@ function S = red_427x475_colpiv_toa_46(C)
     S = V(43:47,:)./repmat(V(48,:),5,1);
 
     I = ~isnan(S(1,:)) & ~isinf(S(1,:));
-    %I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    I = I & ~imag(S(1,:)); % uncomment this line for real roots only
     S = S(:,I);
 
 end

@@ -131,7 +131,7 @@ cat(C_, prob) := proc({symbolic:=1})
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
     _V := srt(_V0, tdeg(_vars[])):
-    [permuteColumns(_C0, _V0, _V)], _name, _size:
+    [permuteColumns(_C0, _V0, _V)], _V, _name, _size:
 end proc:</Text-field>
 </Input>
 </Group><Presentation-Block>
@@ -170,7 +170,7 @@ nops(Gr);</Text-field>
 </Output>
 </Group></Presentation-Block><Presentation-Block>
 <Group hide-input="false" labelreference="L4656" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#map(Groebner[UnivariatePolynomial], vars, F, characteristic=pp);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4651" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

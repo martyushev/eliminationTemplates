@@ -139,7 +139,7 @@ cat(C_, prob) := proc({symbolic:=1})
     _vars := indets(_F) minus indets(_A):
     _C0, _V0 := poly2matrix(_F, _vars):
     _V := srt(_V0, tdeg(_vars[])):
-    [permuteColumns(_C0, _V0, _V)], _name, _size:
+    [permuteColumns(_C0, _V0, _V)], _V, _name, _size:
 end proc:</Text-field>
 </Input>
 </Group><Presentation-Block>
