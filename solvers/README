@@ -81,7 +81,7 @@ Folders (minimal problems):
 52) IOD: initial orbit determination problem
 
 
-_common: auxiliary functions that are common for several problems
+_common: help functions common to multiple problems
 _results: output data (pdf-figures)
 
 
