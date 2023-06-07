@@ -11,7 +11,7 @@ for i = 1:N
     try
         C = coefs_toy(data); % compute coefficients of polynomial system
         tic;
-        S = red_14x22_colpiv_toy(C); % solve polynomial system
+        S = red_14x22_toy(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

@@ -11,7 +11,7 @@ for i = 1:N
     try
         C = coefs_l2_3view_triang(data); % compute coefficients of polynomial system
         tic;
-        S = red_190x227_colpiv_l2_3view_triang(C); % solve polynomial system
+        S = red_190x227_l2_3view_triang(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

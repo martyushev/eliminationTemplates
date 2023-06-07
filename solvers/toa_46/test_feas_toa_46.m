@@ -2,7 +2,7 @@
 [data,S,R,Sgt,Rgt] = inidata_feas_toa_46(); % generate initial data
 
 C = coefs_toa_46(data); % compute coefficients of polynomial system
-Z = red_427x475_colpiv_toa_46(C); % solve polynomial system
+Z = red_427x475_toa_46(C); % solve polynomial system
 
 min_err = inf;
 ind = 0;

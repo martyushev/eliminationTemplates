@@ -72,13 +72,16 @@ Folders (minimal problems):
 43*) opt_vanishingpoints_w_sat: vanishing point estimation (0-dimensional formulation)
 44) 3v_triang_laurent: optimal 3-view triangulation (Laurent polynomial formulation)
 45) 3v_triang_laurent_w_sat: optimal 3-view triangulation (0-dimensional formulation)
-46) hyb51f: 5-point semi-generalized relative pose estimation (1-dimensional formulation)
-47*) opt_pnp_zheng: optimal Perspective-n-Points problem
-48) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
-49*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders (1-dimensional formulation)
-50*) toa_46_w_sat: time-of-arrival self-calibration problem for 6 receivers and 4 senders (0-dimensional formulation)
-51*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (2-dimensional formulation)
-52) IOD: initial orbit determination problem
+46) hyb32f: 3-point semi-generalized relative pose estimation (1-dimensional formulation)
+47) hyb32f_w_sat: 3-point semi-generalized relative pose estimation (0-dimensional formulation)
+48) hyb51f: 5-point semi-generalized relative pose estimation (1-dimensional formulation)
+49*) opt_pnp_zheng: optimal Perspective-n-Points problem
+50) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
+51*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders (1-dimensional formulation)
+52*) toa_46_w_sat: time-of-arrival self-calibration problem for 6 receivers and 4 senders (0-dimensional formulation)
+53*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (2-dimensional formulation)
+54) IOD: initial orbit determination problem
+55) hyb13f_depth_laurent: Semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
 
 
 _common: help functions common to multiple problems

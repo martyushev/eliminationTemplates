@@ -1,5 +1,5 @@
 rng(23);
-N = 10000;
+N = 1000;
 d = 56;
 
 stats = struct('problem','hyb51f','tm',[],'err',[],'k',[],'kr',[],'N',N);
@@ -11,7 +11,7 @@ for i = 1:N
     try
         C = coefs_hyb51f(data); % compute coefficients of polynomial system
         tic;
-        S = red_742x811_colpiv_hyb51f(C); % solve polynomial system
+        S = red_740x811_hyb51f(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

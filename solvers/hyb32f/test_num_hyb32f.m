@@ -1,5 +1,5 @@
 rng(23);
-N = 1;
+N = 10000;
 d = 28;
 
 stats = struct('problem','hyb32f','tm',[],'err',[],'k',[],'kr',[],'N',N);

@@ -9,7 +9,7 @@ for i = 1:N
 
     try
         C = coefs_rdist9p(data); % compute coefficients of polynomial system
-        S = red_73x97_colpiv_rdist9p(C); % solve polynomial system
+        S = red_73x97_rdist9p(C); % solve polynomial system
         if isempty(S); continue; end
         ww = S(1,:);
         xx = S(2,:);

@@ -11,8 +11,7 @@ for i = 1:N
     try
         C = coefs_gen5pra(data); % compute coefficients of polynomial system
         tic;
-        S = red_34x79_colpiv_gen5pra(C,data{5}^2-1); % solve polynomial system
-        %S = std_37x81_colpiv_gen5pra(C);
+        S = red_34x79_gen5pra(C,data{5}^2-1); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME

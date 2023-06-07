@@ -104,13 +104,14 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toy&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
 
 opts :=
-sparsePols = [], ### list of natural numbers, e.g. [1,2], polynomials from sparsePols must have constant coefficients for all instances (it works automaticaly provided that the function for creating polynomials is available in F_prob.m)
+sparsePols = [], ### list of positive integers, e.g. [1,2], polynomials from sparsePols must have constant coefficients for all instances (it works automaticaly provided that the function for creating polynomials is available in F_prob.m)
 primeNumber = 40009, ### sufficiently large prime number (number of elements in finite field)
-sym = 0, ### 0/1 - (experimental) set to 1 for potentially symmetric systems (slower), otherwise set to 0
+pepDegree = 1, ### (experimental) integer &gt;= 1 - degree of polynomial eigenvalue problem
+sym = 0, ### 0/1 - set to 1 for potentially symmetric systems (slower), otherwise set to 0
 iVars = [], ### list of positive integers, e.g. [1,2], variables from iVars are replaced with their reciprocals in the polynomial system
 guidVars = [], ### list of positive integers, e.g. [1,2], variables from guidVars guide polynomial shift construction, [] = all variables
 delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from the initial system w/o changing the ideal
-manShifts = [], ### manual list of shifts (can be copied/pasted from templates/t_prob)
+manShifts = [], ### manual list of shifts (it can be copied/pasted from templates/t_prob)
 sShifts = 1, ### -1/0/1 - shift selection strategy, set to 1 for polynomial systems
 sActMons = 3, ### either 1/2/3/4 - action monomial selection strategy, or manual list of action monomials, e.g. [x] or [1/y, z/x]
 dChange = 0: ### integer &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)</Text-field>
@@ -137,25 +138,25 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
-0              7              3              0              0
+0              7              3              0              0.032
 1              8              4              1              0
-2              10             5              1              0
-3              10             6              1              0.016
+2              10             5              1              0.015
+3              10             6              1              0
 4              10             7              1              0
-5              10             8              1              0
+5              10             8              1              0.016
 6              11             9              1              0
-7              12             10             2              0.015
-8              12             11             2              0.016
-9              12             12             2              0
-10             11             15             2              0.016
-11             11             16             1              0
-12             12             17             1              0
-13             12             19             2              0.015
-14             11             21             2              0.016
+7              12             10             2              0
+8              12             11             2              0.015
+9              12             12             2              0.016
+10             11             15             2              0.031
+11             11             16             1              0.016
+12             12             17             1              0.031
+13             12             19             2              0.016
+14             11             21             2              0.031
 
 Template #1:
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
-1/y                 [15,5,8]            [12,6,10]           [20,28]             0.031
+1/y                 [15,5,8]            [12,6,10]           [20,28]             0.016
 
 
 Template #2:
@@ -163,20 +164,20 @@ action mon.         [#E,#R,#B]          [#E,#R,#P]          size                
 y                   [15,5,9]            [7,6,16]            [20,29]             0.031
 
 
-Total time: 0.734
+Total time: 0.75
 </Text-field>
 </Output>
 </Group>
-<Group view="code" hide-input="false" labelreference="L5341" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5359" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5265" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">opts2 :=
-sRed = 0, ### 0/1 - template reduction strategy (0 - faster)
-nRootTol = 0, ### &gt;= 0 - allow to increase the number of roots by this value while reduction (applicable to sRed=1 only)
+sRed = 1, ### 0/1 - template reduction strategy (0 - faster, 1 - better reduction)
+nRootTol = 0, ### integer &gt;= 0 - allow to increase the number of roots by this value while reduction (applicable to sRed=1 only)
 showInfo = 1, ### 0/1 - show intermediate data while reduction (0 - faster)
-autoBckUp = 1: ### 0/1 - automatically save the reduced template to templates/bak_td</Text-field>
+autoBckUp = 1: ### 0/1 - automatically save intermediate templates to templates/bak_td (useful in case of Maple crashes)</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5269" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -196,22 +197,22 @@ templateReduction(prob, td, opts2);</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
 ---------------------------------------------------------------------------------------
-1/y                 [15,5,8]            [12,6,10]           [20,28]             0
+1/y                 [15,5,8]            [12,6,10]           [20,28]             0.032
 10% completed
 20% completed
-1/y                 [14,5,8]            [11,6,10]           [19,27]             0
+1/y                 [14,5,8]            [11,6,10]           [19,27]             0.015
 30% completed
-1/y                 [13,5,8]            [10,6,10]           [18,26]             0
-1/y                 [12,5,8]            [9,6,10]            [17,25]             0
+1/y                 [13,5,8]            [10,6,10]           [18,26]             0.032
+1/y                 [12,5,8]            [9,6,10]            [17,25]             0.016
 40% completed
 50% completed
-1/y                 [11,5,8]            [8,6,10]            [16,24]             0
-1/y                 [10,5,8]            [7,6,10]            [15,23]             0
+1/y                 [11,5,8]            [8,6,10]            [16,24]             0.032
+1/y                 [10,5,8]            [7,6,10]            [15,23]             0.031
 60% completed
-1/y                 [9,5,8]             [6,6,10]            [14,22]             0
+1/y                 [9,5,8]             [6,6,10]            [14,22]             0.016
 70% completed
 
-Total time: 0.141
+Total time: 0.562
 </Text-field>
 </Output>
 </Group>
@@ -255,26 +256,22 @@ Total time: 0.141
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" labelreference="L5325" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5342" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5342" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5355" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5343" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5356" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L5344" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5357" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L5326" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
+</Group></Presentation-Block><Presentation-Block>
 <Group view="code" labelreference="L5327" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>

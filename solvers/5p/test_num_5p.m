@@ -18,7 +18,7 @@ for i = 1:N
         continue;
     end
 
-    mon = @(x,y,z) [x^3,x^2*y,x*y^2,y^3,z*x^2,x*y*z,z*y^2,z^2*x,z^2*y,z^3,x^2,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
+    mon = @(x,y,z) [x^3,x^2*y,x*y^2,y^3,x^2*z,x*y*z,y^2*z,x*z^2,y*z^2,z^3,x^2,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
     [err,k,kr] = numerr(C,mon,S,d); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];

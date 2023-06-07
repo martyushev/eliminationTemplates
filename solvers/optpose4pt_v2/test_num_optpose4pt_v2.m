@@ -11,14 +11,14 @@ for i = 1:N
     try
         C = coefs_optpose4pt_v2(data); % compute coefficients of polynomial system
         tic;
-        S = red_105x138_colpiv_optpose4pt_v2(C); % solve polynomial system
+        S = red_105x138_optpose4pt_v2(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(v,w,x,y,z) [v^2,w^2,x*v,x*w,x^2,y*v,y*w,x*y,y^2,z*v,z*w,x*z,y*z,z^2,v,x,y,z,1];
+    mon = @(v,w,x,y,z) [v^2,w^2,v*x,w*x,x^2,v*y,y*w,y*x,y^2,v*z,z*w,z*x,y*z,z^2,v,x,y,z,1];
     [err,k,kr] = numerr(C,mon,S,d); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];

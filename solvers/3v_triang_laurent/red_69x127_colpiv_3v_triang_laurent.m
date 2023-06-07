@@ -25,11 +25,11 @@ function S = red_69x127_colpiv_3v_triang_laurent(C)
     P2 = [15,17,21,22,23,24,25,26,27,32,34,37,68,69,38,39,40,41,72,43,70,44,45,46,47,48,73,74,49,50,51,52,53,54,75,55,56,58,59,60,76,61,62,64,65,66,67,77,78,79,80,81,82,83,84,85,87,88,89,90,91,92,93,94,95,96,97,71,57,63,86];
     T = getT(M,P1(1:end-58),P1(end-57:end),P2);
 
-    [V,~] = eig(T);
+    [V,~] = eig(T0,T1);
     S = repmat(V(58,:),3,1)./V(55:57,:);
 
-    I = ~isnan(S(1,:)) & ~isinf(S(1,:));
-    I = I & ~imag(S(1,:)); % uncomment this line for real roots only
+    I = ~any(isnan(S)) & ~any(isinf(S));
+    %I = I & ~any(imag(S)); % uncomment this line for real roots only
     S = S(:,I);
 
 end

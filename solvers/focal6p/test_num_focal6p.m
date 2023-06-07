@@ -11,14 +11,14 @@ for i = 1:N
     try
         C = coefs_focal6p(data); % compute coefficients of polynomial system
         tic;
-        S = red_11x26_colpiv_focal6p(C); % solve polynomial system
+        S = red_11x26_focal6p(C); % solve polynomial system
         stats.tm = [stats.tm toc];
         if isempty(S); continue; end
     catch ME
         continue;
     end
 
-    mon = @(x,y,z) [z*x^2*y^2,x^2*z^2*y,x^2*z^3,y^3*x,z*x^2*y,z*x*y^2,z^2*x^2,x*z^2*y,x*z^3,x*y^2,y^3,z*x^2,x*y*z,z*y^2,z^2*x,z^2*y,z^3,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
+    mon = @(x,y,z) [z*y^2*x^2,y*x^2*z^2,x^2*z^3,x*y^3,y*z*x^2,z*x*y^2,x^2*z^2,z^2*y*x,z^3*x,x*y^2,y^3,z*x^2,z*y*x,z*y^2,z^2*x,z^2*y,z^3,x*y,y^2,x*z,z*y,z^2,x,y,z,1];
     [err,k,kr] = numerr(C,mon,S,d); % compute numerical error
     stats.err = [stats.err err];
     stats.k = [stats.k k];
