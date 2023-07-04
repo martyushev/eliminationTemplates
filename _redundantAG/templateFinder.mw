@@ -108,7 +108,6 @@ sparsePols = [], ### list of positive integers, e.g. [1,2], polynomials from spa
 primeNumber = 40009, ### sufficiently large prime number (number of elements in the finite field)
 sym = 0, ### 0/1 - set to 1 for potentially symmetric systems (slower), otherwise set to 0
 iVars = [], ### list of positive integers, e.g. [1,2], variables from iVars are replaced with their reciprocals in the polynomial system
-guidVars = [], ### list of positive integers, e.g. [1,2], variables from guidVars guide polynomial shift construction, [] = all variables
 delHardPoly = 0, ### 0/1 - try to remove high-degree polynomials from the initial system w/o changing the ideal
 manShifts = [], ### manual list of shifts (it can be copied/pasted from templates/t_prob)
 sShifts = 1, ### -1/0/1 - shift selection strategy, set to 1 for polynomial systems
@@ -121,7 +120,8 @@ dChange = 100: ### integer &gt;= 0 - change shift construction function (from sh
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### it can be interrupted at any time, templates are saved to the global variable TD
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### template search continues until #B equals the number of roots
+### it can be interrupted at any time, templates are saved to the global variable TD
 templateFinder(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:                  3
@@ -137,21 +137,21 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
-0              7              3              0              0
-1              17             12             1              0.016
-2              23             29             2              0.031
+0              7              3              0              0.016
+1              17             12             1              0
+2              23             29             2              0
 
 Template #1:
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
-[1/y]               [24,5,8]            [15,6,16]           [29,37]             0.062
+[1/y]               [24,5,8]            [15,6,16]           [29,37]             0.078
 
 
 Template #2:
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
-[y]                 [24,5,8]            [15,6,16]           [29,37]             0.078
+[y]                 [24,5,8]            [15,6,16]           [29,37]             0.032
 
 
-Total time: 0.625
+Total time: 0.468
 </Text-field>
 </Output>
 </Group>
@@ -184,32 +184,32 @@ templateReduction(prob, td, opts2);</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action mon.         [#E,#R,#B]          [#E,#R,#P]          size                time
 ---------------------------------------------------------------------------------------
-[1/y]               [23,5,8]            [14,6,16]           [28,36]             0.047
-[1/y]               [22,5,8]            [19,6,10]           [27,35]             0.078
+[1/y]               [23,5,8]            [14,6,16]           [28,36]             0.063
+[1/y]               [22,5,8]            [19,6,10]           [27,35]             0.047
 10% completed
-[1/y]               [21,5,8]            [18,6,10]           [26,34]             0.062
+[1/y]               [21,5,8]            [18,6,10]           [26,34]             0.031
 20% completed
 [1/y]               [20,5,8]            [17,6,10]           [25,33]             0.078
 30% completed
-[1/y]               [19,5,8]            [16,6,10]           [24,32]             0.063
+[1/y]               [19,5,8]            [16,6,10]           [24,32]             0.047
 [1/y]               [18,5,8]            [15,6,10]           [23,31]             0.031
 40% completed
-[1/y]               [17,5,8]            [14,6,10]           [22,30]             0.032
-[1/y]               [16,5,8]            [13,6,10]           [21,29]             0.016
+[1/y]               [17,5,8]            [14,6,10]           [22,30]             0.047
+[1/y]               [16,5,8]            [13,6,10]           [21,29]             0.015
 50% completed
-[1/y]               [15,5,8]            [12,6,10]           [20,28]             0.031
-[1/y]               [14,5,8]            [11,6,10]           [19,27]             0.047
-[1/y]               [13,5,8]            [10,6,10]           [18,26]             0.031
+[1/y]               [15,5,8]            [12,6,10]           [20,28]             0.032
+[1/y]               [14,5,8]            [11,6,10]           [19,27]             0.031
+[1/y]               [13,5,8]            [10,6,10]           [18,26]             0.015
 60% completed
 [1/y]               [12,5,8]            [9,6,10]            [17,25]             0.015
 70% completed
 80% completed
-[1/y]               [11,5,8]            [8,6,10]            [16,24]             0.063
-[1/y]               [10,5,8]            [7,6,10]            [15,23]             0.015
+[1/y]               [11,5,8]            [8,6,10]            [16,24]             0.016
+[1/y]               [10,5,8]            [7,6,10]            [15,23]             0.032
 90% completed
-[1/y]               [9,5,8]             [6,6,10]            [14,22]             0.032
+[1/y]               [9,5,8]             [6,6,10]            [14,22]             0.031
 
-Total time: 1.047
+Total time: 1.141
 </Text-field>
 </Output>
 </Group>
@@ -234,7 +234,8 @@ Total time: 1.047
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5222" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">saveTemplate(prob, td1):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save the template to templates/t_prob
+saveTemplate(prob, td1):</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L5200" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
