@@ -105,22 +105,35 @@
 prob := &quot;toy&quot;:<Font style="Caption Text" executable="true">
 
 </Font>opts :=
-<Font bold="false">(*<Font style="Caption Text" family="Courier New" executable="true">list of positive integers, e.g. [1,2], polynomials from sparsePols must have constant coefficients for all instances (it works automaticaly provided that the function for creating polynomials is available in F_prob.m)</Font>*)</Font>
-sparsePols = [],
-<Font style="Caption Text" bold="false" family="Courier New" executable="true">(*sufficiently large prime number (number of elements in the finite field)</Font><Font bold="false">*)</Font>
-primeNumber = 40009,
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">
+(*list of positive integers, e.g. [1,2], polynomials from sparsePols must have constant coefficients for all instances (it works automaticaly provided that the function for creating polynomials is available in F_prob.m)*)
+</Font>sparsePols = [],
+
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">(*sufficiently large prime number (number of elements in the finite field)</Font><Font bold="false">*)
+</Font>primeNumber = 40009,
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*0/1 - set to 1 for potentially symmetric systems (slower), otherwise set to 0</Font><Font bold="false">*)
 </Font>sym = 0,
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*list of positive integers, e.g. [1,2], variables from iVars are replaced with their reciprocals in the polynomial system</Font><Font bold="false">*)</Font>
 iVars = [],
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*0/1 - try to remove high-degree polynomials from the initial system w/o changing the ideal</Font><Font bold="false">*)
 </Font>delHardPoly = 0,
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*manual list of shifts (it can be copied/pasted from templates/t_prob)</Font><Font bold="false">*)</Font>
 manShifts = [],
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*-1/0/1 - shift selection strategy, set to 1 for polynomial systems</Font><Font bold="false">*)</Font>
 sShifts = 1,
-<Font style="Caption Text" bold="false" family="Courier New" executable="true">(*either 1/2/3/4 - action monomial selection strategy, or manual list of action monomials, e.g. [x] or [1/y, z/x]</Font><Font bold="false">*)
+
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">(*either 1/2/3/4 - action monomial selection strategy, or manual list of action monomials, e.g. [x] or [1/y, z/x]
+1 - use only variables
+2 - use only reciprocals of variables
+3 - use both variables and their reciprocals
+4 - use variables, their reciprocals, and all possible homogeneous monomials of type x/y</Font><Font bold="false">*)
 </Font>sActMons = 3,
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*integer &gt;= 0 - change shift construction function (from shifts() to shifts1()) as d &gt; this value, set to 100 to use shifts() only (faster but usually larger templates), set to 0 to use shifts1() only (slower but usually smaller templates)*)</Font><Font bold="false" family="DejaVu Sans Mono">
 </Font>dChange = 100:</Text-field>
 </Input>
@@ -130,9 +143,9 @@ sShifts = 1,
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L5111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Font style="Caption Text" bold="false" family="Courier New" executable="true">(*template search continues until #B equals the number of roots</Font><Font bold="false">*)
-<Font style="Caption Text" family="Courier New" executable="true">(*it can be interrupted at any time, the templates are saved to the global variable TD</Font>*)</Font>
-templateFinder(prob, opts):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Font style="Caption Text" bold="false" family="Courier New" executable="true">(*template search continues until #B equals the number of roots</Font><Font bold="false">*)</Font><Font style="Caption Text" family="Courier New" executable="true">
+<Font bold="false">(*it can be interrupted at any time, the templates are saved to the global variable TD*)
+</Font></Font>templateFinder(prob, opts):</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:                  3
 Sparse constant polynomials:            []
@@ -147,21 +160,21 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
-0              7              3              0              0
-1              17             12             1              0.015
+0              7              3              0              0.078
+1              17             12             1              0.016
 2              23             29             2              0
 
 Template #1:
 action monomial     [#E,#R,#B]          size                time
-[1/y]               [24,5,8]            [29,37]             0.015
+[1/y]               [24,5,8]            [29,37]             0.047
 
 
 Template #2:
 action monomial     [#E,#R,#B]          size                time
-[y]                 [24,5,8]            [29,37]             0.032
+[y]                 [24,5,8]            [29,37]             0.047
 
 
-Total time: 0.344
+Total time: 0.515
 </Text-field>
 </Output>
 </Group>
@@ -172,19 +185,25 @@ Total time: 0.344
 <Group view="code" labelreference="L5319" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"><Font style="Caption Text" bold="false" family="Courier New" executable="true">(*select the elimination template for reduction*)</Font>
 td := TD[1]:
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*uncomment to read the saved elimination template*)</Font>
 #td := readTemplate(prob)[14]:
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*uncomment to read the backed up elimination template td1*)</Font>
 #read &quot;templates/bak_td&quot;:
 
 opts2 :=
+
 <Font style="Caption Text" bold="false" family="Courier New" executable="true">(*0/1 - template reduction strategy (0 - faster, 1 - better reduction)</Font><Font bold="false">*)
 </Font>sRed = 1,
-(*<Font style="Caption Text" bold="false" family="Courier New" executable="true">integer &gt;= 0 - allow to increase the number of roots by this value while reduction (applicable to sRed=1 only)*)</Font>
-nRootTol = 0,
-(*<Font style="Caption Text" bold="false" family="Courier New" executable="true">0/1 - show intermediate data while reduction (0 - faster)*)</Font>
-showInfo = 1,
-(*<Font style="Caption Text" bold="false" family="Courier New" executable="true">0/1 - automatically save intermediate templates to templates/bak_td (useful in case of Maple crashes)</Font><Font style="Caption Text" bold="false" executable="true">*)</Font><Font style="Caption Text" executable="true">
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">
+(*integer &gt;= 0 - allow to increase the number of roots by this value while reduction (applicable to sRed = 1 only)*)
+</Font>nRootTol = 0,
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">
+(*0/1 - show intermediate data while reduction (0 - faster)*)
+</Font>showInfo = 1,
+<Font style="Caption Text" bold="false" family="Courier New" executable="true">
+(*0/1 - automatically save intermediate templates to templates/bak_td (useful in case of Maple crashes)*)</Font><Font style="Caption Text" executable="true">
 </Font>autoBckUp = 1:</Text-field>
 </Input>
 </Group>
@@ -195,32 +214,32 @@ templateReduction(prob, td, opts2);</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action monomial     [#E,#R,#B]          size                time
 -------------------------------------------------------------------
-[1/y]               [23,5,8]            [28,36]             0.047
-[1/y]               [22,5,8]            [27,35]             0.063
+[1/y]               [23,5,8]            [28,36]             0.031
+[1/y]               [22,5,8]            [27,35]             0.078
 10% completed
-[1/y]               [21,5,8]            [26,34]             0.046
+[1/y]               [21,5,8]            [26,34]             0.047
 20% completed
-[1/y]               [20,5,8]            [25,33]             0.032
+[1/y]               [20,5,8]            [25,33]             0.031
 30% completed
-[1/y]               [19,5,8]            [24,32]             0.016
-[1/y]               [18,5,8]            [23,31]             0.015
+[1/y]               [19,5,8]            [24,32]             0.032
+[1/y]               [18,5,8]            [23,31]             0.031
 40% completed
-[1/y]               [17,5,8]            [22,30]             0.015
-[1/y]               [16,5,8]            [21,29]             0.047
+[1/y]               [17,5,8]            [22,30]             0.016
+[1/y]               [16,5,8]            [21,29]             0.016
 50% completed
 [1/y]               [15,5,8]            [20,28]             0.031
-[1/y]               [14,5,8]            [19,27]             0.015
-[1/y]               [13,5,8]            [18,26]             0.016
+[1/y]               [14,5,8]            [19,27]             0.016
+[1/y]               [13,5,8]            [18,26]             0.031
 60% completed
-[1/y]               [12,5,8]            [17,25]             0.016
+[1/y]               [12,5,8]            [17,25]             0.015
 70% completed
 80% completed
-[1/y]               [11,5,8]            [16,24]             0.016
-[1/y]               [10,5,8]            [15,23]             0.015
+[1/y]               [11,5,8]            [16,24]             0.031
+[1/y]               [10,5,8]            [15,23]             0.031
 90% completed
-[1/y]               [9,5,8]             [14,22]             0
+[1/y]               [9,5,8]             [14,22]             0.032
 
-Total time: 0.718
+Total time: 0.828
 </Text-field>
 </Output>
 </Group>
