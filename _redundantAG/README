@@ -20,25 +20,27 @@ How to use:
  1.1) See examples in ../problems/F_prob.mw
 
 2) Finding, reducing and saving elimination templates
- 2.1) Open templateFinder.mw
- 2.2) Pick minimal problem (prob := "problem_name")
- 2.3) Configure parameters (see comments in templateFinder.mw)
- 2.4) Enter templateFinder(prob, opts):
+ 2.1) Configure parameters in redundantAG.ini
+ 2.2) Open templateFinder.mw
+ 2.3) Pick minimal problem (prob := "problem_name")
+ 2.4) Enter templateFinder(prob): Note that
   - it can be interrupted at any time
-  - templates are saved to the global variable TD
-  - templates are not saved automatically to a file
+  - found templates are stored in the global variable TD of type Array
+  - found templates are not saved automatically to a file
  2.5) Select the template for reduction (td := TD[i])
- 2.6) Enter templateReduction(prob, td, opts2):
+ 2.6) Enter templateReduction(prob, td): Note that
   - it can be interrupted at any time
-  - the reduced template is saved to the global variable td1
+  - the reduced template is stored in the global variable td1 of type list
   - the reduced template is not saved automatically to a file
- 2.7) Enter saveTemplate(prob, td1): to save the reduced template to a file
+ 2.7) Enter saveTemplate(prob, td1): to save the reduced template to the file templates/t_prob (this command will overwrite the existing template file)
 
 3) Generating Matlab solver and/or related files
- 3.1) Open solverGenerator.mw
- 3.2) Pick minimal problem (prob := "problem_name")
- 3.3) Configure parameters (see comments in solverGenerator.mw)
- 3.4) Enter solverGenerator(prob, opts):
+ 3.1) Configure parameters in redundantAG.ini
+ 3.2) Open solverGenerator.mw
+ 3.3) Pick minimal problem (prob := "problem_name")
+ 3.4) Enter solverGenerator(prob): Note that
+  - the solver and related files are generated in ../solvers/prob
+  - incomplete templates require manual editing of the solver to make it work properly
 
 
 Folders:
