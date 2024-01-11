@@ -105,7 +105,7 @@
 prob := &quot;toy&quot;:</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" labelreference="L5230" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L5367" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -130,20 +130,32 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
 0              7              3              0              0
-1              17             12             1              0
-2              23             29             2              0
+1              8              4              1              0
+2              10             5              1              0.015
+3              10             6              1              0
+4              10             7              1              0.015
+5              10             8              1              0.016
+6              11             9              1              0
+7              12             10             2              0.016
+8              12             11             2              0
+9              12             12             2              0.016
+10             11             15             2              0.016
+11             11             16             1              0
+12             12             17             1              0.016
+13             12             19             2              0.047
+14             11             21             2              0.031
 
 Template #1:
 action monomial     [#E,#R,#B]          size                time
-[1/y]               [24,5,8]            [29,37]             0.062
+[1/y]               [15,5,8]            [20,28]             0.031
 
 
 Template #2:
 action monomial     [#E,#R,#B]          size                time
-[y]                 [24,5,8]            [29,37]             0.094
+[y]                 [15,5,9]            [20,29]             0.016
 
 
-Total time: 0.468
+Total time: 1.234
 </Text-field>
 </Output>
 </Group>
@@ -164,32 +176,22 @@ templateReduction(prob, td):</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action monomial     [#E,#R,#B]          size                time
 -------------------------------------------------------------------
-[1/y]               [23,5,8]            [28,36]             0.047
-[1/y]               [22,5,8]            [27,35]             0.062
+[1/y]               [15,5,8]            [20,28]             0.109
 10% completed
-[1/y]               [21,5,8]            [26,34]             0.047
 20% completed
-[1/y]               [20,5,8]            [25,33]             0.047
+[1/y]               [14,5,8]            [19,27]             0.016
 30% completed
-[1/y]               [19,5,8]            [24,32]             0.047
-[1/y]               [18,5,8]            [23,31]             0.031
+[1/y]               [13,5,8]            [18,26]             0.015
+[1/y]               [12,5,8]            [17,25]             0
 40% completed
-[1/y]               [17,5,8]            [22,30]             0.016
-[1/y]               [16,5,8]            [21,29]             0.078
 50% completed
-[1/y]               [15,5,8]            [20,28]             0.031
-[1/y]               [14,5,8]            [19,27]             0.032
-[1/y]               [13,5,8]            [18,26]             0.016
-60% completed
-[1/y]               [12,5,8]            [17,25]             0.047
-70% completed
-80% completed
-[1/y]               [11,5,8]            [16,24]             0.031
+[1/y]               [11,5,8]            [16,24]             0.078
 [1/y]               [10,5,8]            [15,23]             0.016
-90% completed
-[1/y]               [9,5,8]             [14,22]             0.016
+60% completed
+[1/y]               [9,5,8]             [14,22]             0
+70% completed
 
-Total time: 0.954
+Total time: 1.062
 </Text-field>
 </Output>
 </Group>

@@ -102,7 +102,7 @@ interface(warnlevel=1):</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4600" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;4p_v2&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;4p2v_dim1&quot;:</Text-field>
 </Input>
 </Group>
 <Group labelreference="L4601" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -112,7 +112,7 @@ interface(warnlevel=1):</Text-field>
 <Group labelreference="L4602" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute coefficient matrix of initial polynomial system
 cat(C_, prob) := proc({symbolic:=1})
-    _name, _size := [`X1`,`X2`], [[3,4],[3,4]]:
+    _name, _size := [`X1`,`X2`], [[3,4]$2]:
     if symbolic=0 then
         _A := [seq(rndMat(_size[i][]), i=1..nops(_name))]:
     else
@@ -124,14 +124,14 @@ cat(C_, prob) := proc({symbolic:=1})
     x1[1,1], x1[2,1], x1[1,2] := 0, 0, 0:
     x2[1,1], x2[2,1], x2[1,2] := 0, 0, 0:
     R2 := getRotMatrix(&lt;u, v*u, w&gt;)*(u^2+(v*u)^2+w^2+1):
-    S := &lt;seq(&lt;x1[1,i]|x1[2,i]|x1[3,i]&gt;.R2^+.cross(&lt;x2[1,i], x2[2,i], x2[3,i]&gt;), i=1..4)&gt;:
-    ind := [[1,2,3], [1,2,4], [1,3,4]]:
-    for i from 1 to nops(ind) do
-        F := LinearAlgebra[Determinant](S[ind[i],..]):
-        q := (i1, j1, k1)-&gt;coeff(coeff(coeff(F, u, i1), v, j1), w, k1):
-        eq[i] := u^2*w*q(5, 0, 1)+u^2*v*w*q(5, 1, 1)+u*w^2*q(2, 0, 4)+u^2*v^2*w*q(5, 4, 1)+u*v*w^2*q(2, 1, 4)+w^3*q(1, 0, 5)+u^2*v^3*w*q(5, 5, 1)+u*v^2*w^2*q(4, 4, 2)+v*w^3*q(1, 1, 5)+u^2*q(5, 0, 0)+u^2*v*q(5, 1, 0)+u*w*q(4, 0, 1)+u^2*v^2*q(5, 4, 0)+u*v*w*q(4, 1, 1)+w^2*q(1, 0, 4)+u^2*v^3*q(5, 5, 0)+u*v^2*w*q(4, 4, 1)+v*w^2*q(1, 1, 4)+u*q(4, 0, 0)+u*v*q(2, 1, 0)+w*q(1, 0, 1)+u*v^2*q(4, 4, 0)+v*w*q(1, 1, 1)+q(1, 0, 0)+v*q(1, 1, 0):
+    S := &lt;seq(x1[..,i]^+.R2^+.cross(x2[..,i]), i=1..4)&gt;:
+    q := (i,j,k)-&gt;coeff(coeff(coeff(F, u, i), v, j), w, k):
+    eqs := []:
+    for c in [[1,2,3], [1,2,4], [1,3,4]] do
+        F := LinearAlgebra[Determinant](S[c,..]):
+        eqs := [eqs[], u^2*w*q(5, 0, 1)+u^2*v*w*q(5, 1, 1)+u*w^2*q(2, 0, 4)+u^2*v^2*w*q(5, 4, 1)+u*v*w^2*q(2, 1, 4)+w^3*q(1, 0, 5)+u^2*v^3*w*q(5, 5, 1)+u*v^2*w^2*q(4, 4, 2)+v*w^3*q(1, 1, 5)+u^2*q(5, 0, 0)+u^2*v*q(5, 1, 0)+u*w*q(4, 0, 1)+u^2*v^2*q(5, 4, 0)+u*v*w*q(4, 1, 1)+w^2*q(1, 0, 4)+u^2*v^3*q(5, 5, 0)+u*v^2*w*q(4, 4, 1)+v*w^2*q(1, 1, 4)+u*q(4, 0, 0)+u*v*q(2, 1, 0)+w*q(1, 0, 1)+u*v^2*q(4, 4, 0)+v*w*q(1, 1, 1)+q(1, 0, 0)+v*q(1, 1, 0)]:
     end do:
-    eqs := [seq(eq[i], i=1..nops(ind))]:
+    eqs := subs(w=rnd(), eqs):
     ##################
 
     _F := map(expand, eqs):
@@ -168,7 +168,7 @@ nops(Gr);</Text-field>
 <Group view="code" hide-input="false" labelreference="L4686" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">factor(Gr[1]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYwLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEidkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21uR0YkNiRRIjNGJy9GNlEnbm9ybWFsRicvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUkjbW9HRiQ2LVEnJnBsdXM7RidGPC8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGRy8lKXN0cmV0Y2h5R0ZHLyUqc3ltbWV0cmljR0ZHLyUobGFyZ2VvcEdGRy8lLm1vdmFibGVsaW1pdHNHRkcvJSdhY2NlbnRHRkcvJSdsc3BhY2VHUSwwLjIyMjIyMjJlbUYnLyUncnNwYWNlR0ZWLUYjNiYtRjk2JFEmMjA1NDVGJ0Y8LUZCNi1RMSZJbnZpc2libGVUaW1lcztGJ0Y8RkVGSEZKRkxGTkZQRlIvRlVRJjAuMGVtRicvRlhGXG8tRiw2JS1GLzYlUSJ1RidGMkY1LUY5NiRRIjJGJ0Y8Rj5GPEZBLUYjNigtRjk2JFEmMTU0OTJGJ0Y8RmhuRmBvRmhuRi5GPEZBLUYjNiYtRjk2JFEmMjIyMjVGJ0Y8RmhuLUYsNiVGLkZjb0Y+RjxGQS1GIzYmLUY5NiRRJTcyMjdGJ0Y8RmhuRmBvRjxGQS1GIzYmLUY5NiRRJjEzNTk0RidGPEZobkYuRjxGQS1GOTYkUSYyMjA2MEYnRjxGPA==">LDAqJEkidkc2IiIiJCIiIiokSSJ1R0YlIiIjIiZYMCMqJkYpRidGJEYnIiYjXDoqJEYkRioiJkRBI0YpIiVGc0YkIiYlZjgiJmc/I0Yn</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYwLUklbXN1cEdGJDYlLUkjbWlHRiQ2JVEidkYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21uR0YkNiRRIjNGJy9GNlEnbm9ybWFsRicvJTFzdXBlcnNjcmlwdHNoaWZ0R1EiMEYnLUkjbW9HRiQ2LVEnJnBsdXM7RidGPC8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGRy8lKXN0cmV0Y2h5R0ZHLyUqc3ltbWV0cmljR0ZHLyUobGFyZ2VvcEdGRy8lLm1vdmFibGVsaW1pdHNHRkcvJSdhY2NlbnRHRkcvJSdsc3BhY2VHUSwwLjIyMjIyMjJlbUYnLyUncnNwYWNlR0ZWLUYjNiYtRjk2JFEmMTc0NTFGJ0Y8LUZCNi1RMSZJbnZpc2libGVUaW1lcztGJ0Y8RkVGSEZKRkxGTkZQRlIvRlVRJjAuMGVtRicvRlhGXG8tRiw2JS1GLzYlUSJ1RidGMkY1LUY5NiRRIjJGJ0Y8Rj5GPEZBLUYjNigtRjk2JFEmMjAyMzlGJ0Y8RmhuRi5GaG5GYG9GPEZBLUYjNiYtRjk2JFEkMTUwRidGPEZobi1GLDYlRi5GY29GPkY8RkEtRiM2Ji1GOTYkUSUzNDk1RidGPEZobkZgb0Y8RkEtRiM2Ji1GOTYkUSYzMTk4NEYnRjxGaG5GLkY8RkEtRjk2JFEmMTc0NjBGJ0Y8Rjw=">LDAqJEkidkc2IiIiJCIiIiokSSJ1R0YlIiIjIiZedSIqJkYpRidGJEYnIiZSLSMqJEYkRioiJF0iRikiJSZcJEYkIiYlKT4kIiZndSJGJw==</Equation></Text-field>
 </Output>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4678" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -200,7 +200,7 @@ nops(Gr);</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4672" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := subs(w=rnd(), F):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4683" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

@@ -1,5 +1,6 @@
 Maple implementation of the automatic template generator for Laurent polynomial systems by redundant solving sets
 
+
 If you use this code, please cite the following work:
 @article{martyushev2023automatic,
   title={Automatic Solver Generator for Systems of Laurent Polynomial Equations},
@@ -12,7 +13,9 @@ Preprint: arXiv:2307.00320
 E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
 
+
 Software required: Maple 2021+
+
 
 How to use:
 
@@ -21,7 +24,7 @@ How to use:
 
 2) Finding, reducing and saving elimination templates
  2.1) Configure parameters in redundantAG.ini
- 2.2) Open templateFinder.mw
+ 2.2) Run Maple and open templateFinder.mw
  2.3) Pick minimal problem (prob := "problem_name")
  2.4) Enter templateFinder(prob): Note that
   - it can be interrupted at any time
@@ -30,17 +33,20 @@ How to use:
  2.5) Select the template for reduction (td := TD[i])
  2.6) Enter templateReduction(prob, td): Note that
   - it can be interrupted at any time
-  - the reduced template is stored in the global variable td1 of type list
-  - the reduced template is not saved automatically to a file
- 2.7) Enter saveTemplate(prob, td1): to save the reduced template to the file templates/t_prob (this command will overwrite the existing template file)
+  - reduced template is stored in the global variable td1 of type list
+  - reduced template is not saved automatically to a file
+ 2.7) Enter saveTemplate(prob, td1): Note that
+  - reduced template is saved to templates/t_prob
+  - existing template file will be overwritten
 
-3) Generating Matlab solver and/or related files
+3) Generating Matlab solver and/or related files from the saved template
  3.1) Configure parameters in redundantAG.ini
- 3.2) Open solverGenerator.mw
+ 3.2) Run Maple and open solverGenerator.mw
  3.3) Pick minimal problem (prob := "problem_name")
  3.4) Enter solverGenerator(prob): Note that
-  - the solver and related files are generated in ../solvers/prob
-  - incomplete templates require manual editing of the solver to make it work properly
+  - solver and related files are generated in ../solvers/prob
+  - existing files will be overwritten
+  - incomplete templates require manual editing of the solvers to make them work properly
 
 
 Folders:

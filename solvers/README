@@ -1,4 +1,4 @@
-Collection of state-of-the-art solvers for minimal problems in geometric computer vision.
+Collection of state-of-the-art solvers for minimal problems in geometric computer vision
 
 If you use this code, please cite the following works:
 
@@ -91,7 +91,6 @@ Folders (minimal problems):
 53*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (2-dimensional formulation)
 54) IOD: initial orbit determination problem
 55) hyb13f_depth_laurent: Semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
-
 
 _common: help functions common to multiple problems
 _results: output data (pdf-figures)
