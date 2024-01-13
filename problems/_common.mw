@@ -176,24 +176,24 @@ samePattern := proc(M::Matrix, sym::name, xcl::set:={})
     local m := op([1,1], M), n := op([1,2], M), Mt, iM, eM:
     Mt := convert(M, table):
     iM := [indices(Mt, indexorder)]:
-    eM := map(i-&gt;`if`(M[iM[i][]] in xcl, M[iM[i][]], sym(iM[i][1]+(iM[i][2]-1)*m-m^2)), [$ 1..nops(iM)]):
+    eM := map(i-&gt;`if`(M[iM[i][]] in xcl, M[iM[i][]], sym(iM[i][1]+(iM[i][2]-1)*m-m^2)), [$ 1..numelems(iM)]):
     Matrix(m,n, {zip((x,y)-&gt;x[]=y, iM, eM)[]}):
 end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4131" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### Groebner basis of polynomial ideal
-gb := (F,tord,pp)-&gt;Groebner[Basis](F, tord, characteristic=pp):</Text-field>
+gb := (F, tord, pp)-&gt;Groebner[Basis](F, tord, characteristic=pp):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4130" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### dimension of polynomial ideal
-dim := (F,pp)-&gt;Groebner[HilbertDimension](F, characteristic=pp):</Text-field>
+dim := (F, pp)-&gt;Groebner[HilbertDimension](F, characteristic=pp):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4122" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### degree of polynomial ideal
-deg := (F,tord)-&gt;nops(Groebner[NormalSet](F, tord)[1]):</Text-field>
+deg := (F, tord)-&gt;numelems(Groebner[NormalSet](F, tord)[1]):</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L4123" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
