@@ -46,7 +46,8 @@ How to use:
  3.4) Enter solverGenerator(prob): Note that
   - solver and related files are generated in ../solvers/prob
   - existing files will be overwritten
-  - incomplete templates require manual editing of the solvers to make them work properly
+  - solver file cannot be created for incomplete templates
+  - for positive-dimensional systems with 0-dimensional components, the number of roots is always set to 1 and should be corrected manually in the test file
 
 
 Folders:

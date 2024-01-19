@@ -72,7 +72,7 @@ Folders (minimal problems):
 34) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
 35) gen6p: 6-point generalized relative pose estimation
 36) 3pra_st0: 3-point calibrated relative pose estimation with known relative rotation angle and zero screw translation
-37) 5p: 5-point calibrated relative pose estimation
+37) 5p2v: 5-point 2-view calibrated relative pose estimation
 38*) wpnp: weak Perspective-n-Points problem
 39*) wpnp_2x2sym: weak Perspective-n-Points problem
 40) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle (1-dimensional formulation)
@@ -91,6 +91,7 @@ Folders (minimal problems):
 53*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders (2-dimensional formulation)
 54) IOD: initial orbit determination problem
 55) hyb13f_depth_laurent: Semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
+56) parallel_robot_66: direct kinematics problem for SGP of type 6-6
 
 _common: help functions common to multiple problems
 _results: output data (pdf-figures)
