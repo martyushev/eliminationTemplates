@@ -114,6 +114,8 @@ prob := &quot;toy&quot;:</Text-field>
 # <Font bold="false" foreground="[0,0,0]">template search continues until #B equals number of roots or number of templates exceeds maxTD</Font>
 templateFinder(prob):</Text-field>
 </Input>
+<Output><Text-field style="HyperlinkWarning" layout="HyperlinkWarning"><Hyperlink linktarget="http://www.maplesoft.com/support/help/errors/view.aspx?path=Warning,%20there%20are%20almost%20constant%20polynomials%3A%20%5B1,%202,%203%5D" hyperlink="true"><Font style="HyperlinkWarning">Warning, there are almost constant polynomials: [1, 2, 3]</Font></Hyperlink></Text-field>
+</Output>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">Number of polynomials:                  3
 Sparse constant polynomials:            []
 Polynomials removed:                    []
@@ -131,19 +133,19 @@ d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
 0              7              3              0              0
 1              17             12             1              0
-2              23             29             2              0.015
+2              23             29             2              0
 
 Template #1:
 action monomial     [#E,#R,#B]          size                time
-[1/y]               [24,5,8]            [29,37]             0.078
+[1/y]               [24,5,8]            [29,37]             0.032
 
 
 Template #2:
 action monomial     [#E,#R,#B]          size                time
-[y]                 [24,5,8]            [29,37]             0.032
+[y]                 [24,5,8]            [29,37]             0.047
 
 
-Total time: 0.657
+Total time: 0.484
 </Text-field>
 </Output>
 </Group>
@@ -163,32 +165,32 @@ templateReduction(prob, td):</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action monomial     [#E,#R,#B]          size                time
 -------------------------------------------------------------------
-[1/y]               [23,5,8]            [28,36]             0.078
-[1/y]               [22,5,8]            [27,35]             0.047
+[1/y]               [23,5,8]            [28,36]             0.047
+[1/y]               [22,5,8]            [27,35]             0.063
 10% completed
 [1/y]               [21,5,8]            [26,34]             0.063
 20% completed
-[1/y]               [20,5,8]            [25,33]             0.031
+[1/y]               [20,5,8]            [25,33]             0.062
 30% completed
 [1/y]               [19,5,8]            [24,32]             0.031
-[1/y]               [18,5,8]            [23,31]             0.031
+[1/y]               [18,5,8]            [23,31]             0.047
 40% completed
-[1/y]               [17,5,8]            [22,30]             0.031
-[1/y]               [16,5,8]            [21,29]             0.047
+[1/y]               [17,5,8]            [22,30]             0.032
+[1/y]               [16,5,8]            [21,29]             0.031
 50% completed
-[1/y]               [15,5,8]            [20,28]             0.047
-[1/y]               [14,5,8]            [19,27]             0.031
-[1/y]               [13,5,8]            [18,26]             0.016
+[1/y]               [15,5,8]            [20,28]             0.031
+[1/y]               [14,5,8]            [19,27]             0.032
+[1/y]               [13,5,8]            [18,26]             0
 60% completed
-[1/y]               [12,5,8]            [17,25]             0.031
+[1/y]               [12,5,8]            [17,25]             0.016
 70% completed
 80% completed
-[1/y]               [11,5,8]            [16,24]             0.031
-[1/y]               [10,5,8]            [15,23]             0.016
+[1/y]               [11,5,8]            [16,24]             0.016
+[1/y]               [10,5,8]            [15,23]             0.031
 90% completed
 [1/y]               [9,5,8]             [14,22]             0.016
 
-Total time: 1.188
+Total time: 1.11
 </Text-field>
 </Output>
 </Group>

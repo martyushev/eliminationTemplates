@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Worksheet>
-<Version major="2021" minor="0"/>
+<Version major="2023" minor="1"/>
 <Label-Scheme value="2" prefix=""/>
 <View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
 </View-Properties>
-<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="worksheet" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
+<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
 <Styles>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -85,7 +85,7 @@
 </Styles>
 <Startup-Code startupcode=""/>
 <Task-table>
-    <Task-category name="&lt;default&gt;"/>
+	<Task-category name="&lt;default&gt;"/>
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4541" drawlabel="true">
@@ -98,7 +98,7 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;hyb13f_depth_laurent_w_sat&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;tdoa2d_53_dim1&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
 
 opts :=
 basis = std, ### quotient space bases to use
@@ -117,28 +117,16 @@ filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to b
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4603" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateFinder(prob, opts);</Text-field>
 </Input>
-<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 20 polynomials
-Variables: [a1, a2, a3, a4, b1, f1]; degrees: [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]; number of roots: 24
+<Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 6 polynomials
+Variables: [s, t, u, v, w, x1]; degrees: [3, 2, 2, 4, 4, 4]; number of roots: 20
 500 change matrices loaded
-Smaller template found: 3246,a4
-Smaller template found: 2901,a3
-Smaller template found: 2422,a4
-Smaller template found: 1962,b1
-Smaller template found: 1827,a2
-Smaller template found: 1669,a3
-Smaller template found: 1646,b1
-Smaller template found: 1537,b1
-Smaller template found: 1461,b1
+Smaller template found: 3676,u
+Smaller template found: 2437,u
+Smaller template found: 1357,x1
+Smaller template found: 1124,x1
+Smaller template found: 1074,x1
+Smaller template found: 1002,x1
 400 quotient space bases removed
-Smaller or sparser template found: [1389,1413],.994,a1,[5, 3, 4, 5, 3, 10]
-0%,[1389,1413],.994,a1,[5, 3, 4, 5, 3, 10]
-Smaller or sparser template found: [1228,1252],.993,a2,[5, 3, 4, 5, 3, 10]
-0%,[1228,1252],.993,a2,[5, 3, 4, 5, 3, 10]
-1%,[1228,1252],.993,a3,[5, 3, 4, 5, 3, 10]
-Smaller or sparser template found: [1205,1229],.993,a4,[5, 3, 4, 5, 3, 10]
-1%,[1205,1229],.993,a4,[5, 3, 4, 5, 3, 10]
-Smaller or sparser template found: [1150,1174],.993,b1,[5, 3, 4, 5, 3, 10]
-1%,[1150,1174],.993,b1,[5, 3, 4, 5, 3, 10]
 </Text-field>
 </Output>
 </Group>
@@ -183,7 +171,7 @@ Smaller or sparser template found: [1150,1174],.993,b1,[5, 3, 4, 5, 3, 10]
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLyUrZXhlY3V0YWJsZUdRJmZhbHNlRicvRjNRJ25vcm1hbEYn">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

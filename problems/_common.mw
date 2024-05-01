@@ -89,7 +89,7 @@
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of functions for problem formulation</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of problem formulation functions</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4107" drawlabel="true">
@@ -114,33 +114,35 @@ rndVec := (m::posint)-&gt;Vector(m, x-&gt;rnd()):</Text-field>
 </Group>
 <Group hide-output="false" labelreference="L4109" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### cross product matrix
-cross := v-&gt;&lt;&lt;0|-v[3]|v[2]&gt;, &lt;v[3]|0|-v[1]&gt;, &lt;-v[2]|v[1]|0&gt;&gt;:</Text-field>
+cross := v-&gt;&lt;0, -v[3], v[2]; v[3], 0, -v[1]; -v[2], v[1], 0&gt;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4108" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### get rotation matrix by the Cayley transform
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### rotation matrix by the Cayley transform
 getRotMatrix := v-&gt;&lt;v[1]^2-v[2]^2-v[3]^2+1, 2*(v[1]*v[2]+v[3]), 2*(v[1]*v[3]-v[2]);
                    2*(v[1]*v[2]-v[3]), -v[1]^2+v[2]^2-v[3]^2+1, 2*(v[2]*v[3]+v[1]);
                    2*(v[1]*v[3]+v[2]), 2*(v[2]*v[3]-v[1]), -v[1]^2-v[2]^2+v[3]^2+1&gt;/~(v[1]^2+v[2]^2+v[3]^2+1):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4118" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#### compute fundamental matrix from 2 camera matrices
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### fundamental matrix from 2 camera matrices
 getFundMatrix := (P1, P2)-&gt;Matrix(3, (j,i)-&gt;(-1)^(i+j)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, i), LinearAlgebra[DeleteRow](P2, j)&gt;)):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4132" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">getTrifocalTensor := (P1, P2, P3)-&gt;map(k-&gt;Matrix(3, (i,j)-&gt;(-1)^(k+1)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, k), P2[i,..], P3[j,..]&gt;)), [1,2,3]):</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### trifocal tensor from 3 camera matrices
+getTrifocalTensor := (P1, P2, P3)-&gt;map(k-&gt;Matrix(3, (i,j)-&gt;(-1)^(k+1)*LinearAlgebra[Determinant](&lt;LinearAlgebra[DeleteRow](P1, k), P2[i,..], P3[j,..]&gt;)), [1,2,3]):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4129" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">quat2rot := q-&gt;&lt;q[1]^2+q[2]^2-q[3]^2-q[4]^2,2*q[2]*q[3]-2*q[1]*q[4],2*q[1]*q[3]+2*q[2]*q[4]; 
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### quaternion to rotation matrix transform
+quat2rot := q-&gt;&lt;q[1]^2+q[2]^2-q[3]^2-q[4]^2,2*q[2]*q[3]-2*q[1]*q[4],2*q[1]*q[3]+2*q[2]*q[4]; 
                 2*q[1]*q[4]+2*q[2]*q[3],q[1]^2-q[2]^2+q[3]^2-q[4]^2,2*q[3]*q[4]-2*q[1]*q[2];
                 2*q[2]*q[4]-2*q[1]*q[3],2*q[1]*q[2]+2*q[3]*q[4],q[1]^2-q[2]^2-q[3]^2+q[4]^2&gt;:</Text-field>
 </Input>
 </Group>
 <Group hide-output="false" labelreference="L4106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### sort w.r.t. monomial ordering
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### sort wrt monomial ordering
 srt := (V, tord)-&gt;sort(V, (x, y)-&gt;Groebner[TestOrder](y, x, tord)):</Text-field>
 </Input>
 </Group>
@@ -177,7 +179,7 @@ samePattern := proc(M::Matrix, sym::name, xcl::set:={})
     Mt := convert(M, table):
     iM := [indices(Mt, indexorder)]:
     eM := map(i-&gt;`if`(M[iM[i][]] in xcl, M[iM[i][]], sym(iM[i][1]+(iM[i][2]-1)*m-m^2)), [$ 1..numelems(iM)]):
-    Matrix(m,n, {zip((x,y)-&gt;x[]=y, iM, eM)[]}):
+    return Matrix(m, n, {zip((x,y)-&gt;x[]=y, iM, eM)[]}):
 end proc:</Text-field>
 </Input>
 </Group>
@@ -188,19 +190,36 @@ gb := (F, tord, pp)-&gt;Groebner[Basis](F, tord, characteristic=pp):</Text-field
 </Group>
 <Group view="code" labelreference="L4130" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### dimension of polynomial ideal
-dim := (F, pp)-&gt;Groebner[HilbertDimension](F, characteristic=pp):</Text-field>
+dim := (F, tord, pp)-&gt;Groebner[HilbertDimension](F, tord, characteristic=pp):</Text-field>
 </Input>
 </Group>
 <Group view="code" labelreference="L4122" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### degree of polynomial ideal
-deg := (F, tord)-&gt;numelems(Groebner[NormalSet](F, tord)[1]):</Text-field>
+deg := proc(F, tord, pp, indvars:={})
+    local F1 := subs(map(vr-&gt;vr=rnd(), indvars), F), vars1 := indets(tord) minus {tord} minus indvars, tord1 := tdeg(vars1[]):
+    return numelems(Groebner[NormalSet](gb(F1, tord1, pp), tord1)[1]):
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4133" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find roots at infinity
+inftyRoots := proc(F, tord, pp)
+    local Gr, hGr, vars := [indets(F)[]], h:
+    Gr := gb(F, tord, pp):
+    hGr := Groebner[Homogenize](Gr, h):
+    return solve(subs(h=0, hGr), vars):
+end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L4123" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4095" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L4095" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4134" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -227,6 +246,7 @@ samePattern,
 gb,
 dim,
 deg,
+inftyRoots,
 &quot;_common.m&quot;:</Text-field>
 </Input>
 </Group>

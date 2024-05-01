@@ -1,0 +1,62 @@
+Maple formulations of minimal problems in geometric computer vision
+
+
+E-mail: martiushevev@susu.ru
+Project page: https://github.com/martyushev/eliminationTemplates
+
+
+Minimal problems:
+
+(* - problem formulation was adapted from http://people.inf.ethz.ch/vlarsson/misc/autogen_v0_5.zip)
+
+1*) 8ptF_radial_1s: 8-point uncalibrated relative pose estimation with one unknown radial distortion
+2) focal6p_1s: 6-point relative pose estimation with one unknown focal length
+3) focal6p: 6-point relative pose estimation with unknown but common focal length
+4*) relpose_6p_rad_1s: 6-point calibrated relative pose estimation with one unknown radial distortion
+5*) stitching: 3-point panorama stitching problem
+6*) p4p_fr: 4-point absolute pose estimation with unknown focal length and radial distortion
+7*) p4p_fr_iccv17: 4-point absolute pose estimation with unknown focal length and radial distortion (another formulation, cf.6)
+8) relpose_6p_rad: 6-point calibrated relative pose estimation with unknown but common radial distortion
+9) rdist9p: uncalibrated 9-point relative pose estimation with two unknown radial distortions
+10) relpose_7p_fr_1s: 7-point relative pose estimation with one unknown focal length and radial distortion
+11*) relpose_7p_fr_1s_elr: 7-point relative pose estimation with one unknown focal length and radial distortion (another formulation, cf.10)
+12*) relpose_7p_fr_1s_el: 7-point relative pose estimation with one unknown focal length and radial distortion (another formulation, cf.10)
+13*) rollingshutter: 5-point rolling shutter absolute pose estimation
+14*) satellite_triang: 3D-point triangulation from satellite imagery
+15) refract5p: 5-point absolute pose estimation for a calibrated camera observing a scene through a known refractive plane
+16*) pose_quiver: absolute pose estimation with unknown focal length using quivers
+17) unsynch_relpose: 8-point uncalibrated relative pose estimation with unknown time shift
+18*) opt_pnp_hesch: direct least-squares method for PnP problem
+19*) opt_pnp_nakanoC: direct least-squares method for PnP problem with Cayley parameterization
+20*) optpose2pt_v2: 2-point optimal pose estimation with known gravitational vector
+21*) relpose_4pt: 4-point calibrated relative pose estimation with known relative rotation angle
+22*) 8ptF_radial: 8-point uncalibrated relative pose estimation with unknown but common radial distortion
+23*) pose_35pt: 3.5-point absolute pose estimation with unknown focal length
+24*) gp4p_scale: 4-point generalized pose and scale estimation
+25) 4pra: calibrated 4-point relative pose estimation with known relative rotation angle (another formulation, cf.21)
+26) gen5pra: generalized 5-point relative pose estimation with known relative rotation angle
+27*) r6p: 6-point rolling shutter absolute pose estimation
+28*) optpose4pt_v2: 4-point optimal pose estimation with known gravitational vector
+29*) optpose3pt_v2: 3-point optimal pose estimation with known gravitational vector
+30*) l2_3view_triang: relaxed L2 3-view triangulation problem
+31) p6pf_refract: 6-point absolute pose estimation for a camera with unknown focal length observing a scene through a known refractive plane
+32) relpose_7p_fr: 7-point relative pose estimation with unknown but common focal length and radial distortion
+33) gen_relpose_scale: 7-point generalized relative pose and scale estimation
+34) relpose_7p_r1r2: 7-point calibrated relative pose estimation with two unknown radial distortions
+35) gen6p: 6-point generalized relative pose estimation
+36) 3pra_st0: 3-point calibrated relative pose estimation with known relative rotation angle and zero screw translation
+37) 5p2v: 5-point 2-view calibrated relative pose estimation
+38*) wpnp: weak Perspective-n-Points problem
+39*) wpnp_2x2sym: weak Perspective-n-Points problem
+40) relpose_7p_fuv_angle: 7-point relative pose estimation with unknown but common focal length and principal point and known relative rotation angle
+41*) opt_vanishingpoints: vanishing point estimation
+42) 3v_triang_laurent: optimal 3-view triangulation (Laurent polynomial formulation)
+43) hyb32f: 3-point semi-generalized relative pose estimation
+44) hyb51f: 5-point semi-generalized relative pose estimation
+45*) opt_pnp_zheng: optimal Perspective-n-Points problem
+46) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
+47*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders
+48*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders
+49) IOD: initial orbit determination problem
+50) hyb13f_depth_laurent: semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
+51) parallel_robot_66: direct kinematics problem for SGP of type 6-6

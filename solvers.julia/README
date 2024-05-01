@@ -1,0 +1,45 @@
+Collection of state-of-the-art Julia solvers for minimal problems in geometric computer vision
+
+If you use this code, please cite the following works:
+
+1)
+@inproceedings{martyushev2022optimizing,
+  title={Optimizing Elimination Templates by Greedy Parameter Search},
+  author={Martyushev, Evgeniy and Vrablikova, Jana and Pajdla, Tomas},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={15754--15764},
+  year={2022}
+}
+Published version:
+https://openaccess.thecvf.com/content/CVPR2022/papers/Martyushev_Optimizing_Elimination_Templates_by_Greedy_Parameter_Search_CVPR_2022_paper.pdf
+
+2)
+@article{martyushev2023automatic,
+  title={Automatic Solver Generator for Systems of Laurent Polynomial Equations},
+  author={Martyushev, Evgeniy and Bhayani, Snehal and Pajdla, Tomas},
+  year={2023}
+}
+Preprint: arXiv:2307.00320
+
+E-mail: martiushevev@susu.ru
+Project page: https://github.com/martyushev/eliminationTemplates
+
+
+Software required: Julia 1.10.2+
+
+
+How to use:
+
+1) Run Julia
+2) Type include("/path/to/prob/test_num_prob.jl")
+
+
+Folders:
+
+1) _common: help functions common to multiple problems
+2) _results: output data (pdf-figures)
+3) prob: problem folder containing 4 jl-files:
+ 3.1) inidata_num_prob: generates random initial data
+ 3.2) coefs_prob: computes initial Macaulay (coefficient) matrix (C) and monomial vector (U)
+ 3.3) test_num_prob: evaluates speed, numerical accuracy, fail rate, etc.
+ 3.4) red_mxn(_colpiv)_prob: solver created by redundantAG (m x n - template size, colpiv - if column-pivoting strategy used)
