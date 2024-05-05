@@ -1,5 +1,6 @@
 Maple implementation of the automatic template generator for polynomial systems by greedy parameter search
 
+
 If you use this code, please cite the following work:
 
 @inproceedings{martyushev2022optimizing,
@@ -12,14 +13,17 @@ If you use this code, please cite the following work:
 Published version:
 https://openaccess.thecvf.com/content/CVPR2022/papers/Martyushev_Optimizing_Elimination_Templates_by_Greedy_Parameter_Search_CVPR_2022_paper.pdf
 
+
 E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
+
 
 Software required:
 
 1) Maple 2021+
 2) Macaulay2 1.16+ (http://www2.macaulay2.com/Macaulay2/)
 3) Gfan (https://math.au.dk/~jensen/software/gfan/gfan.html)
+
 
 How to use:
 
@@ -49,7 +53,6 @@ How to use:
  5.2) Pick minimal problem (prob := "problem_name")
  5.3) Configure parameters (see comments in solverGenerator.mw)
  5.4) Enter solverGenerator(prob, opts):
-
 
 
 Folders:

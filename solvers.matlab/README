@@ -1,6 +1,7 @@
 Collection of state-of-the-art MATLAB solvers for minimal problems in geometric computer vision
 
-If you use this code, please cite the following works:
+
+If you use this code, please cite (one of) the following works:
 
 1)
 @inproceedings{martyushev2022optimizing,
@@ -21,17 +22,19 @@ https://openaccess.thecvf.com/content/CVPR2022/papers/Martyushev_Optimizing_Elim
 }
 Preprint: arXiv:2307.00320
 
+
 E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
 
 
-Software required: MATLAB R2019b+
+Software required: MATLAB R2019+
 
 
 How to use:
 
-1) Run add_all.m to add paths
-2) Run prob/test_num_prob.m
+1) Run MATLAB and type:
+ >> run('path/to/solvers.matlab/add_all.m')
+ >> test_num_prob
 
 
 Folders:

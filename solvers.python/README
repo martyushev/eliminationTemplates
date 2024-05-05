@@ -1,0 +1,38 @@
+Collection of state-of-the-art Python solvers for minimal problems in geometric computer vision
+
+
+If you use this code, please cite the following work:
+
+@article{martyushev2023automatic,
+  title={Automatic Solver Generator for Systems of Laurent Polynomial Equations},
+  author={Martyushev, Evgeniy and Bhayani, Snehal and Pajdla, Tomas},
+  year={2023}
+}
+Preprint: arXiv:2307.00320
+
+
+E-mail: martiushevev@susu.ru
+Project page: https://github.com/martyushev/eliminationTemplates
+
+
+Software required: Python 3.12+ with modules numpy and scipy
+
+
+How to use:
+
+1) Run Python and type:
+ >>> import sys
+ >>> sys.path.append('path/to/solvers.python')
+ >>> from py_prob import *
+ >>> test_num_prob()
+
+
+Folders:
+
+1) _common: help functions common to multiple problems
+2) prob: problem folder containing 5 py-files:
+ 2.1) inidata_num_prob: generates random initial data
+ 2.2) coefs_prob: computes initial Macaulay (coefficient) matrix (C) and monomial vector (U)
+ 2.3) test_num_prob: evaluates speed, numerical accuracy, fail rate, etc.
+ 2.4) red_mxn_prob: solver created by redundantAG (m x n - template size)
+ 2.5) __init__: initialization file

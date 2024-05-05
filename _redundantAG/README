@@ -39,7 +39,7 @@ How to use:
   - reduced template is saved to templates/t_prob
   - existing template file will be overwritten
 
-3) Generating Matlab solver and/or related files from the saved template
+3) Generating solver and/or related files from the saved template
  3.1) Configure parameters in redundantAG.ini
  3.2) Run Maple and open solverGenerator.mw
  3.3) Pick minimal problem (prob := "problem_name")
@@ -47,7 +47,7 @@ How to use:
   - solver and related files are generated in ../solvers.language/prob, where language is one of matlab, julia, python
   - existing files will be overwritten
   - solver file cannot be created for incomplete templates
-  - for positive-dimensional systems with 0-dimensional components, the number of roots is always set to 1 and should be corrected manually in the test file
+  - for positive-dimensional systems with 0-dimensional components, the number of roots is always set to 1 and should be changed manually in the test file
 
 
 Folders:

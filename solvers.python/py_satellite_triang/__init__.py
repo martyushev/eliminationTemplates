@@ -1,0 +1,4 @@
+from .inidata_num_satellite_triang import inidata_num_satellite_triang
+from .coefs_satellite_triang import coefs_satellite_triang
+from .red_74x104_satellite_triang import red_74x104_satellite_triang
+from .test_num_satellite_triang import test_num_satellite_triang

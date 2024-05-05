@@ -1,0 +1,4 @@
+from .inidata_num_parallel_robot_66 import inidata_num_parallel_robot_66
+from .coefs_parallel_robot_66 import coefs_parallel_robot_66
+from .red_293x362_parallel_robot_66 import red_293x362_parallel_robot_66
+from .test_num_parallel_robot_66 import test_num_parallel_robot_66

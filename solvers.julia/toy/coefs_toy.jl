@@ -3,6 +3,7 @@ function coefs_toy(data::Vector{Matrix{Float64}})
     A = data[1]
 
     C = zeros(3,10)
+
     C[[3,6,9,11,13,17,19,23,25]] .= 1
     C[28] = A[1]
     C[29] = A[2]

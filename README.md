@@ -5,6 +5,7 @@ Elimination template generators for solving polynomial systems and related probl
 
 2) Evgeniy Martyushev, Snehal Bhayani, Tomas Pajdla. Automatic Solver Generator for Systems of Laurent Polynomial Equations, preprint: arXiv:2307.00320, 2023.
 
+
 Folders:
 
 1) _greedyAG: automatic generator by greedy parameter search

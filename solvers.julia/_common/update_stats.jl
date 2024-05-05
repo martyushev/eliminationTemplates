@@ -13,7 +13,7 @@ function update_stats(stats,S,C,U,d)
     S = S[:,I[1:k]]
     e1 = e[1:k]
     
-    kr = count(all(x -> isreal(x), S; dims=1)) # number of real roots
+    kr = count(all(c -> isreal(c), S; dims=1)) # number of real roots
     err = log10(norm(e1)) # numerical error
     flr = !isempty(e1[e1.>1e-3]) # failure identifier
     if n==k; shrp = -Inf; else; shrp = log10(e1[k]/e[k+1]); end # boundary sharpness
