@@ -89,8 +89,11 @@
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4541" drawlabel="true">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:
-read &quot;greedyAG.m&quot;:</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4796" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4743" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -98,7 +101,7 @@ read &quot;greedyAG.m&quot;:</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" hide-output="false" labelreference="L4750" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;tdoa2d_53_dim1&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;parallel_robot_66&quot;: ### pick minimal problem (see F_prob.m files in folder ../problems)
 
 opts :=
 basis = std, ### quotient space bases to use
@@ -106,7 +109,7 @@ basis = std, ### quotient space bases to use
 # nstd - non-standard bases (see b_prob files in folder /bases for pre-computed non-standard bases)
 prime_number = 32749, ### sufficiently large prime number (32749 is a maximal prime number for Gfan)
 action_vars = [], ### list of preferred action variables, e.g. [1,2] - first 2 variables, [-1] - last variable, [] - all variables
-schur_pols = [], ### polynomials to be reduced by the Schur complement reduction
+schur_pols = [1], ### polynomials to be reduced by the Schur complement reduction
 filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to be filtered out, 0 - no filtering</Text-field>
 </Input>
 </Group>
@@ -118,14 +121,14 @@ filter_frac = 0.8: ### number from 0 to 1, fraction of quotient space bases to b
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">templateFinder(prob, opts);</Text-field>
 </Input>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">The problem is defined by 6 polynomials
-Variables: [s, t, u, v, w, x1]; degrees: [3, 2, 2, 4, 4, 4]; number of roots: 20
+Variables: [a, b, c, u, v, w]; degrees: [2, 4, 4, 4, 4, 4]; number of roots: 40
 500 change matrices loaded
-Smaller template found: 3676,u
-Smaller template found: 2437,u
-Smaller template found: 1357,x1
-Smaller template found: 1124,x1
-Smaller template found: 1074,x1
-Smaller template found: 1002,x1
+Smaller template found: 3669,b
+Smaller template found: 3038,a
+Smaller template found: 3023,c
+Smaller template found: 1826,c
+Smaller template found: 1542,a
+Smaller template found: 1436,b
 400 quotient space bases removed
 </Text-field>
 </Output>
@@ -171,7 +174,7 @@ Smaller template found: 1002,x1
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLyUrZXhlY3V0YWJsZUdRJmZhbHNlRicvRjNRJ25vcm1hbEYn">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0YnLyUrZXhlY3V0YWJsZUdRJmZhbHNlRicvRjNRJ25vcm1hbEYn">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2JVEhRicvJSdpdGFsaWNHUSV0cnVlRicvJSxtYXRodmFyaWFudEdRJ2l0YWxpY0Yn</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>

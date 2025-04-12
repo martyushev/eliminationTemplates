@@ -4,7 +4,7 @@ def coefs_wpnp_2x2sym(data):
     A = data[0].T.flat
     B = data[1].T.flat
 
-    C = np.zeros((4,16),dtype=np.complex_)
+    C = np.zeros((4,16),dtype=complex)
     C.flat[[8,19,39,53]] = 64*A[2]**2
     C.flat[[1,25,32,59]] = -32*A[0]**2+32*A[1]**2
     C.flat[[4,22,42,50]] = 32*A[0]**2+32*A[1]**2

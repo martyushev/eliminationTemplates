@@ -10,7 +10,7 @@ for i = 1:N
     [C,U,dU] = coefs_parallel_robot_66(data);
 
     tic;
-    S = red_293x362_parallel_robot_66(C,data{3}(1));
+    S = red_293x362_parallel_robot_66(C);
     stats.tm = [stats.tm toc];
     if isempty(S); continue; end
 

@@ -1,4 +1,4 @@
-Maple formulations of minimal problems in geometric computer vision
+Maple formulations of minimal problems
 
 
 E-mail: martiushevev@susu.ru
@@ -7,7 +7,7 @@ Project page: https://github.com/martyushev/eliminationTemplates
 
 Minimal problems:
 
-(* - problem formulation was adapted from http://people.inf.ethz.ch/vlarsson/misc/autogen_v0_5.zip)
+(* - formulation was adapted from http://people.inf.ethz.ch/vlarsson/misc/autogen_v0_5.zip)
 
 1*) 8ptF_radial_1s: 8-point uncalibrated relative pose estimation with one unknown radial distortion
 2) focal6p_1s: 6-point relative pose estimation with one unknown focal length
@@ -59,4 +59,4 @@ Minimal problems:
 48*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders
 49) IOD: initial orbit determination problem
 50) hyb13f_depth_laurent: semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
-51) parallel_robot_66: direct kinematics problem for SGP of type 6-6
+51) parallel_robot_66: forward kinematics problem for a general Stewart-Gough platform

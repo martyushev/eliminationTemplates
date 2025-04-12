@@ -131,21 +131,21 @@ Action monomials:                       [1/x, 1/y, 1/z, x, y, z]
 
 d              #cols-#rows    #rows          degree         time
 -------------------------------------------------------------------
-0              7              3              0              0.031
-1              17             12             1              0
-2              23             29             2              0.015
+0              7              3              0              0.015
+1              17             12             1              0.016
+2              23             29             2              0
 
 Template #1:
 action monomial     [#E,#R,#B]          size                time
-[1/y]               [24,5,8]            [29,37]             0.047
+[1/y]               [24,5,8]            [29,37]             0.063
 
 
 Template #2:
 action monomial     [#E,#R,#B]          size                time
-[y]                 [24,5,8]            [29,37]             0.047
+[y]                 [24,5,8]            [29,37]             0.031
 
 
-Total time: 0.547
+Total time: 0.516
 </Text-field>
 </Output>
 </Group>
@@ -165,32 +165,32 @@ templateReduction(prob, td):</Text-field>
 <Output><Text-field style="Line Printed Output" layout="Line Printed Output">
 action monomial     [#E,#R,#B]          size                time
 -------------------------------------------------------------------
-[1/y]               [23,5,8]            [28,36]             0.047
-[1/y]               [22,5,8]            [27,35]             0.047
+[1/y]               [23,5,8]            [28,36]             0.031
+[1/y]               [22,5,8]            [27,35]             0.031
 10% completed
-[1/y]               [21,5,8]            [26,34]             0.109
+[1/y]               [21,5,8]            [26,34]             0.047
 20% completed
-[1/y]               [20,5,8]            [25,33]             0.047
+[1/y]               [20,5,8]            [25,33]             0.031
 30% completed
-[1/y]               [19,5,8]            [24,32]             0.016
-[1/y]               [18,5,8]            [23,31]             0.016
+[1/y]               [19,5,8]            [24,32]             0.032
+[1/y]               [18,5,8]            [23,31]             0.031
 40% completed
-[1/y]               [17,5,8]            [22,30]             0.032
+[1/y]               [17,5,8]            [22,30]             0.031
 [1/y]               [16,5,8]            [21,29]             0.031
 50% completed
-[1/y]               [15,5,8]            [20,28]             0.015
+[1/y]               [15,5,8]            [20,28]             0.016
 [1/y]               [14,5,8]            [19,27]             0.016
-[1/y]               [13,5,8]            [18,26]             0.015
+[1/y]               [13,5,8]            [18,26]             0.031
 60% completed
-[1/y]               [12,5,8]            [17,25]             0.015
+[1/y]               [12,5,8]            [17,25]             0.016
 70% completed
 80% completed
-[1/y]               [11,5,8]            [16,24]             0.047
+[1/y]               [11,5,8]            [16,24]             0.015
 [1/y]               [10,5,8]            [15,23]             0.016
 90% completed
-[1/y]               [9,5,8]             [14,22]             0.031
+[1/y]               [9,5,8]             [14,22]             0.016
 
-Total time: 1.047
+Total time: 0.859
 </Text-field>
 </Output>
 </Group>
@@ -218,24 +218,32 @@ saveTemplate(prob, td1):</Text-field>
 <Group view="code" hide-input="false" labelreference="L5304" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L5342" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L5364" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L5365" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L5355" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
 </Group></Presentation-Block><Presentation-Block>
-<Group view="code" labelreference="L5327" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L5327" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L5368" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5373" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5374" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5375" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5376" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L5377" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>

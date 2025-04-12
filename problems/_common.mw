@@ -212,6 +212,19 @@ end proc:</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L4123" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### save polynomial system and (optional) procedure for constructing coefficients
+saveF := proc(prob, F, C_prob:=NULL)
+    local fn := cat(&quot;F_&quot;, prob, &quot;.m&quot;):
+    cat(F_, prob) := F:
+    if C_prob=NULL then
+        save cat(F_, prob), fn:
+    else
+        save cat(F_, prob), C_prob, fn:
+    end if:
+end proc:</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L4135" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
@@ -247,6 +260,7 @@ gb,
 dim,
 deg,
 inftyRoots,
+saveF,
 &quot;_common.m&quot;:</Text-field>
 </Input>
 </Group>

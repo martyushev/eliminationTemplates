@@ -15,7 +15,7 @@ E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
 
 
-Software required: Julia 1.10+
+Tested on Julia 1.11.3
 
 
 How to use:

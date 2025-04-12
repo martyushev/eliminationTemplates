@@ -13,10 +13,10 @@ def red_10x20_wpnp_2x2sym(C):
     M = solve(np.concatenate((P@L,P[:,2:]),axis=1),M[:,2:])
     M = M[-8:,:]
 
-    T0 = np.zeros((10,10),dtype=np.complex_)
+    T0 = np.zeros((10,10),dtype=complex)
     T0[[1,2,3,4,7,8,9,6],:] = -M[:,8:]
     T0.flat[[3,59]] = 1
-    T1 = np.zeros((10,10),dtype=np.complex_)
+    T1 = np.zeros((10,10),dtype=complex)
     T1[np.ix_([1,2,3,4,7,8,9,6],[1,2,3,4,7,8,9,6])] = M[:,:8]
     T1.flat[[0,55]] = 1
 

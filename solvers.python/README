@@ -15,7 +15,7 @@ E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
 
 
-Software required: Python 3.12+ with modules numpy and scipy
+Tested on Python 3.13.2 + numpy-2.2.2 + scipy-1.15.1
 
 
 How to use:
