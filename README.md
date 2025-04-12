@@ -1,4 +1,4 @@
-# Elimination templates
+# Elimination template generators
 
 Elimination template generators for solving polynomial systems and related problems and solvers in geometric computer vision published in
 
