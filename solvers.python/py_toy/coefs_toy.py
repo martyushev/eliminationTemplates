@@ -12,6 +12,6 @@ def coefs_toy(data):
     C = C/np.sqrt(np.sum(C*np.conj(C),axis=1,keepdims=True))
 
     def U(x,y,z):
-        return np.array([x**3,y**3,z**2*x,x**2,x*y,y**2,y*z,z**2,z,1])
+        return np.array([x**3,y**3,z**2*x,x**2,y*x,y**2,y*z,z**2,z,1])
 
     return C,U

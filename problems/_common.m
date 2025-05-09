@@ -65,11 +65,10 @@ $-Fjw6$w,6#%#vrGF%6$FAFBF%/FFFMF%F%F%6#F26$7'FRFS"#CF_jlFV7'FRFSF_dm"#FFV9'FF>F
 \el-%&minusG6$-Fedm6$-%'indetsG6#FG<#FGFbdm>F\\m-%%tdegG6#&F\elF%O-F]_m6#&-&Fi]
 l6#%*NormalSetG6$-Fg`m6%F`alF\\mF]zF\\mFfqF%F%F%6#Fi[l6'7'FRFSF/F/FV7'FRFSFfn"#
 \F^bl7'FRFSFX"$+"Fahl7'FRFS"$-""$B"Fahl7'FRFSF_q"#nFXF%,
-I+inftyRootsw,Fi`m6&%#GrG%$hGrGF\_l%"hG6"F%C&>F\\m7#&-FjdmFj_lF%>F`al-Fg`m6%FFF
-GF]z>F\el-&Fi]l6#%+HomogenizeG6$F`alFa\mO-%&solveG6$-Fccm6$/Fa\mF[qF\elF\\mF%F%
-F%6#F_q6'7'FRFSF[]lF/FV7'FRFSFf`lFazFahl7'FRFSF_qFeglFahl7'FRFSF_qFVFahl7'FRFSF
-_qFVFXF%,
+I+inftyRootsw,Fi`m6%%#GrG%$hGrG%"hG6"F%C%>F`al-Fg`m6%FFFGF]z>F\el-&Fi]l6#%+Homo
+genizeG6$F`alF\\mO-%'msolveG6$-Fccm6$/F\\mF[q<#FaemF]zF%F%F%6#F_q6&7'FRFSF[]lF/
+FV7'FRFSF_qFeglFahl7'FRFSF_qFVFahl7'FRFSF_qFgoFXF%,
 I&saveFw,6%%%probGFj`l>%'C_probG%%NULLG6#%#fnG6"F%C%>F`al-%$catG6%Q#F_F%FFQ#.mF
-%>-Fiim6$%#F_GFFFG@%/F]zFbimB6$F^jmF`alB6%F^jmF]zF`alF%F%F%6#F_q6(7'FRFSF]rF/FV
+%>-Feim6$%#F_GFFFG@%/F]zF^imB6$FjimF`alB6%FjimF]zF`alF%F%F%6#F_q6(7'FRFSF]rF/FV
 7'FRFSFfnF_jlF^bl7'FRFSF_qF_pFahl7'FRFSF_qFfn"#X7'FRFSFc`lF^jl"#Z7'FRFSFc`l"#PF
-_[nF%
+[[nF%

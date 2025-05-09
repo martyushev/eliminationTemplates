@@ -10,9 +10,7 @@ function red_293x362_parallel_robot_66(C::Array{Float64},L1)
     M = Matrix(M)
 
     L,_,p = lu(M[:,1:255])
-    Id = Matrix{Float64}(I,293,293)
-    M = [L Id[:,256:end]][invperm(p),:]\M[:,256:end]
-    M = M[end-37:end,:]
+    M = M[p[end-37:end],256:end]-L[end-37:end,:]*(L[1:255,:]\M[p[1:255],256:end])
 
     T0 = zeros(69,69)
     T0[[4,5,9,17,18,22,23,25,26,28,29,30,34,35,37,38,40,41,43,44,45,49,50,52,53,55,56,57,58,60,61,62,63,64,66,67,68,69],:] = -M[:,39:end]

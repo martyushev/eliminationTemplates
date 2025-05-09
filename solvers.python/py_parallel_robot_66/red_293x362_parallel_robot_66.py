@@ -12,9 +12,9 @@ def red_293x362_parallel_robot_66(C,L0):
     M = M[:,218:]-M[:,:218]@M0 # Schur complement reduction
     M = M.toarray()
 
-    P,L,_ = lu(M[:,:255])
-    M = solve(np.concatenate((P@L,P[:,255:]),axis=1),M[:,255:])
-    M = M[-38:,:]
+    p,L,_ = lu(M[:,:255],p_indices=True)
+    p = np.argsort(p)
+    M = M[p[-38:],255:]-L[-38:,:]@solve(L[:255,:],M[p[:255],255:])
 
     T0 = np.zeros((69,69))
     T0[[3,4,8,16,17,21,22,24,25,27,28,29,33,34,36,37,39,40,42,43,44,48,49,51,52,54,55,56,57,59,60,61,62,63,65,66,67,68],:] = -M[:,38:]

@@ -7,9 +7,7 @@ function red_14x22_toy(C::Array{Float64})
     M = Matrix(M)
 
     L,_,p = lu(M[:,1:9])
-    Id = Matrix{Float64}(I,14,14)
-    M = [L Id[:,10:end]][invperm(p),:]\M[:,10:end]
-    M = M[end-4:end,:]
+    M = M[p[end-4:end],10:end]-L[end-4:end,:]*(L[1:9,:]\M[p[1:9],10:end])
 
     T0 = zeros(8,8)
     T0[[2,4,5,7,8],:] = -M[:,6:end]

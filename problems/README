@@ -5,9 +5,16 @@ E-mail: martiushevev@susu.ru
 Project page: https://github.com/martyushev/eliminationTemplates
 
 
+Folders:
+
+1) benchmark: some polynomial systems from the database https://homepages.math.uic.edu/~jan/demo.html
+2) computerVision: minimal problems from geometric computer vision
+3) robotics: minimal problems from robotics
+
+
 Minimal problems:
 
-(* - formulation was adapted from http://people.inf.ethz.ch/vlarsson/misc/autogen_v0_5.zip)
+(* - formulation was adapted from autogen_v0_5)
 
 1*) 8ptF_radial_1s: 8-point uncalibrated relative pose estimation with one unknown radial distortion
 2) focal6p_1s: 6-point relative pose estimation with one unknown focal length

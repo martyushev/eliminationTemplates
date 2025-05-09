@@ -204,10 +204,10 @@ end proc:</Text-field>
 <Group view="code" labelreference="L4133" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### find roots at infinity
 inftyRoots := proc(F, tord, pp)
-    local Gr, hGr, vars := [indets(F)[]], h:
+    local Gr, hGr, h:
     Gr := gb(F, tord, pp):
     hGr := Groebner[Homogenize](Gr, h):
-    return solve(subs(h=0, hGr), vars):
+    return msolve(subs(h=0, {hGr[]}), pp):
 end proc:</Text-field>
 </Input>
 </Group>
