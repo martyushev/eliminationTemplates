@@ -89,7 +89,7 @@
 </Task-table>
 <Task/><Presentation-Block>
 <Group hide-output="false" labelreference="L4111" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### collection of problem formulation functions</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### common functions for problem formulations</Text-field>
 </Input>
 </Group>
 <Group hide-input="false" hide-output="false" labelreference="L4107" drawlabel="true">

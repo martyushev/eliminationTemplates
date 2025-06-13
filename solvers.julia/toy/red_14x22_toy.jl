@@ -8,6 +8,8 @@ function red_14x22_toy(C::Array{Float64})
 
     L,_,p = lu(M[:,1:9])
     M = M[p[end-4:end],10:end]-L[end-4:end,:]*(L[1:9,:]\M[p[1:9],10:end])
+    #Q,_ = qr(M[:,1:9])
+    #M = Q[:,end-4:end]'*M[:,10:end]
 
     T0 = zeros(8,8)
     T0[[2,4,5,7,8],:] = -M[:,6:end]

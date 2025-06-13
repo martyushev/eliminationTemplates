@@ -12,6 +12,8 @@ def red_14x22_toy(C):
     p,L,_ = lu(M[:,:9],p_indices=True)
     p = np.argsort(p)
     M = M[p[-5:],9:]-L[-5:,:]@solve(L[:9,:],M[p[:9],9:])
+    #Q,_ = qr(M[:,:9])
+    #M = Q[:,-5:].T@M[:,9:]
 
     T0 = np.zeros((8,8))
     T0[[1,3,4,6,7],:] = -M[:,5:]

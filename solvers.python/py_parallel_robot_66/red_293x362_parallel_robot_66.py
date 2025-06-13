@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.sparse import csr_matrix
-from scipy.linalg import lu, solve, eig
+from scipy.linalg import lu, solve, qr, eig
 
 # Input: coefficient matrix C of size 6x46
 # Output: solution matrix S of size 6x69
@@ -15,6 +15,8 @@ def red_293x362_parallel_robot_66(C,L0):
     p,L,_ = lu(M[:,:255],p_indices=True)
     p = np.argsort(p)
     M = M[p[-38:],255:]-L[-38:,:]@solve(L[:255,:],M[p[:255],255:])
+    #Q,_ = qr(M[:,:255])
+    #M = Q[:,-38:].T@M[:,255:]
 
     T0 = np.zeros((69,69))
     T0[[3,4,8,16,17,21,22,24,25,27,28,29,33,34,36,37,39,40,42,43,44,48,49,51,52,54,55,56,57,59,60,61,62,63,65,66,67,68],:] = -M[:,38:]

@@ -6,9 +6,9 @@ If you use this code, please cite the following work:
 @article{martyushev2023automatic,
   title={Automatic Solver Generator for Systems of Laurent Polynomial Equations},
   author={Martyushev, Evgeniy and Bhayani, Snehal and Pajdla, Tomas},
+  journal={https://arxiv.org/abs/2307.00320},
   year={2023}
 }
-Preprint: arXiv:2307.00320
 
 
 E-mail: martiushevev@susu.ru

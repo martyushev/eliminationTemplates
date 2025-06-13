@@ -7,6 +7,8 @@ function S = red_14x22_toy(C)
 
     [L,~,p] = lu(M(:,1:9),'vector');
     M = M(p(end-4:end),10:end)-L(end-4:end,:)*(L(1:9,:)\M(p(1:9),10:end));
+    %[M,~] = qr(M(:,1:9),M(:,10:end));
+    %M = M(end-4:end,:);
 
     T0 = zeros(8);
     T0([2,4,5,7,8],:) = -M(:,6:end);
