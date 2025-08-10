@@ -10,7 +10,7 @@ for i = 1:N
     [C,U,dU] = coefs_toa_46(data);
 
     tic;
-    S = red_427x475_toa_46(C);
+    S = red_427x475_colpiv_toa_46(C);
     stats.tm = [stats.tm toc];
     if isempty(S); continue; end
 

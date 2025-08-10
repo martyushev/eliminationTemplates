@@ -9,7 +9,9 @@ Folders:
 
 1) benchmark: some polynomial systems from the database https://homepages.math.uic.edu/~jan/demo.html
 2) computerVision: minimal problems from geometric computer vision
-3) robotics: minimal problems from robotics
+3) misc: miscellaneous minimal problems
+4) robotics: minimal problems from robotics
+5) t(d)oa: minimal time-of-arrival and time-difference-of-arrival problems
 
 
 Minimal problems:
@@ -62,8 +64,9 @@ Minimal problems:
 44) hyb51f: 5-point semi-generalized relative pose estimation
 45*) opt_pnp_zheng: optimal Perspective-n-Points problem
 46) relpose_9lines: relative pose estimation from 9 lines in 3 uncalibrated images
-47*) toa_46: time-of-arrival self-calibration problem for 6 receivers and 4 senders
-48*) toa_55: time-of-arrival self-calibration problem for 5 receivers and 5 senders
+47*) toa_46: time-of-arrival self-localization problem for 6 receivers and 4 senders
+48*) toa_55: time-of-arrival self-localization problem for 5 receivers and 5 senders
 49) IOD: initial orbit determination problem
 50) hyb13f_depth_laurent: semi-generalized hybrid relative pose estimation (Laurent polynomial depth formulation)
 51) parallel_robot_66: forward kinematics problem for a general Stewart-Gough platform
+52) toa3d_46: time-of-arrival self-localization problem for 6 receivers and 4 senders (another formulation, cf.47)

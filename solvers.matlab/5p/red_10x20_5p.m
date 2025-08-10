@@ -7,6 +7,8 @@ function S = red_10x20_5p(C)
 
     [L,~,p] = lu(M(:,1:4),'vector');
     M = M(p(end-5:end),5:end)-L(end-5:end,:)*(L(1:4,:)\M(p(1:4),5:end));
+    %[M,~] = qr(M(:,1:4),M(:,5:end));
+    %M = M(end-5:end,:);
 
     T0 = zeros(10);
     T0([3,5,6,8,9,10],:) = -M(:,7:end);

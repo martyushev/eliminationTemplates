@@ -3,6 +3,7 @@ function [C,U,dU] = coefs_opt_pnp_hesch(data)
     c = data{1};
 
     C = zeros(3,20);
+
     C(49) = 2*c(5);
     C(53) = 2*c(8);
     C(57) = 2*c(10);
@@ -55,7 +56,7 @@ function [C,U,dU] = coefs_opt_pnp_hesch(data)
 
     C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
-    U = @(x,y,z)[x^3,y*x^2,y^2*x,y^3,z*x^2,z*y*x,z*y^2,z^2*x,z^2*y,z^3,x^2,x*y,y^2,x*z,y*z,z^2,x,y,z,1];
-    dU = @(x,y,z)[[3*x^2,2*x*y,y^2,0,2*x*z,y*z,0,z^2,0,0,2*x,y,0,z,0,0,1,0,0,0];[0,x^2,2*x*y,3*y^2,0,x*z,2*y*z,0,z^2,0,0,x,2*y,0,z,0,0,1,0,0];[0,0,0,0,x^2,x*y,y^2,2*x*z,2*y*z,3*z^2,0,0,0,x,y,2*z,0,0,1,0]];
+    U = @(S,n)[S(1,:).^3;S(2,:).*S(1,:).^2;S(2,:).^2.*S(1,:);S(2,:).^3;S(3,:).*S(1,:).^2;S(3,:).*S(2,:).*S(1,:);S(3,:).*S(2,:).^2;S(3,:).^2.*S(1,:);S(3,:).^2.*S(2,:);S(3,:).^3;S(1,:).^2;S(1,:).*S(2,:);S(2,:).^2;S(1,:).*S(3,:);S(2,:).*S(3,:);S(3,:).^2;S(1,:);S(2,:);S(3,:);ones(1,n)];
+    dU = @(S,n)[[3.*S(1,:).^2;2.*S(1,:).*S(2,:);S(2,:).^2;zeros(1,n);2.*S(1,:).*S(3,:);S(2,:).*S(3,:);zeros(1,n);S(3,:).^2;zeros(1,n);zeros(1,n);2.*S(1,:);S(2,:);zeros(1,n);S(3,:);zeros(1,n);zeros(1,n);ones(1,n);zeros(1,n);zeros(1,n);zeros(1,n)],[zeros(1,n);S(1,:).^2;2.*S(1,:).*S(2,:);3.*S(2,:).^2;zeros(1,n);S(1,:).*S(3,:);2.*S(2,:).*S(3,:);zeros(1,n);S(3,:).^2;zeros(1,n);zeros(1,n);S(1,:);2.*S(2,:);zeros(1,n);S(3,:);zeros(1,n);zeros(1,n);ones(1,n);zeros(1,n);zeros(1,n)],[zeros(1,n);zeros(1,n);zeros(1,n);zeros(1,n);S(1,:).^2;S(1,:).*S(2,:);S(2,:).^2;2.*S(1,:).*S(3,:);2.*S(2,:).*S(3,:);3.*S(3,:).^2;zeros(1,n);zeros(1,n);zeros(1,n);S(1,:);S(2,:);2.*S(3,:);zeros(1,n);zeros(1,n);ones(1,n);zeros(1,n)]];
 
 end

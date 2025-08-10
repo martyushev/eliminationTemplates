@@ -4,7 +4,7 @@
 <Label-Scheme value="2" prefix=""/>
 <View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
 </View-Properties>
-<MapleNet-Properties prettyprint="3" warnlevel="1" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
+<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="768" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="false"/>
 <Styles>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -87,32 +87,32 @@
 <Task-table>
 	<Task-category name="&lt;default&gt;"/>
 </Task-table>
-<Task/>
-<Group hide-output="false" labelreference="L4594" drawlabel="true">
+<Task/><Presentation-Block>
+<Group view="code" hide-output="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">restart:</Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4592" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;_common.m&quot;:</Text-field>
+<Group view="code" hide-output="false" labelreference="L4742" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read &quot;../_common.m&quot;:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4600" drawlabel="true">
+<Group view="code" hide-output="false" labelreference="L4727" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4609" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;toy_dim1&quot;:</Text-field>
+<Group view="code" labelreference="L4771" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">prob := &quot;IOD&quot;:</Text-field>
 </Input>
 </Group>
-<Group labelreference="L4610" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4772" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4611" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4773" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">### compute coefficient matrix of initial polynomial system
 interface(warnlevel=1):
 cat(C_, prob) := proc({symbolic:=1})
-    _name, _size := [`A`], [[3,1]]:
+    _name, _size := [`A1`, `A2`, `A3`, `A4`, `A5`], [[4,2]$5]:
     if symbolic=0 then
         _A := [seq(rndMat(_size[i][]), i=1..nops(_name))]:
     else
@@ -120,11 +120,17 @@ cat(C_, prob) := proc({symbolic:=1})
     end if:
     
     ################## place your code for constructing polynomials here
-    a1 := convert(&lt;1, 1, 1, 1, _A[1][1,1]&gt;, Vector):
-    a2 := convert(&lt;1, 1, 1, 1, _A[1][2,1]&gt;, Vector):
-    a3 := convert(&lt;1, 1, 1, 1, _A[1][3,1]&gt;, Vector):
-    v1, v2, v3 := &lt;x*y, y*z, x*w, z, 1&gt;, &lt;x^2, y^2, z^2, w^2, 1&gt;, &lt;x^3, y^3, z^2*x, w^2*y, 1&gt;:
-    eqs := [a1^+.v1, a2^+.v2, a3^+.v3]:
+    Q1 := &lt;x11,x12,x13,x14; x12,x22,x23,x24; x13,x23,2-x11-x22,x34; x14,x24,x34,x44&gt;:
+    eqs := [seq(LinearAlgebra[Determinant](_A[i]^+.Q1._A[i]), i=1..5),
+    x11^2+x13^2-x22^2-x23^2-x11+x22,
+    x11*x12+x12*x22+x13*x23-x12,
+    x12^2+x22^2+x23^2-x22,
+    -x11*x23+x12*x13+x23,
+    x11*x14+x12*x24+x13*x34-x14,
+    x12*x14+x22*x24+x23*x34-x24,
+    -x11*x34+x13*x14-x22*x34+x23*x24+x34,
+    x11*x22+x22^2+x23^2-x11-2*x22+1,
+    -x12*x23+x13*x22-x13]:
     ##################
 
     _F := map(expand, eqs):
@@ -135,104 +141,100 @@ cat(C_, prob) := proc({symbolic:=1})
     [permuteColumns(_C0, _V0, _V)], _V, _name, _size:
 end proc:</Text-field>
 </Input>
-</Group><Presentation-Block>
-<Group hide-input="false" labelreference="L4680" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-input="false" labelreference="L4783" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">F := cat(C_, prob)(symbolic=0):</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" labelreference="L4679" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L4784" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">vars := [indets(F)[]]:
 tord := tdeg(vars[]);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzYsLUYsNiVRIndGJ0YvRjItRjY2LVEiLEYnRjlGOy9GP0YxRkBGQkZERkZGSEZVL0ZOUSwwLjMzMzMzMzNlbUYnLUYsNiVRInhGJ0YvRjJGam4tRiw2JVEieUYnRi9GMkZqbi1GLDYlUSJ6RidGL0YyLyUrZm9yZWdyb3VuZEdRKFswLDAsMF1GJy8lKXJlYWRvbmx5R0Y9RjlGOUY5">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYmSSJ3R0YoSSJ4R0YoSSJ5R0YoSSJ6R0YoNyNGLg==</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYoLUkjbWlHRiQ2JVEldG9yZEYnLyUnaXRhbGljR1EldHJ1ZUYnLyUsbWF0aHZhcmlhbnRHUSdpdGFsaWNGJy1JI21vR0YkNi1RKSZBc3NpZ247RicvRjNRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR0Y9LyUpc3RyZXRjaHlHRj0vJSpzeW1tZXRyaWNHRj0vJShsYXJnZW9wR0Y9LyUubW92YWJsZWxpbWl0c0dGPS8lJ2FjY2VudEdGPS8lJ2xzcGFjZUdRLDAuMjc3Nzc3OGVtRicvJSdyc3BhY2VHRkwtRiw2JVEldGRlZ0YnRi9GMi1GNjYtUTAmQXBwbHlGdW5jdGlvbjtGJ0Y5RjtGPkZARkJGREZGRkgvRktRJjAuMGVtRicvRk5GVi1JKG1mZW5jZWRHRiQ2JC1GIzY2LUYsNiVRJHgxMUYnRi9GMi1GNjYtUSIsRidGOUY7L0Y/RjFGQEZCRkRGRkZIRlUvRk5RLDAuMzMzMzMzM2VtRictRiw2JVEkeDEyRidGL0YyRmpuLUYsNiVRJHgxM0YnRi9GMkZqbi1GLDYlUSR4MTRGJ0YvRjJGam4tRiw2JVEkeDIyRidGL0YyRmpuLUYsNiVRJHgyM0YnRi9GMkZqbi1GLDYlUSR4MjRGJ0YvRjJGam4tRiw2JVEkeDM0RidGL0YyRmpuLUYsNiVRJHg0NEYnRi9GMi8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGPUY5RjlGOQ==">LV9JLFR5cGVzZXR0aW5nRzYkJSpwcm90ZWN0ZWRHSShfc3lzbGliRzYiSSxtcHJpbnRzbGFzaEdGKDYkNyM+SSV0b3JkR0YoLUkldGRlZ0dGKDYrSSR4MTFHRihJJHgxMkdGKEkkeDEzR0YoSSR4MTRHRihJJHgyMkdGKEkkeDIzR0YoSSR4MjRHRihJJHgzNEdGKEkkeDQ0R0YoNyNGLg==</Equation></Text-field>
 </Output>
 </Group></Presentation-Block><Presentation-Block>
-<Group labelreference="L4678" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group labelreference="L4791" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">pp := 32749:</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4677" drawlabel="true" applyint="true" applyrational="true">
+<Group hide-input="false" hide-output="false" labelreference="L4790" drawlabel="true" applyint="true" applyrational="true">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Gr := gb(F,tord,pp):
 nops(Gr);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiOEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIp</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjOTBGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiMhKg==</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4675" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L4788" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">dim(Gr,tord,pp);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMUYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIi</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiMEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIh</Equation></Text-field>
 </Output>
 </Group>
-<Group hide-input="false" hide-output="false" labelreference="L4674" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">deg(F,tord,pp,{z});</Text-field>
+<Group hide-input="false" hide-output="false" labelreference="L4786" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">deg(Gr,tord,pp);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEiOEYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJw==">IiIp</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkjbW5HNiMvSSttb2R1bGVuYW1lRzYiSSxUeXBlc2V0dGluZ0dJKF9zeXNsaWJHRic2JFEjNjZGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">IiNt</Equation></Text-field>
 </Output>
 </Group>
-<Group view="code" hide-input="false" labelreference="L4685" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">inftyRoots(F,tord,pp);</Text-field>
+<Group hide-input="false" labelreference="L4785" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">inftyRoots(F, tord, pp);</Text-field>
 </Input>
-<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYuLUkobWZlbmNlZEdGJDYmLUYjNiwtRiM2Ji1JI21pR0YkNiVRIndGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmZXF1YWxzO0YnL0Y6USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGRC8lKXN0cmV0Y2h5R0ZELyUqc3ltbWV0cmljR0ZELyUobGFyZ2VvcEdGRC8lLm1vdmFibGVsaW1pdHNHRkQvJSdhY2NlbnRHRkQvJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZTLUYjNiYtSSNtbkdGJDYkUSYxNTY0NUYnRkAtRj02LVExJkludmlzaWJsZVRpbWVzO0YnRkBGQkZFRkdGSUZLRk1GTy9GUlEmMC4wZW1GJy9GVUZqbi1GMzYlUSJ6RidGNkY5RkBGQC1GPTYtUSIsRidGQEZCL0ZGRjhGR0ZJRktGTUZPRmluL0ZVUSwwLjMzMzMzMzNlbUYnLUYjNiYtRjM2JVEieEYnRjZGOUY8LUZZNiRRIjBGJ0ZARkBGX28tRiM2Ji1GMzYlUSJ5RidGNkY5RjxGam9GQEZfby1GIzYmRlxvRjxGXG9GQC8lK2ZvcmVncm91bmRHUShbMCwwLDBdRicvJSlyZWFkb25seUdGREZARkAvJSVvcGVuR1EnJmxjdWI7RicvJSZjbG9zZUdRJyZyY3ViO0YnLUY9Ni1RKCZjb21tYTtGJ0ZARkJGYm9GR0ZJRktGTUZPRmluRmNvLUYsNiYtRiM2LC1GIzYmRjJGPC1GIzYmLUZZNiRRJjE3MTA0RidGQEZmbkZcb0ZARkBGX29GZW9GX29GXXBGX29GYnBGZHBGZ3BGQEZARmlwRlxxRl9xLUYsNiYtRiM2LC1GIzYmRjJGPEZqb0ZARl9vLUYjNiZGZ29GPEZWRkBGX29GXXBGX29GYnBGZHBGZ3BGQEZARmlwRlxxRl9xLUYsNiYtRiM2LEZhckZfby1GIzYmRmdvRjxGaHFGQEZfb0ZdcEZfb0ZicEZkcEZncEZARkBGaXBGXHFGX3EtRiw2Ji1GIzYsLUYjNiZGMkY8LUYjNiZGWEZmbkZfcEZARkBGX29GZW9GX28tRiM2JkZfcEY8Rl9wRkBGX28tRiM2JkZcb0Y8RmpvRkBGZHBGZ3BGQEZARmlwRlxxRl9xLUYsNiYtRiM2LC1GIzYmRjJGPC1GIzYmRmpxRmZuRl9wRkBGQEZfb0Zlb0Zfb0Zjc0Zfb0Zlc0ZkcEZncEZARkBGaXBGXHFGQA==">Nig8Ji9JIndHNiIsJEkiekdGJiImWGMiL0kieEdGJiIiIS9JInlHRiZGLC9GKEYoPCYvRiUsJEYoIiYvciJGKkYtRi88Ji9GJUYsL0YrRidGLUYvPCZGNS9GK0YyRi1GLzwmL0YlLCRGLkYpRiovRi5GLi9GKEYsPCYvRiUsJEYuRjNGKkY8Rj0=</Equation></Text-field>
+<Output><Text-field style="2D Output" layout="Maple Output"><Equation executable="false" style="2D Output" display="LUkobWZlbmNlZEc2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYmLUklbXJvd0dGJDY2LUYsNiYtSSNtaUdGJDYlUSR4MTFGJy8lJ2l0YWxpY0dRJXRydWVGJy8lLG1hdGh2YXJpYW50R1EnaXRhbGljRictSSNtb0dGJDYtUSkmZXF1YWxzO0YnL0Y4USdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGQi8lKXN0cmV0Y2h5R0ZCLyUqc3ltbWV0cmljR0ZCLyUobGFyZ2VvcEdGQi8lLm1vdmFibGVsaW1pdHNHRkIvJSdhY2NlbnRHRkIvJSdsc3BhY2VHUSwwLjI3Nzc3NzhlbUYnLyUncnNwYWNlR0ZRLUkjbW5HRiQ2JFEiMEYnRj5GPi1GOzYtUSIsRidGPkZAL0ZERjZGRUZHRklGS0ZNL0ZQUSYwLjBlbUYnL0ZTUSwwLjMzMzMzMzNlbUYnLUYsNiYtRjE2JVEkeDEyRidGNEY3RjpGVEY+RlgtRiw2Ji1GMTYlUSR4MTNGJ0Y0RjdGOkZURj5GWC1GLDYmLUYxNiVRJHgxNEYnRjRGN0Y6RlRGPkZYLUYsNiYtRjE2JVEkeDIyRidGNEY3RjpGVEY+RlgtRiw2Ji1GMTYlUSR4MjNGJ0Y0RjdGOkZURj5GWC1GLDYmLUYxNiVRJHgyNEYnRjRGN0Y6RlRGPkZYLUYsNiYtRjE2JVEkeDM0RidGNEY3RjpGVEY+RlgtRiw2Ji1GMTYlUSR4NDRGJ0Y0RjdGOkZURj4vJStmb3JlZ3JvdW5kR1EoWzAsMCwwXUYnLyUpcmVhZG9ubHlHRkJGPkY+LyUlb3BlbkdRJyZsY3ViO0YnLyUmY2xvc2VHUScmcmN1YjtGJw==">PCsvSSR4MTFHNiIiIiEvSSR4MTJHRiVGJi9JJHgxM0dGJUYmL0kkeDE0R0YlRiYvSSR4MjJHRiVGJi9JJHgyM0dGJUYmL0kkeDI0R0YlRiYvSSR4MzRHRiVGJi9JJHg0NEdGJUYm</Equation></Text-field>
 </Output>
-</Group>
-<Group view="code" hide-input="false" labelreference="L4686" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-input="false" hide-output="false" labelreference="L4789" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-input="false" hide-output="false" labelreference="L4793" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L4689" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group hide-input="false" hide-output="false" labelreference="L4794" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" labelreference="L4690" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block>
-<Group labelreference="L4613" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group labelreference="L4781" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">saveF(prob, F, cat(C_, prob)):</Text-field>
 </Input>
-</Group>
-<Group hide-output="false" labelreference="L4582" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" labelreference="L4774" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4581" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4776" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group hide-output="false" labelreference="L4593" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4777" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4693" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4800" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4691" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4778" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4692" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4779" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4596" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4796" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4595" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4797" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group>
-<Group labelreference="L4607" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" labelreference="L4798" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
-</Group>
-<Group labelreference="L4589" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L4608" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L4799" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>

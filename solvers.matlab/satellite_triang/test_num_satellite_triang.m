@@ -1,20 +1,23 @@
 rng(23);
 N = 10000;
-d = 27;
+nRoots = 27;
+iterRef = 0;
 
 stats = ini_stats('satellite_triang');
+stats.solver = 'red_74x104_satellite_triang';
 
 for i = 1:N
 
+    tic;
     data = inidata_num_satellite_triang();
     [C,U,dU] = coefs_satellite_triang(data);
 
-    tic;
-    S = red_74x104_satellite_triang(C);
-    stats.tm = [stats.tm toc];
+    S = feval(stats.solver,C);
     if isempty(S); continue; end
+    [S,Ir,e] = validate_roots(S,C,U,dU,nRoots,iterRef);
 
-    [stats,~] = update_stats(stats,S,C,U,dU,d,'iterRef',0);
+    stats.tm = [stats.tm toc];
+    stats = update_stats_o(stats,Ir,e);
 
 end
 

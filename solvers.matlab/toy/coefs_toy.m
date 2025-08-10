@@ -11,7 +11,7 @@ function [C,U,dU] = coefs_toy(data)
 
     C = C./repmat(sqrt(sum(C.*conj(C),2)),1,size(C,2));
 
-    U = @(x,y,z)[x^3,y^3,z^2*x,x^2,y*x,y^2,y*z,z^2,z,1];
-    dU = @(x,y,z)[[3*x^2,0,z^2,2*x,y,0,0,0,0,0];[0,3*y^2,0,0,x,2*y,z,0,0,0];[0,0,2*x*z,0,0,0,y,2*z,1,0]];
+    U = @(S,n)[S(1,:).^3;S(2,:).^3;S(3,:).^2.*S(1,:);S(1,:).^2;S(2,:).*S(1,:);S(2,:).^2;S(2,:).*S(3,:);S(3,:).^2;S(3,:);ones(1,n)];
+    dU = @(S,n)[[3.*S(1,:).^2;zeros(1,n);S(3,:).^2;2.*S(1,:);S(2,:);zeros(1,n);zeros(1,n);zeros(1,n);zeros(1,n);zeros(1,n)],[zeros(1,n);3.*S(2,:).^2;zeros(1,n);zeros(1,n);S(1,:);2.*S(2,:);S(3,:);zeros(1,n);zeros(1,n);zeros(1,n)],[zeros(1,n);zeros(1,n);2.*S(1,:).*S(3,:);zeros(1,n);zeros(1,n);zeros(1,n);S(2,:);2.*S(3,:);ones(1,n);zeros(1,n)]];
 
 end
